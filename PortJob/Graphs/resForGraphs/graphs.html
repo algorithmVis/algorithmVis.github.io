@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Graphs</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+
+    <!-- Insert this line above script imports  -->
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    
+    <script>var algorithm = "Graphs";
+            var collapse = "NO"; </script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/graphStructureController.js"></script>
+    <script src="js/eventManager.js"></script>
+    <script src="js/adjacencyList.js"></script>
+    <script src="js/visitedArray.js"></script>
+</head>
+<body>
+
+    <div id="adjacencyList" class="main-container border-right"></div>
+    <div id="graphUI" class="main-container">
+        <svg id="edgeSvg" height="100%" width="100%"></svg>
+    </div>
+    <div id="buttonDiv" class="bottom-container left-bottom">
+        <button id="reset" class="my-button" onclick="resetAll();">Reset</button>
+    </div>
+
+    <script src="js/graphUI.js"></script>
+</body>
+</html>
