@@ -14,6 +14,7 @@ function setColor(index, color, colorOn) {
 
 function setPosition(index, left, top) {
     //javaLog.log("index: " + index + " | left: " + left);
+    console.log("hello world");
     var left = left + "px";
     $(nr + index).animate({left: left}, 700);
 }
