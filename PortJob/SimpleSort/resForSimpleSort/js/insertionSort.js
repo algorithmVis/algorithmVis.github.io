@@ -4,6 +4,7 @@
 ///<reference path="controller.ts"/>
 //private IntArrayGenerator gen = new IntArrayGenerator();
 var array = [];
+var n = 15;
 /**
  * Start insertionSort
  */
@@ -31,6 +32,7 @@ function startInsertionSort() {
         control.setJElement(i + 1, false);
         control.setElementBeingComparedTo(j - 1, false);
     }
+    manager.start();
 }
 function setArray(array) {
     this.array = array;
@@ -42,9 +44,10 @@ function getArray() {
  * Fill the array with random integers
  */
 function setRandomArray() {
-    for (var i = 0; i < array.length; i++)
+    for (var i = 0; i < n; i++)
         array[i] = randomInt(0, 100);
     //controller.setArrayInFrontend(array);
+    return array;
 }
 /**
  * generate a random integer between min and max

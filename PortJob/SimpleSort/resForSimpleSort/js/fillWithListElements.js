@@ -38,9 +38,10 @@ function centerElements() {
     $("svg#k-svg").animate({left: (left-7) + "px"}, 500);
 }
 
+var rand = true;
 // Setting Random array
-if (typeof javaBinder !== 'undefined')
-    javaBinder.setRandomArray();
+if (rand)
+    setArray(viewer.serializeArray(setRandomArray()));
 else // If page is tested in another browser
     setArray('14|17|19|18|7|17|15|5');
 

@@ -6,6 +6,7 @@
 
 //private IntArrayGenerator gen = new IntArrayGenerator();
 var array: number[] = [];
+const n = 15;
 
 /**
  * Start insertionSort
@@ -34,7 +35,7 @@ function startInsertionSort() {
         control.setJElement(i + 1, false);
         control.setElementBeingComparedTo(j - 1, false);
     }
-
+    manager.start();
 }
 
 function setArray(array: number[]) {
@@ -49,9 +50,10 @@ function getArray() {
  * Fill the array with random integers
  */
 function setRandomArray() {
-    for (var i: number = 0; i < array.length; i++)
+    for (let i: number = 0; i < n; i++)
         array[i] = randomInt(0, 100);
     //controller.setArrayInFrontend(array);
+    return array;
 }
 
 /**

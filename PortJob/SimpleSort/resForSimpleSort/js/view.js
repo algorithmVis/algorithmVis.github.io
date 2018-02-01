@@ -12,6 +12,8 @@ var view = /** @class */ (function () {
         this.kLeft = 0;
         this.kRight = 0;
         this.currentAlgorithmName = "Insertion sort";
+        this.paused = false;
+        this.animSpeed = 500;
         /*
             setRandomArray() {
                 manager.clear();
@@ -37,7 +39,7 @@ var view = /** @class */ (function () {
                 swapId(indexA, indexB);
             };
         }(indexA, indexB);
-        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, manager.delayTime));
+        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
     };
     view.prototype.moveArrayElementToIndex = function (i, j) {
         var forwardSteps = function (i, j) {
@@ -53,7 +55,7 @@ var view = /** @class */ (function () {
             }
         }(i, j);
         */
-        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, manager.delayTime));
+        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
     };
     view.prototype.moveArrayElementToIndexFromSpecifiedJIndex = function (fromIndex, toIndex, jIndex) {
         var forwardSteps = function (fromIndex, toIndex) {
@@ -67,7 +69,7 @@ var view = /** @class */ (function () {
                 setPosition(fromIndex, jIndex * 70, 0);
             };
         }(fromIndex, jIndex);
-        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, manager.delayTime));
+        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
     };
     view.prototype.storePermValue = function (index) {
         var forwardSteps = function (index) {
@@ -80,7 +82,7 @@ var view = /** @class */ (function () {
                 releasePermaValue(index);
             };
         }(index);
-        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, manager.delayTime));
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
     view.prototype.releasePermValue = function (index) {
         var forwardSteps = function (index) {
@@ -94,13 +96,20 @@ var view = /** @class */ (function () {
                 storePermaValue(index);
             };
         }(index);
-        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, manager.delayTime));
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
     view.prototype.unpause = function () {
         manager.start();
+        this.paused = false;
     };
     view.prototype.pause = function () {
-        manager.pause();
+        if (!this.paused) {
+            manager.pause();
+            this.paused = true;
+        }
+        else {
+            this.unpause();
+        }
     };
     view.prototype.forward = function () {
         manager.next();
@@ -115,22 +124,22 @@ var view = /** @class */ (function () {
             };
         }(k, value);
         this.k = value;
-        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, manager.delayTime));
+        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
     };
     view.prototype.setKLeftAndRight = function (left, right) {
         var forwardSteps = function (k, left, right) {
             return function () {
-                k.setLeftAndRight(left, right, manager.delayTime);
+                k.setLeftAndRight(left, right, this.animSpeed);
             };
         }(k, left, right);
         var backwardSteps = function (k, kLeft, kRight) {
             return function () {
-                k.setLeftAndRight(kLeft, kRight, manager.delayTime);
+                k.setLeftAndRight(kLeft, kRight, this.animSpeed);
             };
         }(k, this.kLeft, this.kRight);
         this.kLeft = left;
         this.kRight = right;
-        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, manager.delayTime));
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
     view.prototype.setColorInArrayElement = function (index, color, colorOn) {
         var forwardSteps = function (index, color, colorOn) {
@@ -143,7 +152,7 @@ var view = /** @class */ (function () {
                 setColor(index, color, !colorOn);
             };
         }(index, color, colorOn);
-        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, manager.delayTime));
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
     return view;
 }());

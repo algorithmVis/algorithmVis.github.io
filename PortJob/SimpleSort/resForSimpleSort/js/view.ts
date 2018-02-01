@@ -15,7 +15,8 @@ class view {
     kLeft: number = 0
     kRight: number = 0;
     currentAlgorithmName: string = "Insertion sort";
-
+    paused: boolean = false;
+    animSpeed: number = 500;
 
     serializeArray(array: number[]) {
         let returnString: string = "";
@@ -34,7 +35,7 @@ class view {
             }
         }(indexA, indexB);
 
-        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, manager.delayTime));
+        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed);
     }
 
     moveArrayElementToIndex(i: number, j: number) {
@@ -51,7 +52,7 @@ class view {
             }
         }(i, j);
         */
-        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, manager.delayTime));
+        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
     }
 
     moveArrayElementToIndexFromSpecifiedJIndex(fromIndex: number, toIndex: number, jIndex: number) {
@@ -67,7 +68,7 @@ class view {
             }
         }(fromIndex, jIndex);
 
-        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, manager.delayTime));
+        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
     }
 
     storePermValue(index: number) {
@@ -82,7 +83,7 @@ class view {
                 releasePermaValue(index);
             }
         }(index);
-        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, manager.delayTime));
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
 
     releasePermValue(index: number) {
@@ -98,16 +99,23 @@ class view {
                 storePermaValue(index);
             }
         }(index);
-        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, manager.delayTime));
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
 
 
     unpause() {
         manager.start();
+        this.paused = false;
     }
 
     pause() {
-        manager.pause();
+        if (!this.paused) {
+            manager.pause();
+            this.paused = true;
+        } else {
+            this.unpause()
+        }
+
     }
 
     forward() {
@@ -126,24 +134,24 @@ class view {
         }(k, value);
 
         this.k = value;
-        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, manager.delayTime));
+        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
     }
 
     setKLeftAndRight(left: number, right: number) {
         var forwardSteps = function (k: kValue, left, right) {
             return function () {
-                k.setLeftAndRight(left, right, manager.delayTime);
+                k.setLeftAndRight(left, right, this.animSpeed);
             }
         }(k, left, right);
         var backwardSteps = function (k: kValue, kLeft, kRight) {
             return function () {
-                k.setLeftAndRight(kLeft, kRight, manager.delayTime);
+                k.setLeftAndRight(kLeft, kRight, this.animSpeed);
             }
         }(k, this.kLeft, this.kRight);
 
         this.kLeft = left;
         this.kRight = right;
-        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, manager.delayTime));
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
 
     setColorInArrayElement(index: number, color: string, colorOn: boolean) {
@@ -157,7 +165,7 @@ class view {
                 setColor(index, color, !colorOn);
             }
         }(index, color, colorOn);
-        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, manager.delayTime));
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
 
     /*
