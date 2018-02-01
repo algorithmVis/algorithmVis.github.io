@@ -37,8 +37,8 @@
       <file leaf-file-name="eventManager.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SimpleSort/resForSimpleSort/js/eventManager.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="9" column="25" lean-forward="false" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+            <state relative-caret-position="575">
+              <caret line="23" column="9" lean-forward="true" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -205,12 +205,12 @@
       <option name="presentableId" value="Default" />
       <updated>1517423294789</updated>
       <workItem from="1517423296243" duration="6172000" />
-      <workItem from="1517483812673" duration="31044000" />
+      <workItem from="1517483812673" duration="31872000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37216000" />
+    <option name="totallyTimeSpent" value="38044000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1056" extended-state="6" />
@@ -418,8 +418,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SimpleSort/resForSimpleSort/js/eventManager.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="9" column="25" lean-forward="false" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+        <state relative-caret-position="575">
+          <caret line="23" column="9" lean-forward="true" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
           <folding />
         </state>
       </provider>
