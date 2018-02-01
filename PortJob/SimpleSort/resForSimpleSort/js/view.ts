@@ -1,18 +1,14 @@
+/**
+ * File created by Øyvind Skeie Liland 01.02.18
+ */
+
 ///<reference path="controller.ts"/>
 ///<reference path="kValue.ts"/>
 ///<reference path="viewFunctions.js"/>
-
 declare var $;
 
-interface External {
-    setPosition: Function;
-    swapPosition: Function;
-    storePermValue: Function;
-    releasePermValue: Function;
-    setColor: Function;
-}
-
 class view {
+
     colors: string[] = ["#7FFF00", "not used", "#FFB366"];
     arrayIsReset: boolean = false;
     k: number = 0
@@ -32,21 +28,11 @@ class view {
     switchArrayElements(indexA: number, indexB: number) {
         var forwardSteps = function (indexA, indexB) {
             return function () {
-                window.external.setPosition(indexA, indexB * 70, 0);
-                window.external.setPosition(indexB, indexA * 70, 0);
-                window.external.swapPosition(indexA, indexB);
+                setPosition(indexA, indexB * 70, 0);
+                setPosition(indexB, indexA * 70, 0);
+                swapId(indexA, indexB);
             }
-        }
-        /*
-        forwardSteps.push("setPosition(" + indexA + ", " + indexB * 70 + ", 0)");
-        forwardSteps.push("setPosition(" + indexB + ", " + indexA * 70 + ", 0)");
-        forwardSteps.push("swapId(" + indexA + ", " + indexB + ")");
-
-        let backwardSteps: string[] = [];
-        backwardSteps.push("setPosition(" + indexB + ", " + indexB * 70 + ", 0)");
-        backwardSteps.push("setPosition(" + indexA + ", " + indexA * 70 + ", 0)");
-        backwardSteps.push("swapId(" + indexB + ", " + indexA + ")");
-        */
+        }(indexA, indexB);
 
         manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, manager.delayTime));
     }
@@ -55,69 +41,73 @@ class view {
         var forwardSteps = function (i, j) {
             return function () {
                 setPosition(i, j * 70, 0);
+                swapId(i, j);
             }
-        }
+        }(i, j);
+        /*
         var backwardSteps = function (fromIndex, jIndex) {
             return function () {
                 setPosition(j, i * 70, 0);
             }
-        }
-        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, manager.delayTime));
+        }(i, j);
+        */
+        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, manager.delayTime));
     }
 
     moveArrayElementToIndexFromSpecifiedJIndex(fromIndex: number, toIndex: number, jIndex: number) {
         var forwardSteps = function (fromIndex, toIndex) {
             return function () {
                 setPosition(fromIndex, toIndex * 70, 0);
+                swapId(fromIndex, toIndex);
             }
-        }
+        }(fromIndex, toIndex);
         var backwardSteps = function (fromIndex, jIndex) {
             return function () {
                 setPosition(fromIndex, jIndex * 70, 0);
             }
-        }
-        /*
-        let forwardSteps: string[] = [];
-        forwardSteps.push("setPosition(" + fromIndex + ", " + toIndex * 70 + ", 0)");
+        }(fromIndex, jIndex);
 
-        //We use jIndex for the backward-step, because this is where it originally came from
-        let backwardSteps: string[] = [];
-        backwardSteps.push("setPosition(" + fromIndex + ", " + jIndex * 70 + ", 0)");
-        */
-        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, manager.delayTime));
+        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, manager.delayTime));
     }
 
     storePermValue(index: number) {
         var forwardSteps = function (index) {
             return function () {
-                storePermValue(index);
-                releasePermValue(index);
+                storePermaValue(index);
             }
-        }
-        var backWardSteps = function (index) {
-            releasePermValue(index);
-            storePermValue(index);
-        }
-        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, manager.delayTime));
+        }(index);
+
+        var backwardSteps = function (index) {
+            return function () {
+                releasePermaValue(index);
+            }
+        }(index);
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, manager.delayTime));
     }
 
     releasePermValue(index: number) {
         var forwardSteps = function (index) {
             return function () {
-               releasePermValue(index);
-               storePermValue(index);
+                console.log("perm");
+                releasePermaValue(index);
             }
-        }
+        }(index);
+
         var backwardSteps = function (index) {
-            storePermValue(index);
-            releasePermValue(index);
-        }
-        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, manager.delayTime));
+            return function () {
+                storePermaValue(index);
+            }
+        }(index);
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, manager.delayTime));
     }
 
 
     unpause() {
         manager.start();
+    }
+
+    pause() {
+        manager.pause();
     }
 
     forward() {
@@ -129,27 +119,27 @@ class view {
     }
 
     setKValue(value: number) {
-        var forwardSteps = function (k, value) {
+        var forwardSteps = function (k: kValue, value) {
             return function () {
                 k.setValue(value);
             }
-        }
+        }(k, value);
 
         this.k = value;
         manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, manager.delayTime));
     }
 
     setKLeftAndRight(left: number, right: number) {
-        var forwardSteps = function (k, left, right) {
+        var forwardSteps = function (k: kValue, left, right) {
             return function () {
-                k.setLeftAndRight(left, right);
+                k.setLeftAndRight(left, right, manager.delayTime);
             }
-        }
-        var backwardSteps = function (k, left, right) {
+        }(k, left, right);
+        var backwardSteps = function (k: kValue, kLeft, kRight) {
             return function () {
-                k.setLeftAndRight(this.kLeft, this.kRight);
+                k.setLeftAndRight(kLeft, kRight, manager.delayTime);
             }
-        }
+        }(k, this.kLeft, this.kRight);
 
         this.kLeft = left;
         this.kRight = right;
@@ -161,12 +151,12 @@ class view {
             return function () {
                 setColor(index, color, colorOn);
             }
-        }(index, color, colorOn)
+        }(index, color, colorOn);
         var backwardSteps = function (index, color, colorOn) {
             return function () {
                 setColor(index, color, !colorOn);
             }
-        }
+        }(index, color, colorOn);
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, manager.delayTime));
     }
 

@@ -14,7 +14,6 @@ function setColor(index, color, colorOn) {
 
 function setPosition(index, left, top) {
     //javaLog.log("index: " + index + " | left: " + left);
-    console.log("hello world");
     var left = left + "px";
     $(nr + index).animate({left: left}, 700);
 }
@@ -47,11 +46,12 @@ function togglePauseIcon(hide) {
     }
 }
 
-function storePermValue(index) {
+function storePermaValue(index) {
+    console.log(storePermaValue.caller);
     $(nr + index).animate({top: "50px"});
 }
 
-function releasePermValue(index) {
+function releasePermaValue(index) {
     $(nr + index).animate({top: "0px"});
 }
 

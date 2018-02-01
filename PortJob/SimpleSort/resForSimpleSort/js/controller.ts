@@ -1,44 +1,52 @@
+/**
+ * File created by Øyvind Skeie Liland 01.02.18.
+ */
 ///<reference path="view.ts"/>
-function setJElement(j: number, bool: boolean) {
-    setColorInArrayElement(j, viewer.colors[2], bool);
+let iColor = 2;
+let jColor = 0;
+
+class controller {
+
+    setJElement(j: number, bool: boolean) {
+        this.setColorInArrayElement(j, viewer.colors[jColor], bool);
+    }
+
+    setColorInArrayElement(index: number, color: string, colorOn: boolean) {
+        viewer.setColorInArrayElement(index, color, colorOn);
+    }
+
+    setElementBeingComparedTo(j: number, bool: boolean) {
+        this.setColorInArrayElement(j, viewer.colors[iColor], bool);
+    }
+
+    storePermValue(j: number) {
+        viewer.storePermValue(j);
+    }
+
+    releasePermValue(i: number) {
+        viewer.releasePermValue(i);
+    }
+
+    switchArrayElements(indexA: number, indexB: number) {
+        viewer.switchArrayElements(indexA, indexB);
+    }
+
+    moveArrayElementToIndex(i: number, j: number) {
+        viewer.moveArrayElementToIndex(i, j);
+    }
+
+    moveArrayElementToIndexFromSpecifiedJIndex(i: number, j: number, k: number) {
+        viewer.moveArrayElementToIndexFromSpecifiedJIndex(i, j, k)
+    }
+
+    setKValue(k: number) {
+        viewer.setKValue(k);
+    }
+
+    setKLeftAndRight(i: number, k: number) {
+        viewer.setKLeftAndRight(i, k);
+    }
 }
 
-function setColorInArrayElement(index: number, color: string, colorOn: boolean) {
-    viewer.setColorInArrayElement(index, color, colorOn);
-}
-
-function setElementBeingComparedTo(j: number, bool: boolean) {
-    setColorInArrayElement(j, viewer.colors[2], bool);
-}
-
-function storePermValue(j: number) {
-    viewer.storePermValue(j);
-}
-
-function releasePermValue(i: number) {
-    viewer.releasePermValue(i);
-}
-
-function switchArrayElements(indexA: number, indexB: number) {
-    viewer.switchArrayElements(indexA, indexB);
-}
-
-
-function moveArrayElementToIndex(i: number, j: number) {
-    viewer.moveArrayElementToIndex(i, j);
-}
-
-function moveArrayElementToIndexFromSpecifiedJIndex(i: number, j: number, k: number) {
-    viewer.moveArrayElementToIndexFromSpecifiedJIndex(i, j, k)
-}
-
-
-function setKValue(k: number) {
-    viewer.setKValue(k);
-}
-
-function setKLeftAndRight(i: number, k: number) {
-    viewer.setKLeftAndRight(i, k);
-}
-
+var control: controller = new controller();
 

@@ -15,10 +15,10 @@
         <script src="js/bootstrap.min.js"></script>
         <script src="js/viewFunctions.js"></script>
         <script src="js/kValue.js"></script>
+        <script src="js/view.js"></script>
         <script src="js/insertionSort.js"></script>
         <script src="js/controller.js"></script>
         <script src="js/eventManager.js"></script>
-        <script src="js/view.js"></script>
 
         <!-- For debugging -->
         <!-- <script type='text/js' src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script> -->
@@ -52,9 +52,9 @@
             <script src="js/fillWithListElements.js"></script>
             <br><br><br><br>
             <div class="row">
-                <button id="togglePause" class="btn btn-primary" onclick="manager.pause()">Pause</button>
-                <button id="backward" class="btn btn-primary" onclick="manager.previous()">Backward</button>
-                <button id="forward" class="btn btn-primary" onclick="manager.next()">Forward</button>
+                <button id="togglePause" class="btn btn-primary" onclick="viewer.unpause()">Pause</button>
+                <button id="backward" class="btn btn-primary" onclick="viewer.backward()">Backward</button>
+                <button id="forward" class="btn btn-primary" onclick="viewer.forward()">Forward</button>
                 <!-- TODO: speed buttons -->
             </div>
             <br>

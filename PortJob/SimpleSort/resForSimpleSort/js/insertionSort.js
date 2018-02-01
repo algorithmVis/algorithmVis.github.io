@@ -1,3 +1,6 @@
+/**
+ * File created by Øyvind Skeie Liland 01.02.18.
+ */
 ///<reference path="controller.ts"/>
 //private IntArrayGenerator gen = new IntArrayGenerator();
 var array = [];
@@ -6,26 +9,27 @@ var array = [];
  */
 function startInsertionSort() {
     //controller.setHeaderText("Insertion Sort");
-    //controller.hideK();
+    //hideK();
     var j; // Elements sorted, starting on second position
     var key; // Current element
     var i; // Index moving backwards with key
+    console.log(array.toString());
     for (j = 1; j < array.length; j++) {
-        setJElement(j, true);
-        setElementBeingComparedTo(j - 1, true);
+        control.setJElement(j, true);
+        control.setElementBeingComparedTo(j - 1, true);
         key = array[j];
-        storePermValue(j);
-        for (i = j - 1; i >= 0 && array[i] > key; i--) {
-            setElementBeingComparedTo(i, true);
-            moveArrayElementToIndex(i, i + 1);
+        control.storePermValue(j);
+        for (i = j - 1; i >= 0 && Number(array[i]) > Number(key); i--) {
+            control.setElementBeingComparedTo(i, true);
+            control.moveArrayElementToIndex(i, i + 1);
             array[i + 1] = array[i];
-            setElementBeingComparedTo(i + 1, false);
+            control.setElementBeingComparedTo(i + 1, false);
         }
-        moveArrayElementToIndexFromSpecifiedJIndex(i + 1, i + 1, j);
+        control.moveArrayElementToIndexFromSpecifiedJIndex(i + 1, i + 1, j);
         array[i + 1] = key; // i+1 because for i will decrease one extra in the for loop
-        releasePermValue(i + 1);
-        setJElement(i + 1, false);
-        setElementBeingComparedTo(j - 1, false);
+        control.releasePermValue(i + 1);
+        control.setJElement(i + 1, false);
+        control.setElementBeingComparedTo(j - 1, false);
     }
 }
 function setArray(array) {
@@ -34,6 +38,9 @@ function setArray(array) {
 function getArray() {
     return array;
 }
+/**
+ * Fill the array with random integers
+ */
 function setRandomArray() {
     for (var i = 0; i < array.length; i++)
         array[i] = randomInt(0, 100);
