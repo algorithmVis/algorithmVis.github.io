@@ -3,6 +3,7 @@
  */
 
 ///<reference path="controller.ts"/>
+///<reference path="eventManager.ts"/>
 
 //private IntArrayGenerator gen = new IntArrayGenerator();
 var array: number[] = [];

@@ -2,116 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4555ce99-83f1-4c97-8de0-2579991093a3" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/PortJob.iml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../.idea/typescript-compiler.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../Graphs/resForGraphs/DfsBfs.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../Graphs/resForGraphs/assets/square_left.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../Graphs/resForGraphs/assets/square_right.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../Graphs/resForGraphs/css/bootstrap.min.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../Graphs/resForGraphs/css/bootstrap.min.css.map" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../Graphs/resForGraphs/css/style.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../Graphs/resForGraphs/graphs.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../Graphs/resForGraphs/js/.gitignore" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../Graphs/resForGraphs/js/adjacencyList.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../Graphs/resForGraphs/js/dfsBfsController.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../Graphs/resForGraphs/js/eventManager.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../Graphs/resForGraphs/js/graphStructureController.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../Graphs/resForGraphs/js/graphUI.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../Graphs/resForGraphs/js/visitedArray.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/assets/pause.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/assets/square_left.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/assets/square_right.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/css/bootstrap.min.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/css/bootstrap.min.css.map" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/css/style.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/fonts/glyphicons-halflings-regular.eot" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/fonts/glyphicons-halflings-regular.svg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/fonts/glyphicons-halflings-regular.ttf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/fonts/glyphicons-halflings-regular.woff" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/fonts/glyphicons-halflings-regular.woff2" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/index.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/js/bootstrap.min.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/js/controller.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/js/controller.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/js/eventManager.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/js/eventManager.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/js/fillWithListElements.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/js/insertionSort.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/js/insertionSort.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/js/jquery-ui-1.12.0/AUTHORS.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/js/jquery-ui-1.12.0/LICENSE.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/js/jquery-ui-1.12.0/external/jquery/jquery.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/js/jquery-ui-1.12.0/images/ui-icons_444444_256x240.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/js/jquery-ui-1.12.0/images/ui-icons_555555_256x240.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/js/jquery-ui-1.12.0/images/ui-icons_777620_256x240.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/js/jquery-ui-1.12.0/images/ui-icons_777777_256x240.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/js/jquery-ui-1.12.0/images/ui-icons_cc0000_256x240.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/js/jquery-ui-1.12.0/images/ui-icons_ffffff_256x240.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/js/jquery-ui-1.12.0/index.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/js/jquery-ui-1.12.0/jquery-ui.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/js/jquery-ui-1.12.0/jquery-ui.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/js/jquery-ui-1.12.0/jquery-ui.min.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/js/jquery-ui-1.12.0/jquery-ui.min.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/js/jquery-ui-1.12.0/jquery-ui.structure.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/js/jquery-ui-1.12.0/jquery-ui.structure.min.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/js/jquery-ui-1.12.0/jquery-ui.theme.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/js/jquery-ui-1.12.0/jquery-ui.theme.min.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/js/jquery-ui-1.12.0/package.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/js/jquery.min.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/js/kValue.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/js/kValue.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/js/view.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/js/view.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForSimpleSort/js/viewFunctions.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/assets/correct.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/assets/square_left.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/assets/square_right.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/assets/up_arrow.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/assets/wrong.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/css/bootstrap.min.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/css/bootstrap.min.css.map" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/css/union_style.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/fonts/glyphicons-halflings-regular.eot" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/fonts/glyphicons-halflings-regular.svg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/fonts/glyphicons-halflings-regular.ttf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/fonts/glyphicons-halflings-regular.woff" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/fonts/glyphicons-halflings-regular.woff2" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/index.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/js/QuickUnion.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/js/bootstrap.min.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/js/controller.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/js/drawGraph.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/js/drawGraph.js.map" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/js/drawGraph.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/js/eventManager.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/js/insertArrayAndNodes.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/js/jquery-ui-1.12.0/AUTHORS.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/js/jquery-ui-1.12.0/LICENSE.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/js/jquery-ui-1.12.0/external/jquery/jquery.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/js/jquery-ui-1.12.0/images/ui-icons_444444_256x240.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/js/jquery-ui-1.12.0/images/ui-icons_555555_256x240.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/js/jquery-ui-1.12.0/images/ui-icons_777620_256x240.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/js/jquery-ui-1.12.0/images/ui-icons_777777_256x240.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/js/jquery-ui-1.12.0/images/ui-icons_cc0000_256x240.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/js/jquery-ui-1.12.0/images/ui-icons_ffffff_256x240.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/js/jquery-ui-1.12.0/index.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/js/jquery-ui-1.12.0/jquery-ui.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/js/jquery-ui-1.12.0/jquery-ui.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/js/jquery-ui-1.12.0/jquery-ui.min.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/js/jquery-ui-1.12.0/jquery-ui.min.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/js/jquery-ui-1.12.0/jquery-ui.structure.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/js/jquery-ui-1.12.0/jquery-ui.structure.min.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/js/jquery-ui-1.12.0/jquery-ui.theme.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/js/jquery-ui-1.12.0/jquery-ui.theme.min.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/js/jquery-ui-1.12.0/package.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/js/jquery.min.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/js/methods.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/js/methods.js.map" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/js/methods.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../UnionFind/resForUnionFind/js/view.ts" afterPath="" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/typescript-compiler.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/js/insertionSort.ts" afterPath="$PROJECT_DIR$/js/insertionSort.ts" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -123,8 +16,29 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="insertionSort.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/insertionSort.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="325">
+              <caret line="13" column="3" lean-forward="true" selection-start-line="13" selection-start-column="3" selection-end-line="13" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/js/insertionSort.ts" />
+      </list>
+    </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
@@ -156,7 +70,28 @@
     <panes>
       <pane id="Scratches" />
       <pane id="Scope" />
-      <pane id="ProjectPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="SimpleSort" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SimpleSort" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SimpleSort" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SimpleSort" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SimpleSort" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SimpleSort" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="view.ts" type="620a8d5e:NestingTreeNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -191,17 +126,19 @@
       <option name="presentableId" value="Default" />
       <updated>1517678131409</updated>
       <workItem from="1517678134410" duration="39000" />
-      <workItem from="1517678244416" duration="12000" />
+      <workItem from="1517678244416" duration="437000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51000" />
+    <option name="totallyTimeSpent" value="476000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -238,5 +175,31 @@
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/js/insertionSort.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="13" column="31" lean-forward="true" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/view.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4355">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/insertionSort.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="13" column="3" lean-forward="true" selection-start-line="13" selection-start-column="3" selection-end-line="13" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
