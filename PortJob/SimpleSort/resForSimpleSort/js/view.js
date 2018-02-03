@@ -4,6 +4,7 @@
 ///<reference path="controller.ts"/>
 ///<reference path="kValue.ts"/>
 ///<reference path="viewFunctions.js"/>
+///<reference path="insertionSort.js"/>
 var view = /** @class */ (function () {
     function view() {
         this.colors = ["#7FFF00", "not used", "#FFB366"];

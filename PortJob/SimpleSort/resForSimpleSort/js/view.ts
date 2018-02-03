@@ -5,6 +5,7 @@
 ///<reference path="controller.ts"/>
 ///<reference path="kValue.ts"/>
 ///<reference path="viewFunctions.js"/>
+///<reference path="insertionSort.js"/>
 declare var $;
 
 class view {
@@ -43,7 +44,7 @@ class view {
             }
         }(indexA, indexB);
 
-        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed);
+        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
     }
 
     moveArrayElementToIndex(fromIndex: number, toIndex: number) {

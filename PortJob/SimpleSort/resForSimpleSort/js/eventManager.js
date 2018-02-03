@@ -47,8 +47,6 @@ var eventManager = /** @class */ (function () {
         clearInterval(this.eventThread);
         this.nextEvents = [];
         this.previousEvents = [];
-        if (viewer.paused)
-            viewer.pause();
     };
     return eventManager;
 }());

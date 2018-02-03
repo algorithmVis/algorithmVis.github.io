@@ -1,7 +1,6 @@
 /**
  * File created by Øyvind Skeie Liland 01.02.18.
  */
-import NumberFormat = Intl.NumberFormat;
 
 ///<reference path="controller.ts"/>
 
@@ -13,8 +12,8 @@ const n = 10;
  * Start insertionSort
  */
 function startInsertionSort() {
+
     control.setHeadText("Insertion Sort");
-    //hideK();
     var j: number; // Elements sorted, starting on second position
     var key: number; // Current element
     var i: number; // Index moving backwards with key
@@ -59,7 +58,7 @@ function startShellSort() {
 
             let
                 i: number;
-            for (i = j - k; i >= 0 && array[i] > key; i = i - k) {
+            for (i = j - k; i >= 0 && Number(array[i]) > Number(key); i = i - k) {
                 control.setKLeftAndRight(i, i + k);
                 control.setElementBeingComparedTo(i, true);
                 array[i + k] = array[i];
@@ -93,7 +92,7 @@ function setArray(array: number[]) {
     this.array = array;
 }
 
-function getArray() {
+function getThisArray() {
     return array;
 }
 
@@ -101,7 +100,6 @@ function getArray() {
  * Fill the array with random integers
  */
 function setRandomArray() {
-    manager.clear();
     for (let i: number = 0; i < n; i++)
         array[i] = randomInt(0, 100);
     //controller.setArrayInFrontend(array);

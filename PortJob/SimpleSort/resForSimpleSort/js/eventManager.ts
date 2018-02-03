@@ -55,8 +55,6 @@ class eventManager {
         clearInterval(this.eventThread);
         this.nextEvents = [];
         this.previousEvents = [];
-        if(viewer.paused)
-            viewer.pause();
     }
 }
 
