@@ -1,5 +1,5 @@
 /**
- * File created by Øyvind Skeie Liland 01.02.18
+ * File created by Kenneth Apeland 01.02.18
  */
 
 ///<reference path="controller.ts"/>
@@ -14,16 +14,10 @@ class view {
     k: number = 0
     kLeft: number = 0
     kRight: number = 0;
-    currentAlgorithmName: string = "Insertion sort";
+    currentAlgorithmName: string = "Union Find";
     paused: boolean = false;
     animSpeed: number = 500;
 
-    serializeArray(array: number[]) {
-        let returnString: string = "";
-        for (let i of array)
-            returnString = returnString.concat(i + "|");
-        return returnString.substring(0, returnString.length - 1);
-    }
 
 
     switchArrayElements(indexA: number, indexB: number) {
@@ -102,22 +96,6 @@ class view {
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
 
-
-    unpause() {
-        manager.start();
-        this.paused = false;
-    }
-
-    pause() {
-        if (!this.paused) {
-            manager.pause();
-            this.paused = true;
-        } else {
-            this.unpause()
-        }
-
-    }
-
     forward() {
         manager.next();
     }
@@ -168,14 +146,18 @@ class view {
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
 
-    /*
-        setRandomArray() {
-            manager.clear();
-            manager.start();
-            controller.setRandomArray();
-            arrayIsReset = true;
-        }
-    */
+    setSlow() {
+        this.animSpeed = 250;
+    }
+
+    setMedium() {
+        this.animSpeed = 500;
+    }
+
+    setFast() {
+        this.animSpeed = 750;
+    }
+
 }
 
 var viewer: view = new view();

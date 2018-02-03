@@ -1,50 +1,68 @@
 /**
- * File created by Øyvind Skeie Liland 01.02.18.
+ * File created by Kenneth Apeland 03.02.18.
  */
 ///<reference path="view.ts"/>
 let iColor = 2;
 let jColor = 0;
 
 class controller {
+    private algorithm : String;
+    private methodName : string = "Union";
+    private speed: number;
 
-    setJElement(j: number, bool: boolean) {
-        this.setColorInArrayElement(j, viewer.colors[jColor], bool);
+    initController (algo : string) {
+        this.algorithm = algo;
+        this.speed = 50;
     }
 
-    setColorInArrayElement(index: number, color: string, colorOn: boolean) {
-        viewer.setColorInArrayElement(index, color, colorOn);
+    changeSpeed(newSpeed : number) {
+        this.speed = newSpeed;
     }
 
-    setElementBeingComparedTo(j: number, bool: boolean) {
-        this.setColorInArrayElement(j, viewer.colors[iColor], bool);
+    getSpeed() {
+        return this.speed;
     }
 
-    storePermValue(j: number) {
-        viewer.storePermValue(j);
+    connected(firstIndex : number, secondIndex : number) {
+        //Kossen gjør eg detta??
+        this.algorithm.connected(firstIndex, secondIndex);
     }
 
-    releasePermValue(i: number) {
-        viewer.releasePermValue(i);
+    union(firstIndex : number, secondIndex : number) {
+        //same shit som over
+        this.algorithm.union(firstIndex, secondIndex);
     }
 
-    switchArrayElements(indexA: number, indexB: number) {
-        viewer.switchArrayElements(indexA, indexB);
+    setArrow(index : number) {
+        viewer.setArrow(index);
     }
 
-    moveArrayElementToIndex(i: number, j: number) {
-        viewer.moveArrayElementToIndex(i, j);
+    connectedNodes(aRoot: any, bRoot: any) {
+
     }
 
-    moveArrayElementToIndexFromSpecifiedJIndex(i: number, j: number, k: number) {
-        viewer.moveArrayElementToIndexFromSpecifiedJIndex(i, j, k)
+    setValueAtIndex(aRoot: number, bRoot: number) {
+
     }
 
-    setKValue(k: number) {
-        viewer.setKValue(k);
+    setSelectedIndex(index : number, bool : boolean) {
+
     }
 
-    setKLeftAndRight(i: number, k: number) {
-        viewer.setKLeftAndRight(i, k);
+    highlightNode(index : number, color : string) {
+
+    }
+
+    checkMark(aIndex : number, bIndex : number, bool : boolean) {
+
+    }
+
+    redCross(aIndex : number, bIndex : number, bool : boolean) {
+
+    }
+
+    removeHighlight(index : number) {
+
     }
 }
 
