@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="126fb10e-8d59-4fee-88de-f0fb0dcf6f27" name="Default" comment="" />
+    <list default="true" id="126fb10e-8d59-4fee-88de-f0fb0dcf6f27" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/UnionFind/resForUnionFind/js/controller.ts" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/UnionFind/resForUnionFind/js/view.ts" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -13,6 +18,10 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
+  <splitter split-orientation="horizontal" split-proportion="0.6634276">
+    <split-first>
+      <splitter split-orientation="horizontal" split-proportion="0.50434405">
+        <split-first>
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SimpleSort/resForSimpleSort/index.html">
@@ -23,6 +32,16 @@
             </state>
           </provider>
         </entry>
+        <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+          <entry file="file://$PROJECT_DIR$/UnionFind/resForUnionFind/index.html">
+            <provider selected="true" editor-type-id="text-editor">
+              <state relative-caret-position="884">
+                <caret line="52" column="133" lean-forward="false" selection-start-line="52" selection-start-column="133" selection-end-line="52" selection-end-column="133" />
+                <folding />
+              </state>
+            </provider>
+          </entry>
+        </file>
       </file>
       <file leaf-file-name="fillWithListElements.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SimpleSort/resForSimpleSort/js/fillWithListElements.js">
@@ -97,6 +116,38 @@
         </entry>
       </file>
     </leaf>
+  </split-first>
+  <split-second>
+    <leaf>
+      <file leaf-file-name="controller.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/UnionFind/resForUnionFind/js/controller.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="884">
+              <caret line="52" column="0" lean-forward="true" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </split-second>
+</splitter>
+</split-first>
+<split-second>
+<leaf>
+  <file leaf-file-name="view.ts" pinned="false" current-in-tab="true">
+    <entry file="file://$PROJECT_DIR$/UnionFind/resForUnionFind/js/view.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1037">
+          <caret line="61" column="43" lean-forward="true" selection-start-line="61" selection-start-column="43" selection-end-line="61" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </file>
+</leaf>
+</split-second>
+</splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -104,6 +155,9 @@
         <option value="TypeScript File" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -127,10 +181,13 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="260" />
-    <option name="y" value="20" />
+    <option name="x" value="425" />
+    <option name="y" value="626" />
     <option name="width" value="1400" />
     <option name="height" value="994" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -147,6 +204,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -170,13 +228,44 @@
               <item name="PortJob" type="462c0819:PsiDirectoryNode" />
               <item name="SimpleSort" type="462c0819:PsiDirectoryNode" />
               <item name="resForSimpleSort" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PortJob" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PortJob" type="462c0819:PsiDirectoryNode" />
+              <item name="SimpleSort" type="462c0819:PsiDirectoryNode" />
+              <item name="resForSimpleSort" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PortJob" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PortJob" type="462c0819:PsiDirectoryNode" />
+              <item name="SimpleSort" type="462c0819:PsiDirectoryNode" />
+              <item name="resForSimpleSort" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PortJob" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PortJob" type="462c0819:PsiDirectoryNode" />
+              <item name="UnionFind" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PortJob" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PortJob" type="462c0819:PsiDirectoryNode" />
+              <item name="UnionFind" type="462c0819:PsiDirectoryNode" />
+              <item name="resForUnionFind" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PortJob" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PortJob" type="462c0819:PsiDirectoryNode" />
+              <item name="UnionFind" type="462c0819:PsiDirectoryNode" />
+              <item name="resForUnionFind" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -188,6 +277,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\kenap\Git\INF219\PortJob\UnionFind\resForUnionFind\js" />
       <recent name="C:\INF219\PortJob\SimpleSort\resForSimpleSort\js" />
     </key>
   </component>
@@ -217,24 +307,33 @@
       <option name="presentableId" value="Default" />
       <updated>1517423294789</updated>
       <workItem from="1517423296243" duration="6172000" />
+<<<<<<< HEAD
       <workItem from="1517483812673" duration="41102000" />
+=======
+      <workItem from="1517483812673" duration="31872000" />
+      <workItem from="1517578955695" duration="2583000" />
+>>>>>>> e60178bafd48887caa46cbe23b3c4d4f088b9500
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="47274000" />
+=======
+    <option name="totallyTimeSpent" value="40627000" />
+>>>>>>> e60178bafd48887caa46cbe23b3c4d4f088b9500
   </component>
   <component name="ToolWindowManager">
-    <frame x="-11" y="-11" width="1942" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="3856" height="2136" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.215625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16085657" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.115625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295838" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17679283" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -252,12 +351,6 @@
     <option name="version" value="1" />
     <option name="exactExcludedFiles">
       <list>
-        <option value="$PROJECT_DIR$/Graphs/resForGraphs/js/adjacencyList.js" />
-        <option value="$PROJECT_DIR$/Graphs/resForGraphs/js/graphStructureController.js" />
-        <option value="$PROJECT_DIR$/Graphs/resForGraphs/js/eventManager.js" />
-        <option value="$PROJECT_DIR$/Graphs/resForGraphs/js/visitedArray.js" />
-        <option value="$PROJECT_DIR$/Graphs/resForGraphs/js/graphUI.js" />
-        <option value="$PROJECT_DIR$/Graphs/resForGraphs/js/dfsBfsController.js" />
         <option value="$PROJECT_DIR$/SimpleSort/resForSimpleSort/js/insertionSort.js" />
         <option value="$PROJECT_DIR$/SimpleSort/resForSimpleSort/js/controller.js" />
         <option value="$PROJECT_DIR$/SimpleSort/resForSimpleSort/js/kValue.js" />
@@ -274,6 +367,62 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/SimpleSort/resForSimpleSort/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="918">
+          <caret line="54" column="81" lean-forward="true" selection-start-line="54" selection-start-column="81" selection-end-line="54" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SimpleSort/resForSimpleSort/js/fillWithListElements.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="40" column="8" lean-forward="true" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SimpleSort/resForSimpleSort/js/viewFunctions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="42" lean-forward="true" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SimpleSort/resForSimpleSort/js/insertionSort.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="37" column="20" lean-forward="false" selection-start-line="37" selection-start-column="20" selection-end-line="37" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SimpleSort/resForSimpleSort/js/controller.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="48" lean-forward="false" selection-start-line="1" selection-start-column="48" selection-end-line="1" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SimpleSort/resForSimpleSort/js/view.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="25" lean-forward="false" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SimpleSort/resForSimpleSort/js/eventManager.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="9" lean-forward="true" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/SimpleSort/resForSimpleSort/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -312,7 +461,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
           <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -330,11 +478,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3198">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1489779196000" expanded="true" signature="1855:1895" ph="..." />
-            <marker date="1489779196000" expanded="true" signature="2923:2996" ph="..." />
-            <marker date="1489779196000" expanded="true" signature="3209:3237" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -352,7 +495,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-177">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -376,66 +518,132 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SimpleSort/resForSimpleSort/js/controller.ts">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="723">
           <caret line="58" column="23" lean-forward="false" selection-start-line="58" selection-start-column="23" selection-end-line="58" selection-end-column="23" />
+=======
+        <state relative-caret-position="1000">
+          <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SimpleSort/resForSimpleSort/js/eventManager.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1122">
+          <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+>>>>>>> e60178bafd48887caa46cbe23b3c4d4f088b9500
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SimpleSort/resForSimpleSort/js/fillWithListElements.js">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="598">
           <caret line="52" column="64" lean-forward="false" selection-start-line="52" selection-start-column="64" selection-end-line="52" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SimpleSort/resForSimpleSort/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="52" column="28" lean-forward="true" selection-start-line="52" selection-start-column="28" selection-end-line="52" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SimpleSort/resForSimpleSort/js/view.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="623">
-          <caret line="125" column="71" lean-forward="false" selection-start-line="125" selection-start-column="71" selection-end-line="125" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SimpleSort/resForSimpleSort/js/viewFunctions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="36" column="41" lean-forward="true" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SimpleSort/resForSimpleSort/js/kValue.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
-          <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+=======
+        <state relative-caret-position="102">
+          <caret line="6" column="42" lean-forward="false" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SimpleSort/resForSimpleSort/js/insertionSort.ts">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="37" column="20" lean-forward="false" selection-start-line="37" selection-start-column="20" selection-end-line="37" selection-end-column="20" />
+>>>>>>> e60178bafd48887caa46cbe23b3c4d4f088b9500
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SimpleSort/resForSimpleSort/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="173">
+          <caret line="52" column="28" lean-forward="true" selection-start-line="52" selection-start-column="28" selection-end-line="52" selection-end-column="28" />
+=======
+        <state relative-caret-position="680">
+          <caret line="40" column="8" lean-forward="false" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="8" />
+>>>>>>> e60178bafd48887caa46cbe23b3c4d4f088b9500
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SimpleSort/resForSimpleSort/js/view.ts">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="623">
+          <caret line="125" column="71" lean-forward="false" selection-start-line="125" selection-start-column="71" selection-end-line="125" selection-end-column="71" />
+=======
+        <state relative-caret-position="1088">
+          <caret line="64" column="80" lean-forward="false" selection-start-line="64" selection-start-column="70" selection-end-line="64" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UnionFind/resForUnionFind/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="52" column="133" lean-forward="false" selection-start-line="52" selection-start-column="133" selection-end-line="52" selection-end-column="133" />
+>>>>>>> e60178bafd48887caa46cbe23b3c4d4f088b9500
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SimpleSort/resForSimpleSort/js/viewFunctions.js">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="900">
+          <caret line="36" column="41" lean-forward="true" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
+=======
+        <state relative-caret-position="765">
+          <caret line="45" column="44" lean-forward="false" selection-start-line="45" selection-start-column="44" selection-end-line="45" selection-end-column="44" />
+>>>>>>> e60178bafd48887caa46cbe23b3c4d4f088b9500
+          <folding />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/SimpleSort/resForSimpleSort/js/kValue.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="505">
+          <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+=======
+    <entry file="file://$PROJECT_DIR$/UnionFind/resForUnionFind/js/controller.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="52" column="0" lean-forward="true" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+>>>>>>> e60178bafd48887caa46cbe23b3c4d4f088b9500
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SimpleSort/resForSimpleSort/js/insertionSort.ts">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="98">
           <caret line="103" column="20" lean-forward="false" selection-start-line="103" selection-start-column="20" selection-end-line="103" selection-end-column="20" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+=======
+        <state relative-caret-position="595">
+          <caret line="35" column="26" lean-forward="true" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
+          <folding />
+>>>>>>> e60178bafd48887caa46cbe23b3c4d4f088b9500
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SimpleSort/resForSimpleSort/js/eventManager.ts">
+    <entry file="file://$PROJECT_DIR$/UnionFind/resForUnionFind/js/view.ts">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="475">
           <caret line="58" column="27" lean-forward="false" selection-start-line="58" selection-start-column="27" selection-end-line="58" selection-end-column="27" />
+=======
+        <state relative-caret-position="1037">
+          <caret line="61" column="43" lean-forward="true" selection-start-line="61" selection-start-column="43" selection-end-line="61" selection-end-column="43" />
+>>>>>>> e60178bafd48887caa46cbe23b3c4d4f088b9500
           <folding />
         </state>
       </provider>
