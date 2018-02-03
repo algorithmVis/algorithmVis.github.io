@@ -46,6 +46,18 @@ class controller {
     setKLeftAndRight(i: number, k: number) {
         viewer.setKLeftAndRight(i, k);
     }
+
+    setHeadText(str : string) {
+        viewer.setHeadText(str);
+    }
+
+    unhideK() {
+        viewer.unhideK();
+    }
+
+    hideK() {
+        viewer.hideK();
+    }
 }
 
 var control: controller = new controller();

@@ -7,7 +7,7 @@ declare var $;
 
 /** Manager for events stored in queue. Manager is also responsible for executing events automatically */
 class eventManager {
-    delayTime:number = 600; // Original value
+    delayTime:number = 500; // Original value
     nextEvents:FrontendEvent[] = [];
     previousEvents:FrontendEvent[] = [];
     eventThread;
@@ -49,6 +49,14 @@ class eventManager {
 
     pause() {
         clearInterval(this.eventThread);
+    }
+
+    clear() {
+        clearInterval(this.eventThread);
+        this.nextEvents = [];
+        this.previousEvents = [];
+        if(viewer.paused)
+            viewer.pause();
     }
 }
 

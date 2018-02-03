@@ -14,14 +14,6 @@ var view = /** @class */ (function () {
         this.currentAlgorithmName = "Insertion sort";
         this.paused = false;
         this.animSpeed = 500;
-        /*
-            setRandomArray() {
-                manager.clear();
-                manager.start();
-                controller.setRandomArray();
-                arrayIsReset = true;
-            }
-        */
     }
     view.prototype.serializeArray = function (array) {
         var returnString = "";
@@ -39,29 +31,35 @@ var view = /** @class */ (function () {
                 swapId(indexA, indexB);
             };
         }(indexA, indexB);
+        var backwardSteps = function (indexA, indexB) {
+            return function () {
+                setPosition(indexB, indexB * 70, 0);
+                setPosition(indexA, indexA * 70, 0);
+                swapId(indexA, indexB);
+            };
+        }(indexA, indexB);
         manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
     };
-    view.prototype.moveArrayElementToIndex = function (i, j) {
-        var forwardSteps = function (i, j) {
+    view.prototype.moveArrayElementToIndex = function (fromIndex, toIndex) {
+        var forwardSteps = function (fromIndex, toIndex) {
             return function () {
-                setPosition(i, j * 70, 0);
-                swapId(i, j);
+                setPosition(fromIndex, toIndex * 70, 0);
+                swapId(fromIndex, toIndex);
             };
-        }(i, j);
-        /*
-        var backwardSteps = function (fromIndex, jIndex) {
+        }(fromIndex, toIndex);
+        var backwardSteps = function (fromIndex, toIndex) {
             return function () {
-                setPosition(j, i * 70, 0);
-            }
-        }(i, j);
-        */
-        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
+                swapId(toIndex, fromIndex);
+                setPosition(fromIndex, fromIndex * 70, 0);
+            };
+        }(fromIndex, toIndex);
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
     view.prototype.moveArrayElementToIndexFromSpecifiedJIndex = function (fromIndex, toIndex, jIndex) {
         var forwardSteps = function (fromIndex, toIndex) {
             return function () {
                 setPosition(fromIndex, toIndex * 70, 0);
-                swapId(fromIndex, toIndex);
+                //swapId(fromIndex, toIndex);
             };
         }(fromIndex, toIndex);
         var backwardSteps = function (fromIndex, jIndex) {
@@ -69,7 +67,7 @@ var view = /** @class */ (function () {
                 setPosition(fromIndex, jIndex * 70, 0);
             };
         }(fromIndex, jIndex);
-        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
     view.prototype.storePermValue = function (index) {
         var forwardSteps = function (index) {
@@ -87,7 +85,6 @@ var view = /** @class */ (function () {
     view.prototype.releasePermValue = function (index) {
         var forwardSteps = function (index) {
             return function () {
-                console.log("perm");
                 releasePermaValue(index);
             };
         }(index);
@@ -106,9 +103,11 @@ var view = /** @class */ (function () {
         if (!this.paused) {
             manager.pause();
             this.paused = true;
+            document.getElementById('togglePause').innerText = "resume";
         }
         else {
             this.unpause();
+            document.getElementById('togglePause').innerText = "pause";
         }
     };
     view.prototype.forward = function () {
@@ -123,8 +122,13 @@ var view = /** @class */ (function () {
                 k.setValue(value);
             };
         }(k, value);
+        var backwardSteps = function (k, value) {
+            return function () {
+                k.setValue(value);
+            };
+        }(k, this.k);
         this.k = value;
-        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
     view.prototype.setKLeftAndRight = function (left, right) {
         var forwardSteps = function (k, left, right) {
@@ -152,6 +156,43 @@ var view = /** @class */ (function () {
                 setColor(index, color, !colorOn);
             };
         }(index, color, colorOn);
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
+    };
+    /*
+        setRandomArray() {
+            manager.clear();
+            manager.start();
+            controller.setRandomArray();
+            arrayIsReset = true;
+        }
+    */
+    view.prototype.setHeadText = function (str) {
+        setHeaderText(str);
+    };
+    view.prototype.unhideK = function () {
+        var forwardSteps = function (k) {
+            return function () {
+                k.unhide();
+            };
+        }(k);
+        var backwardSteps = function (k) {
+            return function () {
+                k.hide();
+            };
+        }(k);
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
+    };
+    view.prototype.hideK = function () {
+        var forwardSteps = function (k) {
+            return function () {
+                k.hide();
+            };
+        }(k);
+        var backwardSteps = function (k) {
+            return function () {
+                k.unhide();
+            };
+        }(k);
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
     return view;

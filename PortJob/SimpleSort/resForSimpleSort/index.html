@@ -61,11 +61,11 @@
             <div class="row">
                 <button id="start" class="btn btn-primary" onclick="startInsertionSort()">Insertion Sort</button>
                 <!-- TODO: Play if paused -->
-                <button id="shell" class="btn btn-primary" onclick="javaBinder.startShellSort()">Shell Sort</button>
-                <button id="random" class="btn btn-primary"  onclick="javaBinder.setRandomArray()">Random</button>
-                <button id="almost" class="btn btn-primary" onclick="javaBinder.setAlmostSortedArray()">Almost Sorted</button>
-                <button id="sorted" class="btn btn-primary" onclick="javaBinder.setSortedArray()">Sorted</button>
-                <button id="invertedSorted" class="btn btn-primary" onclick="javaBinder.setInvertedSortedArray()">Inverted Sorted</button>
+                <button id="shell" class="btn btn-primary" onclick="startShellSort()">Shell Sort</button>
+                <button id="random" class="btn btn-primary"  onclick="getArray('random')">Random</button>
+                <button id="almost" class="btn btn-primary" onclick="getArray('almostSorted')">Almost Sorted</button>
+                <button id="sorted" class="btn btn-primary" onclick="getArray('sorted')">Sorted</button>
+                <button id="invertedSorted" class="btn btn-primary" onclick="getArray('inverted')">Inverted Sorted</button>
             </div>
 
         </div>

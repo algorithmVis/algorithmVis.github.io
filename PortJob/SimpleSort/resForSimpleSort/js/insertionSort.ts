@@ -1,18 +1,19 @@
 /**
  * File created by Øyvind Skeie Liland 01.02.18.
  */
+import NumberFormat = Intl.NumberFormat;
 
 ///<reference path="controller.ts"/>
 
 //private IntArrayGenerator gen = new IntArrayGenerator();
 var array: number[] = [];
-const n = 15;
+const n = 10;
 
 /**
  * Start insertionSort
  */
 function startInsertionSort() {
-    //controller.setHeaderText("Insertion Sort");
+    control.setHeadText("Insertion Sort");
     //hideK();
     var j: number; // Elements sorted, starting on second position
     var key: number; // Current element
@@ -38,6 +39,56 @@ function startInsertionSort() {
     manager.start();
 }
 
+function startShellSort() {
+    control.setHeadText("Shell Sort");
+
+    // Setup K
+    let k: number = (Math.floor(array.length / 2)); // Gap
+    control.setKValue(k);
+    control.setKLeftAndRight(0, k);
+    control.unhideK();
+
+    while (k != 0) {
+        for (let j: number = k; j < array.length; j++) {
+            control.setKLeftAndRight(j - k, j);
+            control.setJElement(j, true);
+            control.setElementBeingComparedTo(j - k, true);
+
+            let key: number = array[j];
+            control.storePermValue(j);
+
+            let
+                i: number;
+            for (i = j - k; i >= 0 && array[i] > key; i = i - k) {
+                control.setKLeftAndRight(i, i + k);
+                control.setElementBeingComparedTo(i, true);
+                array[i + k] = array[i];
+                control.switchArrayElements(i + k, i);
+                control.setElementBeingComparedTo(i + k, false);
+            }
+            array[i + k] = key;
+            control.releasePermValue(i + k);
+            control.setElementBeingComparedTo(j - k, false);
+            control.setJElement(i + k, false);
+
+        }
+        k =
+            Math.floor(k / 2);
+        control.setKValue(k);
+    }
+    control.hideK();
+    manager.start()
+}
+
+function delay() {
+    try {
+        setTimeout(0);
+    } catch (e
+        ) {
+        e.printStackTrace();
+    }
+}
+
 function setArray(array: number[]) {
     this.array = array;
 }
@@ -50,10 +101,49 @@ function getArray() {
  * Fill the array with random integers
  */
 function setRandomArray() {
+    manager.clear();
     for (let i: number = 0; i < n; i++)
         array[i] = randomInt(0, 100);
     //controller.setArrayInFrontend(array);
     return array;
+}
+
+function setSortedArray() {
+    let arr: number[] = setRandomArray();
+    return arr.sort((n1, n2) => n1 - n2);
+}
+
+function setInvSortedArray() {
+    return setSortedArray().reverse();
+}
+
+function isSorted(arr: number[]) {
+    return arr.forEach((n1, n2) => n1 <= n2);
+}
+
+function setAlmostSortedArray() {
+    let arr: number[] = setSortedArray();
+    for (let i: number = 1; i < arr.length - 1; i++) {
+        if (Math.random() < 0.70) {
+            if (Math.random() < 0.5) {
+                let temp: number = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = temp;
+            } else {
+                let temp: number = arr[i];
+                arr[i] = arr[i - 1];
+                arr[i - 1] = temp;
+            }
+        }
+    }
+
+
+    //If sorted array, try again.
+    if (isSorted(arr)) {
+        return setAlmostSortedArray();
+    }
+
+    return arr;
 }
 
 /**

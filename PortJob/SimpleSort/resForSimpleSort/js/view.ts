@@ -35,31 +35,40 @@ class view {
             }
         }(indexA, indexB);
 
+        var backwardSteps = function (indexA, indexB) {
+            return function () {
+                setPosition(indexB, indexB * 70, 0);
+                setPosition(indexA, indexA * 70, 0);
+                swapId(indexA, indexB);
+            }
+        }(indexA, indexB);
+
         manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed);
     }
 
-    moveArrayElementToIndex(i: number, j: number) {
-        var forwardSteps = function (i, j) {
+    moveArrayElementToIndex(fromIndex: number, toIndex: number) {
+        var forwardSteps = function (fromIndex, toIndex) {
             return function () {
-                setPosition(i, j * 70, 0);
-                swapId(i, j);
+                setPosition(fromIndex, toIndex * 70, 0);
+                swapId(fromIndex, toIndex);
             }
-        }(i, j);
-        /*
-        var backwardSteps = function (fromIndex, jIndex) {
+        }(fromIndex, toIndex);
+
+        var backwardSteps = function (fromIndex, toIndex) {
             return function () {
-                setPosition(j, i * 70, 0);
+                swapId(toIndex, fromIndex);
+                setPosition(fromIndex, fromIndex * 70, 0);
             }
-        }(i, j);
-        */
-        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
+        }(fromIndex, toIndex);
+
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
 
     moveArrayElementToIndexFromSpecifiedJIndex(fromIndex: number, toIndex: number, jIndex: number) {
         var forwardSteps = function (fromIndex, toIndex) {
             return function () {
                 setPosition(fromIndex, toIndex * 70, 0);
-                swapId(fromIndex, toIndex);
+                //swapId(fromIndex, toIndex);
             }
         }(fromIndex, toIndex);
         var backwardSteps = function (fromIndex, jIndex) {
@@ -68,7 +77,7 @@ class view {
             }
         }(fromIndex, jIndex);
 
-        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
 
     storePermValue(index: number) {
@@ -89,7 +98,6 @@ class view {
     releasePermValue(index: number) {
         var forwardSteps = function (index) {
             return function () {
-                console.log("perm");
                 releasePermaValue(index);
             }
         }(index);
@@ -112,8 +120,10 @@ class view {
         if (!this.paused) {
             manager.pause();
             this.paused = true;
+            document.getElementById('togglePause').innerText = "resume";
         } else {
             this.unpause()
+            document.getElementById('togglePause').innerText = "pause";
         }
 
     }
@@ -133,8 +143,13 @@ class view {
             }
         }(k, value);
 
+        var backwardSteps = function (k: kValue, value) {
+            return function () {
+                k.setValue(value);
+            }
+        }(k, this.k);
         this.k = value;
-        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
 
     setKLeftAndRight(left: number, right: number) {
@@ -176,6 +191,39 @@ class view {
             arrayIsReset = true;
         }
     */
+    setHeadText(str: string) {
+        setHeaderText(str);
+    }
+
+    unhideK() {
+        var forwardSteps = function (k: kValue) {
+            return function () {
+                k.unhide();
+            }
+        }(k);
+
+        var backwardSteps = function (k: kValue) {
+            return function () {
+                k.hide();
+            }
+        }(k);
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
+    }
+
+    hideK() {
+        var forwardSteps = function (k: kValue) {
+            return function () {
+                k.hide();
+            }
+        }(k);
+
+        var backwardSteps = function (k: kValue) {
+            return function () {
+                k.unhide();
+            }
+        }(k);
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
+    }
 }
 
 var viewer: view = new view();

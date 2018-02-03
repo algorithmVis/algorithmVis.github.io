@@ -37,6 +37,15 @@ var controller = /** @class */ (function () {
     controller.prototype.setKLeftAndRight = function (i, k) {
         viewer.setKLeftAndRight(i, k);
     };
+    controller.prototype.setHeadText = function (str) {
+        viewer.setHeadText(str);
+    };
+    controller.prototype.unhideK = function () {
+        viewer.unhideK();
+    };
+    controller.prototype.hideK = function () {
+        viewer.hideK();
+    };
     return controller;
 }());
 var control = new controller();

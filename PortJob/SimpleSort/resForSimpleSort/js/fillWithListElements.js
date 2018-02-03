@@ -5,7 +5,7 @@
 
 function setArray(serializedArray) {
     // Remove elements
-    $("#arrayUl li, #indices p").each( function() {
+    $("#arrayUl li, #indices p").each(function () {
         $(this).remove();
     });
     // Insert new elements
@@ -17,7 +17,7 @@ function setArray(serializedArray) {
     }
 
     // Spreading elements horizontally
-    $("document").ready(function() {
+    $("document").ready(function () {
         for (var i = 0; i < array.length; i++) {
             var left = (i * 70) + "px";
             $("#ind" + i).animate({left: left}, 1000)
@@ -31,20 +31,34 @@ function setArray(serializedArray) {
 }
 
 function centerElements() {
-    var arrayWidth = ((array.length-1) * 70) + 50;
-    var left = -arrayWidth/2 + 20;
+    var arrayWidth = ((array.length - 1) * 70) + 50;
+    var left = -arrayWidth / 2 + 20;
     $("#indices").animate({left: left + "px"}, 500);
     $("#arrayUl").animate({left: left + "px"}, 500); // +20? Ul is default 40px -> 40/2 = 20. Dont touch.
-    $("svg#k-svg").animate({left: (left-7) + "px"}, 500);
+    $("svg#k-svg").animate({left: (left - 7) + "px"}, 500);
 }
 
-var rand = true;
+
+getArray("random");
+function getArray(ran) {
+    var rand = true;
 // Setting Random array
-if (rand)
-    setArray(viewer.serializeArray(setRandomArray()));
-else // If page is tested in another browser
-    setArray('14|17|19|18|7|17|15|5');
+    if (ran === "random")
+        setArray(viewer.serializeArray(setRandomArray()));
+    else if (ran === "sorted")
+        setArray(viewer.serializeArray(setSortedArray()));
+    else if (ran === "inverted")
+        setArray(viewer.serializeArray(setInvSortedArray()));
+    else if (ran === "almostSorted")
+        setArray(viewer.serializeArray(setAlmostSortedArray()));
+    else // If page is tested in another browser
+        setArray('14|17|19|18|7|17|15|5');
 
 // If another browser
-if (typeof javaLog == 'undefined')
-    var javaLog = { log:function(s) { console.log(s); }}
+    if (typeof javaLog == 'undefined')
+        var javaLog = {
+            log: function (s) {
+                console.log(s);
+            }
+        }
+}
