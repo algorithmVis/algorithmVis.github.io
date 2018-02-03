@@ -1,0 +1,89 @@
+ul.insElements {
+    list-style-type: none;
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    width: 0;
+}
+
+ul.insElements li {
+    position: absolute;
+    text-align: center;
+    top: 0;
+    background-color: white;
+}
+
+ul.insElements li div {
+    width: 50px;
+    border: 2px solid black;
+    padding: 10px;
+}
+
+div#array {
+    font-weight: bold;
+}
+
+div.insertionSort {
+    margin-top: 40px;
+    margin-bottom: 70px;
+    position: relative;
+}
+
+div#indices {
+    position: relative;
+    margin: 0 auto;
+    width: 0;
+}
+
+div#indices p {
+    position: absolute;
+    display: inline-block;
+    top: 15px;
+}
+
+div#k-value {
+    height: 50px;
+    width: 0;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+
+svg#k-svg {
+    width: 2000px;
+    position: relative;
+}
+
+svg#k-svg line {
+    stroke: black;
+    stroke-width: 5;
+
+}
+
+svg#k-svg text {
+    fill: black;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+img.bracket {
+    position: absolute;
+    height: auto;
+    width: 40px;
+    top: -25px;
+}
+
+img#leftBracket {
+    left: 20px;
+}
+
+img#rightBracket {
+    left: 1110px;
+}
+
+img#paused {
+    position: absolute;
+    height: auto;
+    width: 50px;
+    top: 20px;
+    left: 20px;
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Insertion Sort</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Insert this line above script imports  -->
+    <script>if (typeof module === 'object') {
+        window.module = module;
+        module = undefined;
+    }</script>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui-1.12.0/jquery-ui.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/viewFunctions.js"></script>
+    <script src="js/kValue.js"></script>
+    <script src="js/view.js"></script>
+    <script src="js/insertionSort.js"></script>
+    <script src="js/controller.js"></script>
+    <script src="js/eventManager.js"></script>
+
+    <!-- For debugging -->
+    <!-- <script type='text/js' src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script> -->
+
+    <!-- Insert this line after script imports -->
+    <script>if (window.module) module = window.module;</script>
+</head>
+
+
+<body>
+<!-- TODO: Pause-img -->
+<!-- TODO: Array Brackets -->
+<div class="container text-center">
+    <img id="paused" class="pauseIcon hidden" src="assets/pause.png"/>
+    <h1 id="header">Insertion Sort</h1>
+    <div id="k-value">
+        <svg id="k-svg" class="hidden"> <!-- TODO: change width when new array is inserted -->
+            <text id="k-text" x="80" y="15">K = ?</text>
+            <line id="leftVert" y1="25" y2="50" x1="10" x2="10"></line>
+            <line id="rightVert" y1="25" y2="50" x1="200" x2="200"></line>
+            <line id="horizontal" y1="25" y2="25" x1="7" x2="203"></line>
+        </svg>
+    </div>
+    <div id="indices"></div>
+    <div id="array" class="row insertionSort">
+        <img id="leftBracket" class="bracket" src="assets/square_left.png"/>
+        <img id="rightBracket" class="bracket" src="assets/square_right.png"/>
+    </div>
+    <!-- TODO: Shell Sort K - value -->
+    <!-- TODO: Show both values being compared -->
+    <script src="js/fillWithListElements.js"></script>
+    <br><br><br><br>
+    <div class="row">
+        <button id="togglePause" class="btn btn-primary" onclick="viewer.pause()">Pause</button>
+        <button id="backward" class="btn btn-primary" onclick="viewer.backward()">Backward</button>
+        <button id="forward" class="btn btn-primary" onclick="viewer.forward()">Forward</button>
+        <!-- TODO: speed buttons -->
+    </div>
+    <br>
+    <div class="row">
+        <button id="start" class="btn btn-primary" onclick="startInsertionSort()">Insertion Sort</button>
+        <!-- TODO: Play if paused -->
+        <button id="shell" class="btn btn-primary" onclick="startShellSort()">Shell Sort</button>
+        <button id="random" class="btn btn-primary" onclick="getArray('random')">Random</button>
+        <button id="almost" class="btn btn-primary" onclick="getArray('almostSorted')">Almost Sorted</button>
+        <button id="sorted" class="btn btn-primary" onclick="getArray('sorted')">Sorted</button>
+        <button id="invertedSorted" class="btn btn-primary" onclick="getArray('inverted')">Inverted Sorted</button>
+    </div>
+
+</div>
+
+</body>
+</html>
+
