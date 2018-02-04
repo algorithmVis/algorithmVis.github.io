@@ -6,13 +6,17 @@ let iColor = 2;
 let jColor = 0;
 
 class controller {
+
+    //algorithm og methodToUse skal ikke være string, men dei e det for nå
+    //programmet vil ikje fungere
     private algorithm : String;
-    private methodName : string = "Union";
+    private methodToUse : string = "Union";
     private speed: number;
 
     initController (algo : string) {
         this.algorithm = algo;
         this.speed = 50;
+        viewer.displayArray(this.algorithm.getArray());
     }
 
     changeSpeed(newSpeed : number) {
@@ -24,45 +28,88 @@ class controller {
     }
 
     connected(firstIndex : number, secondIndex : number) {
+        viewer.screenLock(true);
         //Kossen gjør eg detta??
         this.algorithm.connected(firstIndex, secondIndex);
+        viewer.screenLock(false);
     }
 
     union(firstIndex : number, secondIndex : number) {
-        //same shit som over
+        viewer.screenLock(true);
+        //samme som over
         this.algorithm.union(firstIndex, secondIndex);
+        viewer.screenLock(false);
+    }
+
+    find(index : number) {
+        viewer.screenLock(true);
+        //SEND HELP PLEASE
+        this.algorithm.union(firstIndex, secondIndex);
+        viewer.screenLock(false);
     }
 
     setArrow(index : number) {
         viewer.setArrow(index);
     }
 
-    connectedNodes(aRoot: any, bRoot: any) {
-
+    setSelectedIndex(index : number, select : boolean) {
+        viewer.selectIndex(index, select);
     }
 
-    setValueAtIndex(aRoot: number, bRoot: number) {
-
+    setValueAtIndex(i : number, bValue : number) {
+        viewer.setValueAtIndex(i, bValue);
     }
 
-    setSelectedIndex(index : number, bool : boolean) {
-
+    connectNodes(child : number, parent : number) {
+        viewer.connectNodes(child, parent);
     }
 
     highlightNode(index : number, color : string) {
-
+        viewer.highlightNode(index, color);
     }
 
-    checkMark(aIndex : number, bIndex : number, bool : boolean) {
-
+    invertPauseState() {
+        this.algorithm.invertPause();
     }
 
-    redCross(aIndex : number, bIndex : number, bool : boolean) {
-
+    setAlgorithm(algo : string) {
+        this.algorithm = algo;
     }
 
-    removeHighlight(index : number) {
+    removeHighlight(node : number) {
+        viewer.removeHighlight(node);
+    }
 
+    setMethodToUse(methodToUse : string) {
+        this.methodToUse = methodToUse;
+    }
+
+    getNameOfCurrentAlgorithm() {
+        return this.algorithm;
+    }
+
+    getArrayClone() {
+        return this.algorithm.getArray().clone();
+    }
+
+    setArray(array : number[]) {
+        this.algorithm.setArray(array);
+    }
+
+    checkMark(aIndex : number, bIndex : number, set : boolean) {
+        viewer.checkMark(aIndex, bIndex, set);
+    }
+
+    redCross(aIndex : number, bIndex : number, set : boolean) {
+        viewer.redCross(aIndex, bIndex, set);
+    }
+
+    displaySize(root : number, size : number) {
+        viewer.displayNodeSize(root, size);
+    }
+
+    saveState(arr : number[]) {
+        viewer.executeSaveMethodInJavaScript(arr.clone());
     }
 }
 

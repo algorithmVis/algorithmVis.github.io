@@ -158,6 +158,9 @@ class view {
         this.animSpeed = 750;
     }
 
+    setArrow(index: number) {
+        
+    }
 }
 
 var viewer: view = new view();

@@ -24,7 +24,7 @@ function union(aIndex : number, bIndex : number) {
 
     if (aRoot != bRoot) {
         removeHighlight(aRoot);
-        control.connectedNodes(aRoot, bRoot);
+        control.connectNodes(aRoot, bRoot);
         control.setValueAtIndex(aRoot, bRoot);
         arr[aRoot] = bRoot;
     }
