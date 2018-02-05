@@ -6,14 +6,28 @@
 ///<reference path="eventManager.ts"/>
 
 //private IntArrayGenerator gen = new IntArrayGenerator();
-var array: number[] = [];
+let array: number[] = [];
 const n = 10;
+let running = false;
+
+/**
+ * Check if an algorithm is already running - if that is the case reset the view
+ */
+function checkIfAlreadyRunning() {
+    if(running) {
+        manager.clear();
+        setArray(viewer.serializeArray(setRandomArray()));
+    } else {
+        running = true;
+    }
+}
 
 /**
  * Start insertionSort
  */
 function startInsertionSort() {
-
+    checkIfAlreadyRunning();
+    control.hideK();
     control.setHeadText("Insertion Sort");
     var j: number; // Elements sorted, starting on second position
     var key: number; // Current element
@@ -40,6 +54,7 @@ function startInsertionSort() {
 }
 
 function startShellSort() {
+    checkIfAlreadyRunning();
     control.setHeadText("Shell Sort");
 
     // Setup K
@@ -72,8 +87,7 @@ function startShellSort() {
             control.setJElement(i + k, false);
 
         }
-        k =
-            Math.floor(k / 2);
+        k = Math.floor(k / 2);
         control.setKValue(k);
     }
     control.hideK();
@@ -87,11 +101,11 @@ function delay() {
         e.printStackTrace();
     }
 }
-
-function setArray(array: number[]) {
-    this.array = array;
+/*
+function setArray(arr: number[]) {
+    array = arr;
 }
-
+*/
 function getThisArray() {
     return array;
 }
@@ -119,7 +133,7 @@ function isSorted(arr: number[]) {
     return arr.forEach((n1, n2) => n1 <= n2);
 }
 
-function setAlmostSortedArray() {
+function setAlmostSortedArray(): number[] {
     let arr: number[] = setSortedArray();
     for (let i: number = 1; i < arr.length - 1; i++) {
         if (Math.random() < 0.70) {
@@ -150,6 +164,6 @@ function setAlmostSortedArray() {
  * @param {Number} max
  * @return {Number} random generated integer
  */
-function randomInt(min, max) {
+function randomInt(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }

@@ -4,18 +4,15 @@
 
 ///<reference path="controller.ts"/>
 ///<reference path="kValue.ts"/>
-///<reference path="viewFunctions.js"/>
-///<reference path="insertionSort.js"/>
+///<reference path="insertionSort.ts"/>
 declare var $;
 
 class view {
 
     colors: string[] = ["#7FFF00", "not used", "#FFB366"];
-    arrayIsReset: boolean = false;
     k: number = 0
     kLeft: number = 0
     kRight: number = 0;
-    currentAlgorithmName: string = "Insertion sort";
     paused: boolean = false;
     animSpeed: number = 500;
 
@@ -112,31 +109,6 @@ class view {
     }
 
 
-    unpause() {
-        manager.start();
-        this.paused = false;
-    }
-
-    pause() {
-        if (!this.paused) {
-            manager.pause();
-            this.paused = true;
-            document.getElementById('togglePause').innerText = "resume";
-        } else {
-            this.unpause()
-            document.getElementById('togglePause').innerText = "pause";
-        }
-
-    }
-
-    forward() {
-        manager.next();
-    }
-
-    backward() {
-        manager.previous();
-    }
-
     setKValue(value: number) {
         var forwardSteps = function (k: kValue, value) {
             return function () {
@@ -154,16 +126,16 @@ class view {
     }
 
     setKLeftAndRight(left: number, right: number) {
-        var forwardSteps = function (k: kValue, left, right) {
+        var forwardSteps = function (k: kValue, left, right, top) {
             return function () {
-                k.setLeftAndRight(left, right, this.animSpeed);
+                k.setLeftAndRight(left, right, top);
             }
-        }(k, left, right);
-        var backwardSteps = function (k: kValue, kLeft, kRight) {
+        }(k, left, right, this.animSpeed);
+        var backwardSteps = function (k: kValue, kLeft, kRight, top) {
             return function () {
-                k.setLeftAndRight(kLeft, kRight, this.animSpeed);
+                k.setLeftAndRight(kLeft, kRight, top);
             }
-        }(k, this.kLeft, this.kRight);
+        }(k, this.kLeft, this.kRight, 0);
 
         this.kLeft = left;
         this.kRight = right;
@@ -225,6 +197,28 @@ class view {
         }(k);
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
+
+    pause() {
+        if (!this.paused) {
+            this.paused = true;
+            manager.pause();
+            $("#togglePause").html("resume");
+        } else {
+            this.paused = false;
+            manager.unpause();
+            $("#togglePause").html("pause");
+        }
+
+    }
+
+    forward() {
+        manager.next();
+    }
+
+    backward() {
+        manager.previous();
+    }
+
 }
 
 var viewer: view = new view();

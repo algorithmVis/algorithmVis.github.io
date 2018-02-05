@@ -1,3 +1,4 @@
+"use strict";
 /**
  * File created by Øyvind Skeie Liland 01.02.18.
  */

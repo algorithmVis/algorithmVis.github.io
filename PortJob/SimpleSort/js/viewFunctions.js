@@ -47,7 +47,6 @@ function togglePauseIcon(hide) {
 }
 
 function storePermaValue(index) {
-    console.log(storePermaValue.caller);
     $(nr + index).animate({top: "50px"});
 }
 

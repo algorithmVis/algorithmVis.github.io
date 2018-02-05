@@ -1,3 +1,4 @@
+"use strict";
 /**
  * Created by knutandersstokke on 16.10.2016.
  *
@@ -26,7 +27,7 @@ var eventManager = /** @class */ (function () {
         if (this.previousEvents.length == 0)
             return;
         var event = this.previousEvents.pop();
-        this.delayTime = 0; //TODO: Should there be a delay when stepping backwards?
+        //this.delayTime = 500; //this line set to 0 caused: when resuming all animations are played out. Intention Delay when stepping backwards.
         event.previous();
         this.nextEvents.unshift(event);
     };
@@ -34,7 +35,6 @@ var eventManager = /** @class */ (function () {
         this.nextEvents.push(event);
     };
     eventManager.prototype.start = function () {
-        clearInterval(this.eventThread);
         var manager = this; // Anonymous functions cannot access this...
         this.eventThread = setInterval(function () {
             manager.next();
@@ -42,6 +42,12 @@ var eventManager = /** @class */ (function () {
     };
     eventManager.prototype.pause = function () {
         clearInterval(this.eventThread);
+    };
+    eventManager.prototype.unpause = function () {
+        var manager = this;
+        this.eventThread = setInterval(function () {
+            manager.next();
+        }, manager.delayTime);
     };
     eventManager.prototype.clear = function () {
         clearInterval(this.eventThread);

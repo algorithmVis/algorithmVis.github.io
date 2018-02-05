@@ -2,116 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="027dbd77-69d0-4caa-b666-3b85be8a4c8a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/PortJob.iml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../.idea/typescript-compiler.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../Graphs/resForGraphs/DfsBfs.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../Graphs/resForGraphs/assets/square_left.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../Graphs/resForGraphs/assets/square_right.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../Graphs/resForGraphs/css/bootstrap.min.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../Graphs/resForGraphs/css/bootstrap.min.css.map" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../Graphs/resForGraphs/css/style.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../Graphs/resForGraphs/graphs.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../Graphs/resForGraphs/js/.gitignore" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../Graphs/resForGraphs/js/adjacencyList.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../Graphs/resForGraphs/js/dfsBfsController.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../Graphs/resForGraphs/js/eventManager.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../Graphs/resForGraphs/js/graphStructureController.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../Graphs/resForGraphs/js/graphUI.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../Graphs/resForGraphs/js/visitedArray.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/assets/pause.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/assets/square_left.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/assets/square_right.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/css/bootstrap.min.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/css/bootstrap.min.css.map" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/css/style.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/fonts/glyphicons-halflings-regular.eot" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/fonts/glyphicons-halflings-regular.svg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/fonts/glyphicons-halflings-regular.ttf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/fonts/glyphicons-halflings-regular.woff" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/fonts/glyphicons-halflings-regular.woff2" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/index.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/js/bootstrap.min.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/js/controller.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/js/controller.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/js/eventManager.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/js/eventManager.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/js/fillWithListElements.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/js/insertionSort.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/js/insertionSort.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/js/jquery-ui-1.12.0/AUTHORS.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/js/jquery-ui-1.12.0/LICENSE.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/js/jquery-ui-1.12.0/external/jquery/jquery.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/js/jquery-ui-1.12.0/images/ui-icons_444444_256x240.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/js/jquery-ui-1.12.0/images/ui-icons_555555_256x240.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/js/jquery-ui-1.12.0/images/ui-icons_777620_256x240.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/js/jquery-ui-1.12.0/images/ui-icons_777777_256x240.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/js/jquery-ui-1.12.0/images/ui-icons_cc0000_256x240.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/js/jquery-ui-1.12.0/images/ui-icons_ffffff_256x240.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/js/jquery-ui-1.12.0/index.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/js/jquery-ui-1.12.0/jquery-ui.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/js/jquery-ui-1.12.0/jquery-ui.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/js/jquery-ui-1.12.0/jquery-ui.min.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/js/jquery-ui-1.12.0/jquery-ui.min.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/js/jquery-ui-1.12.0/jquery-ui.structure.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/js/jquery-ui-1.12.0/jquery-ui.structure.min.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/js/jquery-ui-1.12.0/jquery-ui.theme.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/js/jquery-ui-1.12.0/jquery-ui.theme.min.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/js/jquery-ui-1.12.0/package.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/js/jquery.min.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/js/kValue.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/js/kValue.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/js/view.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/js/view.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/resForSimpleSort/js/viewFunctions.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/assets/correct.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/assets/square_left.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/assets/square_right.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/assets/up_arrow.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/assets/wrong.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/css/bootstrap.min.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/css/bootstrap.min.css.map" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/css/union_style.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/fonts/glyphicons-halflings-regular.eot" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/fonts/glyphicons-halflings-regular.svg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/fonts/glyphicons-halflings-regular.ttf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/fonts/glyphicons-halflings-regular.woff" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/fonts/glyphicons-halflings-regular.woff2" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/index.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/js/QuickUnion.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/js/bootstrap.min.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/js/controller.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/js/drawGraph.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/js/drawGraph.js.map" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/js/drawGraph.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/js/eventManager.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/js/insertArrayAndNodes.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/js/jquery-ui-1.12.0/AUTHORS.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/js/jquery-ui-1.12.0/LICENSE.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/js/jquery-ui-1.12.0/external/jquery/jquery.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/js/jquery-ui-1.12.0/images/ui-icons_444444_256x240.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/js/jquery-ui-1.12.0/images/ui-icons_555555_256x240.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/js/jquery-ui-1.12.0/images/ui-icons_777620_256x240.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/js/jquery-ui-1.12.0/images/ui-icons_777777_256x240.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/js/jquery-ui-1.12.0/images/ui-icons_cc0000_256x240.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/js/jquery-ui-1.12.0/images/ui-icons_ffffff_256x240.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/js/jquery-ui-1.12.0/index.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/js/jquery-ui-1.12.0/jquery-ui.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/js/jquery-ui-1.12.0/jquery-ui.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/js/jquery-ui-1.12.0/jquery-ui.min.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/js/jquery-ui-1.12.0/jquery-ui.min.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/js/jquery-ui-1.12.0/jquery-ui.structure.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/js/jquery-ui-1.12.0/jquery-ui.structure.min.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/js/jquery-ui-1.12.0/jquery-ui.theme.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/js/jquery-ui-1.12.0/jquery-ui.theme.min.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/js/jquery-ui-1.12.0/package.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/js/jquery.min.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/js/methods.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/js/methods.js.map" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/js/methods.ts" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/resForUnionFind/js/view.ts" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/../SimpleSort/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../SimpleSort/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/../SimpleSort/js/controller.js" afterPath="$PROJECT_DIR$/../SimpleSort/js/controller.js" />
+      <change beforePath="$PROJECT_DIR$/../SimpleSort/js/eventManager.js" afterPath="$PROJECT_DIR$/../SimpleSort/js/eventManager.js" />
+      <change beforePath="$PROJECT_DIR$/../SimpleSort/js/eventManager.ts" afterPath="$PROJECT_DIR$/../SimpleSort/js/eventManager.ts" />
+      <change beforePath="$PROJECT_DIR$/../SimpleSort/js/insertionSort.js" afterPath="$PROJECT_DIR$/../SimpleSort/js/insertionSort.js" />
+      <change beforePath="$PROJECT_DIR$/../SimpleSort/js/insertionSort.ts" afterPath="$PROJECT_DIR$/../SimpleSort/js/insertionSort.ts" />
+      <change beforePath="$PROJECT_DIR$/../SimpleSort/js/kValue.js" afterPath="$PROJECT_DIR$/../SimpleSort/js/kValue.js" />
+      <change beforePath="$PROJECT_DIR$/../SimpleSort/js/view.js" afterPath="$PROJECT_DIR$/../SimpleSort/js/view.js" />
+      <change beforePath="$PROJECT_DIR$/../SimpleSort/js/view.ts" afterPath="$PROJECT_DIR$/../SimpleSort/js/view.ts" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -122,6 +21,20 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="QuickUnion.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/QuickUnion.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2025">
+              <caret line="9" column="8" lean-forward="false" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
@@ -154,9 +67,29 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane" />
       <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="UnionFind" type="b2602c69:ProjectViewProjectNode" />
+              <item name="UnionFind" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="UnionFind" type="b2602c69:ProjectViewProjectNode" />
+              <item name="UnionFind" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="UnionFind" type="b2602c69:ProjectViewProjectNode" />
+              <item name="UnionFind" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -191,31 +124,34 @@
       <option name="presentableId" value="Default" />
       <updated>1517678216206</updated>
       <workItem from="1517678217383" duration="26000" />
+      <workItem from="1517815294464" duration="550000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26000" />
+    <option name="totallyTimeSpent" value="576000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -238,5 +174,39 @@
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/css/union_style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1005">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-300">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/eventManager.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="800">
+          <caret line="47" column="5" lean-forward="true" selection-start-line="47" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/QuickUnion.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2025">
+          <caret line="9" column="8" lean-forward="false" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

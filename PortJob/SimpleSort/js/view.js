@@ -1,18 +1,16 @@
+"use strict";
 /**
  * File created by Øyvind Skeie Liland 01.02.18
  */
 ///<reference path="controller.ts"/>
 ///<reference path="kValue.ts"/>
-///<reference path="viewFunctions.js"/>
-///<reference path="insertionSort.js"/>
+///<reference path="insertionSort.ts"/>
 var view = /** @class */ (function () {
     function view() {
         this.colors = ["#7FFF00", "not used", "#FFB366"];
-        this.arrayIsReset = false;
         this.k = 0;
         this.kLeft = 0;
         this.kRight = 0;
-        this.currentAlgorithmName = "Insertion sort";
         this.paused = false;
         this.animSpeed = 500;
     }
@@ -96,27 +94,6 @@ var view = /** @class */ (function () {
         }(index);
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
-    view.prototype.unpause = function () {
-        manager.start();
-        this.paused = false;
-    };
-    view.prototype.pause = function () {
-        if (!this.paused) {
-            manager.pause();
-            this.paused = true;
-            document.getElementById('togglePause').innerText = "resume";
-        }
-        else {
-            this.unpause();
-            document.getElementById('togglePause').innerText = "pause";
-        }
-    };
-    view.prototype.forward = function () {
-        manager.next();
-    };
-    view.prototype.backward = function () {
-        manager.previous();
-    };
     view.prototype.setKValue = function (value) {
         var forwardSteps = function (k, value) {
             return function () {
@@ -132,16 +109,16 @@ var view = /** @class */ (function () {
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
     view.prototype.setKLeftAndRight = function (left, right) {
-        var forwardSteps = function (k, left, right) {
+        var forwardSteps = function (k, left, right, top) {
             return function () {
-                k.setLeftAndRight(left, right, this.animSpeed);
+                k.setLeftAndRight(left, right, top);
             };
-        }(k, left, right);
-        var backwardSteps = function (k, kLeft, kRight) {
+        }(k, left, right, this.animSpeed);
+        var backwardSteps = function (k, kLeft, kRight, top) {
             return function () {
-                k.setLeftAndRight(kLeft, kRight, this.animSpeed);
+                k.setLeftAndRight(kLeft, kRight, top);
             };
-        }(k, this.kLeft, this.kRight);
+        }(k, this.kLeft, this.kRight, 0);
         this.kLeft = left;
         this.kRight = right;
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
@@ -195,6 +172,24 @@ var view = /** @class */ (function () {
             };
         }(k);
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
+    };
+    view.prototype.pause = function () {
+        if (!this.paused) {
+            this.paused = true;
+            manager.pause();
+            $("#togglePause").html("resume");
+        }
+        else {
+            this.paused = false;
+            manager.unpause();
+            $("#togglePause").html("pause");
+        }
+    };
+    view.prototype.forward = function () {
+        manager.next();
+    };
+    view.prototype.backward = function () {
+        manager.previous();
     };
     return view;
 }());

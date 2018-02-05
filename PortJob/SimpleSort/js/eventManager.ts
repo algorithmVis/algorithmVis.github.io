@@ -10,14 +10,14 @@ class eventManager {
     delayTime: number = 500; // Original value
     nextEvents: FrontendEvent[] = [];
     previousEvents: FrontendEvent[] = [];
-    eventThread;
+    eventThread: number;
 
     // Executing the next event in the queue, adding it to 'previous'
     next() {
         if (this.nextEvents.length == 0) {
             return;
         }
-        var event = this.nextEvents.shift();
+        var event: FrontendEvent = (<FrontendEvent> this.nextEvents.shift());
         console.log(this.nextEvents);
         event.next();
         this.previousEvents.push(event);
@@ -29,18 +29,17 @@ class eventManager {
     previous() {
         if (this.previousEvents.length == 0)
             return;
-        var event = this.previousEvents.pop();
-        this.delayTime = 0; //TODO: Should there be a delay when stepping backwards?
+        var event: FrontendEvent = (<FrontendEvent> this.previousEvents.pop());
+        //this.delayTime = 500; //this line set to 0 caused: when resuming all animations are played out. Intention Delay when stepping backwards.
         event.previous();
         this.nextEvents.unshift(event);
     }
 
-    addEvent(event) {
+    addEvent(event: FrontendEvent) {
         this.nextEvents.push(event);
     }
 
     start() {
-        clearInterval(this.eventThread);
         var manager = this; // Anonymous functions cannot access this...
         this.eventThread = setInterval(function () {
             manager.next();
@@ -51,6 +50,13 @@ class eventManager {
         clearInterval(this.eventThread);
     }
 
+    unpause() {
+        var manager = this;
+        this.eventThread = setInterval(function () {
+            manager.next();
+        }, manager.delayTime);
+    }
+
     clear() {
         clearInterval(this.eventThread);
         this.nextEvents = [];
@@ -59,11 +65,11 @@ class eventManager {
 }
 
 class FrontendEvent {
-    next;
-    previous;
+    next: Function;
+    previous: Function;
     duration: number;
 
-    constructor(n, p, d: number) {
+    constructor(n: Function, p: Function, d: number) {
         this.next = n;
         this.previous = p;
         this.duration = d;

@@ -1,14 +1,31 @@
+"use strict";
 /**
  * File created by Øyvind Skeie Liland 01.02.18.
  */
 ///<reference path="controller.ts"/>
+///<reference path="eventManager.ts"/>
 //private IntArrayGenerator gen = new IntArrayGenerator();
 var array = [];
 var n = 10;
+var running = false;
+/**
+ * Check if an algorithm is already running - if that is the case reset the view
+ */
+function checkIfAlreadyRunning() {
+    if (running) {
+        manager.clear();
+        setArray(viewer.serializeArray(setRandomArray()));
+    }
+    else {
+        running = true;
+    }
+}
 /**
  * Start insertionSort
  */
 function startInsertionSort() {
+    checkIfAlreadyRunning();
+    control.hideK();
     control.setHeadText("Insertion Sort");
     var j; // Elements sorted, starting on second position
     var key; // Current element
@@ -34,6 +51,7 @@ function startInsertionSort() {
     manager.start();
 }
 function startShellSort() {
+    checkIfAlreadyRunning();
     control.setHeadText("Shell Sort");
     // Setup K
     var k = (Math.floor(array.length / 2)); // Gap
@@ -60,8 +78,7 @@ function startShellSort() {
             control.setElementBeingComparedTo(j - k, false);
             control.setJElement(i + k, false);
         }
-        k =
-            Math.floor(k / 2);
+        k = Math.floor(k / 2);
         control.setKValue(k);
     }
     control.hideK();
@@ -75,9 +92,11 @@ function delay() {
         e.printStackTrace();
     }
 }
-function setArray(array) {
-    this.array = array;
+/*
+function setArray(arr: number[]) {
+    array = arr;
 }
+*/
 function getThisArray() {
     return array;
 }
