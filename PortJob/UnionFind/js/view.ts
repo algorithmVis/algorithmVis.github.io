@@ -18,105 +18,105 @@ class view {
 
 
 
-    displayArray(array: number[]) {
-        manager.addEvent()
+    displayArray(array : number[]) {
+        let returnString : string = "";
+        for (let i of array) {
+            returnString = returnString.concat(i + "|");
+        }
+        return returnString.substr(0, returnString.length - 1);
     }
 
-    moveArrayElementToIndexFromSpecifiedJIndex(fromIndex: number, toIndex: number, jIndex: number) {
-        var forwardSteps = function (fromIndex, toIndex) {
-            return function () {
-                setPosition(fromIndex, toIndex * 70, 0);
-                swapId(fromIndex, toIndex);
-            }
-        }(fromIndex, toIndex);
-        var backwardSteps = function (fromIndex, jIndex) {
-            return function () {
-                setPosition(fromIndex, jIndex * 70, 0);
-            }
-        }(fromIndex, jIndex);
-
-        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
+    selectIndex (index : number, b : boolean) {
+        //
     }
 
-    storePermValue(index: number) {
-        var forwardSteps = function (index) {
-            return function () {
-                storePermaValue(index);
-            }
-        }(index);
-
-        var backwardSteps = function (index) {
-            return function () {
-                releasePermaValue(index);
-            }
-        }(index);
-        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
+    saveState(twoDimRelationships : string, backendArray : string) {
+        //json
     }
 
-    releasePermValue(index: number) {
-        var forwardSteps = function (index) {
-            return function () {
-                console.log("perm");
-                releasePermaValue(index);
-            }
-        }(index);
-
-        var backwardSteps = function (index) {
-            return function () {
-                storePermaValue(index);
-            }
-        }(index);
-        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
+    setArrow(index: number) {
+        //
     }
 
-    forward() {
-        manager.next();
+    setValueAtIndex(i : number, bValue : number) {
+        //
     }
 
-    backward() {
-        manager.previous();
+    connectedNodes(child : number, parent : number) {
+
     }
 
-    setKValue(value: number) {
-        var forwardSteps = function (k: kValue, value) {
-            return function () {
-                k.setValue(value);
-            }
-        }(k, value);
+    //executeSaveMethodInJavaScript
 
-        this.k = value;
-        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
+    highlightNode(index : number, color : string) {
+        //
     }
 
-    setKLeftAndRight(left: number, right: number) {
-        var forwardSteps = function (k: kValue, left, right) {
-            return function () {
-                k.setLeftAndRight(left, right, this.animSpeed);
-            }
-        }(k, left, right);
-        var backwardSteps = function (k: kValue, kLeft, kRight) {
-            return function () {
-                k.setLeftAndRight(kLeft, kRight, this.animSpeed);
-            }
-        }(k, this.kLeft, this.kRight);
-
-        this.kLeft = left;
-        this.kRight = right;
-        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
+    removeHighlight(index : number) {
+        //
     }
 
-    setColorInArrayElement(index: number, color: string, colorOn: boolean) {
-        var forwardSteps = function (index, color, colorOn) {
-            return function () {
-                setColor(index, color, colorOn);
-            }
-        }(index, color, colorOn);
-        var backwardSteps = function (index, color, colorOn) {
-            return function () {
-                setColor(index, color, !colorOn);
-            }
-        }(index, color, colorOn);
-        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
+    checkMark(aIndex : number, bIndex : number, set : boolean) {
+        //
+    }
+
+    redCross(aIndex : number, bIndex : number, set : boolean) {
+
+    }
+
+    //setState()
+
+    stepBack(twoDimRelationshipsJSON : string, backendArray : string) {
+
+    }
+
+    stepForward(twoDimRelationshipsJSON : string, backendArray : string) {
+
+    }
+
+    step(dir : string, twoDimRelationshipsJSON : string, backendArray : string) {
+
+    }
+
+    //executeScripts()
+    //javascriptReady()
+
+    nextAlgorithm() {
+        incrementAlgorithmIndex();
+        changeToCurrentAlgorithm();
+    }
+
+    resetAll() {
+
+    }
+
+    changeToCurrentAlgorithm() {
+        resetAll();
+    }
+
+    resetArray(arr : number[]) {
+        for (let i of arr.length)
+            setValueAtIndex(i, i);
+    }
+
+    incrementAlgorithmIndex(){
+
+    }
+
+    screenLock(locked : boolean) {
+
+    }
+
+    union(indexA : number, indexB : number) {
+        control.union(indexA, indexB);
+    }
+
+    connected(indexA : number, indexB : number) {
+        control.connected(indexA, indexB);
+    }
+
+    find(index : number) {
+        control.find(index);
     }
 
     setSlow() {
@@ -131,8 +131,8 @@ class view {
         this.animSpeed = 750;
     }
 
-    setArrow(index: number) {
-        
+    switchAlgorithm() {
+        //
     }
 }
 
