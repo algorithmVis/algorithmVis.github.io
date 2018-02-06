@@ -3,8 +3,6 @@
  */
 
 ///<reference path="controller.ts"/>
-///<reference path="kValue.ts"/>
-///<reference path="viewFunctions.js"/>
 declare var $;
 
 class view {
@@ -20,33 +18,8 @@ class view {
 
 
 
-    switchArrayElements(indexA: number, indexB: number) {
-        var forwardSteps = function (indexA, indexB) {
-            return function () {
-                setPosition(indexA, indexB * 70, 0);
-                setPosition(indexB, indexA * 70, 0);
-                swapId(indexA, indexB);
-            }
-        }(indexA, indexB);
-
-        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed);
-    }
-
-    moveArrayElementToIndex(i: number, j: number) {
-        var forwardSteps = function (i, j) {
-            return function () {
-                setPosition(i, j * 70, 0);
-                swapId(i, j);
-            }
-        }(i, j);
-        /*
-        var backwardSteps = function (fromIndex, jIndex) {
-            return function () {
-                setPosition(j, i * 70, 0);
-            }
-        }(i, j);
-        */
-        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
+    displayArray(array: number[]) {
+        manager.addEvent()
     }
 
     moveArrayElementToIndexFromSpecifiedJIndex(fromIndex: number, toIndex: number, jIndex: number) {
