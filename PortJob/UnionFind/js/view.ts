@@ -166,6 +166,14 @@ class view {
     switchAlgorithm() {
         //
     }
+
+    displayNodeSize(root: number, size: number) {
+        
+    }
+
+    executeSaveMethodInJavaScript(clone: any) {
+        
+    }
 }
 
 var viewer: view = new view();

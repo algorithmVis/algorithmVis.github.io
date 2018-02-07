@@ -14,7 +14,7 @@ let running = false;
  * Check if an algorithm is already running - if that is the case reset the view
  */
 function checkIfAlreadyRunning() {
-    if(running) {
+    if (running) {
         manager.clear();
         setArray(viewer.serializeArray(setRandomArray()));
     } else {
@@ -101,6 +101,7 @@ function delay() {
         e.printStackTrace();
     }
 }
+
 /*
 function setArray(arr: number[]) {
     array = arr;
@@ -132,6 +133,7 @@ function setInvSortedArray() {
 function isSorted(arr: number[]) {
     return arr.forEach((n1, n2) => n1 <= n2);
 }
+
 
 function setAlmostSortedArray(): number[] {
     let arr: number[] = setSortedArray();

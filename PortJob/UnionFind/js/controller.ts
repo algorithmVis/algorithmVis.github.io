@@ -2,6 +2,7 @@
  * File created by Kenneth Apeland 03.02.18.
  */
 ///<reference path="view.ts"/>
+///<reference path="IAlgorithm.ts"/>
 let iColor = 2;
 let jColor = 0;
 
@@ -9,17 +10,17 @@ class controller {
 
     //algorithm og methodToUse skal ikke være string, men dei e det for nå
     //programmet vil ikje fungere
-    private algorithm : String;
-    private methodToUse : string = "Union";
+    private algorithm: IAlgorithm;
+    private methodToUse: string = "Union";
     private speed: number;
 
-    initController (algo : string) {
+    initController(algo: IAlgorithm) {
         this.algorithm = algo;
         this.speed = 50;
         viewer.displayThisArray(this.algorithm.getArray());
     }
 
-    changeSpeed(newSpeed : number) {
+    changeSpeed(newSpeed: number) {
         this.speed = newSpeed;
     }
 
@@ -27,44 +28,44 @@ class controller {
         return this.speed;
     }
 
-    connected(firstIndex : number, secondIndex : number) {
+    connected(firstIndex: number, secondIndex: number) {
         viewer.screenLock(true);
-        //Kossen gjør eg detta??
+        //Kossen gjør eg detta?? - fixed tror jeg
         this.algorithm.connected(firstIndex, secondIndex);
         viewer.screenLock(false);
     }
 
-    union(firstIndex : number, secondIndex : number) {
+    union(firstIndex: number, secondIndex: number) {
         viewer.screenLock(true);
-        //samme som over
+        //samme som over - fixed tror jeg
         this.algorithm.union(firstIndex, secondIndex);
         viewer.screenLock(false);
     }
 
-    find(index : number) {
+    find(index: number) {
         viewer.screenLock(true);
         //SEND HELP PLEASE
-        this.algorithm.union(firstIndex, secondIndex);
+        this.algorithm.find(index);
         viewer.screenLock(false);
     }
 
-    setArrow(index : number) {
+    setArrow(index: number) {
         viewer.setThisArrow(index);
     }
 
-    setSelectedIndex(index : number, select : boolean) {
+    setSelectedIndex(index: number, select: boolean) {
         viewer.selectThisIndex(index, select);
     }
 
-    setValueAtIndex(i : number, bValue : number) {
+    setValueAtIndex(i: number, bValue: number) {
         viewer.setValueAtThisIndex(i, bValue);
     }
 
-    connectNodes(child : number, parent : number) {
+    connectNodes(child: number, parent: number) {
         viewer.connectThisNodes(child, parent);
     }
 
-    highlightNode(index : number, color : string) {
+    highlightNode(index: number, color: string) {
         viewer.highlightThisNode(index, color);
     }
 
@@ -72,15 +73,15 @@ class controller {
         this.algorithm.invertPause();
     }
 
-    setAlgorithm(algo : string) {
+    setAlgorithm(algo: IAlgorithm) {
         this.algorithm = algo;
     }
 
-    removeHighlight(node : number) {
+    removeHighlight(node: number) {
         viewer.removeThisHighlight(node);
     }
 
-    setMethodToUse(methodToUse : string) {
+    setMethodToUse(methodToUse: string) {
         this.methodToUse = methodToUse;
     }
 
@@ -89,27 +90,27 @@ class controller {
     }
 
     getArrayClone() {
-        return this.algorithm.getArray().clone();
+        return this.algorithm.getArray().slice(0, this.algorithm.getArray().length);
     }
 
-    setArray(array : number[]) {
+    setArray(array: number[]) {
         this.algorithm.setArray(array);
     }
 
-    checkMark(aIndex : number, bIndex : number, set : boolean) {
+    checkMark(aIndex: number, bIndex: number, set: boolean) {
         viewer.checkMark(aIndex, bIndex, set);
     }
 
-    redCross(aIndex : number, bIndex : number, set : boolean) {
+    redCross(aIndex: number, bIndex: number, set: boolean) {
         viewer.redCross(aIndex, bIndex, set);
     }
 
-    displaySize(root : number, size : number) {
+    displaySize(root: number, size: number) {
         viewer.displayNodeSize(root, size);
     }
 
-    saveState(arr : number[]) {
-        viewer.executeSaveMethodInJavaScript(arr.clone());
+    saveState(arr: number[]) {
+        viewer.executeSaveMethodInJavaScript(this.getArrayClone());
     }
 }
 
