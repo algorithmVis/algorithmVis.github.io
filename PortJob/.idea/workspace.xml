@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="03fec6fb-f084-4f7c-8149-aa66023b11d9" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/UnionFind/js/QuickUnion.ts" afterPath="$PROJECT_DIR$/UnionFind/js/QuickUnion.ts" />
-      <change beforePath="$PROJECT_DIR$/UnionFind/js/controller.ts" afterPath="$PROJECT_DIR$/UnionFind/js/controller.ts" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/UnionFind/js/view.ts" afterPath="$PROJECT_DIR$/UnionFind/js/view.ts" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -17,14 +16,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
+    <splitter split-orientation="horizontal" split-proportion="0.34380305">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="view.ts" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/UnionFind/js/view.ts">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-329">
-                  <caret line="18" column="28" lean-forward="true" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
+                <state relative-caret-position="728">
+                  <caret line="28" column="43" lean-forward="true" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
                   <folding />
                 </state>
               </provider>
@@ -33,8 +32,8 @@
           <file leaf-file-name="QuickUnion.ts" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/UnionFind/js/QuickUnion.ts">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="676">
-                  <caret line="26" column="23" lean-forward="false" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
+                <state relative-caret-position="494">
+                  <caret line="19" column="30" lean-forward="false" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="30" />
                   <folding />
                 </state>
               </provider>
@@ -43,23 +42,92 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
-          <file leaf-file-name="controller.ts" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/UnionFind/js/controller.ts">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-520">
-                  <caret line="10" column="33" lean-forward="false" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
+        <splitter split-orientation="horizontal" split-proportion="0.53400403">
+          <split-first>
+            <leaf>
+              <file leaf-file-name="view.ts" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/SimpleSort/js/view.ts">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="234">
+                      <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+                <entry file="file://$PROJECT_DIR$/UnionFind/index.html">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="598">
+                      <caret line="23" column="10" lean-forward="true" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="eventManager.ts" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/SimpleSort/js/eventManager.ts">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="286">
+                      <caret line="11" column="41" lean-forward="true" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="controller.ts" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/SimpleSort/js/controller.ts">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="0">
+                      <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="controller.ts" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/UnionFind/js/controller.ts">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="702">
+                      <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="eventManager.ts" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/UnionFind/js/eventManager.ts">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="0">
+                      <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+            </leaf>
+          </split-first>
+          <split-second>
+            <leaf>
+              <file leaf-file-name="eventManager.ts" pinned="false" current-in-tab="true">
+                <entry file="file://$PROJECT_DIR$/SimpleSort/js/eventManager.ts">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="26">
+                      <caret line="1" column="12" lean-forward="false" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+            </leaf>
+          </split-second>
+        </splitter>
       </split-second>
     </splitter>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
+      <find>returnString</find>
       <find>methodName</find>
     </findStrings>
   </component>
@@ -69,9 +137,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/UnionFind/js/view.ts" />
         <option value="$PROJECT_DIR$/UnionFind/js/QuickUnion.ts" />
         <option value="$PROJECT_DIR$/UnionFind/js/controller.ts" />
+        <option value="$PROJECT_DIR$/UnionFind/js/view.ts" />
       </list>
     </option>
   </component>
@@ -82,9 +150,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1659" />
-    <option name="width" value="2188" />
-    <option name="height" value="2127" />
+    <option name="x" value="977" />
+    <option name="y" value="1099" />
+    <option name="width" value="1440" />
+    <option name="height" value="780" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -169,19 +238,18 @@
       <option name="presentableId" value="Default" />
       <updated>1517679606125</updated>
       <workItem from="1517679608579" duration="759000" />
-      <workItem from="1517760220697" duration="2573000" />
+      <workItem from="1517760220697" duration="7783000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3332000" />
+    <option name="totallyTimeSpent" value="8542000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1659" y="0" width="2188" height="2127" extended-state="0" />
-    <editor active="true" />
+    <frame x="977" y="1099" width="1440" height="780" extended-state="0" />
     <layout>
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16390423" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21488763" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -250,26 +318,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UnionFind/js/view.ts">
+    <entry file="file://$PROJECT_DIR$/UnionFind/js/eventManager.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-329">
-          <caret line="18" column="28" lean-forward="true" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/UnionFind/js/QuickUnion.ts">
+    <entry file="file://$PROJECT_DIR$/SimpleSort/js/eventManager.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="676">
-          <caret line="26" column="23" lean-forward="false" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
+        <state relative-caret-position="286">
+          <caret line="11" column="41" lean-forward="true" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SimpleSort/js/controller.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/UnionFind/js/controller.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-520">
-          <caret line="10" column="33" lean-forward="false" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+        <state relative-caret-position="702">
+          <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SimpleSort/js/view.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UnionFind/js/view.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="728">
+          <caret line="28" column="43" lean-forward="true" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UnionFind/js/QuickUnion.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="19" column="30" lean-forward="false" selection-start-line="19" selection-start-column="24" selection-end-line="19" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/UnionFind/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="598">
+          <caret line="23" column="10" lean-forward="true" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
           <folding />
         </state>
       </provider>

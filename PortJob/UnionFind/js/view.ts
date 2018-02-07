@@ -17,51 +17,83 @@ class view {
     animSpeed: number = 500;
 
 
-
-    displayArray(array : number[]) {
-        let returnString : string = "";
-        for (let i of array) {
-            returnString = returnString.concat(i + "|");
-        }
-        return returnString.substr(0, returnString.length - 1);
+    //ok???
+    displayThisArray(array : number[]) {
+        displayArray(JSON.stringify(array))
     }
 
-    selectIndex (index : number, b : boolean) {
-        //
+    selectThisIndex (index : number, b : boolean) {
+        let forwardSteps = function (index, b) {
+            return function () {
+                selectIndex(index, b);
+            }
+        }(index, b);
+
+        let backwardSteps = function (index, b) {
+            return function () {
+                selectIndex(index, !b);
+            }
+        }(index, b);
+
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
 
     saveState(twoDimRelationships : string, backendArray : string) {
         //json
     }
 
-    setArrow(index: number) {
-        //
+    setThisArrow(index: number) {
+        setArrow(index);
     }
 
-    setValueAtIndex(i : number, bValue : number) {
-        //
+    setValueAtThisIndex(i : number, bValue : number) {
+        let forwardSteps = function (i, bValue) {
+            return function () {
+                setValueAtIndex(i, bValue);
+            }
+        }(i, bValue);
+
+        let backwardSteps = function (i, bValue) {
+            return function () {
+                setValueAtIndex(i, i);
+            }
+        }(i, bValue);
+
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
 
-    connectedNodes(child : number, parent : number) {
+    connectThisNodes(child : number, parent : number) {
+        let forwardSteps = function (child, parent) {
+            return function () {
+                connectNodes(child, parent);
+            }
+        }(child, parent);
 
+        let backwardSteps = function (child, parent) {
+            return function () {
+                connectNodes(child, child);
+            }
+        }(child, parent);
+
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
 
-    //executeSaveMethodInJavaScript
+    //executeSaveMethodInJavaScript(clonedBackendArray)
 
-    highlightNode(index : number, color : string) {
-        //
+    highlightThisNode(index : number, color : string) {
+        highlightNode(index, color);
     }
 
-    removeHighlight(index : number) {
-        //
+    removeThisHighlight(index : number) {
+        removeHighlight(index);
     }
 
     checkMark(aIndex : number, bIndex : number, set : boolean) {
-        //
+        setCheckMark(set, aIndex, bIndex);
     }
 
     redCross(aIndex : number, bIndex : number, set : boolean) {
-
+        setWrongMark(set, aIndex, bIndex);
     }
 
     //setState()

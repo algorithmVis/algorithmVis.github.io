@@ -16,7 +16,7 @@ class controller {
     initController (algo : string) {
         this.algorithm = algo;
         this.speed = 50;
-        viewer.displayArray(this.algorithm.getArray());
+        viewer.displayThisArray(this.algorithm.getArray());
     }
 
     changeSpeed(newSpeed : number) {
@@ -49,23 +49,23 @@ class controller {
     }
 
     setArrow(index : number) {
-        viewer.setArrow(index);
+        viewer.setThisArrow(index);
     }
 
     setSelectedIndex(index : number, select : boolean) {
-        viewer.selectIndex(index, select);
+        viewer.selectThisIndex(index, select);
     }
 
     setValueAtIndex(i : number, bValue : number) {
-        viewer.setValueAtIndex(i, bValue);
+        viewer.setValueAtThisIndex(i, bValue);
     }
 
     connectNodes(child : number, parent : number) {
-        viewer.connectNodes(child, parent);
+        viewer.connectThisNodes(child, parent);
     }
 
     highlightNode(index : number, color : string) {
-        viewer.highlightNode(index, color);
+        viewer.highlightThisNode(index, color);
     }
 
     invertPauseState() {
@@ -77,7 +77,7 @@ class controller {
     }
 
     removeHighlight(node : number) {
-        viewer.removeHighlight(node);
+        viewer.removeThisHighlight(node);
     }
 
     setMethodToUse(methodToUse : string) {
