@@ -179,6 +179,7 @@ function saveState(backendArray) {
 function setState(backendArrayJSON, twoDimRelationshipArrayJSON) {
     var twoDimRelationshipArray = JSON.parse(twoDimRelationshipArrayJSON);
     var backendArray = JSON.parse(backendArrayJSON);
+    console.log("hello");
     superNode.children = new Array;
     $("#graphUL svg#lines line").each(function () {
         $(this).remove();

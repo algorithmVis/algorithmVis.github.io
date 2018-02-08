@@ -71,7 +71,7 @@ var QuickUnion = /** @class */ (function () {
      */
     QuickUnion.prototype.find = function (pIndex) {
         var root = this.simpleFind(pIndex, "green");
-        this.delay(getDelayTime());
+        this.delay(this.getDelayTime());
         this.removeHighlighting(root);
         control.setSelectedIndex(pIndex, false);
         return root;
@@ -81,7 +81,7 @@ var QuickUnion = /** @class */ (function () {
         this.removeHighlighting(root);
         while (root != arr[root]) {
             this.highlightSingleNode(root, "orange");
-            this.delay(getDelayTime());
+            this.delay(this.getDelayTime());
             this.removeHighlighting(root);
             root = arr[root];
         }

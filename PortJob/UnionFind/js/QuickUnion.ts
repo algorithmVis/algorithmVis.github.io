@@ -83,7 +83,7 @@ class QuickUnion implements IAlgorithm {
      */
     find(pIndex: number) {
         let root: number = this.simpleFind(pIndex, "green");
-        this.delay(getDelayTime());
+        this.delay(this.getDelayTime());
         this.removeHighlighting(root);
         control.setSelectedIndex(pIndex, false);
 
@@ -97,7 +97,7 @@ class QuickUnion implements IAlgorithm {
 
         while (root != arr[root]) {
             this.highlightSingleNode(root, "orange");
-            this.delay(getDelayTime());
+            this.delay(this.getDelayTime());
             this.removeHighlighting(root);
             root = arr[root];
         }

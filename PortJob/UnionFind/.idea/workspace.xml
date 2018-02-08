@@ -2,19 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="027dbd77-69d0-4caa-b666-3b85be8a4c8a" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/js/IView.ts" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/js/state.ts" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/js/stateController.ts" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change beforePath="$PROJECT_DIR$/js/QuickUnion.js" afterPath="$PROJECT_DIR$/js/QuickUnion.js" />
       <change beforePath="$PROJECT_DIR$/js/QuickUnion.ts" afterPath="$PROJECT_DIR$/js/QuickUnion.ts" />
       <change beforePath="$PROJECT_DIR$/js/controller.js" afterPath="$PROJECT_DIR$/js/controller.js" />
       <change beforePath="$PROJECT_DIR$/js/controller.ts" afterPath="$PROJECT_DIR$/js/controller.ts" />
-      <change beforePath="$PROJECT_DIR$/js/drawGraph.ts" afterPath="$PROJECT_DIR$/js/drawGraph.ts" />
-      <change beforePath="$PROJECT_DIR$/js/eventManager.ts" afterPath="$PROJECT_DIR$/js/eventManager.ts" />
-      <change beforePath="$PROJECT_DIR$/js/view.js" afterPath="$PROJECT_DIR$/js/view.js" />
-      <change beforePath="$PROJECT_DIR$/js/view.ts" afterPath="$PROJECT_DIR$/js/view.ts" />
+      <change beforePath="$PROJECT_DIR$/js/methods.js" afterPath="$PROJECT_DIR$/js/methods.js" />
+      <change beforePath="$PROJECT_DIR$/js/methods.ts" afterPath="$PROJECT_DIR$/js/methods.ts" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -28,20 +22,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="QuickUnion.ts" pinned="false" current-in-tab="false">
+      <file leaf-file-name="QuickUnion.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/QuickUnion.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3550">
-              <caret line="142" column="0" lean-forward="false" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+            <state relative-caret-position="2625">
+              <caret line="105" column="5" lean-forward="true" selection-start-line="105" selection-start-column="5" selection-end-line="105" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="view.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="view.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/view.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
+            <state relative-caret-position="1300">
               <caret line="112" column="0" lean-forward="true" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
               <folding />
             </state>
@@ -51,7 +45,7 @@
       <file leaf-file-name="stateController.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/stateController.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
+            <state relative-caret-position="-1340">
               <caret line="14" column="23" lean-forward="true" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
               <folding />
             </state>
@@ -61,18 +55,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-711">
+            <state relative-caret-position="-1086">
               <caret line="20" column="53" lean-forward="true" selection-start-line="20" selection-start-column="53" selection-end-line="20" selection-end-column="53" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="drawGraph.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/drawGraph.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1750">
-              <caret line="175" column="27" lean-forward="false" selection-start-line="175" selection-start-column="27" selection-end-line="175" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -81,8 +65,8 @@
       <file leaf-file-name="eventManager.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/eventManager.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1240">
-              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+            <state relative-caret-position="375">
+              <caret line="18" column="9" lean-forward="true" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -101,8 +85,8 @@
       <file leaf-file-name="methods.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/methods.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="15" column="49" lean-forward="false" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="49" />
+            <state relative-caret-position="-1875">
+              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -113,8 +97,8 @@
       <file leaf-file-name="controller.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/controller.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1990">
-              <caret line="15" column="38" lean-forward="false" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
+            <state relative-caret-position="275">
+              <caret line="20" column="24" lean-forward="false" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -136,17 +120,17 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/js/IAlgorithm.ts" />
-        <option value="$PROJECT_DIR$/js/methods.ts" />
-        <option value="$PROJECT_DIR$/js/QuickUnion.ts" />
         <option value="$PROJECT_DIR$/js/IView.ts" />
-        <option value="$PROJECT_DIR$/js/controller.ts" />
         <option value="$PROJECT_DIR$/js/stepper.ts" />
         <option value="$PROJECT_DIR$/js/state.ts" />
         <option value="$PROJECT_DIR$/js/drawGraph.ts" />
-        <option value="$PROJECT_DIR$/js/eventManager.ts" />
         <option value="$PROJECT_DIR$/js/view.ts" />
         <option value="$PROJECT_DIR$/js/stateController.ts" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/methods.ts" />
+        <option value="$PROJECT_DIR$/js/eventManager.ts" />
+        <option value="$PROJECT_DIR$/js/controller.ts" />
+        <option value="$PROJECT_DIR$/js/QuickUnion.ts" />
       </list>
     </option>
   </component>
@@ -239,7 +223,7 @@
       <workItem from="1517678217383" duration="26000" />
       <workItem from="1517815294464" duration="550000" />
       <workItem from="1517855187769" duration="2236000" />
-      <workItem from="1517949932174" duration="23517000" />
+      <workItem from="1517949932174" duration="25416000" />
     </task>
     <task id="LOCAL-00001" summary="QuickUnion class, IAlgorithm interface and controller changes">
       <created>1518029727811</created>
@@ -255,11 +239,18 @@
       <option name="project" value="LOCAL" />
       <updated>1518086749135</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Lagt til stateController, state og lagt til/endret funksjoner i view">
+      <created>1518112256029</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1518112256029</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26329000" />
+    <option name="totallyTimeSpent" value="28228000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1056" extended-state="6" />
@@ -310,7 +301,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="QuickUnion class, IAlgorithm interface and controller changes" />
     <MESSAGE value="Koblet sammen backend og frontend - fikset en del feil i backend" />
-    <option name="LAST_COMMIT_MESSAGE" value="Koblet sammen backend og frontend - fikset en del feil i backend" />
+    <MESSAGE value="Lagt til stateController, state og lagt til/endret funksjoner i view" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lagt til stateController, state og lagt til/endret funksjoner i view" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -375,24 +367,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/methods.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="15" column="49" lean-forward="false" selection-start-line="15" selection-start-column="49" selection-end-line="15" selection-end-column="49" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/QuickUnion.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3550">
-          <caret line="142" column="0" lean-forward="false" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/stepper.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
@@ -417,50 +391,68 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/eventManager.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1240">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/drawGraph.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1750">
+        <state relative-caret-position="-50">
           <caret line="175" column="27" lean-forward="false" selection-start-line="175" selection-start-column="27" selection-end-line="175" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/controller.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1990">
-          <caret line="15" column="38" lean-forward="false" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/stateController.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="14" column="23" lean-forward="true" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-711">
+        <state relative-caret-position="-1086">
           <caret line="20" column="53" lean-forward="true" selection-start-line="20" selection-start-column="53" selection-end-line="20" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/methods.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1875">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/stateController.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1340">
+          <caret line="14" column="23" lean-forward="true" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/view.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
+        <state relative-caret-position="1300">
           <caret line="112" column="0" lean-forward="true" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/eventManager.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="18" column="9" lean-forward="true" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controller.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="20" column="24" lean-forward="false" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/QuickUnion.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2625">
+          <caret line="105" column="5" lean-forward="true" selection-start-line="105" selection-start-column="5" selection-end-line="105" selection-end-column="5" />
           <folding />
         </state>
       </provider>

@@ -3,6 +3,8 @@
  */
 ///<reference path="view.ts"/>
 ///<reference path="IAlgorithm.ts"/>
+///<reference path="eventManager.ts"/>
+
 let iColor = 2;
 let jColor = 0;
 
@@ -16,6 +18,7 @@ class controller {
     private GUI : IView; // Mulig forskjellig view for ulike algoritmer?
 
     initController(algo: IAlgorithm) {
+        manager.start();
         this.algorithm = algo;
         this.speed = 50;
         viewer.changeToCurrentAlgorithm();

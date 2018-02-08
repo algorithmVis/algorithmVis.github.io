@@ -3,6 +3,7 @@
  */
 ///<reference path="view.ts"/>
 ///<reference path="IAlgorithm.ts"/>
+///<reference path="eventManager.ts"/>
 var iColor = 2;
 var jColor = 0;
 var controller = /** @class */ (function () {
@@ -10,6 +11,7 @@ var controller = /** @class */ (function () {
         this.methodToUse = "Union";
     }
     controller.prototype.initController = function (algo) {
+        manager.start();
         this.algorithm = algo;
         this.speed = 50;
         viewer.changeToCurrentAlgorithm();
