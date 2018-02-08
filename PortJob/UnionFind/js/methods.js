@@ -1,4 +1,12 @@
 ///<reference path="drawGraph.ts"/>
+///<reference path="controller.ts"/>
+///<reference path="view.ts"/>
+/**
+ * Methods called in JavaScript
+ * @author Knut Anders, Kristian, Ragnhild, Øyvind
+ *
+ */
+//declare var javaBinder; // Used to communicate with java
 var firstSelected = -1;
 var locked = false;
 var contentHidden = false;
@@ -29,7 +37,7 @@ function setKeyListener() {
         // Enter (reset algorithm)
         if (key == 13) {
             resetElementSelections();
-            javaBinder.changeToCurrentAlgorithm();
+            viewer.changeToCurrentAlgorithm();
         }
         else if (key == 72) {
             hideArrayValues();
@@ -38,7 +46,7 @@ function setKeyListener() {
             stepBack();
         }
         else if (key == 39) {
-            javaBinder.stepForward(getGraphState(), getArrayState());
+            viewer.stepForward(getGraphState(), getArrayState());
         }
     });
 }
@@ -56,7 +64,7 @@ function selectElement(index) {
     var $method = $('input[name=method]:checked', '#method');
     if ($method.val() == 'Find') {
         $method.next().text(" find( " + index + " )");
-        javaBinder.find(index);
+        control.find(index);
         firstSelected = -1;
     }
     else if (firstSelected < 0) {
@@ -69,12 +77,12 @@ function selectElement(index) {
     }
     else if ($method.val() == 'Union') {
         $method.next().text(" union( " + firstSelected + " , " + index + " )");
-        javaBinder.union(firstSelected, index);
+        control.union(firstSelected, index);
         firstSelected = -1;
     }
     else if ($method.val() == 'Connected') {
         $method.next().text(" connected( " + firstSelected + " , " + index + " )");
-        javaBinder.connected(firstSelected, index);
+        control.connected(firstSelected, index);
         firstSelected = -1;
     }
 }
@@ -166,7 +174,7 @@ function resetElementSelections() {
     }
 }
 function saveState(backendArray) {
-    javaBinder.saveState(getGraphState(), backendArray);
+    viewer.saveState(getGraphState(), backendArray);
 }
 function setState(backendArrayJSON, twoDimRelationshipArrayJSON) {
     var twoDimRelationshipArray = JSON.parse(twoDimRelationshipArrayJSON);
@@ -243,7 +251,7 @@ function stepBack() {
         firstSelected = -1;
     }
     else {
-        javaBinder.stepBack(getGraphState(), getArrayState());
+        viewer.stepBack(getGraphState(), getArrayState());
     }
 }
 function setHeaderText(text) {
@@ -251,15 +259,15 @@ function setHeaderText(text) {
 }
 function setSlow() {
     animationTime = 6000;
-    javaBinder.setSlow();
+    viewer.setSlow();
 }
 function setMedium() {
     animationTime = 2500;
-    javaBinder.setMedium();
+    viewer.setMedium();
 }
 function setFast() {
     animationTime = 1000;
-    javaBinder.setFast();
+    viewer.setFast();
 }
 function setupSpeedButtons() {
     // Default is medium

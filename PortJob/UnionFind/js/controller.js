@@ -1,42 +1,90 @@
 /**
- * File created by Øyvind Skeie Liland 01.02.18.
+ * File created by Kenneth Apeland 03.02.18.
  */
 ///<reference path="view.ts"/>
+///<reference path="IAlgorithm.ts"/>
 var iColor = 2;
 var jColor = 0;
 var controller = /** @class */ (function () {
     function controller() {
+        this.methodToUse = "Union";
     }
-
-    controller.prototype.setJElement = function (j, bool) {
-        this.setColorInArrayElement(j, viewer.colors[jColor], bool);
+    controller.prototype.initController = function (algo) {
+        this.algorithm = algo;
+        this.speed = 50;
+        viewer.displayThisArray(this.algorithm.getArray());
     };
-    controller.prototype.setColorInArrayElement = function (index, color, colorOn) {
-        viewer.setColorInArrayElement(index, color, colorOn);
+    controller.prototype.changeSpeed = function (newSpeed) {
+        this.speed = newSpeed;
     };
-    controller.prototype.setElementBeingComparedTo = function (j, bool) {
-        this.setColorInArrayElement(j, viewer.colors[iColor], bool);
+    controller.prototype.getSpeed = function () {
+        return this.speed;
     };
-    controller.prototype.storePermValue = function (j) {
-        viewer.storePermValue(j);
+    controller.prototype.connected = function (firstIndex, secondIndex) {
+        viewer.screenLock(true);
+        //Kossen gjør eg detta?? - fixed tror jeg
+        this.algorithm.connected(firstIndex, secondIndex);
+        viewer.screenLock(false);
     };
-    controller.prototype.releasePermValue = function (i) {
-        viewer.releasePermValue(i);
+    controller.prototype.union = function (firstIndex, secondIndex) {
+        viewer.screenLock(true);
+        //samme som over - fixed tror jeg
+        this.algorithm.union(firstIndex, secondIndex);
+        viewer.screenLock(false);
     };
-    controller.prototype.switchArrayElements = function (indexA, indexB) {
-        viewer.switchArrayElements(indexA, indexB);
+    controller.prototype.find = function (index) {
+        viewer.screenLock(true);
+        //SEND HELP PLEASE
+        this.algorithm.find(index);
+        viewer.screenLock(false);
     };
-    controller.prototype.moveArrayElementToIndex = function (i, j) {
-        viewer.moveArrayElementToIndex(i, j);
+    controller.prototype.setArrow = function (index) {
+        viewer.setThisArrow(index);
     };
-    controller.prototype.moveArrayElementToIndexFromSpecifiedJIndex = function (i, j, k) {
-        viewer.moveArrayElementToIndexFromSpecifiedJIndex(i, j, k);
+    controller.prototype.setSelectedIndex = function (index, select) {
+        viewer.selectThisIndex(index, select);
     };
-    controller.prototype.setKValue = function (k) {
-        viewer.setKValue(k);
+    controller.prototype.setValueAtIndex = function (i, bValue) {
+        viewer.setValueAtThisIndex(i, bValue);
     };
-    controller.prototype.setKLeftAndRight = function (i, k) {
-        viewer.setKLeftAndRight(i, k);
+    controller.prototype.connectNodes = function (child, parent) {
+        viewer.connectThisNodes(child, parent);
+    };
+    controller.prototype.highlightNode = function (index, color) {
+        viewer.highlightThisNode(index, color);
+    };
+    controller.prototype.invertPauseState = function () {
+        this.algorithm.invertPause();
+    };
+    controller.prototype.setAlgorithm = function (algo) {
+        this.algorithm = algo;
+    };
+    controller.prototype.removeHighlight = function (node) {
+        viewer.removeThisHighlight(node);
+    };
+    controller.prototype.setMethodToUse = function (methodToUse) {
+        this.methodToUse = methodToUse;
+    };
+    controller.prototype.getNameOfCurrentAlgorithm = function () {
+        return this.algorithm;
+    };
+    controller.prototype.getArrayClone = function () {
+        return this.algorithm.getArray().slice(0, this.algorithm.getArray().length);
+    };
+    controller.prototype.setArray = function (array) {
+        this.algorithm.setArray(array);
+    };
+    controller.prototype.checkMark = function (aIndex, bIndex, set) {
+        viewer.checkMark(aIndex, bIndex, set);
+    };
+    controller.prototype.redCross = function (aIndex, bIndex, set) {
+        viewer.redCross(aIndex, bIndex, set);
+    };
+    controller.prototype.displaySize = function (root, size) {
+        viewer.displayNodeSize(root, size);
+    };
+    controller.prototype.saveState = function (arr) {
+        viewer.executeSaveMethodInJavaScript(this.getArrayClone());
     };
     return controller;
 }());

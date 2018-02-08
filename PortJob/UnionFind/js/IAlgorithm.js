@@ -1,0 +1,1 @@
+///<reference path="controller.ts"/>

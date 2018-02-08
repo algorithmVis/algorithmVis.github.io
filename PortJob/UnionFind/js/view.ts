@@ -3,6 +3,7 @@
  */
 
 ///<reference path="controller.ts"/>
+///<reference path="eventManager.ts"/>
 declare var $;
 
 class view {
@@ -18,11 +19,11 @@ class view {
 
 
     //ok???
-    displayThisArray(array : number[]) {
+    displayThisArray(array: number[]) {
         displayArray(JSON.stringify(array))
     }
 
-    selectThisIndex (index : number, b : boolean) {
+    selectThisIndex(index: number, b: boolean) {
         let forwardSteps = function (index, b) {
             return function () {
                 selectIndex(index, b);
@@ -38,7 +39,7 @@ class view {
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
 
-    saveState(twoDimRelationships : string, backendArray : string) {
+    saveState(twoDimRelationships: string, backendArray: string) {
         //json
     }
 
@@ -46,7 +47,7 @@ class view {
         setArrow(index);
     }
 
-    setValueAtThisIndex(i : number, bValue : number) {
+    setValueAtThisIndex(i: number, bValue: number) {
         let forwardSteps = function (i, bValue) {
             return function () {
                 setValueAtIndex(i, bValue);
@@ -62,7 +63,7 @@ class view {
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
 
-    connectThisNodes(child : number, parent : number) {
+    connectThisNodes(child: number, parent: number) {
         let forwardSteps = function (child, parent) {
             return function () {
                 connectNodes(child, parent);
@@ -80,33 +81,33 @@ class view {
 
     //executeSaveMethodInJavaScript(clonedBackendArray)
 
-    highlightThisNode(index : number, color : string) {
+    highlightThisNode(index: number, color: string) {
         highlightNode(index, color);
     }
 
-    removeThisHighlight(index : number) {
+    removeThisHighlight(index: number) {
         removeHighlight(index);
     }
 
-    checkMark(aIndex : number, bIndex : number, set : boolean) {
+    checkMark(aIndex: number, bIndex: number, set: boolean) {
         setCheckMark(set, aIndex, bIndex);
     }
 
-    redCross(aIndex : number, bIndex : number, set : boolean) {
+    redCross(aIndex: number, bIndex: number, set: boolean) {
         setWrongMark(set, aIndex, bIndex);
     }
 
     //setState()
 
-    stepBack(twoDimRelationshipsJSON : string, backendArray : string) {
+    stepBack(twoDimRelationshipsJSON: string, backendArray: string) {
 
     }
 
-    stepForward(twoDimRelationshipsJSON : string, backendArray : string) {
+    stepForward(twoDimRelationshipsJSON: string, backendArray: string) {
 
     }
 
-    step(dir : string, twoDimRelationshipsJSON : string, backendArray : string) {
+    step(dir: string, twoDimRelationshipsJSON: string, backendArray: string) {
 
     }
 
@@ -114,8 +115,8 @@ class view {
     //javascriptReady()
 
     nextAlgorithm() {
-        incrementAlgorithmIndex();
-        changeToCurrentAlgorithm();
+        this.incrementAlgorithmIndex();
+        this.changeToCurrentAlgorithm();
     }
 
     resetAll() {
@@ -123,31 +124,33 @@ class view {
     }
 
     changeToCurrentAlgorithm() {
-        resetAll();
+        this.resetAll();
+
+        setHeaderText(control.getNameOfCurrentAlgorithm().getName());
     }
 
-    resetArray(arr : number[]) {
-        for (let i of arr.length)
+    resetArray(arr: number[]) {
+        for (let i of arr)
             setValueAtIndex(i, i);
     }
 
-    incrementAlgorithmIndex(){
+    incrementAlgorithmIndex() {
 
     }
 
-    screenLock(locked : boolean) {
+    screenLock(locked: boolean) {
 
     }
 
-    union(indexA : number, indexB : number) {
+    union(indexA: number, indexB: number) {
         control.union(indexA, indexB);
     }
 
-    connected(indexA : number, indexB : number) {
+    connected(indexA: number, indexB: number) {
         control.connected(indexA, indexB);
     }
 
-    find(index : number) {
+    find(index: number) {
         control.find(index);
     }
 
@@ -168,11 +171,11 @@ class view {
     }
 
     displayNodeSize(root: number, size: number) {
-        
+
     }
 
     executeSaveMethodInJavaScript(clone: any) {
-        
+
     }
 }
 

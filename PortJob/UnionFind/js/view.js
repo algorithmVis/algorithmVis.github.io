@@ -1,9 +1,8 @@
 /**
- * File created by Øyvind Skeie Liland 01.02.18
+ * File created by Kenneth Apeland 01.02.18
  */
 ///<reference path="controller.ts"/>
-///<reference path="kValue.ts"/>
-///<reference path="viewFunctions.js"/>
+///<reference path="eventManager.ts"/>
 var view = /** @class */ (function () {
     function view() {
         this.colors = ["#7FFF00", "not used", "#FFB366"];
@@ -11,149 +10,125 @@ var view = /** @class */ (function () {
         this.k = 0;
         this.kLeft = 0;
         this.kRight = 0;
-        this.currentAlgorithmName = "Insertion sort";
+        this.currentAlgorithmName = "Union Find";
         this.paused = false;
         this.animSpeed = 500;
-        /*
-            setRandomArray() {
-                manager.clear();
-                manager.start();
-                controller.setRandomArray();
-                arrayIsReset = true;
-            }
-        */
     }
-
-    view.prototype.serializeArray = function (array) {
-        var returnString = "";
-        for (var _i = 0, array_1 = array; _i < array_1.length; _i++) {
-            var i = array_1[_i];
-            returnString = returnString.concat(i + "|");
-        }
-        return returnString.substring(0, returnString.length - 1);
+    //ok???
+    view.prototype.displayThisArray = function (array) {
+        displayArray(JSON.stringify(array));
     };
-    view.prototype.switchArrayElements = function (indexA, indexB) {
-        var forwardSteps = function (indexA, indexB) {
+    view.prototype.selectThisIndex = function (index, b) {
+        var forwardSteps = function (index, b) {
             return function () {
-                setPosition(indexA, indexB * 70, 0);
-                setPosition(indexB, indexA * 70, 0);
-                swapId(indexA, indexB);
+                selectIndex(index, b);
             };
-        }(indexA, indexB);
-        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
-    };
-    view.prototype.moveArrayElementToIndex = function (i, j) {
-        var forwardSteps = function (i, j) {
+        }(index, b);
+        var backwardSteps = function (index, b) {
             return function () {
-                setPosition(i, j * 70, 0);
-                swapId(i, j);
+                selectIndex(index, !b);
             };
-        }(i, j);
-        /*
-        var backwardSteps = function (fromIndex, jIndex) {
-            return function () {
-                setPosition(j, i * 70, 0);
-            }
-        }(i, j);
-        */
-        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
-    };
-    view.prototype.moveArrayElementToIndexFromSpecifiedJIndex = function (fromIndex, toIndex, jIndex) {
-        var forwardSteps = function (fromIndex, toIndex) {
-            return function () {
-                setPosition(fromIndex, toIndex * 70, 0);
-                swapId(fromIndex, toIndex);
-            };
-        }(fromIndex, toIndex);
-        var backwardSteps = function (fromIndex, jIndex) {
-            return function () {
-                setPosition(fromIndex, jIndex * 70, 0);
-            };
-        }(fromIndex, jIndex);
-        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
-    };
-    view.prototype.storePermValue = function (index) {
-        var forwardSteps = function (index) {
-            return function () {
-                storePermaValue(index);
-            };
-        }(index);
-        var backwardSteps = function (index) {
-            return function () {
-                releasePermaValue(index);
-            };
-        }(index);
+        }(index, b);
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
-    view.prototype.releasePermValue = function (index) {
-        var forwardSteps = function (index) {
+    view.prototype.saveState = function (twoDimRelationships, backendArray) {
+        //json
+    };
+    view.prototype.setThisArrow = function (index) {
+        setArrow(index);
+    };
+    view.prototype.setValueAtThisIndex = function (i, bValue) {
+        var forwardSteps = function (i, bValue) {
             return function () {
-                console.log("perm");
-                releasePermaValue(index);
+                setValueAtIndex(i, bValue);
             };
-        }(index);
-        var backwardSteps = function (index) {
+        }(i, bValue);
+        var backwardSteps = function (i, bValue) {
             return function () {
-                storePermaValue(index);
+                setValueAtIndex(i, i);
             };
-        }(index);
+        }(i, bValue);
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
-    view.prototype.unpause = function () {
-        manager.start();
-        this.paused = false;
+    view.prototype.connectThisNodes = function (child, parent) {
+        var forwardSteps = function (child, parent) {
+            return function () {
+                connectNodes(child, parent);
+            };
+        }(child, parent);
+        var backwardSteps = function (child, parent) {
+            return function () {
+                connectNodes(child, child);
+            };
+        }(child, parent);
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
-    view.prototype.pause = function () {
-        if (!this.paused) {
-            manager.pause();
-            this.paused = true;
-        }
-        else {
-            this.unpause();
+    //executeSaveMethodInJavaScript(clonedBackendArray)
+    view.prototype.highlightThisNode = function (index, color) {
+        highlightNode(index, color);
+    };
+    view.prototype.removeThisHighlight = function (index) {
+        removeHighlight(index);
+    };
+    view.prototype.checkMark = function (aIndex, bIndex, set) {
+        setCheckMark(set, aIndex, bIndex);
+    };
+    view.prototype.redCross = function (aIndex, bIndex, set) {
+        setWrongMark(set, aIndex, bIndex);
+    };
+    //setState()
+    view.prototype.stepBack = function (twoDimRelationshipsJSON, backendArray) {
+    };
+    view.prototype.stepForward = function (twoDimRelationshipsJSON, backendArray) {
+    };
+    view.prototype.step = function (dir, twoDimRelationshipsJSON, backendArray) {
+    };
+    //executeScripts()
+    //javascriptReady()
+    view.prototype.nextAlgorithm = function () {
+        this.incrementAlgorithmIndex();
+        this.changeToCurrentAlgorithm();
+    };
+    view.prototype.resetAll = function () {
+    };
+    view.prototype.changeToCurrentAlgorithm = function () {
+        this.resetAll();
+        setHeaderText(control.getNameOfCurrentAlgorithm().getName());
+    };
+    view.prototype.resetArray = function (arr) {
+        for (var _i = 0, arr_1 = arr; _i < arr_1.length; _i++) {
+            var i = arr_1[_i];
+            setValueAtIndex(i, i);
         }
     };
-    view.prototype.forward = function () {
-        manager.next();
+    view.prototype.incrementAlgorithmIndex = function () {
     };
-    view.prototype.backward = function () {
-        manager.previous();
+    view.prototype.screenLock = function (locked) {
     };
-    view.prototype.setKValue = function (value) {
-        var forwardSteps = function (k, value) {
-            return function () {
-                k.setValue(value);
-            };
-        }(k, value);
-        this.k = value;
-        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
+    view.prototype.union = function (indexA, indexB) {
+        control.union(indexA, indexB);
     };
-    view.prototype.setKLeftAndRight = function (left, right) {
-        var forwardSteps = function (k, left, right) {
-            return function () {
-                k.setLeftAndRight(left, right, this.animSpeed);
-            };
-        }(k, left, right);
-        var backwardSteps = function (k, kLeft, kRight) {
-            return function () {
-                k.setLeftAndRight(kLeft, kRight, this.animSpeed);
-            };
-        }(k, this.kLeft, this.kRight);
-        this.kLeft = left;
-        this.kRight = right;
-        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
+    view.prototype.connected = function (indexA, indexB) {
+        control.connected(indexA, indexB);
     };
-    view.prototype.setColorInArrayElement = function (index, color, colorOn) {
-        var forwardSteps = function (index, color, colorOn) {
-            return function () {
-                setColor(index, color, colorOn);
-            };
-        }(index, color, colorOn);
-        var backwardSteps = function (index, color, colorOn) {
-            return function () {
-                setColor(index, color, !colorOn);
-            };
-        }(index, color, colorOn);
-        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
+    view.prototype.find = function (index) {
+        control.find(index);
+    };
+    view.prototype.setSlow = function () {
+        this.animSpeed = 250;
+    };
+    view.prototype.setMedium = function () {
+        this.animSpeed = 500;
+    };
+    view.prototype.setFast = function () {
+        this.animSpeed = 750;
+    };
+    view.prototype.switchAlgorithm = function () {
+        //
+    };
+    view.prototype.displayNodeSize = function (root, size) {
+    };
+    view.prototype.executeSaveMethodInJavaScript = function (clone) {
     };
     return view;
 }());

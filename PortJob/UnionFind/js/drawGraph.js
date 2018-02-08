@@ -113,31 +113,15 @@ var Line = /** @class */ (function () {
         var parentPoint = (this.parent.id == node.id);
         if (parentPoint) {
             $({ x1: $line.attr('x1') })
-                .animate({ x1: this.parent.left + width / 2 }, {
-                duration: animationTime, step: function (now) {
-                    $line.attr('x1', now);
-                }
-            });
+                .animate({ x1: this.parent.left + width / 2 }, { duration: animationTime, step: function (now) { $line.attr('x1', now); } });
             $({ y1: $line.attr('y1') })
-                .animate({ y1: this.parent.top + width / 2 }, {
-                duration: animationTime, step: function (now) {
-                    $line.attr('y1', now);
-                }
-            });
+                .animate({ y1: this.parent.top + width / 2 }, { duration: animationTime, step: function (now) { $line.attr('y1', now); } });
         }
         else {
             $({ x2: $line.attr('x2') })
-                .animate({ x2: this.child.left + width / 2 }, {
-                duration: animationTime, step: function (now) {
-                    $line.attr('x2', now);
-                }
-            });
+                .animate({ x2: this.child.left + width / 2 }, { duration: animationTime, step: function (now) { $line.attr('x2', now); } });
             $({ y2: $line.attr('y2') })
-                .animate({ y2: this.child.top + width / 2 }, {
-                duration: animationTime, step: function (now) {
-                    $line.attr('y2', now);
-                }
-            });
+                .animate({ y2: this.child.top + width / 2 }, { duration: animationTime, step: function (now) { $line.attr('y2', now); } });
         }
     };
     return Line;
@@ -191,9 +175,7 @@ function centerDivWidthNodes(time) {
     $("#graphUL").finish(); // if already animating, finish animation
     $("#graphUL").animate({ left: getSpaceBetweenDivAndLeftNode() }, time);
 }
-window.addEventListener('resize', function () {
-    centerDivWidthNodes(animationTime);
-});
+window.addEventListener('resize', function () { centerDivWidthNodes(animationTime); });
 function getGraphState() {
     var state = [];
     for (var nodeIndex = 0; nodeIndex < allNodes.length; nodeIndex++) {
