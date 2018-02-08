@@ -4,10 +4,12 @@
 
 ///<reference path="controller.ts"/>
 ///<reference path="eventManager.ts"/>
+///<reference path="stateController.ts"/>
+
+
 declare var $;
 
-class view {
-
+class view implements IView {
     colors: string[] = ["#7FFF00", "not used", "#FFB366"];
     arrayIsReset: boolean = false;
     k: number = 0
@@ -16,12 +18,14 @@ class view {
     currentAlgorithmName: string = "Union Find";
     paused: boolean = false;
     animSpeed: number = 500;
+    listOfAlgorithms: string[] = ["QuickFind", "QuickUnion", "WeightedUnion", "QuickUnionPathCompression", "WeightedUnionPathCompression"];
+    currentAlgorithm: number = 0;
 
-
-    //ok???
+    //ok??? - Tror det ja.
     displayThisArray(array: number[]) {
-        displayArray(JSON.stringify(array))
+        displayArray(JSON.stringify(array));
     }
+
 
     selectThisIndex(index: number, b: boolean) {
         let forwardSteps = function (index, b) {
@@ -40,7 +44,9 @@ class view {
     }
 
     saveState(twoDimRelationships: string, backendArray: string) {
-        //json
+        let twoDimRelationshipsJSON = JSON.parse(JSON.stringify(twoDimRelationships));
+        let arrJSON = JSON.parse(JSON.stringify(backendArray));
+        stepper.saveState(twoDimRelationshipsJSON, arrJSON);
     }
 
     setThisArrow(index: number) {
@@ -97,18 +103,25 @@ class view {
         setWrongMark(set, aIndex, bIndex);
     }
 
-    //setState()
+    setThisState(relationships: JSON, backendArray: JSON) {
+        setState(backendArray.parse("\\'%s\\'"), relationships.parse("\\'%s\\'"));
+    }
 
     stepBack(twoDimRelationshipsJSON: string, backendArray: string) {
-
+        this.step("backward", twoDimRelationshipsJSON, backendArray);
     }
 
     stepForward(twoDimRelationshipsJSON: string, backendArray: string) {
-
+        this.step("forward", twoDimRelationshipsJSON, backendArray);
     }
 
     step(dir: string, twoDimRelationshipsJSON: string, backendArray: string) {
-
+        let relationships: JSON = JSON.parse(JSON.stringify(twoDimRelationshipsJSON));
+        let backendArr: JSON = JSON.parse(JSON.stringify(backendArray));
+        if (dir === "forward")
+            stepper.stepForward(relationships, backendArr);
+        else if (dir === "backward")
+            stepper.stepBack(relationships, backendArr);
     }
 
     //executeScripts()
@@ -125,8 +138,7 @@ class view {
 
     changeToCurrentAlgorithm() {
         this.resetAll();
-
-        setHeaderText(control.getNameOfCurrentAlgorithm().getName());
+        setHeaderText(control.getNameOfCurrentAlgorithm());
     }
 
     resetArray(arr: number[]) {
@@ -166,8 +178,7 @@ class view {
         this.animSpeed = 750;
     }
 
-    switchAlgorithm() {
-        //
+    switchAlgorithm(algo: string) {
     }
 
     displayNodeSize(root: number, size: number) {

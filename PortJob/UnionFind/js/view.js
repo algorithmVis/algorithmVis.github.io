@@ -3,6 +3,7 @@
  */
 ///<reference path="controller.ts"/>
 ///<reference path="eventManager.ts"/>
+///<reference path="stateController.ts"/>
 var view = /** @class */ (function () {
     function view() {
         this.colors = ["#7FFF00", "not used", "#FFB366"];
@@ -13,8 +14,10 @@ var view = /** @class */ (function () {
         this.currentAlgorithmName = "Union Find";
         this.paused = false;
         this.animSpeed = 500;
+        this.listOfAlgorithms = ["QuickFind", "QuickUnion", "WeightedUnion", "QuickUnionPathCompression", "WeightedUnionPathCompression"];
+        this.currentAlgorithm = 0;
     }
-    //ok???
+    //ok??? - Tror det ja.
     view.prototype.displayThisArray = function (array) {
         displayArray(JSON.stringify(array));
     };
@@ -32,7 +35,9 @@ var view = /** @class */ (function () {
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
     view.prototype.saveState = function (twoDimRelationships, backendArray) {
-        //json
+        var twoDimRelationshipsJSON = JSON.parse(JSON.stringify(twoDimRelationships));
+        var arrJSON = JSON.parse(JSON.stringify(backendArray));
+        stepper.saveState(twoDimRelationshipsJSON, arrJSON);
     };
     view.prototype.setThisArrow = function (index) {
         setArrow(index);
@@ -76,12 +81,22 @@ var view = /** @class */ (function () {
     view.prototype.redCross = function (aIndex, bIndex, set) {
         setWrongMark(set, aIndex, bIndex);
     };
-    //setState()
+    view.prototype.setThisState = function (relationships, backendArray) {
+        setState(backendArray.parse("\\'%s\\'"), relationships.parse("\\'%s\\'"));
+    };
     view.prototype.stepBack = function (twoDimRelationshipsJSON, backendArray) {
+        this.step("backward", twoDimRelationshipsJSON, backendArray);
     };
     view.prototype.stepForward = function (twoDimRelationshipsJSON, backendArray) {
+        this.step("forward", twoDimRelationshipsJSON, backendArray);
     };
     view.prototype.step = function (dir, twoDimRelationshipsJSON, backendArray) {
+        var relationships = JSON.parse(JSON.stringify(twoDimRelationshipsJSON));
+        var backendArr = JSON.parse(JSON.stringify(backendArray));
+        if (dir === "forward")
+            stepper.stepForward(relationships, backendArr);
+        else if (dir === "backward")
+            stepper.stepBack(relationships, backendArr);
     };
     //executeScripts()
     //javascriptReady()
@@ -93,7 +108,7 @@ var view = /** @class */ (function () {
     };
     view.prototype.changeToCurrentAlgorithm = function () {
         this.resetAll();
-        setHeaderText(control.getNameOfCurrentAlgorithm().getName());
+        setHeaderText(control.getNameOfCurrentAlgorithm());
     };
     view.prototype.resetArray = function (arr) {
         for (var _i = 0, arr_1 = arr; _i < arr_1.length; _i++) {
@@ -123,8 +138,7 @@ var view = /** @class */ (function () {
     view.prototype.setFast = function () {
         this.animSpeed = 750;
     };
-    view.prototype.switchAlgorithm = function () {
-        //
+    view.prototype.switchAlgorithm = function (algo) {
     };
     view.prototype.displayNodeSize = function (root, size) {
     };

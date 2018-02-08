@@ -3,21 +3,21 @@
  *
  */
 
-declare var $;
+declare var $ : any;
 
 /** Manager for events stored in queue. Manager is also responsible for executing events automatically */
 class eventManager {
     delayTime:number = 600; // Original value
     nextEvents:FrontendEvent[] = [];
     previousEvents:FrontendEvent[] = [];
-    eventThread;
+    eventThread : number;
 
     // Executing the next event in the queue, adding it to 'previous'
     next() {
         if (this.nextEvents.length == 0) {
             return;
         }
-        var event = this.nextEvents.shift();
+        var event = (<FrontendEvent>this.nextEvents.shift());
         console.log(this.nextEvents);
         event.next();
         this.previousEvents.push(event);
@@ -29,13 +29,13 @@ class eventManager {
     previous() {
         if (this.previousEvents.length == 0)
             return;
-        var event = this.previousEvents.pop();
+        var event :FrontendEvent = (<FrontendEvent>this.previousEvents.pop());
         this.delayTime = 0; //TODO: Should there be a delay when stepping backwards?
         event.previous();
         this.nextEvents.unshift(event);
     }
 
-    addEvent(event) {
+    addEvent(event : FrontendEvent) {
         this.nextEvents.push(event);
     }
 
@@ -53,10 +53,10 @@ class eventManager {
 }
 
 class FrontendEvent {
-    next;
-    previous;
+    next : Function;
+    previous : Function;
     duration:number;
-    constructor(n, p, d:number) {
+    constructor(n : Function, p : Function, d:number) {
         this.next = n;
         this.previous = p;
         this.duration = d;

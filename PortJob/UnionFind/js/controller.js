@@ -12,6 +12,7 @@ var controller = /** @class */ (function () {
     controller.prototype.initController = function (algo) {
         this.algorithm = algo;
         this.speed = 50;
+        viewer.changeToCurrentAlgorithm();
         viewer.displayThisArray(this.algorithm.getArray());
     };
     controller.prototype.changeSpeed = function (newSpeed) {
@@ -66,7 +67,7 @@ var controller = /** @class */ (function () {
         this.methodToUse = methodToUse;
     };
     controller.prototype.getNameOfCurrentAlgorithm = function () {
-        return this.algorithm;
+        return this.algorithm.getName();
     };
     controller.prototype.getArrayClone = function () {
         return this.algorithm.getArray().slice(0, this.algorithm.getArray().length);

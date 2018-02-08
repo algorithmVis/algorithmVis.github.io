@@ -127,17 +127,17 @@ class QuickUnion implements IAlgorithm {
 
 
     getName() {
-        return name;
+        return this.name;
     }
 
 
     invertPause() {
-        pause = !pause;
+        this.pause = !pause;
     }
 
 
     setArray(array: number[]) {
-        arr = array;
+        this.arr = array;
     }
 
 

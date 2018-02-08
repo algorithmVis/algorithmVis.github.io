@@ -13,10 +13,12 @@ class controller {
     private algorithm: IAlgorithm;
     private methodToUse: string = "Union";
     private speed: number;
+    private GUI : IView; // Mulig forskjellig view for ulike algoritmer?
 
     initController(algo: IAlgorithm) {
         this.algorithm = algo;
         this.speed = 50;
+        viewer.changeToCurrentAlgorithm();
         viewer.displayThisArray(this.algorithm.getArray());
     }
 
@@ -86,7 +88,7 @@ class controller {
     }
 
     getNameOfCurrentAlgorithm() {
-        return this.algorithm;
+        return this.algorithm.getName();
     }
 
     getArrayClone() {

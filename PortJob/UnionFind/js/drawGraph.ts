@@ -3,7 +3,6 @@
  */
 // Jquery support
 declare var $;
-declare var javaLog;
 
 var animationTime:number = 2500;
 var idCounter = 0;

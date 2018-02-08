@@ -102,13 +102,13 @@ var QuickUnion = /** @class */ (function () {
         return arr;
     };
     QuickUnion.prototype.getName = function () {
-        return name;
+        return this.name;
     };
     QuickUnion.prototype.invertPause = function () {
-        pause = !pause;
+        this.pause = !pause;
     };
     QuickUnion.prototype.setArray = function (array) {
-        arr = array;
+        this.arr = array;
     };
     QuickUnion.prototype.connectedNoGUIUpdate = function (a, b) {
         return this.getRoot(a) == this.getRoot(b);
