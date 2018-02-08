@@ -1,15 +1,18 @@
 Hvilke algoritmer?
-	- De eksisterende algoritmene (Jar filer -> WEB / Port jobb): Her bruker vi TypeScript og JS til å skrive ny backend.
-		- Grafer: Her er alt skrevet i TS, JS og HTML så funker ut av boksen (Ingen arbeid kreves).
+	- De eksisterende algoritmene (Jar filer -> WEB / Port jobb): Her bruker vi TypeScript og JS til Ã¥ skrive ny backend.
+		- Grafer: Her er alt skrevet i TS, JS og HTML sÃ¥ funker ut av boksen (Ingen arbeid kreves).
 		- SimpleSort
-			- InsertionSort: Stort sett Ferdig - Øyvind (01.02.18)
-				- Små endringer i HTML krevdes ellers fungerte frontend ut av boksen
-				- Backend mye ble skrevet fra scratch i TS, men kunne ta i bruk følgende filer som kom med:
+			- InsertionSort: Stort sett Ferdig - Ã˜yvind (01.02.18)
+				- SmÃ¥ endringer i HTML krevdes ellers fungerte frontend ut av boksen (med unntak av View)
+					- View ble skrevet om til Ã¥ bruke anonyme funksjoner for events
+				- Backend mye ble skrevet fra scratch i TS, men kunne ta i bruk fÃ¸lgende filer som kom med:
 					- eventManager, kValue, viewFunctions og fillWithListElements. (Med litt modifikasjoner)
+			- ShellSort - Stort sett ferdig - Ã˜yvind (08.02.18)
+				- Samme som over. 
 	- Merge Sort
 	- Heap Sort
 	- BFS -> korteste sti
-	- Kruskal (Minimum Spanning tree) / Oblig fra i høst 
+	- Kruskal (Minimum Spanning tree) / Oblig fra i hÃ¸st 
 
 Smidig utviklingsmetode 
 	- Modifisert Scrum evt. Gitflow? 
