@@ -1,94 +1,108 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Union Find</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- Bootstrap -->
-        <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-        <link href="css/union_style.css" rel="stylesheet">
+<head>
+    <title>Union Find</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/union_style.css" rel="stylesheet">
 
-        <!-- Insert this line above script imports  -->
-        <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+    <!-- Insert this line above script imports  -->
+    <script>if (typeof module === 'object') {
+        window.module = module;
+        module = undefined;
+    }</script>
 
-        <script src="js/jquery.min.js"></script>
-        <script src="js/jquery-ui-1.12.0/jquery-ui.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/controller.js"></script>
-        <script src="js/view.js"></script>
-        <script src="js/QuickUnion.js"></script>
-        <script src="js/eventManager.js"></script>
-        <script src="js/state.js"></script>
-        <script src="js/stateController.js"></script>
-        <!-- For debugging -->
-        <!-- <script type='text/js' src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script> -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui-1.12.0/jquery-ui.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/controller.js"></script>
+    <script src="js/view.js"></script>
+    <script src="js/quickUnion.js"></script>
+    <script src="js/weightedUnion.js"></script>
+    <script src="js/eventManager.js"></script>
+    <script src="js/state.js"></script>
+    <script src="js/stateController.js"></script>
+    <!-- For debugging -->
+    <!-- <script type='text/js' src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script> -->
 
-        <!-- Insert this line after script imports -->
-        <script>if (window.module) module = window.module;</script>
-    </head>
+    <!-- Insert this line after script imports -->
+    <script>if (window.module) module = window.module;</script>
+</head>
 
-    
-    <body>
-        <div class="text-center">
-            <h1 id="headerText">Quick Find</h1>
-            <div class="arrayRow">
-                <div id="array">
-                    <ul id="arrayUL">
-                        <img id="arrow" class="hidden" src="assets/up_arrow.png" />
-                        <img id="leftBracket" class="bracket" src="assets/square_left.png"/>
-                        <img id="rightBracket" class="bracket" src="assets/square_right.png"/>
-                    </ul>
-                </div>
+
+<body>
+<div class="text-center">
+    <h1 id="headerText">Quick Find</h1>
+    <div class="arrayRow">
+        <div id="array">
+            <ul id="arrayUL">
+                <img id="arrow" class="hidden" src="assets/up_arrow.png"/>
+                <img id="leftBracket" class="bracket" src="assets/square_left.png"/>
+                <img id="rightBracket" class="bracket" src="assets/square_right.png"/>
+            </ul>
+        </div>
+    </div>
+    <div class="graphRow">
+        <div id="nodes">
+            <ul id="graphUL">
+                <img class="hidden" src="assets/correct.png" id="correctImgA"/>
+                <img class="hidden" src="assets/correct.png" id="correctImgB"/>
+                <img class="hidden" src="assets/wrong.png" id="wrongImgA"/>
+                <img class="hidden" src="assets/wrong.png" id="wrongImgB"/>
+                <svg id="lines"></svg>
+            </ul>
+        </div>
+    </div>
+    <br><br><br><br>
+    <div class="settingsWrapper">
+        <div class="radioSettings">
+            <form id="algorithm">
+                <input id="Quick Find" type="radio" name="algorithm" value="quickFind" checked
+                       onclick="javaBinder.switchAlgorithm('QuickFind')"> Quick Find<br>
+                <input id="Quick Union" type="radio" name="algorithm" value="quickUnion"
+                       onclick="control.initController(new quickUnion(10))"> Quick Union<br>
+                <!--javaBinder.switchAlgorithm('quickUnion')-->
+                <input id="Weighted Union" type="radio" name="algorithm" value="weightedUnion"
+                       onclick="control.initController(new weightedUnion(10))"> Weighted Union<br>
+                <input id="QuickUnionPathCompression" type="radio" name="algorithm" value="quickComp"
+                       onclick="javaBinder.switchAlgorithm('QuickUnionPathCompression')"> Quick Union Path
+                Compression<br>
+                <!-- <input id="WeightedUnionPathCompression" type="radio" name="algorithm" value="weightComp" onclick="javaBinder.switchAlgorithm('WeightedUnionPathCompression')"> Weighted Union Path Compression<br> -->
+            </form>
+        </div>
+        <div class="settings">
+            <div class="buttons">
+                <button id="reset" class="btn btn-primary" onclick="viewer.resetAll();">Reset</button>
+                <button id="backward" class="btn btn-primary" onclick="stepBack();">Backward</button>
+                <button id="forward" class="btn btn-primary"
+                        onclick="viewer.stepForward(getGraphState(), getArrayState());">Forward
+                </button>
             </div>
-            <div class="graphRow">
-                <div id="nodes">
-                    <ul id="graphUL">
-                        <img class="hidden" src="assets/correct.png" id="correctImgA"/>
-                        <img class="hidden" src="assets/correct.png" id="correctImgB"/>
-                        <img class="hidden" src="assets/wrong.png" id="wrongImgA"/>
-                        <img class="hidden" src="assets/wrong.png" id="wrongImgB"/>
-                        <svg id="lines"></svg>
-                    </ul>
-                </div>
-            </div>
-            <br><br><br><br>
-            <div class="settingsWrapper">
-                <div class="radioSettings">
-                    <form id="algorithm">
-                        <input id="Quick Find" type="radio" name="algorithm" value="quickFind" checked onclick="javaBinder.switchAlgorithm('QuickFind')"> Quick Find<br>
-                        <input id="Quick Union" type="radio" name="algorithm" value="quickUnion" onclick="control.initController(new QuickUnion(10))"> Quick Union<br> <!--javaBinder.switchAlgorithm('QuickUnion')-->
-                        <input id="Weighted Union" type="radio" name="algorithm" value="weightedUnion" onclick="javaBinder.switchAlgorithm('WeightedUnion')"> Weighted Union<br>
-                        <input id="QuickUnionPathCompression" type="radio" name="algorithm" value="quickComp" onclick="javaBinder.switchAlgorithm('QuickUnionPathCompression')"> Quick Union Path Compression<br>
-                        <!-- <input id="WeightedUnionPathCompression" type="radio" name="algorithm" value="weightComp" onclick="javaBinder.switchAlgorithm('WeightedUnionPathCompression')"> Weighted Union Path Compression<br> -->
-                    </form>
-                </div>
-                <div class="settings">
-                    <div class="buttons">
-                        <button id="reset" class="btn btn-primary" onclick="viewer.resetAll();">Reset</button>
-                        <button id="backward" class="btn btn-primary" onclick="stepBack();">Backward</button>
-                        <button id="forward" class="btn btn-primary" onclick="viewer.stepForward(getGraphState(), getArrayState());">Forward</button>
-                    </div>
-                    <div class="buttons">
-                        <button id="slow" class="btn btn-success" onclick="setSlow()">Slow</button>
-                        <button id="medium" class="btn btn-success" onclick="setMedium()">Medium</button>
-                        <button id="fast" class="btn btn-success" onclick="setFast()">Fast</button>
-                    </div>
-                </div>
-                <div class="radioSettings">
-                    <form id="method">
-                        <input id="radio_id1" type="radio" name="method" value="Union" checked><span> union( _ , _ )</span><br>
-                        <input id="radio_id2" type="radio" name="method" value="Connected"><span> connected( _ , _ )</span><br>
-                        <input id="radio_id3" type="radio" name="method" value="Find"><span> find( _ )</span>
-                    </form>
-                </div>
+            <div class="buttons">
+                <button id="slow" class="btn btn-success" onclick="setSlow()">Slow</button>
+                <button id="medium" class="btn btn-success" onclick="setMedium()">Medium</button>
+                <button id="fast" class="btn btn-success" onclick="setFast()">Fast</button>
             </div>
         </div>
-    </body>
+        <div class="radioSettings">
+            <form id="method">
+                <input id="radio_id1" type="radio" name="method" value="Union" checked><span> union( _ , _ )</span><br>
+                <input id="radio_id2" type="radio" name="method" value="Connected"><span> connected( _ , _ )</span><br>
+                <input id="radio_id3" type="radio" name="method" value="Find"><span> find( _ )</span>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
 
-    <script src="js/insertArrayAndNodes.js"></script>
-    <script src="js/drawGraph.js"></script>
-    <script src="js/methods.js"></script>
+<script src="js/insertArrayAndNodes.js"></script>
+<script src="js/drawGraph.js"></script>
+<script src="js/methods.js"></script>
 
-    <script>if (typeof javaBinder != "undefined") { javaBinder.javascriptReady(); }</script> <!-- Call this methods after all scripts are loaded -->
+<script>if (typeof javaBinder != "undefined") {
+    javaBinder.javascriptReady();
+}</script> <!-- Call this methods after all scripts are loaded -->
 
 </html>
 

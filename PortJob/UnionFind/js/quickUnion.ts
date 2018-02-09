@@ -1,10 +1,10 @@
 /**
  * File created by Kenneth Apeland 03.02.18.
- * based on QuickUnion.java
+ * based on quickUnion.java
  */
 ///<reference path="controller.ts"/>
 
-class QuickUnion implements IAlgorithm {
+class quickUnion implements IAlgorithm {
     DELAY_TIME: number = 100;
     arr: number[];
     pause: boolean;

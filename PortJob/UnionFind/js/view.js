@@ -120,12 +120,12 @@ var view = /** @class */ (function () {
     view.prototype.incrementAlgorithmIndex = function () {
     };
     view.prototype.screenLockThis = function (locked) {
-        var f = function (lock) {
+        var lck = function (lock) {
             return function () {
                 screenLock(lock);
             };
         }(locked);
-        manager.addEvent(new FrontendEvent(f, f, this.animSpeed));
+        manager.addEvent(new FrontendEvent(lck, lck, this.animSpeed));
     };
     view.prototype.union = function (indexA, indexB) {
         control.union(indexA, indexB);

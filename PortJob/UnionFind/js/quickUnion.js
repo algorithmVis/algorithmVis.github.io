@@ -1,16 +1,16 @@
 /**
  * File created by Kenneth Apeland 03.02.18.
- * based on QuickUnion.java
+ * based on quickUnion.java
  */
 ///<reference path="controller.ts"/>
-var QuickUnion = /** @class */ (function () {
+var quickUnion = /** @class */ (function () {
     // noinspection JSAnnotator
     /**
      * Initializes an array of given length with values equal to each index
      *
      * @param size
      */
-    function QuickUnion(size) {
+    function quickUnion(size) {
         this.DELAY_TIME = 100;
         this.name = "Quick Union";
         arr = new Array(size);
@@ -24,7 +24,7 @@ var QuickUnion = /** @class */ (function () {
      * @param aIndex
      * @param bIndex
      */
-    QuickUnion.prototype.union = function (aIndex, bIndex) {
+    quickUnion.prototype.union = function (aIndex, bIndex) {
         var aRoot = this.simpleFind(aIndex, "green");
         var bRoot = this.simpleFind(bIndex, "green");
         //SaveState i controller??
@@ -44,7 +44,7 @@ var QuickUnion = /** @class */ (function () {
      * Checks if two indexes are in the same component
      * @return
      */
-    QuickUnion.prototype.connected = function (aIndex, bIndex) {
+    quickUnion.prototype.connected = function (aIndex, bIndex) {
         var aRoot = this.simpleFind(aIndex, "orange");
         var bRoot = this.simpleFind(bIndex, "orange");
         var connected = (aRoot == bRoot);
@@ -69,14 +69,14 @@ var QuickUnion = /** @class */ (function () {
      * @param pIndex
      * @return
      */
-    QuickUnion.prototype.find = function (pIndex) {
+    quickUnion.prototype.find = function (pIndex) {
         var root = this.simpleFind(pIndex, "green");
         this.delay(this.getDelayTime());
         this.removeHighlighting(root);
         control.setSelectedIndex(pIndex, false);
         return root;
     };
-    QuickUnion.prototype.simpleFind = function (index, color) {
+    quickUnion.prototype.simpleFind = function (index, color) {
         var root = index;
         this.removeHighlighting(root);
         while (root != arr[root]) {
@@ -88,29 +88,29 @@ var QuickUnion = /** @class */ (function () {
         this.highlightSingleNode(root, color);
         return root;
     };
-    QuickUnion.prototype.removeHighlighting = function (node) {
+    quickUnion.prototype.removeHighlighting = function (node) {
         control.removeHighlight(node);
     };
-    QuickUnion.prototype.getRoot = function (index) {
+    quickUnion.prototype.getRoot = function (index) {
         var root = index;
         while (root != arr[root]) {
             root = arr[root];
         }
         return root;
     };
-    QuickUnion.prototype.getArray = function () {
+    quickUnion.prototype.getArray = function () {
         return arr;
     };
-    QuickUnion.prototype.getName = function () {
+    quickUnion.prototype.getName = function () {
         return this.name;
     };
-    QuickUnion.prototype.invertPause = function () {
+    quickUnion.prototype.invertPause = function () {
         this.pause = !pause;
     };
-    QuickUnion.prototype.setArray = function (array) {
+    quickUnion.prototype.setArray = function (array) {
         this.arr = array;
     };
-    QuickUnion.prototype.connectedNoGUIUpdate = function (a, b) {
+    quickUnion.prototype.connectedNoGUIUpdate = function (a, b) {
         return this.getRoot(a) == this.getRoot(b);
     };
     /**
@@ -118,14 +118,14 @@ var QuickUnion = /** @class */ (function () {
      *  This removes all other highlighting
      * @param nodeIndex
      */
-    QuickUnion.prototype.highlightSingleNode = function (node, color) {
+    quickUnion.prototype.highlightSingleNode = function (node, color) {
         control.highlightNode(node, color);
     };
     /**
      *  Sleep the current thread for delayTime milliseconds
      * @param delayTime
      */
-    QuickUnion.prototype.delay = function (delayTime) {
+    quickUnion.prototype.delay = function (delayTime) {
         var start = new Date().getTime();
         for (var i = 0; i < 1e7; i++) {
             if ((new Date().getTime() - start) > delayTime) {
@@ -133,10 +133,10 @@ var QuickUnion = /** @class */ (function () {
             }
         }
     };
-    QuickUnion.prototype.setController = function (control) {
+    quickUnion.prototype.setController = function (control) {
     };
-    QuickUnion.prototype.getDelayTime = function () {
+    quickUnion.prototype.getDelayTime = function () {
         return this.DELAY_TIME + control.getSpeed();
     };
-    return QuickUnion;
+    return quickUnion;
 }());
