@@ -171,6 +171,6 @@ class QuickUnion implements IAlgorithm {
     }
 
     getDelayTime() {
-        return this.DELAY_TIME + control.getSpeed() * 50;
+        return this.DELAY_TIME + control.getSpeed();
     }
 }

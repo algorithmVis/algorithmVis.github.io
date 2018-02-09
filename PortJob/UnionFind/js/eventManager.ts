@@ -30,7 +30,7 @@ class eventManager {
         if (this.previousEvents.length == 0)
             return;
         var event :FrontendEvent = (<FrontendEvent>this.previousEvents.pop());
-        this.delayTime = 0; //TODO: Should there be a delay when stepping backwards?
+        //this.delayTime = 0; //TODO: Should there be a delay when stepping backwards?
         event.previous();
         this.nextEvents.unshift(event);
     }

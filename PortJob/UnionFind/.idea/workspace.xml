@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="027dbd77-69d0-4caa-b666-3b85be8a4c8a" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/js/IView.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/js/QuickFind.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/js/state.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/js/stateController.js" />
-      <change beforePath="$PROJECT_DIR$/../SimpleSort/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../SimpleSort/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/js/QuickUnion.js" afterPath="$PROJECT_DIR$/js/QuickUnion.js" />
+      <change beforePath="$PROJECT_DIR$/js/QuickUnion.ts" afterPath="$PROJECT_DIR$/js/QuickUnion.ts" />
+      <change beforePath="$PROJECT_DIR$/js/eventManager.js" afterPath="$PROJECT_DIR$/js/eventManager.js" />
+      <change beforePath="$PROJECT_DIR$/js/eventManager.ts" afterPath="$PROJECT_DIR$/js/eventManager.ts" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -24,8 +23,8 @@
       <file leaf-file-name="QuickUnion.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/QuickUnion.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-500">
-              <caret line="34" column="21" lean-forward="false" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
+            <state relative-caret-position="375">
+              <caret line="24" column="5" lean-forward="true" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -64,8 +63,8 @@
       <file leaf-file-name="eventManager.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/eventManager.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="18" column="9" lean-forward="true" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+            <state relative-caret-position="550">
+              <caret line="46" column="31" lean-forward="true" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -127,8 +126,8 @@
         <option value="$PROJECT_DIR$/js/stateController.ts" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/methods.ts" />
-        <option value="$PROJECT_DIR$/js/eventManager.ts" />
         <option value="$PROJECT_DIR$/js/controller.ts" />
+        <option value="$PROJECT_DIR$/js/eventManager.ts" />
         <option value="$PROJECT_DIR$/js/QuickUnion.ts" />
       </list>
     </option>
@@ -189,7 +188,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SimpleSort" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="C:/Program Files/nodejs/node" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
@@ -223,7 +222,7 @@
       <workItem from="1517815294464" duration="550000" />
       <workItem from="1517855187769" duration="2236000" />
       <workItem from="1517949932174" duration="28032000" />
-      <workItem from="1518171336501" duration="1572000" />
+      <workItem from="1518171336501" duration="2691000" />
     </task>
     <task id="LOCAL-00001" summary="QuickUnion class, IAlgorithm interface and controller changes">
       <created>1518029727811</created>
@@ -257,7 +256,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32416000" />
+    <option name="totallyTimeSpent" value="33535000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1056" extended-state="6" />
@@ -484,14 +483,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/eventManager.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="18" column="9" lean-forward="true" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/controller.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="500">
@@ -516,10 +507,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/eventManager.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="46" column="31" lean-forward="true" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/QuickUnion.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-500">
-          <caret line="34" column="21" lean-forward="false" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
+        <state relative-caret-position="375">
+          <caret line="24" column="5" lean-forward="true" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
           <folding />
         </state>
       </provider>

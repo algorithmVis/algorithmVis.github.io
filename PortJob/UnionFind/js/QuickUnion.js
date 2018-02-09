@@ -136,7 +136,7 @@ var QuickUnion = /** @class */ (function () {
     QuickUnion.prototype.setController = function (control) {
     };
     QuickUnion.prototype.getDelayTime = function () {
-        return this.DELAY_TIME + control.getSpeed() * 50;
+        return this.DELAY_TIME + control.getSpeed() * 1; // should be *50
     };
     return QuickUnion;
 }());
