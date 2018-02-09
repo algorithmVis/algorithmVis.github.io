@@ -30,5 +30,5 @@ interface IView {
 
     setThisState(arrayObject: JSON, array: JSON): void;
 
-    screenLock(locked: boolean): void;
+    screenLockThis(locked: boolean): void;
 }

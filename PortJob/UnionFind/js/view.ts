@@ -5,6 +5,7 @@
 ///<reference path="controller.ts"/>
 ///<reference path="eventManager.ts"/>
 ///<reference path="stateController.ts"/>
+///<reference path="methods.ts"/>
 
 
 declare var $;
@@ -150,8 +151,14 @@ class view implements IView {
 
     }
 
-    screenLock(locked: boolean) {
+    screenLockThis(locked: boolean) {
+        let lck = function (lock: boolean) {
+            return function () {
+                screenLock(lock);
+            }
+        }(locked);
 
+        manager.addEvent(new FrontendEvent(lck, lck, this.animSpeed));
     }
 
     union(indexA: number, indexB: number) {

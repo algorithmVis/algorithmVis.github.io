@@ -24,22 +24,22 @@ var controller = /** @class */ (function () {
         return this.speed;
     };
     controller.prototype.connected = function (firstIndex, secondIndex) {
-        viewer.screenLock(true);
+        viewer.screenLockThis(true);
         //Kossen gjør eg detta?? - fixed tror jeg
         this.algorithm.connected(firstIndex, secondIndex);
-        viewer.screenLock(false);
+        viewer.screenLockThis(false);
     };
     controller.prototype.union = function (firstIndex, secondIndex) {
-        viewer.screenLock(true);
+        viewer.screenLockThis(true);
         //samme som over - fixed tror jeg
         this.algorithm.union(firstIndex, secondIndex);
-        viewer.screenLock(false);
+        viewer.screenLockThis(false);
     };
     controller.prototype.find = function (index) {
-        viewer.screenLock(true);
+        viewer.screenLockThis(true);
         //SEND HELP PLEASE
         this.algorithm.find(index);
-        viewer.screenLock(false);
+        viewer.screenLockThis(false);
     };
     controller.prototype.setArrow = function (index) {
         viewer.setThisArrow(index);

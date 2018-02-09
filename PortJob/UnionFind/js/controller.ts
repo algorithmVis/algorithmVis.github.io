@@ -34,24 +34,24 @@ class controller {
     }
 
     connected(firstIndex: number, secondIndex: number) {
-        viewer.screenLock(true);
+        viewer.screenLockThis(true);
         //Kossen gjør eg detta?? - fixed tror jeg
         this.algorithm.connected(firstIndex, secondIndex);
-        viewer.screenLock(false);
+        viewer.screenLockThis(false);
     }
 
     union(firstIndex: number, secondIndex: number) {
-        viewer.screenLock(true);
+        viewer.screenLockThis(true);
         //samme som over - fixed tror jeg
         this.algorithm.union(firstIndex, secondIndex);
-        viewer.screenLock(false);
+        viewer.screenLockThis(false);
     }
 
     find(index: number) {
-        viewer.screenLock(true);
+        viewer.screenLockThis(true);
         //SEND HELP PLEASE
         this.algorithm.find(index);
-        viewer.screenLock(false);
+        viewer.screenLockThis(false);
     }
 
     setArrow(index: number) {

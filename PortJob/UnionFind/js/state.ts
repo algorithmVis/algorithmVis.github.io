@@ -21,7 +21,6 @@ class state {
         let defArray: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
         let defRelationships: string[][] = [[], [], [], [], [], [], [], [], [], []];
 
-        // Usikker på JSON.parse(JSON.stringify(defRelationships))
         return new state(defArray, JSON.parse(JSON.stringify(defRelationships)));
     }
 
@@ -31,7 +30,6 @@ class state {
             arr[i] = backendArray[i] + "";
         }
 
-        // Samme som over
         return JSON.parse(JSON.stringify(arr));
     }
 

@@ -14,7 +14,6 @@ var state = /** @class */ (function () {
     state.getDefaultState = function () {
         var defArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
         var defRelationships = [[], [], [], [], [], [], [], [], [], []];
-        // Usikker på JSON.parse(JSON.stringify(defRelationships))
         return new state(defArray, JSON.parse(JSON.stringify(defRelationships)));
     };
     state.prototype.jsonifyBackendArray = function (backendArray) {
@@ -22,7 +21,6 @@ var state = /** @class */ (function () {
         for (var i = 0; i < backendArray.length; i++) {
             arr[i] = backendArray[i] + "";
         }
-        // Samme som over
         return JSON.parse(JSON.stringify(arr));
     };
     state.prototype.getBackendArray = function () {

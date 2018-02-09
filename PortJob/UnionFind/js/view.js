@@ -4,6 +4,7 @@
 ///<reference path="controller.ts"/>
 ///<reference path="eventManager.ts"/>
 ///<reference path="stateController.ts"/>
+///<reference path="methods.ts"/>
 var view = /** @class */ (function () {
     function view() {
         this.colors = ["#7FFF00", "not used", "#FFB366"];
@@ -118,7 +119,13 @@ var view = /** @class */ (function () {
     };
     view.prototype.incrementAlgorithmIndex = function () {
     };
-    view.prototype.screenLock = function (locked) {
+    view.prototype.screenLockThis = function (locked) {
+        var f = function (lock) {
+            return function () {
+                screenLock(lock);
+            };
+        }(locked);
+        manager.addEvent(new FrontendEvent(f, f, this.animSpeed));
     };
     view.prototype.union = function (indexA, indexB) {
         control.union(indexA, indexB);
