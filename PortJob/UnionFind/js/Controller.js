@@ -1,94 +1,96 @@
 /**
  * File created by Kenneth Apeland 03.02.18.
  */
-///<reference path="view.ts"/>
+///<reference path="View.ts"/>
 ///<reference path="IAlgorithm.ts"/>
-///<reference path="eventManager.ts"/>
+///<reference path="EventManager.ts"/>
+///<reference path="IView.ts"/>
 var iColor = 2;
 var jColor = 0;
-var controller = /** @class */ (function () {
-    function controller() {
+var Controller = /** @class */ (function () {
+    function Controller() {
         this.methodToUse = "Union";
     }
-    controller.prototype.initController = function (algo) {
+    Controller.prototype.initController = function (algo) {
         manager.start();
         this.algorithm = algo;
         this.speed = 50;
+        console.log(algo.getName());
         viewer.changeToCurrentAlgorithm();
         viewer.displayThisArray(this.algorithm.getArray());
     };
-    controller.prototype.changeSpeed = function (newSpeed) {
+    Controller.prototype.changeSpeed = function (newSpeed) {
         this.speed = newSpeed;
     };
-    controller.prototype.getSpeed = function () {
+    Controller.prototype.getSpeed = function () {
         return this.speed;
     };
-    controller.prototype.connected = function (firstIndex, secondIndex) {
+    Controller.prototype.connected = function (firstIndex, secondIndex) {
         viewer.screenLockThis(true);
         //Kossen gjør eg detta?? - fixed tror jeg
         this.algorithm.connected(firstIndex, secondIndex);
         viewer.screenLockThis(false);
     };
-    controller.prototype.union = function (firstIndex, secondIndex) {
+    Controller.prototype.union = function (firstIndex, secondIndex) {
         viewer.screenLockThis(true);
         //samme som over - fixed tror jeg
         this.algorithm.union(firstIndex, secondIndex);
         viewer.screenLockThis(false);
     };
-    controller.prototype.find = function (index) {
+    Controller.prototype.find = function (index) {
         viewer.screenLockThis(true);
         //SEND HELP PLEASE
         this.algorithm.find(index);
         viewer.screenLockThis(false);
     };
-    controller.prototype.setArrow = function (index) {
+    Controller.prototype.setArrow = function (index) {
         viewer.setThisArrow(index);
     };
-    controller.prototype.setSelectedIndex = function (index, select) {
+    Controller.prototype.setSelectedIndex = function (index, select) {
         viewer.selectThisIndex(index, select);
     };
-    controller.prototype.setValueAtIndex = function (i, bValue) {
+    Controller.prototype.setValueAtIndex = function (i, bValue) {
         viewer.setValueAtThisIndex(i, bValue);
     };
-    controller.prototype.connectNodes = function (child, parent) {
+    Controller.prototype.connectNodes = function (child, parent) {
         viewer.connectThisNodes(child, parent);
     };
-    controller.prototype.highlightNode = function (index, color) {
+    Controller.prototype.highlightNode = function (index, color) {
         viewer.highlightThisNode(index, color);
     };
-    controller.prototype.invertPauseState = function () {
+    Controller.prototype.invertPauseState = function () {
         this.algorithm.invertPause();
     };
-    controller.prototype.setAlgorithm = function (algo) {
+    Controller.prototype.setAlgorithm = function (algo) {
         this.algorithm = algo;
     };
-    controller.prototype.removeHighlight = function (node) {
+    Controller.prototype.removeHighlight = function (node) {
         viewer.removeThisHighlight(node);
     };
-    controller.prototype.setMethodToUse = function (methodToUse) {
+    Controller.prototype.setMethodToUse = function (methodToUse) {
         this.methodToUse = methodToUse;
     };
-    controller.prototype.getNameOfCurrentAlgorithm = function () {
+    Controller.prototype.getNameOfCurrentAlgorithm = function () {
         return this.algorithm.getName();
     };
-    controller.prototype.getArrayClone = function () {
+    Controller.prototype.getArrayClone = function () {
         return this.algorithm.getArray().slice(0, this.algorithm.getArray().length);
     };
-    controller.prototype.setArray = function (array) {
+    Controller.prototype.setArray = function (array) {
         this.algorithm.setArray(array);
     };
-    controller.prototype.checkMark = function (aIndex, bIndex, set) {
+    Controller.prototype.checkMark = function (aIndex, bIndex, set) {
         viewer.checkMark(aIndex, bIndex, set);
     };
-    controller.prototype.redCross = function (aIndex, bIndex, set) {
+    Controller.prototype.redCross = function (aIndex, bIndex, set) {
         viewer.redCross(aIndex, bIndex, set);
     };
-    controller.prototype.displaySize = function (root, size) {
+    Controller.prototype.displaySize = function (root, size) {
         viewer.displayNodeSize(root, size);
     };
-    controller.prototype.saveState = function (arr) {
+    Controller.prototype.saveState = function (arr) {
         viewer.executeSaveMethodInJavaScript(this.getArrayClone());
     };
-    return controller;
+    return Controller;
 }());
-var control = new controller();
+var control = new Controller();

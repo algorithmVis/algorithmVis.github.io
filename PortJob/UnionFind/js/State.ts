@@ -3,7 +3,7 @@
  * based on State.java
  */
 
-class state {
+class State {
     private twoDimRelationshipArray: JSON;
     private backendArrayJSON: JSON;
     private backendArray: number[];
@@ -15,13 +15,13 @@ class state {
     }
 
     /**
-     * @return The default state when a new algorithm start, used by StateController
+     * @return The default State when a new algorithm start, used by StateController
      */
-    public static getDefaultState(): state {
+    public static getDefaultState(): State {
         let defArray: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
         let defRelationships: string[][] = [[], [], [], [], [], [], [], [], [], []];
 
-        return new state(defArray, JSON.parse(JSON.stringify(defRelationships)));
+        return new State(defArray, JSON.parse(JSON.stringify(defRelationships)));
     }
 
     private jsonifyBackendArray(backendArray: number[]): JSON {

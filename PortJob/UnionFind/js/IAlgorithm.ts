@@ -1,4 +1,4 @@
-///<reference path="controller.ts"/>
+///<reference path="Controller.ts"/>
 
 /**
  * Created by Øyvind Skeie Liland 07.02.18
@@ -33,10 +33,10 @@ interface IAlgorithm {
     invertPause(): void;
 
     /**
-     *  Set the controller for this algorithm
-     * @param controller
+     *  Set the Controller for this algorithm
+     * @param Controller
      */
-    setController(control: controller): void;
+    setController(control: Controller): void;
 
     /**
      *  Set the current state of the algorithm to the given array

@@ -1,26 +1,28 @@
 /**
  * File created by Kenneth Apeland 03.02.18.
  */
-///<reference path="view.ts"/>
+///<reference path="View.ts"/>
 ///<reference path="IAlgorithm.ts"/>
-///<reference path="eventManager.ts"/>
+///<reference path="EventManager.ts"/>
+///<reference path="IView.ts"/>
 
 let iColor = 2;
 let jColor = 0;
 
-class controller {
+class Controller {
 
     //algorithm og methodToUse skal ikke være string, men dei e det for nå
     //programmet vil ikje fungere
     private algorithm: IAlgorithm;
     private methodToUse: string = "Union";
     private speed: number;
-    private GUI : IView; // Mulig forskjellig view for ulike algoritmer?
+    private GUI : IView; // Mulig forskjellig View for ulike algoritmer?
 
     initController(algo: IAlgorithm) {
         manager.start();
         this.algorithm = algo;
         this.speed = 50;
+        console.log(algo.getName());
         viewer.changeToCurrentAlgorithm();
         viewer.displayThisArray(this.algorithm.getArray());
     }
@@ -119,5 +121,5 @@ class controller {
     }
 }
 
-var control: controller = new controller();
+var control: Controller = new Controller();
 

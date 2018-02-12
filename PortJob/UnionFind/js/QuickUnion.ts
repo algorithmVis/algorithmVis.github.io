@@ -1,10 +1,10 @@
 /**
  * File created by Kenneth Apeland 03.02.18.
- * based on quickUnion.java
+ * based on QuickUnion.java
  */
-///<reference path="controller.ts"/>
+///<reference path="Controller.ts"/>
 
-class quickUnion implements IAlgorithm {
+class QuickUnion implements IAlgorithm {
     DELAY_TIME: number = 100;
     arr: number[];
     pause: boolean;
@@ -18,9 +18,9 @@ class quickUnion implements IAlgorithm {
      * @param size
      */
     constructor(size: number) {
-        arr = new Array(size);
+        this.arr = new Array(size);
         for (let i = 0; i < size; i++) {
-            arr[i] = i;
+            this.arr[i] = i;
         }
     }
 
@@ -33,13 +33,13 @@ class quickUnion implements IAlgorithm {
     union(aIndex: number, bIndex: number) {
         let aRoot = this.simpleFind(aIndex, "green");
         let bRoot = this.simpleFind(bIndex, "green");
-        //SaveState i controller??
+        //SaveState i Controller??
 
         if (aRoot != bRoot) {
             control.removeHighlight(aRoot);
             control.connectNodes(aRoot, bRoot);
             control.setValueAtIndex(aRoot, bRoot);
-            arr[aRoot] = bRoot;
+            this.arr[aRoot] = bRoot;
         }
         this.delay(this.getDelayTime() * 2);
 
@@ -95,11 +95,11 @@ class quickUnion implements IAlgorithm {
         let root: number = index;
         this.removeHighlighting(root);
 
-        while (root != arr[root]) {
+        while (root != this.arr[root]) {
             this.highlightSingleNode(root, "orange");
             this.delay(this.getDelayTime());
             this.removeHighlighting(root);
-            root = arr[root];
+            root = this.arr[root];
         }
         this.highlightSingleNode(root, color);
         return root;
@@ -114,15 +114,15 @@ class quickUnion implements IAlgorithm {
     getRoot(index: number) {
         let root: number = index;
 
-        while (root != arr[root]) {
-            root = arr[root];
+        while (root != this.arr[root]) {
+            root = this.arr[root];
         }
         return root;
     }
 
 
     getArray() {
-        return arr;
+        return this.arr;
     }
 
 
@@ -132,7 +132,7 @@ class quickUnion implements IAlgorithm {
 
 
     invertPause() {
-        this.pause = !pause;
+        this.pause = !this.pause;
     }
 
 
@@ -167,7 +167,7 @@ class quickUnion implements IAlgorithm {
         }
     }
 
-    setController(control: controller): void {
+    setController(control: Controller): void {
     }
 
     getDelayTime() {

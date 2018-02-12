@@ -481,8 +481,8 @@
 
             // If the widget is becoming disabled, then nothing is interactive
             if (value) {
-                this._removeClass(this.hoverable, null, "ui-state-hover");
-                this._removeClass(this.focusable, null, "ui-state-focus");
+                this._removeClass(this.hoverable, null, "ui-State-hover");
+                this._removeClass(this.focusable, null, "ui-State-focus");
             }
         },
 
@@ -630,10 +630,10 @@
             this.hoverable = this.hoverable.add(element);
             this._on(element, {
                 mouseenter: function (event) {
-                    this._addClass($(event.currentTarget), null, "ui-state-hover");
+                    this._addClass($(event.currentTarget), null, "ui-State-hover");
                 },
                 mouseleave: function (event) {
-                    this._removeClass($(event.currentTarget), null, "ui-state-hover");
+                    this._removeClass($(event.currentTarget), null, "ui-State-hover");
                 }
             });
         },
@@ -642,10 +642,10 @@
             this.focusable = this.focusable.add(element);
             this._on(element, {
                 focusin: function (event) {
-                    this._addClass($(event.currentTarget), null, "ui-state-focus");
+                    this._addClass($(event.currentTarget), null, "ui-State-focus");
                 },
                 focusout: function (event) {
-                    this._removeClass($(event.currentTarget), null, "ui-state-focus");
+                    this._removeClass($(event.currentTarget), null, "ui-State-focus");
                 }
             });
         },
@@ -2660,7 +2660,7 @@
 
                         // Save effect mode for later use,
                         // we can't just call $.effects.mode again later,
-                        // as the .show() below destroys the initial state
+                        // as the .show() below destroys the initial State
                         modes.push(normalizedMode);
 
                         // See $.uiBackCompat inside of run() for removal of defaultMode in 1.13
@@ -2718,7 +2718,7 @@
                     }
 
                     // Override mode option on a per element basis,
-                    // as toggle can be either show or hide depending on element state
+                    // as toggle can be either show or hide depending on element State
                     args.mode = modes.shift();
 
                     if ($.uiBackCompat !== false && !defaultMode) {
@@ -4542,7 +4542,7 @@
 
             this.headers = this.element.find(this.options.header);
             this._addClass(this.headers, "ui-accordion-header ui-accordion-header-collapsed",
-                "ui-state-default");
+                "ui-State-default");
 
             this.panels = this.headers.next().filter(":not(.ui-accordion-content-active)").hide();
             this._addClass(this.panels, "ui-accordion-content", "ui-helper-reset ui-widget-content");
@@ -4561,7 +4561,7 @@
                 parent = this.element.parent();
 
             this.active = this._findActive(options.active);
-            this._addClass(this.active, "ui-accordion-header-active", "ui-state-active")
+            this._addClass(this.active, "ui-accordion-header-active", "ui-State-active")
                 ._removeClass(this.active, "ui-accordion-header-collapsed");
             this._addClass(this.active.next(), "ui-accordion-content-active");
             this.active.next().show();
@@ -4726,7 +4726,7 @@
 
             // Switch classes
             // corner classes on the previously active header stay after the animation
-            this._removeClass(active, "ui-accordion-header-active", "ui-state-active");
+            this._removeClass(active, "ui-accordion-header-active", "ui-State-active");
             if (options.icons) {
                 activeChildren = active.children(".ui-accordion-header-icon");
                 this._removeClass(activeChildren, null, options.icons.activeHeader)
@@ -4735,7 +4735,7 @@
 
             if (!clickedIsActive) {
                 this._removeClass(clicked, "ui-accordion-header-collapsed")
-                    ._addClass(clicked, "ui-accordion-header-active", "ui-state-active");
+                    ._addClass(clicked, "ui-accordion-header-active", "ui-State-active");
                 if (options.icons) {
                     clickedChildren = clicked.children(".ui-accordion-header-icon");
                     this._removeClass(clickedChildren, null, options.icons.header)
@@ -4772,7 +4772,7 @@
             });
 
             // if we're switching panels, remove the old header from the tab order
-            // if we're opening from collapsed state, remove the previous header from the tab order
+            // if we're opening from collapsed State, remove the previous header from the tab order
             // if we're collapsing, then keep the collapsing header in the tab order
             if (toShow.length && toHide.length) {
                 toHide.prev().attr({
@@ -5008,10 +5008,10 @@
                         return;
                     }
 
-                    // Remove ui-state-active class from siblings of the newly focused menu item
+                    // Remove ui-State-active class from siblings of the newly focused menu item
                     // to avoid a jump caused by adjacent elements both having a class with a border
-                    this._removeClass(target.siblings().children(".ui-state-active"),
-                        null, "ui-state-active");
+                    this._removeClass(target.siblings().children(".ui-State-active"),
+                        null, "ui-State-active");
                     this.focus(event, target);
                 },
                 mouseleave: "collapseAll",
@@ -5263,7 +5263,7 @@
             this.active = item.first();
 
             focused = this.active.children(".ui-menu-item-wrapper");
-            this._addClass(focused, null, "ui-state-active");
+            this._addClass(focused, null, "ui-State-active");
 
             // Only update aria-activedescendant if there's a role
             // otherwise we assume focus is managed elsewhere
@@ -5276,7 +5276,7 @@
                 .parent()
                 .closest(".ui-menu-item")
                 .children(".ui-menu-item-wrapper");
-            this._addClass(activeParent, null, "ui-state-active");
+            this._addClass(activeParent, null, "ui-State-active");
 
             if (event && event.type === "keydown") {
                 this._close();
@@ -5323,7 +5323,7 @@
             }
 
             this._removeClass(this.active.children(".ui-menu-item-wrapper"),
-                null, "ui-state-active");
+                null, "ui-State-active");
 
             this._trigger("blur", event, {item: this.active});
             this.active = null;
@@ -5380,7 +5380,7 @@
                 this.blur(event);
 
                 // Work around active item staying active after menu is blurred
-                this._removeClass(currentMenu.find(".ui-state-active"), null, "ui-state-active");
+                this._removeClass(currentMenu.find(".ui-State-active"), null, "ui-State-active");
 
                 this.activeMenu = currentMenu;
             }, this.delay);
@@ -6298,7 +6298,7 @@
                         element.contents()
                             .wrapAll("<span class='ui-controlgroup-label-contents'></span>");
                     });
-                    that._addClass(labels, null, "ui-widget ui-widget-content ui-state-default");
+                    that._addClass(labels, null, "ui-widget ui-widget-content ui-State-default");
                     childWidgets = childWidgets.concat(labels.get());
                     return;
                 }
@@ -6596,19 +6596,19 @@
             this._enhance();
 
             if (checked) {
-                this._addClass(this.label, "ui-checkboxradio-checked", "ui-state-active");
+                this._addClass(this.label, "ui-checkboxradio-checked", "ui-State-active");
                 if (this.icon) {
-                    this._addClass(this.icon, null, "ui-state-hover");
+                    this._addClass(this.icon, null, "ui-State-hover");
                 }
             }
 
             this._on({
                 change: "_toggleClasses",
                 focus: function () {
-                    this._addClass(this.label, null, "ui-state-focus ui-visual-focus");
+                    this._addClass(this.label, null, "ui-State-focus ui-visual-focus");
                 },
                 blur: function () {
-                    this._removeClass(this.label, null, "ui-state-focus ui-visual-focus");
+                    this._removeClass(this.label, null, "ui-State-focus ui-visual-focus");
                 }
             });
         },
@@ -6655,10 +6655,10 @@
 
         _toggleClasses: function () {
             var checked = this.element[0].checked;
-            this._toggleClass(this.label, "ui-checkboxradio-checked", "ui-state-active", checked);
+            this._toggleClass(this.label, "ui-checkboxradio-checked", "ui-State-active", checked);
 
             if (this.options.icon && this.type === "checkbox") {
-                this._toggleClass(this.icon, null, "ui-icon-check ui-state-checked", checked)
+                this._toggleClass(this.icon, null, "ui-icon-check ui-State-checked", checked)
                     ._toggleClass(this.icon, null, "ui-icon-blank", !checked);
             }
 
@@ -6669,7 +6669,7 @@
 
                         if (instance) {
                             instance._removeClass(instance.label,
-                                "ui-checkboxradio-checked", "ui-state-active");
+                                "ui-checkboxradio-checked", "ui-State-active");
                         }
                     });
             }
@@ -6714,14 +6714,14 @@
                 }
 
                 if (this.type === "checkbox") {
-                    toAdd += checked ? "ui-icon-check ui-state-checked" : "ui-icon-blank";
+                    toAdd += checked ? "ui-icon-check ui-State-checked" : "ui-icon-blank";
                     this._removeClass(this.icon, null, checked ? "ui-icon-blank" : "ui-icon-check");
                 } else {
                     toAdd += "ui-icon-blank";
                 }
                 this._addClass(this.icon, "ui-checkboxradio-icon", toAdd);
                 if (!checked) {
-                    this._removeClass(this.icon, null, "ui-icon-check ui-state-checked");
+                    this._removeClass(this.icon, null, "ui-icon-check ui-State-checked");
                 }
                 this.icon.prependTo(this.label).after(this.iconSpace);
             } else if (this.icon !== undefined) {
@@ -6743,7 +6743,7 @@
                 isDisabled = this.element[0].disabled;
 
             this._updateIcon(checked);
-            this._toggleClass(this.label, "ui-checkboxradio-checked", "ui-state-active", checked);
+            this._toggleClass(this.label, "ui-checkboxradio-checked", "ui-State-active", checked);
             if (this.options.label !== null) {
                 this._updateLabel();
             }
@@ -7010,7 +7010,7 @@
         refresh: function () {
 
             // Make sure to only check disabled if its an element that supports this otherwise
-            // check for the disabled class to determine state
+            // check for the disabled class to determine State
             var isDisabled = this.element.is("input, button") ?
                 this.element[0].disabled : this.element.hasClass("ui-button-disabled");
 
@@ -7260,7 +7260,7 @@
             constrainInput: true, // The input is constrained by the current date format
             showButtonPanel: false, // True to show button panel, false to not show it
             autoSize: false, // True to size the input for the date format, false to leave as is
-            disabled: false // The initial disabled state
+            disabled: false // The initial disabled State
         };
         $.extend(this._defaults, this.regional[""]);
         this.regional.en = $.extend(true, {}, this.regional[""]);
@@ -8034,7 +8034,7 @@
             return [position.left, position.top];
         },
 
-        /* Hide the date picker from view.
+        /* Hide the date picker from View.
 	 * @param  input  element - the input field attached to the date picker
 	 */
         _hideDatepicker: function (input) {
@@ -8790,7 +8790,7 @@
             });
         },
 
-        /* Generate the HTML for the current state of the date picker. */
+        /* Generate the HTML for the current State of the date picker. */
         _generateHTML: function (inst) {
             var maxDraw, prevText, prev, nextText, next, currentText, gotoDate,
                 controls, buttonPanel, firstDay, showWeek, dayNames, dayNamesMin,
@@ -8843,7 +8843,7 @@
             prev = (this._canAdjustMonth(inst, -1, drawYear, drawMonth) ?
                 "<a class='ui-datepicker-prev ui-corner-all' data-handler='prev' data-event='click'" +
                 " title='" + prevText + "'><span class='ui-icon ui-icon-circle-triangle-" + (isRTL ? "e" : "w") + "'>" + prevText + "</span></a>" :
-                (hideIfNoPrevNext ? "" : "<a class='ui-datepicker-prev ui-corner-all ui-state-disabled' title='" + prevText + "'><span class='ui-icon ui-icon-circle-triangle-" + (isRTL ? "e" : "w") + "'>" + prevText + "</span></a>"));
+                (hideIfNoPrevNext ? "" : "<a class='ui-datepicker-prev ui-corner-all ui-State-disabled' title='" + prevText + "'><span class='ui-icon ui-icon-circle-triangle-" + (isRTL ? "e" : "w") + "'>" + prevText + "</span></a>"));
 
             nextText = this._get(inst, "nextText");
             nextText = (!navigationAsDateFormat ? nextText : this.formatDate(nextText,
@@ -8853,18 +8853,18 @@
             next = (this._canAdjustMonth(inst, +1, drawYear, drawMonth) ?
                 "<a class='ui-datepicker-next ui-corner-all' data-handler='next' data-event='click'" +
                 " title='" + nextText + "'><span class='ui-icon ui-icon-circle-triangle-" + (isRTL ? "w" : "e") + "'>" + nextText + "</span></a>" :
-                (hideIfNoPrevNext ? "" : "<a class='ui-datepicker-next ui-corner-all ui-state-disabled' title='" + nextText + "'><span class='ui-icon ui-icon-circle-triangle-" + (isRTL ? "w" : "e") + "'>" + nextText + "</span></a>"));
+                (hideIfNoPrevNext ? "" : "<a class='ui-datepicker-next ui-corner-all ui-State-disabled' title='" + nextText + "'><span class='ui-icon ui-icon-circle-triangle-" + (isRTL ? "w" : "e") + "'>" + nextText + "</span></a>"));
 
             currentText = this._get(inst, "currentText");
             gotoDate = (this._get(inst, "gotoCurrent") && inst.currentDay ? currentDate : today);
             currentText = (!navigationAsDateFormat ? currentText :
                 this.formatDate(currentText, gotoDate, this._getFormatConfig(inst)));
 
-            controls = (!inst.inline ? "<button type='button' class='ui-datepicker-close ui-state-default ui-priority-primary ui-corner-all' data-handler='hide' data-event='click'>" +
+            controls = (!inst.inline ? "<button type='button' class='ui-datepicker-close ui-State-default ui-priority-primary ui-corner-all' data-handler='hide' data-event='click'>" +
                 this._get(inst, "closeText") + "</button>" : "");
 
             buttonPanel = (showButtonPanel) ? "<div class='ui-datepicker-buttonpane ui-widget-content'>" + (isRTL ? controls : "") +
-                (this._isInRange(inst, gotoDate) ? "<button type='button' class='ui-datepicker-current ui-state-default ui-priority-secondary ui-corner-all' data-handler='today' data-event='click'" +
+                (this._isInRange(inst, gotoDate) ? "<button type='button' class='ui-datepicker-current ui-State-default ui-priority-secondary ui-corner-all' data-handler='today' data-event='click'" +
                     ">" + currentText + "</button>" : "") + (isRTL ? "" : controls) + "</div>" : "";
 
             firstDay = parseInt(this._get(inst, "firstDay"), 10);
@@ -8956,9 +8956,9 @@
                                 ((!otherMonth || showOtherMonths) && daySettings[2] ? " title='" + daySettings[2].replace(/'/g, "&#39;") + "'" : "") + // cell title
                                 (unselectable ? "" : " data-handler='selectDay' data-event='click' data-month='" + printDate.getMonth() + "' data-year='" + printDate.getFullYear() + "'") + ">" + // actions
                                 (otherMonth && !showOtherMonths ? "&#xa0;" : // display for other months
-                                    (unselectable ? "<span class='ui-state-default'>" + printDate.getDate() + "</span>" : "<a class='ui-state-default" +
-                                        (printDate.getTime() === today.getTime() ? " ui-state-highlight" : "") +
-                                        (printDate.getTime() === currentDate.getTime() ? " ui-state-active" : "") + // highlight selected day
+                                    (unselectable ? "<span class='ui-State-default'>" + printDate.getDate() + "</span>" : "<a class='ui-State-default" +
+                                        (printDate.getTime() === today.getTime() ? " ui-State-highlight" : "") +
+                                        (printDate.getTime() === currentDate.getTime() ? " ui-State-active" : "") + // highlight selected day
                                         (otherMonth ? " ui-priority-secondary" : "") + // distinguish dates from other months
                                         "' href='#'>" + printDate.getDate() + "</a>")) + "</td>"; // display selectable date
                             printDate.setDate(printDate.getDate() + 1);
@@ -12325,8 +12325,8 @@
                 mousedown: function (event) {
 
                     // Don't prevent click on close button (#8838)
-                    // Focusing a dialog that is partially scrolled out of view
-                    // causes the browser to scroll it into view, preventing the click event
+                    // Focusing a dialog that is partially scrolled out of View
+                    // causes the browser to scroll it into View, preventing the click event
                     if (!$(event.target).closest(".ui-dialog-titlebar-close")) {
 
                         // Dialog isn't getting focus when dragging (#8063)
@@ -13333,7 +13333,7 @@
 //>>label: Progressbar
 //>>group: Widgets
 // jscs:disable maximumLineLength
-//>>description: Displays a status indicator for loading state, standard percentage, and other progress indicators.
+//>>description: Displays a status indicator for loading State, standard percentage, and other progress indicators.
 // jscs:enable maximumLineLength
 //>>docs: http://api.jqueryui.com/progressbar/
 //>>demos: http://jqueryui.com/progressbar/
@@ -14010,7 +14010,7 @@
             this.menuInstance.focus(null, item);
             this._setAria(item.data("ui-selectmenu-item"));
 
-            // Set disabled state
+            // Set disabled State
             this._setOption("disabled", this.element.prop("disabled"));
         },
 
@@ -14025,7 +14025,7 @@
             } else {
 
                 // Menu clears focus on close, reset focus to selected item
-                this._removeClass(this.menu.find(".ui-state-active"), null, "ui-state-active");
+                this._removeClass(this.menu.find(".ui-State-active"), null, "ui-State-active");
                 this.menuInstance.focus(null, this._getSelectedItem());
             }
 
@@ -14138,7 +14138,7 @@
                 item = this.menuItems.eq(this.focusIndex).parent("li");
             } else {
                 item = this.menuItems.eq(this.element[0].selectedIndex).parent("li");
-                filter += ":not(.ui-state-disabled)";
+                filter += ":not(.ui-State-disabled)";
             }
 
             if (direction === "first" || direction === "last") {
@@ -14547,7 +14547,7 @@
 
             this.handles = existingHandles.add($(handles.join("")).appendTo(this.element));
 
-            this._addClass(this.handles, "ui-slider-handle", "ui-state-default");
+            this._addClass(this.handles, "ui-slider-handle", "ui-State-default");
 
             this.handle = this.handles.eq(0);
 
@@ -14648,7 +14648,7 @@
 
             this._handleIndex = index;
 
-            this._addClass(closestHandle, null, "ui-state-active");
+            this._addClass(closestHandle, null, "ui-State-active");
             closestHandle.trigger("focus");
 
             offset = closestHandle.offset();
@@ -14662,7 +14662,7 @@
                 (parseInt(closestHandle.css("marginTop"), 10) || 0)
             };
 
-            if (!this.handles.hasClass("ui-state-hover")) {
+            if (!this.handles.hasClass("ui-State-hover")) {
                 this._slide(event, index, normValue);
             }
             this._animateOff = true;
@@ -14683,7 +14683,7 @@
         },
 
         _mouseStop: function (event) {
-            this._removeClass(this.handles, null, "ui-state-active");
+            this._removeClass(this.handles, null, "ui-State-active");
             this._mouseSliding = false;
 
             this._stop(event, this._handleIndex);
@@ -15119,7 +15119,7 @@
                         event.preventDefault();
                         if (!this._keySliding) {
                             this._keySliding = true;
-                            this._addClass($(event.target), null, "ui-state-active");
+                            this._addClass($(event.target), null, "ui-State-active");
                             allowed = this._start(event, index);
                             if (allowed === false) {
                                 return;
@@ -15176,7 +15176,7 @@
                     this._keySliding = false;
                     this._stop(event, index);
                     this._change(event, index);
-                    this._removeClass($(event.target), null, "ui-state-active");
+                    this._removeClass($(event.target), null, "ui-State-active");
                 }
             }
         }
@@ -16910,7 +16910,7 @@
             "mouseup .ui-spinner-button": "_stop",
             "mouseenter .ui-spinner-button": function (event) {
 
-                // button will add ui-state-active if mouse was down while mouseleave and kept down
+                // button will add ui-State-active if mouse was down while mouseleave and kept down
                 if (!$(event.currentTarget).hasClass("ui-state-active")) {
                     return;
                 }
@@ -17644,7 +17644,7 @@
                         "aria-expanded": "true",
                         tabIndex: 0
                     });
-                this._addClass(this.active, "ui-tabs-active", "ui-state-active");
+                this._addClass(this.active, "ui-tabs-active", "ui-State-active");
                 this._getPanelForTab(this.active)
                     .show()
                     .attr({
@@ -17688,7 +17688,7 @@
                     role: "tab",
                     tabIndex: -1
                 });
-            this._addClass(this.tabs, "ui-tabs-tab", "ui-state-default");
+            this._addClass(this.tabs, "ui-tabs-tab", "ui-State-default");
 
             this.anchors = this.tabs.map(function () {
                 return $("a", this)[0];
@@ -17916,7 +17916,7 @@
             }
 
             function show() {
-                that._addClass(eventData.newTab.closest("li"), "ui-tabs-active", "ui-state-active");
+                that._addClass(eventData.newTab.closest("li"), "ui-tabs-active", "ui-State-active");
 
                 if (toShow.length && that.options.show) {
                     that._show(toShow, that.options.show, complete);
@@ -17930,12 +17930,12 @@
             if (toHide.length && this.options.hide) {
                 this._hide(toHide, this.options.hide, function () {
                     that._removeClass(eventData.oldTab.closest("li"),
-                        "ui-tabs-active", "ui-state-active");
+                        "ui-tabs-active", "ui-State-active");
                     show();
                 });
             } else {
                 this._removeClass(eventData.oldTab.closest("li"),
-                    "ui-tabs-active", "ui-state-active");
+                    "ui-tabs-active", "ui-State-active");
                 toHide.hide();
                 show();
             }
@@ -17947,7 +17947,7 @@
             });
 
             // If we're switching tabs, remove the old tab from the tab order.
-            // If we're opening from collapsed state, remove the previous tab from the tab order.
+            // If we're opening from collapsed State, remove the previous tab from the tab order.
             // If we're collapsing, then keep the collapsing tab in the tab order.
             if (toShow.length && toHide.length) {
                 eventData.oldTab.attr("tabIndex", -1);

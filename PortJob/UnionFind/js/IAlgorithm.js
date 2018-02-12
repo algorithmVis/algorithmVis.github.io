@@ -1,1 +1,1 @@
-///<reference path="controller.ts"/>
+///<reference path="Controller.ts"/>

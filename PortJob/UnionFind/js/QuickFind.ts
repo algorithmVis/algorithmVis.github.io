@@ -2,136 +2,155 @@
  * File created by Philip Hoang 06.2.18
  * based on QuickFind.Java
  */
-///<reference path="controller.ts"/>
+///<reference path="Controller.ts"/>
 
-const DELAY : number = 100;
-let arr : number[];
-let pause : boolean;
-let name : string = "Quick Find";
+class QuickFind implements IAlgorithm {
+    DELAY: number = 100;
+    arr: number[];
+    pause: boolean;
+    name: string = "Quick Find";
 
     // noninspection JSAnnotator
-function constructor(size : number) {
-    arr = new Array(size);
-    for (let i = 0; i < size; i++) {
-        arr[i] = i;
+
+    constructor(size: number) {
+        this.arr = [];
+        for (let i = 0; i < size; i++) {
+            this.arr[i] = i;
+        }
+        this.pause = false;
     }
 
-    pause = false;
-}
 
-function union(aIndex : number, bIndex : number) {
-    let aRoot : number = arr[aIndex];
-    let bRoot : number = arr[bIndex];
+    union(aIndex: number, bIndex: number) {
+        let aRoot: number = this.arr[aIndex];
+        let bRoot: number = this.arr[bIndex];
 
-    if (aRoot == bRoot) {
-        delay(getDelayTime());
-        control.setSelectedIndex(aIndex, false);
+        if (aRoot == bRoot) {
+            this.delay(this.getDelayTime() * 2);
+            control.setSelectedIndex(aIndex, false);
+            control.setSelectedIndex(bIndex, false);
+            return;
+        }
+
+        control.saveState(this.arr);
+
+        for (let i = 0; i < this.arr.length; i++) {
+
+            while (this.pause) {
+                this.delay(this.getDelayTime());
+            }
+
+            control.setArrow(i);
+            this.delay(this.getDelayTime())
+            if (this.arr[i] == aRoot) {
+                control.setValueAtIndex(i, bRoot);
+                control.connectNodes(i, bRoot);
+                this.arr[i] = bRoot;
+                this.delay(this.getDelayTime())
+            }
+        }
+
+        control.setArrow(-1);
         control.setSelectedIndex(bIndex, false);
-        return;
+        control.setSelectedIndex(aIndex, false);
     }
 
-    control.saveState(arr);
 
-    for (let i = 0; i < arr.length; i++) {
+    connected(aIndex: number, bIndex: number) {
+        let connected: boolean = this.simpleFind(aIndex, "orange") == this.simpleFind(bIndex, "orange");
 
-        while (pause) {
-            delay(getDelayTime()*0.2);
+        if (connected) {
+            control.highlightNode(this.arr[aIndex], "green");
+            control.highlightNode(this.arr[bIndex], "green");
+            control.checkMark(aIndex, bIndex, true);
+        } else
+            control.redCross(aIndex, bIndex, true);
+
+        this.delay(this.getDelayTime());
+        this.removeHighlighFromRoot(aIndex);
+        this.removeHighlighFromRoot(bIndex);
+        control.checkMark(aIndex, bIndex, false);
+        control.redCross(aIndex, bIndex, false);
+
+        return connected
+    }
+
+
+    getName() {
+        return this.name;
+    }
+
+
+    removeHighlighFromRoot(pIndex: number) {
+        control.removeHighlight(this.arr[pIndex]);
+    }
+
+
+    delay(delayTime: number) {
+        let start = new Date().getTime();
+        for (let i = 0; i < 1e7; i++) {
+            if ((new Date().getTime() - start) > delayTime)
+                break;
+        }
+    }
+
+
+    find(pIndex: number) {
+        let root = this.simpleFind(pIndex, "green");
+
+        this.delay(this.getDelayTime());
+        control.removeHighlight(root);
+        control.setSelectedIndex(pIndex, false);
+
+        return root;
+    }
+
+
+    simpleFind(pIndex: number, color: string) {
+        let root: number = this.arr[pIndex];
+
+        if (pIndex != root) {
+            control.highlightNode(pIndex, "orange");
+            this.delay(this.getDelayTime());
+            control.removeHighlight(pIndex);
         }
 
-        control.setArrow(i);
-        delay(getDelayTime()*0.5)
-        if (arr[i] == aRoot) {
-            control.setValueAtIndex(i, bRoot);
-            control.connectNodes(i, bRoot);
-            arr[i] = bRoot;
-            delay(getDelayTime()*0.5)
-        }
+        control.highlightNode(root, color);
+
+        return root;
     }
 
-    control.setArrow(-1);
-    control.setSelectedIndex(bIndex, false);
-    control.setSelectedIndex(aIndex, false);
-}
 
-function connected(aIndex : number, bIndex : number) {
-    let connected : boolean = simpleFind(aIndex, "orange") == simpleFind(bIndex, "orange");
-
-    if (connected) {
-        control.highlightNode(arr[aIndex], "green");
-        control.highlightNode(arr[bIndex], "green");
-        control.checkMark(aIndex, bIndex, true);
-    } else
-        control.redCross(aIndex, bIndex, true);
-
-    delay(getDelayTime()*2);
-    removeHighlighFromRoot(aIndex);
-    removeHighlighFromRoot(bIndex);
-    control.checkMark(aIndex, bIndex, false);
-    control.redCross(aIndex, bIndex, false);
-
-    return connected
-}
-
-function getName() {
-    return name;
-}
-
-function removeHighlighFromRoot(pIndex : number) {
-    control.removeHighlight(arr[pIndex]);
-}
-
-function delay(delayTime : number) {
-    let start = new Date().getTime();
-    for (let i = 0; i < 1e7; i++) {
-        if ((new Date().getTime() - start) > delayTime)
-            break;
-    }
-}
-
-function find(pIndex : number) {
-    let root = simpleFind(pIndex, "green");
-
-    delay(getDelayTime());
-    control.removeHighlight(root);
-    control.setSelectedIndex(pIndex, false);
-
-    return root;
-}
-
-function simpleFind(pIndex : number, color : string) {
-    let root : number = arr[pIndex];
-
-    if (pIndex != root) {
-        control.highlightNode(pIndex, "orange");
-        delay(getDelayTime());
-        control.removeHighlight(pIndex);
+    getArray() {
+        return this.arr;
     }
 
-    control.highlightNode(root, color);
 
-    return root;
-}
+    setArray(array: number[]) {
+        this.arr = array;
+    }
 
-function getArray() {
-    return arr;
-}
 
-function setArray(array : number[]) {
-    arr = array;
-}
+    isPause() {
+        return this.pause;
+    }
 
-function isPause() {
-    return pause;
-}
 
-function invertPause() {
-    pause = !pause;
-}
+    invertPause() {
+        this.pause = !this.pause;
+    }
 
-function connectedNoGUIUpdate(a : number, b : number) {
-    return arr[a] == arr[b];
-}
 
-function getDelayTime() {
-    return DELAY_TIME + control.getSpeed()*50;
+    connectedNoGUIUpdate(a: number, b: number) {
+        return this.arr[a] == this.arr[b];
+    }
+
+
+    getDelayTime() {
+        return this.DELAY + control.getSpeed();
+    }
+
+    setController(control: Controller): void {
+        //
+    }
 }

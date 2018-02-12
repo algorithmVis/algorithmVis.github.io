@@ -3391,7 +3391,7 @@
         Deferred: function (func) {
             var tuples = [
 
-                    // action, add listener, listener list, final state
+                    // action, add listener, listener list, final State
                     ["resolve", "done", jQuery.Callbacks("once memory"), "resolved"],
                     ["reject", "fail", jQuery.Callbacks("once memory"), "rejected"],
                     ["notify", "progress", jQuery.Callbacks("memory")]
@@ -3450,11 +3450,11 @@
                 // promise[ done | fail | progress ] = list.add
                 promise[tuple[1]] = list.add;
 
-                // Handle state
+                // Handle State
                 if (stateString) {
                     list.add(function () {
 
-                        // state = [ resolved | rejected ]
+                        // State = [ resolved | rejected ]
                         state = stateString;
 
                         // [ reject_list | resolve_list ].disable; progress_list.lock
@@ -4510,7 +4510,7 @@
         div.appendChild(input);
 
         // Support: Safari 5.1, iOS 5.1, Android 4.x, Android 2.3
-        // old WebKit doesn't clone checked state correctly in fragments
+        // old WebKit doesn't clone checked State correctly in fragments
         support.checkClone = div.cloneNode(true).cloneNode(true).lastChild.checked;
 
         // Support: IE<9
@@ -5350,7 +5350,7 @@
 
         // Includes some event props shared by KeyEvent and MouseEvent
         props: ("altKey bubbles cancelable ctrlKey currentTarget detail eventPhase " +
-            "metaKey relatedTarget shiftKey target timeStamp view which").split(" "),
+            "metaKey relatedTarget shiftKey target timeStamp View which").split(" "),
 
         fixHooks: {},
 
@@ -5441,7 +5441,7 @@
             },
             click: {
 
-                // For checkbox, fire native event so checked state will be right
+                // For checkbox, fire native event so checked State will be right
                 trigger: function () {
                     if (jQuery.nodeName(this, "input") && this.type === "checkbox" && this.click) {
                         this.click();
@@ -5989,7 +5989,7 @@
 
         } else if (nodeName === "input" && rcheckableType.test(src.type)) {
 
-            // IE6-8 fails to persist the checked state of a cloned checkbox
+            // IE6-8 fails to persist the checked State of a cloned checkbox
             // or radio button. Worse, IE6-7 fail to give the cloned element
             // a checked appearance if the defaultChecked value isn't also set
 
@@ -6002,7 +6002,7 @@
             }
 
             // IE6-8 fails to return the selected option to the default selected
-            // state when cloning options
+            // State when cloning options
         } else if (nodeName === "option") {
             dest.defaultSelected = dest.selected = src.defaultSelected;
 
@@ -7652,7 +7652,7 @@
                 dataShow = jQuery._data(elem, "fxshow", {});
             }
 
-            // store state if its toggle - enables .stop().toggle() to "reverse"
+            // store State if its toggle - enables .stop().toggle() to "reverse"
             if (toggle) {
                 dataShow.hidden = !hidden;
             }
@@ -9498,7 +9498,7 @@
                 requestHeaders = {},
                 requestHeadersNames = {},
 
-                // The jqXHR state
+                // The jqXHR State
                 state = 0,
 
                 // Default abort message

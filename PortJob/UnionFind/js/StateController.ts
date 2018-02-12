@@ -2,20 +2,21 @@
  * Created by Øyvind Skeie Liland 08.02.18
  * based on: StateController.java
  */
-///<reference path="controller.ts"/>
-///<reference path="view.ts"/>
-///<reference path="state.ts"/>
+///<reference path="Controller.ts"/>
+///<reference path="View.ts"/>
+///<reference path="State.ts"/>
+///<reference path="IView.ts"/>
 
 declare var $;
 
-class stateController {
-    private previousStates: state[]
-    private nextStates: state[]; // Both are stacks
-    private controll: controller;
+class StateController {
+    private previousStates: State[]
+    private nextStates: State[]; // Both are stacks
+    private controll: Controller;
     private GUI: IView;
 
 
-    constructor(c: controller, view: IView) {
+    constructor(c: Controller, view: IView) {
         this.previousStates = [];
         this.nextStates = [];
         this.controll = c;
@@ -24,14 +25,14 @@ class stateController {
 
     /**
      * Method for stepping back (if possible)
-     * Also saves the current state to nextStates to be able to step forward again
+     * Also saves the current State to nextStates to be able to step forward again
      */
     public stepBack(twoDimRelationshipsJSON: JSON, backendArrayJSON: JSON): boolean {
         if (this.previousStates.length === 0)
             return false;
 
         this.saveStateToNextStates(twoDimRelationshipsJSON, backendArrayJSON);
-        let previousState: state = (<state> this.previousStates.pop());
+        let previousState: State = (<State> this.previousStates.pop());
         this.setState(previousState);
         return true;
     }
@@ -39,7 +40,7 @@ class stateController {
 
     /**
      * Method for stepping forward (if possible)
-     * Also save the current state to previousStates to be able to step back again
+     * Also save the current State to previousStates to be able to step back again
      */
 
     public stepForward(twoDimRelationshipJSON: JSON, backendArrayJSON: JSON): boolean {
@@ -47,13 +48,13 @@ class stateController {
             return false;
 
         this.saveStateToPreviousStates(twoDimRelationshipJSON, backendArrayJSON);
-        let nextState: state = (<state> this.nextStates.pop());
+        let nextState: State = (<State> this.nextStates.pop());
         this.setState(nextState);
         return true;
     }
 
     /**
-     * Method for saving the current state. Sent before every unionFind()-call
+     * Method for saving the current State. Sent before every unionFind()-call
      */
     public saveState(twoDimRelationshipsJSON: JSON, backendArrayJSON: JSON): void {
         this.nextStates = [];
@@ -63,16 +64,16 @@ class stateController {
 
     /** Private help methods to take care of states **/
     private saveStateToPreviousStates(twoDimRelationshipsJSON: JSON, backendArrayJSON: JSON): void {
-        let st: state = this.getState(twoDimRelationshipsJSON, backendArrayJSON);
+        let st: State = this.getState(twoDimRelationshipsJSON, backendArrayJSON);
         this.previousStates.push(st);
     }
 
     private saveStateToNextStates(twoDimRelationshipsJSON: JSON, backendArrayJSON: JSON): void {
-        let st: state = this.getState(twoDimRelationshipsJSON, backendArrayJSON);
+        let st: State = this.getState(twoDimRelationshipsJSON, backendArrayJSON);
         this.nextStates.push(st);
     }
 
-    private getState(twoDimRelationshipsJSON: JSON, backendArrayJSON: JSON): state {
+    private getState(twoDimRelationshipsJSON: JSON, backendArrayJSON: JSON): State {
         let twoDimRelationship: JSON = twoDimRelationshipsJSON;
         let backendArray: number[] = [];
 
@@ -80,17 +81,17 @@ class stateController {
             backendArray[i] = Number(backendArrayJSON.stringify(i));
         }
 
-        return new state(backendArray, twoDimRelationship);
+        return new State(backendArray, twoDimRelationship);
     }
 
     /**
-     * Set the current state of the backend and frontend to parameter state
-     * @param state
+     * Set the current State of the backend and frontend to parameter State
+     * @param State
      */
-    private setState(st: state): void {
+    private setState(st: State): void {
         this.GUI.setThisState(st.getTwoDimRelationshipArray(), st.getBackendArrayJSON());
         this.controll.setArray(st.getBackendArray());
     }
 }
 
-var stepper: stateController = new stateController(control, viewer);
+var stepper: StateController = new StateController(control, viewer);

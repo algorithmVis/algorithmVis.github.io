@@ -1,7 +1,7 @@
-///<reference path="controller.ts"/>
+///<reference path="Controller.ts"/>
 
 
-class weightedUnion extends quickUnion {
+class WeightedUnion extends QuickUnion {
     private treeSize: number[]; // number of elements in tree rooted at index
     private paused: boolean = false;
 
@@ -49,7 +49,7 @@ class weightedUnion extends quickUnion {
         this.paused = !this.paused;
     }
 
-    public setController(c: controller): void {
+    public setController(c: Controller): void {
         super.setController(c);
     }
 

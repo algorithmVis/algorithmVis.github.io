@@ -6,7 +6,7 @@
 declare var $ : any;
 
 /** Manager for events stored in queue. Manager is also responsible for executing events automatically */
-class eventManager {
+class EventManager {
     delayTime:number = 600; // Original value
     nextEvents:FrontendEvent[] = [];
     previousEvents:FrontendEvent[] = [];
@@ -63,7 +63,7 @@ class FrontendEvent {
     }
 }
 
-var manager:eventManager = new eventManager();
+var manager:EventManager = new EventManager();
 
 /*
 /** How to add FrontendEvents to manager

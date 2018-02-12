@@ -2,15 +2,18 @@
  * File created by Kenneth Apeland 01.02.18
  */
 
-///<reference path="controller.ts"/>
-///<reference path="eventManager.ts"/>
-///<reference path="stateController.ts"/>
+///<reference path="Controller.ts"/>
+///<reference path="EventManager.ts"/>
+///<reference path="StateController.ts"/>
 ///<reference path="methods.ts"/>
+///<reference path="QuickFind.ts"/>
+///<reference path="WeightedUnion.ts"/>
+///<reference path="QuickUnion.ts"/>
 
 
 declare var $;
 
-class view implements IView {
+class View implements IView {
     colors: string[] = ["#7FFF00", "not used", "#FFB366"];
     arrayIsReset: boolean = false;
     k: number = 0
@@ -134,7 +137,11 @@ class view implements IView {
     }
 
     resetAll() {
+        let arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+        stepper = new StateController(control, this);
 
+        this.resetArray(arr);
+        this.displayThisArray(arr);
     }
 
     changeToCurrentAlgorithm() {
@@ -186,6 +193,30 @@ class view implements IView {
     }
 
     switchAlgorithm(algo: string) {
+        switch (algo) {
+            case "QuickUnion": {
+                control.initController(new QuickUnion(10));
+                break;
+            }
+            case "QuickFind": {
+                control.initController((new QuickFind(10)));
+                break;
+            }
+            case "WeightedUnion": {
+                control.initController(new WeightedUnion(10));
+                break;
+            }
+            case "QuickUnionPathCompression": {
+                break;
+            }
+            case "WeightedUnionPathCompression": {
+                break;
+            }
+            default: {
+                control.initController(new QuickFind(10));
+                break;
+            }
+        }
     }
 
     displayNodeSize(root: number, size: number) {
@@ -197,4 +228,4 @@ class view implements IView {
     }
 }
 
-var viewer: view = new view();
+var viewer: View = new View();

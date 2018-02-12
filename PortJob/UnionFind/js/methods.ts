@@ -1,6 +1,6 @@
 ///<reference path="drawGraph.ts"/>
-///<reference path="controller.ts"/>
-///<reference path="view.ts"/>
+///<reference path="Controller.ts"/>
+///<reference path="View.ts"/>
 /**
  * Methods called in JavaScript
  * @author Knut Anders, Kristian, Ragnhild, Øyvind
