@@ -18,7 +18,7 @@ var QuickFind = /** @class */ (function () {
         var aRoot = this.arr[aIndex];
         var bRoot = this.arr[bIndex];
         if (aRoot == bRoot) {
-            this.delay(this.getDelayTime());
+            this.delay(this.getDelayTime() * 2);
             control.setSelectedIndex(aIndex, false);
             control.setSelectedIndex(bIndex, false);
             return;

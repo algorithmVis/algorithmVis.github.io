@@ -8,6 +8,7 @@
 ///<reference path="QuickFind.ts"/>
 ///<reference path="WeightedUnion.ts"/>
 ///<reference path="QuickUnion.ts"/>
+///<reference path="QuickUnionPathCompression.ts"/>
 var View = /** @class */ (function () {
     function View() {
         this.colors = ["#7FFF00", "not used", "#FFB366"];
@@ -167,6 +168,7 @@ var View = /** @class */ (function () {
                 break;
             }
             case "QuickUnionPathCompression": {
+                control.initController(new QuickUnionPathCompression(10));
                 break;
             }
             case "WeightedUnionPathCompression": {

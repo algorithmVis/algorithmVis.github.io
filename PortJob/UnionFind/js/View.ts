@@ -9,6 +9,7 @@
 ///<reference path="QuickFind.ts"/>
 ///<reference path="WeightedUnion.ts"/>
 ///<reference path="QuickUnion.ts"/>
+///<reference path="QuickUnionPathCompression.ts"/>
 
 
 declare var $;
@@ -207,6 +208,7 @@ class View implements IView {
                 break;
             }
             case "QuickUnionPathCompression": {
+                control.initController(new QuickUnionPathCompression(10));
                 break;
             }
             case "WeightedUnionPathCompression": {

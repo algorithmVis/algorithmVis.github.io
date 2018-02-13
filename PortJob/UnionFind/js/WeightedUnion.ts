@@ -1,3 +1,8 @@
+/**
+ * Created by Øyvind Skeie Liland 09.02.18
+ * Inspired by WeightedUnion.java
+ */
+
 ///<reference path="Controller.ts"/>
 
 

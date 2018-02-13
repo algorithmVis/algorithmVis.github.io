@@ -1,5 +1,6 @@
 /**
- * File created by Philip Hoang 06.2.18
+ * File created by Philip Hoang 06.2.
+ * written by Øyvind ;););)
  * based on QuickFind.Java
  */
 ///<reference path="Controller.ts"/>
