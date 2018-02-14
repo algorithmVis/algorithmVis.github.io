@@ -45,7 +45,17 @@ var View = /** @class */ (function () {
         stepper.saveState(twoDimRelationshipsJSON, arrJSON);
     };
     View.prototype.setThisArrow = function (index) {
-        setArrow(index);
+        var forward = function (index) {
+            return function () {
+                setArrow(index);
+            };
+        }(index);
+        var backward = function (index) {
+            return function () {
+                setArrow(index);
+            };
+        }(index);
+        manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
     };
     View.prototype.setValueAtThisIndex = function (i, bValue) {
         var forwardSteps = function (i, bValue) {
@@ -75,16 +85,36 @@ var View = /** @class */ (function () {
     };
     //executeSaveMethodInJavaScript(clonedBackendArray)
     View.prototype.highlightThisNode = function (index, color) {
-        highlightNode(index, color);
+        var forward = function (index, color) {
+            return function () {
+                highlightNode(index, color);
+            };
+        }(index, color);
+        manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
     };
     View.prototype.removeThisHighlight = function (index) {
-        removeHighlight(index);
+        var forward = function (index) {
+            return function () {
+                removeHighlight(index);
+            };
+        }(index);
+        manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
     };
     View.prototype.checkMark = function (aIndex, bIndex, set) {
-        setCheckMark(set, aIndex, bIndex);
+        var forward = function (aIndex, bIndex, set) {
+            return function () {
+                setCheckMark(set, aIndex, bIndex);
+            };
+        }(aIndex, bIndex, set);
+        manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
     };
     View.prototype.redCross = function (aIndex, bIndex, set) {
-        setWrongMark(set, aIndex, bIndex);
+        var forward = function (aIndex, bIndex, set) {
+            return function () {
+                setWrongMark(set, aIndex, bIndex);
+            };
+        }(aIndex, bIndex, set);
+        manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
     };
     View.prototype.setThisState = function (relationships, backendArray) {
         setState(backendArray.parse("\\'%s\\'"), relationships.parse("\\'%s\\'"));

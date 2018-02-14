@@ -1,4 +1,7 @@
-///<reference path="Controller.ts"/>
+/**
+ * Created by Øyvind Skeie Liland 09.02.18
+ * Inspired by WeightedUnion.java
+ */
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -9,6 +12,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+///<reference path="Controller.ts"/>
 var WeightedUnion = /** @class */ (function (_super) {
     __extends(WeightedUnion, _super);
     function WeightedUnion(arrSize) {

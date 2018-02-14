@@ -1,4 +1,7 @@
-///<reference path="QuickUnion.ts"/>
+/**
+ * Created by Øyvind Skeie Liland 13.02.18
+ * Inspired by: QuickUnionPathCompression.java
+ */
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -9,6 +12,7 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+///<reference path="QuickUnion.ts"/>
 var QuickUnionPathCompression = /** @class */ (function (_super) {
     __extends(QuickUnionPathCompression, _super);
     function QuickUnionPathCompression(size) {

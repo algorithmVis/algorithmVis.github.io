@@ -55,7 +55,18 @@ class View implements IView {
     }
 
     setThisArrow(index: number) {
-        setArrow(index);
+        let forward = function (index) {
+            return function () {
+                setArrow(index);
+            }
+        }(index);
+        let backward = function (index) {
+            return function () {
+                setArrow(index)
+            }
+        }(index);
+
+        manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
     }
 
     setValueAtThisIndex(i: number, bValue: number) {
@@ -93,19 +104,44 @@ class View implements IView {
     //executeSaveMethodInJavaScript(clonedBackendArray)
 
     highlightThisNode(index: number, color: string) {
-        highlightNode(index, color);
+        let forward = function (index: number, color: string) {
+            return function () {
+                highlightNode(index, color);
+            }
+        }(index, color);
+
+        manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
     }
 
     removeThisHighlight(index: number) {
-        removeHighlight(index);
+        let forward = function (index: number) {
+            return function () {
+                removeHighlight(index);
+            }
+        }(index);
+
+        manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
     }
 
     checkMark(aIndex: number, bIndex: number, set: boolean) {
-        setCheckMark(set, aIndex, bIndex);
+        let forward = function (aIndex: number, bIndex: number, set: boolean) {
+            return function () {
+                setCheckMark(set, aIndex, bIndex);
+            }
+        }(aIndex, bIndex, set);
+
+        manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
     }
 
     redCross(aIndex: number, bIndex: number, set: boolean) {
-        setWrongMark(set, aIndex, bIndex);
+        let forward = function (aIndex: number, bIndex: number, set: boolean) {
+            return function () {
+                setWrongMark(set, aIndex, bIndex);
+
+            }
+        }(aIndex, bIndex, set);
+
+        manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
     }
 
     setThisState(relationships: JSON, backendArray: JSON) {
