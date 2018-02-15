@@ -7,7 +7,6 @@
  *
  */
 //declare var javaBinder; // Used to communicate with java
-
 var firstSelected: number = -1;
 var locked: boolean = false;
 var contentHidden: boolean = false;

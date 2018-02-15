@@ -10,6 +10,8 @@
 ///<reference path="WeightedUnion.ts"/>
 ///<reference path="QuickUnion.ts"/>
 ///<reference path="QuickUnionPathCompression.ts"/>
+///<reference path="WeightedUnionPathCompression.ts"/>
+
 
 
 declare var $;
@@ -248,6 +250,7 @@ class View implements IView {
                 break;
             }
             case "WeightedUnionPathCompression": {
+                control.initController(new WeightedUnionPathCompression(10));
                 break;
             }
             default: {
@@ -261,6 +264,10 @@ class View implements IView {
 
     }
 
+    /**
+     * Må implementeres for å få backward/forward til å fungere
+     * @param clone
+     */
     executeSaveMethodInJavaScript(clone: any) {
 
     }

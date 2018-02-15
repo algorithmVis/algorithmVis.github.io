@@ -9,6 +9,7 @@
 ///<reference path="WeightedUnion.ts"/>
 ///<reference path="QuickUnion.ts"/>
 ///<reference path="QuickUnionPathCompression.ts"/>
+///<reference path="WeightedUnionPathCompression.ts"/>
 var View = /** @class */ (function () {
     function View() {
         this.colors = ["#7FFF00", "not used", "#FFB366"];
@@ -202,6 +203,7 @@ var View = /** @class */ (function () {
                 break;
             }
             case "WeightedUnionPathCompression": {
+                control.initController(new WeightedUnionPathCompression(10));
                 break;
             }
             default: {
@@ -212,6 +214,10 @@ var View = /** @class */ (function () {
     };
     View.prototype.displayNodeSize = function (root, size) {
     };
+    /**
+     * Må implementeres for å få backward/forward til å fungere
+     * @param clone
+     */
     View.prototype.executeSaveMethodInJavaScript = function (clone) {
     };
     return View;
