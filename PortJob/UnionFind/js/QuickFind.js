@@ -65,11 +65,12 @@ var QuickFind = /** @class */ (function () {
         control.removeHighlight(this.arr[pIndex]);
     };
     QuickFind.prototype.delay = function (delayTime) {
-        var start = new Date().getTime();
-        for (var i = 0; i < 1e7; i++) {
+        /*
+        let start = new Date().getTime();
+        for (let i = 0; i < 1e7; i++) {
             if ((new Date().getTime() - start) > delayTime)
                 break;
-        }
+        }*/
     };
     QuickFind.prototype.find = function (pIndex) {
         var root = this.simpleFind(pIndex, "green");

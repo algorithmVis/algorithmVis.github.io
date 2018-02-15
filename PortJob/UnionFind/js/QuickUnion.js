@@ -126,12 +126,12 @@ var QuickUnion = /** @class */ (function () {
      * @param delayTime
      */
     QuickUnion.prototype.delay = function (delayTime) {
-        var start = new Date().getTime();
-        for (var i = 0; i < 1e7; i++) {
+        /*let start = new Date().getTime();
+        for (let i = 0; i < 1e7; i++) {
             if ((new Date().getTime() - start) > delayTime) {
                 break;
             }
-        }
+        }*/
     };
     QuickUnion.prototype.setController = function (control) {
     };
