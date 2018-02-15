@@ -25,6 +25,7 @@
     <script src="js/State.js"></script>
     <script src="js/StateController.js"></script>
     <script src="js/QuickUnionPathCompression.js"></script>
+    <script src="js/WeightedUnionPathCompression.js"></script>
     <!-- For debugging -->
     <!-- <script type='text/js' src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script> -->
 
@@ -70,7 +71,7 @@
                 <input id="QuickUnionPathCompression" type="radio" name="algorithm" value="quickComp"
                        onclick="viewer.switchAlgorithm('QuickUnionPathCompression')"> Quick Union Path
                 Compression<br>
-                <!-- <input id="WeightedUnionPathCompression" type="radio" name="algorithm" value="weightComp" onclick="javaBinder.switchAlgorithm('WeightedUnionPathCompression')"> Weighted Union Path Compression<br> -->
+                <input id="WeightedUnionPathCompression" type="radio" name="algorithm" value="weightComp" onclick="viewer.switchAlgorithm('WeightedUnionPathCompression')"> Weighted Union Path Compression<br>
             </form>
         </div>
         <div class="settings">
@@ -101,10 +102,6 @@
 <script src="js/insertArrayAndNodes.js"></script>
 <script src="js/drawGraph.js"></script>
 <script src="js/methods.js"></script>
-
-<script>if (typeof javaBinder != "undefined") {
-    javaBinder.javascriptReady();
-}</script> <!-- Call this methods after all scripts are loaded -->
 
 </html>
 
