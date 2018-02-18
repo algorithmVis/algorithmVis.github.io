@@ -1,0 +1,133 @@
+body {
+    background-color: white;
+    z-index: -10;
+}
+
+h1 {
+    margin-bottom: 40px;
+    font-size: 3.5em;
+}
+
+ul.insElements {
+  list-style-type: none;
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  width: 0;
+}
+
+ul.insElements li {
+  position: absolute;
+  text-align: center;
+  top: 25px;
+  background-color: white;
+}
+
+ul.insElements li div {
+    width: 65px;
+    border: 2px solid black;
+    border-radius: 4px;
+    padding: 10px;
+    outline: 1px solid transparent;
+}
+
+ul.insElements li.finished div {
+    background-color: #3adb04;
+}
+
+ul.insElements li.pivot div {
+    background-color: #f1f500;
+}
+
+div#array ul#arrayUl {
+    font-weight: bold;
+    font-size: 2em;
+}
+
+div.insertionSort {
+  margin-top: 40px;
+  margin-bottom: 70px;
+  position: relative;
+}
+
+div#indices {
+    position: relative;
+    margin: 0 auto;
+    width: 0;
+    font-size: 1.5em;
+    top: -20px;
+}
+
+div#indices p {
+    position: absolute;
+    display: inline-block;
+    top: 15px;
+}
+
+div#k-value {
+    height: 50px;
+    width: 0;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+
+svg#k-svg {
+    width: 2000px;
+    position: relative;
+}
+
+svg#k-svg line {
+    stroke: black;
+    stroke-width: 5;
+
+}
+
+svg#k-svg text {
+    fill: black;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+img.bracket {
+    position: absolute;
+    height: auto;
+    width: 50px;
+    top: 0px;
+}
+
+img#leftBracket {
+    left: -50px;
+}
+
+img#rightBracket {
+    left: 70px;
+}
+
+
+img#paused {
+    position: absolute;
+    height: auto;
+    width: 50px;
+    top: 20px;
+    left: 20px;
+}
+
+div.arrow {
+    position: absolute;
+    top: 80px;
+    width: 80px;
+    font-size: 0.8em;
+    z-index: 1;
+}
+
+div.underArray {
+    margin-top: 400px;
+}
+
+div#pivotChar {
+    position: absolute;
+    font-weight: bold;
+    font-size: 1.2em;
+    /*top: 100px;*/
+    /*left: 200px;*/
+}
