@@ -28,6 +28,7 @@ var QuickUnion = /** @class */ (function () {
         var aRoot = this.simpleFind(aIndex, "green");
         var bRoot = this.simpleFind(bIndex, "green");
         //SaveState i Controller??
+        control.saveState(this.getArray());
         if (aRoot != bRoot) {
             control.removeHighlight(aRoot);
             control.connectNodes(aRoot, bRoot);

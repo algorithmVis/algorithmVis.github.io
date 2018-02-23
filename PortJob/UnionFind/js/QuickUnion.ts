@@ -34,6 +34,7 @@ class QuickUnion implements IAlgorithm {
         let aRoot = this.simpleFind(aIndex, "green");
         let bRoot = this.simpleFind(bIndex, "green");
         //SaveState i Controller??
+        control.saveState(this.getArray());
 
         if (aRoot != bRoot) {
             control.removeHighlight(aRoot);

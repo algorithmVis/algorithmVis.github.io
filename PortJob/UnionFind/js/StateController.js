@@ -18,6 +18,7 @@ var StateController = /** @class */ (function () {
      * Also saves the current State to nextStates to be able to step forward again
      */
     StateController.prototype.stepBack = function (twoDimRelationshipsJSON, backendArrayJSON) {
+        //alert(this.previousStates.length);
         if (this.previousStates.length <= 0)
             return false;
         this.saveStateToNextStates(twoDimRelationshipsJSON, backendArrayJSON);
@@ -56,8 +57,9 @@ var StateController = /** @class */ (function () {
     StateController.prototype.getState = function (twoDimRelationshipsJSON, backendArrayJSON) {
         var twoDimRelationship = twoDimRelationshipsJSON;
         var backendArray = [];
-        for (var i = 0; i < backendArray.length; i++) {
-            backendArray[i] = Number(backendArrayJSON.stringify(i));
+        var json = backendArrayJSON;
+        for (var i = 0; i < Object(json).length; i++) {
+            backendArray.push(Number(json[i]));
         }
         return new State(backendArray, twoDimRelationship);
     };

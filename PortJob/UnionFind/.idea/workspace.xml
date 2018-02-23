@@ -2,14 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="027dbd77-69d0-4caa-b666-3b85be8a4c8a" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/../MergeSort/js/MergeSortAlgorithm.ts" afterPath="$PROJECT_DIR$/../MergeSort/js/MergeSortAlgorithm.ts" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change beforePath="$PROJECT_DIR$/js/EventManager.js" afterPath="$PROJECT_DIR$/js/EventManager.js" />
-      <change beforePath="$PROJECT_DIR$/js/EventManager.ts" afterPath="$PROJECT_DIR$/js/EventManager.ts" />
-      <change beforePath="$PROJECT_DIR$/js/QuickFind.js" afterPath="$PROJECT_DIR$/js/QuickFind.js" />
-      <change beforePath="$PROJECT_DIR$/js/QuickFind.ts" afterPath="$PROJECT_DIR$/js/QuickFind.ts" />
+      <change beforePath="$PROJECT_DIR$/js/Controller.js" afterPath="$PROJECT_DIR$/js/Controller.js" />
+      <change beforePath="$PROJECT_DIR$/js/Controller.ts" afterPath="$PROJECT_DIR$/js/Controller.ts" />
       <change beforePath="$PROJECT_DIR$/js/QuickUnion.js" afterPath="$PROJECT_DIR$/js/QuickUnion.js" />
       <change beforePath="$PROJECT_DIR$/js/QuickUnion.ts" afterPath="$PROJECT_DIR$/js/QuickUnion.ts" />
+      <change beforePath="$PROJECT_DIR$/js/State.js" afterPath="$PROJECT_DIR$/js/State.js" />
+      <change beforePath="$PROJECT_DIR$/js/State.ts" afterPath="$PROJECT_DIR$/js/State.ts" />
+      <change beforePath="$PROJECT_DIR$/js/StateController.js" afterPath="$PROJECT_DIR$/js/StateController.js" />
+      <change beforePath="$PROJECT_DIR$/js/StateController.ts" afterPath="$PROJECT_DIR$/js/StateController.ts" />
+      <change beforePath="$PROJECT_DIR$/js/View.js" afterPath="$PROJECT_DIR$/js/View.js" />
+      <change beforePath="$PROJECT_DIR$/js/View.ts" afterPath="$PROJECT_DIR$/js/View.ts" />
+      <change beforePath="$PROJECT_DIR$/js/drawGraph.js" afterPath="$PROJECT_DIR$/js/drawGraph.js" />
+      <change beforePath="$PROJECT_DIR$/js/drawGraph.ts" afterPath="$PROJECT_DIR$/js/drawGraph.ts" />
+      <change beforePath="$PROJECT_DIR$/js/methods.js" afterPath="$PROJECT_DIR$/js/methods.js" />
+      <change beforePath="$PROJECT_DIR$/js/methods.ts" afterPath="$PROJECT_DIR$/js/methods.ts" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -26,38 +34,30 @@
       <file leaf-file-name="QuickUnion.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/QuickUnion.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="166" column="11" lean-forward="false" selection-start-line="166" selection-start-column="11" selection-end-line="166" selection-end-column="11" />
+            <state relative-caret-position="0">
+              <caret line="70" column="0" lean-forward="true" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="insertArrayAndNodes.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/insertArrayAndNodes.js">
+      <file leaf-file-name="View.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/View.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="16" column="39" lean-forward="false" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
-              <folding />
+            <state relative-caret-position="2600">
+              <caret line="104" column="0" lean-forward="false" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
+              <folding>
+                <marker date="1519402712463" expanded="true" signature="7819:7824" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="QuickFind.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/QuickFind.ts">
+      <file leaf-file-name="StateController.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/StateController.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2375">
-              <caret line="95" column="11" lean-forward="false" selection-start-line="95" selection-start-column="11" selection-end-line="95" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="514">
-              <caret line="40" column="29" lean-forward="false" selection-start-line="40" selection-start-column="29" selection-end-line="40" selection-end-column="29" />
+            <state relative-caret-position="2125">
+              <caret line="85" column="0" lean-forward="true" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -66,38 +66,40 @@
       <file leaf-file-name="methods.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/methods.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="219" column="0" lean-forward="false" selection-start-line="219" selection-start-column="0" selection-end-line="219" selection-end-column="0" />
+            <state relative-caret-position="400">
+              <caret line="16" column="18" lean-forward="false" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="State.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/State.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="950">
+              <caret line="38" column="44" lean-forward="false" selection-start-line="38" selection-start-column="44" selection-end-line="38" selection-end-column="44" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EventManager.ts" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/EventManager.ts">
+      <file leaf-file-name="drawGraph.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/drawGraph.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="9" column="24" lean-forward="false" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
+            <state relative-caret-position="1600">
+              <caret line="64" column="40" lean-forward="false" selection-start-line="64" selection-start-column="40" selection-end-line="64" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WeightedUnion.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/WeightedUnion.ts">
+      <file leaf-file-name="Controller.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/Controller.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="QuickUnionPathCompression.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/QuickUnionPathCompression.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-590">
-              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+            <state relative-caret-position="525">
+              <caret line="36" column="24" lean-forward="true" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -120,9 +122,7 @@
       <list>
         <option value="$PROJECT_DIR$/js/IAlgorithm.ts" />
         <option value="$PROJECT_DIR$/js/stepper.ts" />
-        <option value="$PROJECT_DIR$/js/drawGraph.ts" />
         <option value="$PROJECT_DIR$/js/stateController.ts" />
-        <option value="$PROJECT_DIR$/js/methods.ts" />
         <option value="$PROJECT_DIR$/js/IView.ts" />
         <option value="$PROJECT_DIR$/js/weightedUnion.ts" />
         <option value="$PROJECT_DIR$/js/quickUnion.ts" />
@@ -130,15 +130,19 @@
         <option value="$PROJECT_DIR$/js/state.ts" />
         <option value="$PROJECT_DIR$/js/controller.ts" />
         <option value="$PROJECT_DIR$/js/eventManager.ts" />
-        <option value="$PROJECT_DIR$/js/Controller.ts" />
-        <option value="$PROJECT_DIR$/js/StateController.ts" />
         <option value="$PROJECT_DIR$/js/QuickUnionPathCompression.ts" />
         <option value="$PROJECT_DIR$/js/WeightedUnion.ts" />
-        <option value="$PROJECT_DIR$/js/View.ts" />
-        <option value="$PROJECT_DIR$/js/QuickUnion.ts" />
         <option value="$PROJECT_DIR$/js/QuickFind.ts" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/EventManager.ts" />
+        <option value="$PROJECT_DIR$/js/WeightedUnionPathCompression.ts" />
+        <option value="$PROJECT_DIR$/js/QuickUnion.ts" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/drawGraph.ts" />
+        <option value="$PROJECT_DIR$/js/StateController.ts" />
+        <option value="$PROJECT_DIR$/js/View.ts" />
+        <option value="$PROJECT_DIR$/js/methods.ts" />
+        <option value="$PROJECT_DIR$/js/State.ts" />
+        <option value="$PROJECT_DIR$/js/Controller.ts" />
       </list>
     </option>
   </component>
@@ -172,6 +176,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -194,7 +199,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -235,6 +239,8 @@
       <workItem from="1518171336501" duration="2691000" />
       <workItem from="1518180293278" duration="13547000" />
       <workItem from="1518423208589" duration="14055000" />
+      <workItem from="1518710407895" duration="1364000" />
+      <workItem from="1519293856380" duration="20630000" />
     </task>
     <task id="LOCAL-00001" summary="QuickUnion class, IAlgorithm interface and controller changes">
       <created>1518029727811</created>
@@ -292,45 +298,61 @@
       <option name="project" value="LOCAL" />
       <updated>1518525637163</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="UF - Fikset treige animasjoner">
+      <created>1518694199669</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1518694199669</updated>
+    </task>
+    <task id="LOCAL-00010" summary="UF - Implementert WUPC: Basert på java filen">
+      <created>1518698053589</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1518698053589</updated>
+    </task>
+    <task id="LOCAL-00011" summary="UF - WUPC i index.html">
+      <created>1518699972052</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1518699972052</updated>
+    </task>
+    <task id="LOCAL-00012" summary="UF - WUPC i index.html">
+      <created>1518699986885</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1518699986885</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62553000" />
+    <option name="totallyTimeSpent" value="100165000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1056" extended-state="6" />
     <layout>
-      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32902467" sideWeight="0.5" order="20" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22864722" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32902467" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32902467" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32902467" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32902467" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25464192" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="19" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="true" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32902467" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32902467" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
-      <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32902467" sideWeight="0.5" order="18" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25464192" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="19" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32902467" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32902467" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32902467" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -352,6 +374,7 @@
         <option value="$PROJECT_DIR$/js/IView.js" />
         <option value="$PROJECT_DIR$/js/weightedUnion.js" />
         <option value="$PROJECT_DIR$/js/QuickUnionPathCompression.js" />
+        <option value="$PROJECT_DIR$/js/WeightedUnionPathCompression.js" />
       </list>
     </option>
   </component>
@@ -367,7 +390,10 @@
     <MESSAGE value="UF - Impleemntert Weighted Union" />
     <MESSAGE value="UF - Implementert QuickFind - switchAlgorithm() - Bytter navnekonvensjon for klasser" />
     <MESSAGE value="UF - Implementert QuickUnionPathCompression" />
-    <option name="LAST_COMMIT_MESSAGE" value="UF - Implementert QuickUnionPathCompression" />
+    <MESSAGE value="UF - Fikset treige animasjoner" />
+    <MESSAGE value="UF - Implementert WUPC: Basert på java filen" />
+    <MESSAGE value="UF - WUPC i index.html" />
+    <option name="LAST_COMMIT_MESSAGE" value="UF - WUPC i index.html" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -376,32 +402,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/methods.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="219" column="0" lean-forward="true" selection-start-line="219" selection-start-column="0" selection-end-line="219" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/QuickUnion.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="36" column="43" lean-forward="false" selection-start-line="36" selection-start-column="43" selection-end-line="36" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/View.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2108">
-          <caret line="169" column="36" lean-forward="true" selection-start-line="169" selection-start-column="36" selection-end-line="169" selection-end-column="36" />
-          <folding>
-            <marker date="1518635213708" expanded="true" signature="7600:7606" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/StateController.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1900">
@@ -446,7 +446,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="800">
           <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -454,7 +453,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6850">
           <caret line="274" column="16" lean-forward="false" selection-start-line="274" selection-start-column="16" selection-end-line="274" selection-end-column="16" />
-          <folding />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -479,7 +480,7 @@
         <state relative-caret-position="350">
           <caret line="14" column="36" lean-forward="false" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
           <folding>
-            <marker date="1518635213708" expanded="true" signature="7600:7606" ph="{...}" />
+            <marker date="1519402712463" expanded="true" signature="7819:7824" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -497,7 +498,7 @@
         <state relative-caret-position="2800">
           <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
           <folding>
-            <marker date="1518635213708" expanded="true" signature="7600:7606" ph="{...}" />
+            <marker date="1519402712463" expanded="true" signature="7819:7824" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -522,7 +523,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1150">
           <caret line="46" column="31" lean-forward="true" selection-start-line="46" selection-start-column="31" selection-end-line="46" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -530,7 +530,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -538,7 +537,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -563,7 +564,7 @@
         <state relative-caret-position="2800">
           <caret line="112" column="0" lean-forward="true" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
           <folding>
-            <marker date="1518635213708" expanded="true" signature="7600:7606" ph="{...}" />
+            <marker date="1519402712463" expanded="true" signature="7819:7824" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -588,7 +589,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="18" column="9" lean-forward="true" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -596,7 +596,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -604,7 +603,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -629,7 +630,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1518635213708" expanded="true" signature="7600:7606" ph="{...}" />
+            <marker date="1519402712463" expanded="true" signature="7819:7824" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -673,84 +674,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/State.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="10" column="41" lean-forward="false" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/QuickFind.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/StateController.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="11" column="7" lean-forward="false" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/drawGraph.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1336">
-          <caret line="175" column="27" lean-forward="false" selection-start-line="175" selection-start-column="27" selection-end-line="175" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/insertArrayAndNodes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="16" column="39" lean-forward="false" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/View.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2258">
-          <caret line="163" column="36" lean-forward="false" selection-start-line="163" selection-start-column="36" selection-end-line="163" selection-end-column="36" />
-          <folding>
-            <marker date="1518635213708" expanded="true" signature="7600:7606" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/methods.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="219" column="0" lean-forward="false" selection-start-line="219" selection-start-column="0" selection-end-line="219" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/QuickFind.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2375">
-          <caret line="95" column="11" lean-forward="false" selection-start-line="95" selection-start-column="11" selection-end-line="95" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="514">
-          <caret line="40" column="29" lean-forward="false" selection-start-line="40" selection-start-column="29" selection-end-line="40" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/Controller.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-200">
-          <caret line="27" column="5" lean-forward="false" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -771,18 +698,117 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/QuickUnion.ts">
+    <entry file="file://$PROJECT_DIR$/js/QuickFind.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="166" column="11" lean-forward="false" selection-start-line="166" selection-start-column="11" selection-end-line="166" selection-end-column="11" />
+        <state relative-caret-position="2300">
+          <caret line="95" column="11" lean-forward="false" selection-start-line="95" selection-start-column="11" selection-end-line="95" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/tsconfig.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/WeightedUnionPathCompression.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="10" column="31" lean-forward="true" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/EventManager.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="9" column="24" lean-forward="false" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
+        <state relative-caret-position="100">
+          <caret line="16" column="42" lean-forward="true" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="965" column="4" lean-forward="false" selection-start-line="965" selection-start-column="4" selection-end-line="965" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/QuickUnion.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="70" column="0" lean-forward="true" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/insertArrayAndNodes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="16" column="39" lean-forward="false" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="471">
+          <caret line="79" column="71" lean-forward="false" selection-start-line="79" selection-start-column="71" selection-end-line="79" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/StateController.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2125">
+          <caret line="85" column="0" lean-forward="true" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/View.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2600">
+          <caret line="104" column="0" lean-forward="false" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
+          <folding>
+            <marker date="1519402712463" expanded="true" signature="7819:7824" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/methods.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="16" column="18" lean-forward="false" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/State.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="950">
+          <caret line="38" column="44" lean-forward="false" selection-start-line="38" selection-start-column="44" selection-end-line="38" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/drawGraph.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1600">
+          <caret line="64" column="40" lean-forward="false" selection-start-line="64" selection-start-column="40" selection-end-line="64" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/Controller.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="36" column="24" lean-forward="true" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="25" />
           <folding />
         </state>
       </provider>

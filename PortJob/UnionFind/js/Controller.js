@@ -15,7 +15,6 @@ var Controller = /** @class */ (function () {
         manager.start();
         this.algorithm = algo;
         this.speed = 50;
-        console.log(algo.getName());
         viewer.changeToCurrentAlgorithm();
         viewer.displayThisArray(this.algorithm.getArray());
     };

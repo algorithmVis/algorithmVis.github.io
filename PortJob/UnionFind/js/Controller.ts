@@ -16,13 +16,12 @@ class Controller {
     private algorithm: IAlgorithm;
     private methodToUse: string = "Union";
     private speed: number;
-    private GUI : IView; // Mulig forskjellig View for ulike algoritmer?
+    private GUI: IView; // Mulig forskjellig View for ulike algoritmer?
 
     initController(algo: IAlgorithm) {
         manager.start();
         this.algorithm = algo;
         this.speed = 50;
-        console.log(algo.getName());
         viewer.changeToCurrentAlgorithm();
         viewer.displayThisArray(this.algorithm.getArray());
     }

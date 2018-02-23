@@ -11,7 +11,7 @@ class State {
     constructor(backendArray: number[], twoDimRelationshipArray: JSON) {
         this.backendArray = backendArray;
         this.twoDimRelationshipArray = twoDimRelationshipArray;
-        //backendArrayJSON = jsonifyBackendArray(this.backendArray);
+        this.backendArrayJSON = this.jsonifyBackendArray(this.backendArray);
     }
 
     /**
@@ -20,8 +20,7 @@ class State {
     public static getDefaultState(): State {
         let defArray: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
         let defRelationships: string[][] = [[], [], [], [], [], [], [], [], [], []];
-
-        return new State(defArray, JSON.parse(JSON.stringify(defRelationships)));
+        return new State(defArray, $.parseJSON($.stringifyJSON(defRelationships)));
     }
 
     private jsonifyBackendArray(backendArray: number[]): JSON {
@@ -29,8 +28,7 @@ class State {
         for (let i: number = 0; i < backendArray.length; i++) {
             arr[i] = backendArray[i] + "";
         }
-
-        return JSON.parse(JSON.stringify(arr));
+        return JSON.parse(JSON.stringify(arr).toString());
     }
 
     public getBackendArray(): number[] {

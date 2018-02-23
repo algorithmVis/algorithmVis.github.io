@@ -13,7 +13,6 @@
 ///<reference path="WeightedUnionPathCompression.ts"/>
 
 
-
 declare var $;
 
 class View implements IView {
@@ -51,8 +50,8 @@ class View implements IView {
     }
 
     saveState(twoDimRelationships: string, backendArray: string) {
-        let twoDimRelationshipsJSON = JSON.parse(JSON.stringify(twoDimRelationships));
-        let arrJSON = JSON.parse(JSON.stringify(backendArray));
+        let twoDimRelationshipsJSON = JSON.parse(twoDimRelationships);
+        let arrJSON = JSON.parse(backendArray);
         stepper.saveState(twoDimRelationshipsJSON, arrJSON);
     }
 
@@ -103,8 +102,6 @@ class View implements IView {
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
 
-    //executeSaveMethodInJavaScript(clonedBackendArray)
-
     highlightThisNode(index: number, color: string) {
         let forward = function (index: number, color: string) {
             return function () {
@@ -147,7 +144,7 @@ class View implements IView {
     }
 
     setThisState(relationships: JSON, backendArray: JSON) {
-        setState(backendArray.parse("\\'%s\\'"), relationships.parse("\\'%s\\'"));
+        setState(JSON.stringify(backendArray).toString(), JSON.stringify(relationships).toString());
     }
 
     stepBack(twoDimRelationshipsJSON: string, backendArray: string) {
@@ -159,8 +156,8 @@ class View implements IView {
     }
 
     step(dir: string, twoDimRelationshipsJSON: string, backendArray: string) {
-        let relationships: JSON = JSON.parse(JSON.stringify(twoDimRelationshipsJSON));
-        let backendArr: JSON = JSON.parse(JSON.stringify(backendArray));
+        let relationships: JSON = JSON.parse(twoDimRelationshipsJSON);
+        let backendArr: JSON = JSON.parse(backendArray);
         if (dir === "forward")
             stepper.stepForward(relationships, backendArr);
         else if (dir === "backward")
@@ -268,8 +265,9 @@ class View implements IView {
      * Må implementeres for å få backward/forward til å fungere
      * @param clone
      */
-    executeSaveMethodInJavaScript(clone: any) {
-
+    executeSaveMethodInJavaScript(clone: number[]) {
+        let arr: string = JSON.stringify(clone).toString();
+        saveState(arr);
     }
 }
 

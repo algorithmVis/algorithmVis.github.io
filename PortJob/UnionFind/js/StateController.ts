@@ -28,6 +28,7 @@ class StateController {
      * Also saves the current State to nextStates to be able to step forward again
      */
     public stepBack(twoDimRelationshipsJSON: JSON, backendArrayJSON: JSON): boolean {
+        //alert(this.previousStates.length);
         if (this.previousStates.length <= 0)
             return false;
 
@@ -46,7 +47,6 @@ class StateController {
     public stepForward(twoDimRelationshipJSON: JSON, backendArrayJSON: JSON): boolean {
         if (this.nextStates.length <= 0)
             return false;
-
         this.saveStateToPreviousStates(twoDimRelationshipJSON, backendArrayJSON);
         let nextState: State = (<State> this.nextStates.pop());
         this.setState(nextState);
@@ -75,10 +75,11 @@ class StateController {
 
     private getState(twoDimRelationshipsJSON: JSON, backendArrayJSON: JSON): State {
         let twoDimRelationship: JSON = twoDimRelationshipsJSON;
-        let backendArray: number[] = [];
 
-        for (let i = 0; i < backendArray.length; i++) {
-            backendArray[i] = Number(backendArrayJSON.stringify(i));
+        let backendArray: number[] = [];
+        let json = backendArrayJSON;
+        for (let i = 0; i < Object(json).length; i++) {
+            backendArray.push(Number(json[i]));
         }
         return new State(backendArray, twoDimRelationship);
     }

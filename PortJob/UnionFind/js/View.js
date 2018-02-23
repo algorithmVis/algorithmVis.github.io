@@ -41,8 +41,8 @@ var View = /** @class */ (function () {
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
     View.prototype.saveState = function (twoDimRelationships, backendArray) {
-        var twoDimRelationshipsJSON = JSON.parse(JSON.stringify(twoDimRelationships));
-        var arrJSON = JSON.parse(JSON.stringify(backendArray));
+        var twoDimRelationshipsJSON = JSON.parse(twoDimRelationships);
+        var arrJSON = JSON.parse(backendArray);
         stepper.saveState(twoDimRelationshipsJSON, arrJSON);
     };
     View.prototype.setThisArrow = function (index) {
@@ -84,7 +84,6 @@ var View = /** @class */ (function () {
         }(child, parent);
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
-    //executeSaveMethodInJavaScript(clonedBackendArray)
     View.prototype.highlightThisNode = function (index, color) {
         var forward = function (index, color) {
             return function () {
@@ -118,7 +117,7 @@ var View = /** @class */ (function () {
         manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
     };
     View.prototype.setThisState = function (relationships, backendArray) {
-        setState(backendArray.parse("\\'%s\\'"), relationships.parse("\\'%s\\'"));
+        setState(JSON.stringify(backendArray).toString(), JSON.stringify(relationships).toString());
     };
     View.prototype.stepBack = function (twoDimRelationshipsJSON, backendArray) {
         this.step("backward", twoDimRelationshipsJSON, backendArray);
@@ -127,8 +126,8 @@ var View = /** @class */ (function () {
         this.step("forward", twoDimRelationshipsJSON, backendArray);
     };
     View.prototype.step = function (dir, twoDimRelationshipsJSON, backendArray) {
-        var relationships = JSON.parse(JSON.stringify(twoDimRelationshipsJSON));
-        var backendArr = JSON.parse(JSON.stringify(backendArray));
+        var relationships = JSON.parse(twoDimRelationshipsJSON);
+        var backendArr = JSON.parse(backendArray);
         if (dir === "forward")
             stepper.stepForward(relationships, backendArr);
         else if (dir === "backward")
@@ -219,6 +218,8 @@ var View = /** @class */ (function () {
      * @param clone
      */
     View.prototype.executeSaveMethodInJavaScript = function (clone) {
+        var arr = JSON.stringify(clone).toString();
+        saveState(arr);
     };
     return View;
 }());
