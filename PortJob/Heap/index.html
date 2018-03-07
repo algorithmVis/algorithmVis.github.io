@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Heap algorithms</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/heap_style.css" rel="stylesheet">
+
+    <!-- Insert this line above script imports  -->
+    <script>if (typeof module === 'object') {
+        window.module = module;
+        module = undefined;
+    }</script>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui-1.12.0/jquery-ui.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/Controller.js"></script>
+    <script src="js/View.js"></script>
+    <script src="js/EventManager.js"></script>
+    <script src="js/State.js"></script>
+    <script src="js/StateController.js"></script>
+    <!-- For debugging -->
+    <!-- <script type='text/js' src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script> -->
+
+    <!-- Insert this line after script imports -->
+    <script>if (window.module) module = window.module;</script>
+</head>
+
+
+<body onload="viewer.switchAlgorithm('MaxHeap')">
+<div class="text-center">
+    <h1 id="headerText">Heap Datastructure</h1>
+    <div class="arrayRow">
+        <div id="array">
+            <ul id="arrayUL">
+                <img id="arrow" class="hidden" src="assets/up_arrow.png"/>
+                <img id="leftBracket" class="bracket" src="assets/square_left.png"/>
+                <img id="rightBracket" class="bracket" src="assets/square_right.png"/>
+            </ul>
+        </div>
+    </div>
+    <div class="graphRow">
+        <div id="nodes">
+            <ul id="graphUL">
+                <img class="hidden" src="assets/correct.png" id="correctImgA"/>
+                <img class="hidden" src="assets/correct.png" id="correctImgB"/>
+                <img class="hidden" src="assets/wrong.png" id="wrongImgA"/>
+                <img class="hidden" src="assets/wrong.png" id="wrongImgB"/>
+                <svg id="lines"></svg>
+            </ul>
+        </div>
+    </div>
+    <br><br><br><br>
+    <div class="settingsWrapper">
+        <div class="radioSettings">
+            <form id="algorithm">
+                <input id="MaxHeap" type="radio" name="algorithm" value="max" checked
+                       onclick="viewer.switchAlgorithm('MaxHeap')">Max Heap<br>
+            </form>
+        </div>
+        <div class="settings">
+            <div class="buttons">
+                <button id="reset" class="btn btn-primary" onclick="viewer.resetAll();">Reset</button>
+                <button id="backward" class="btn btn-primary" onclick="stepBack();">Backward</button>
+                <button id="forward" class="btn btn-primary"
+                        onclick="viewer.stepForward(getGraphState(), getArrayState());">Forward
+                </button>
+                <button id="addElem" class="btn btn-primary" onclick="viewer.addNode(12)">
+                    Add element
+                </button>
+            </div>
+            <div class="buttons">
+                <button id="slow" class="btn btn-success" onclick="setSlow()">Slow</button>
+                <button id="medium" class="btn btn-success" onclick="setMedium()">Medium</button>
+                <button id="fast" class="btn btn-success" onclick="setFast()">Fast</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<script src="js/insertArrayAndNodes.js"></script>
+<script src="js/drawGraph.js"></script>
+<script src="js/methods.js"></script>
+<script src="js/MaxHeap.js"></script>
+
+</html>
+
