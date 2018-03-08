@@ -196,7 +196,7 @@ function createAndDrawNodes(nodes) {
     allNodes = new Array;
 
     for (var i = 0; i < nodes.length; i++) {
-        var node: GraphNode = new GraphNode(nodes[i], nodes[i]);
+        var node: GraphNode = new GraphNode(i, nodes[i]);
 
         // Add node to nodeList
         allNodes.push(node);
@@ -211,6 +211,16 @@ function createAndDrawNodes(nodes) {
     }
 
     positioningNodes(1500);
+}
+
+// Add a new node to the graph and connect it to the parent
+function insertNewNode(i: number, val: number): void {
+    let node: GraphNode = new GraphNode(i, val);
+    allNodes.push(node);
+    node.parent = superNode;
+    superNode.children.push(node);
+    $("#graphUL").append('<li id="node' + i + '">' + i + '</li>');
+    //connectNodes(allNodes.length - 1, Math.floor((allNodes.length - 1) / 2));
 }
 
 function positioningNodes(time: number) {

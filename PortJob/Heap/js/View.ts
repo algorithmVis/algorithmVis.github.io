@@ -221,9 +221,8 @@ class View implements IView {
         saveState(arr);
     }
 
-    addNode(i: number) {
-        i = 12;
-        control.addNode(i);
+    addNode(val: number) {
+        control.addNode(val);
         setOnClickListener();
         setKeyListener();
         setupRadio();

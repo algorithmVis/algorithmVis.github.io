@@ -25,7 +25,11 @@ function setOnClickListener() {
                 return;
             }
             var id: string = $(this).attr("id");
-            selectElement(parseInt(id.slice(-1)));
+            let idInt = "";
+            for (let i = 0; i < id.length; i++)
+                if (!isNaN(parseInt(id[i])))
+                    idInt += id[i];
+            selectElement(parseInt(idInt));
         });
     });
 }
@@ -136,6 +140,7 @@ function setValueAtIndex(i: number, value: number) {
     $elem.append("" + value);
 }
 
+// Add a new element to the array
 function insertNewElem(i: number, val: number): void {
     let arrayLength = control.getArrayClone().length;
     if (arrayLength > 10)
@@ -145,6 +150,8 @@ function insertNewElem(i: number, val: number): void {
     $("#arrayUL").append("<li id='arrayElem" + i + "'><div class='index'>" + i + "</div><div class='content' id='arrayContent" + i + "'>" + val + "</div></li>");
     var left = (i * 70) + "px";
     $("#arrayElem" + i).animate({left: left}, 1000);
+
+    insertNewNode(i, val);
 }
 
 // Connecting two nodes
@@ -159,11 +166,11 @@ function connectNodes(child: number, parent: number) {
         });
         return;
     }
-    console.log("parent: " + allNodes[parent]);
-    console.log("child: " + child);
     var parentNode: GraphNode = allNodes[parent];
     var childNode: GraphNode = allNodes[child];
 
+    console.log(parentNode);
+    console.log(childNode);
     //To avoid removing and re-adding a child to its own parent
     if (childNode.parent == parentNode) {
         return;
@@ -341,3 +348,14 @@ function setupSpeedButtons() {
 
 setupSpeedButtons();
 
+function setUpAddButton() {
+    $("#addElem").click(function () {
+        var val = prompt("Which value do you want to add? Integer >= 0");
+        while (isNaN(parseInt(val)) && parseInt(val) < 0)
+            val = prompt("Which value do you want to add? Integer >= 0");
+
+        viewer.addNode(parseInt(val));
+    });
+}
+
+setUpAddButton();

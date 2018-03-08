@@ -151,7 +151,7 @@ function createAndDrawNodes(nodes) {
     superNode.children = new Array;
     allNodes = new Array;
     for (var i = 0; i < nodes.length; i++) {
-        var node = new GraphNode(nodes[i], nodes[i]);
+        var node = new GraphNode(i, nodes[i]);
         // Add node to nodeList
         allNodes.push(node);
         // Add node to superNode (Do not use addChild() here)
@@ -161,6 +161,15 @@ function createAndDrawNodes(nodes) {
         $("#graphUL").append('<li id="node' + i + '">' + nodes[i] + '</li>');
     }
     positioningNodes(1500);
+}
+// Add a new node to the graph and connect it to the parent
+function insertNewNode(i, val) {
+    var node = new GraphNode(i, val);
+    allNodes.push(node);
+    node.parent = superNode;
+    superNode.children.push(node);
+    $("#graphUL").append('<li id="node' + i + '">' + i + '</li>');
+    //connectNodes(allNodes.length - 1, Math.floor((allNodes.length - 1) / 2));
 }
 function positioningNodes(time) {
     // Position the whole graph

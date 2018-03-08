@@ -23,7 +23,11 @@ function setOnClickListener() {
                 return;
             }
             var id = $(this).attr("id");
-            selectElement(parseInt(id.slice(-1)));
+            var idInt = "";
+            for (var i = 0; i < id.length; i++)
+                if (!isNaN(parseInt(id[i])))
+                    idInt += id[i];
+            selectElement(parseInt(idInt));
         });
     });
 }
@@ -115,6 +119,7 @@ function setValueAtIndex(i, value) {
     $elem.empty();
     $elem.append("" + value);
 }
+// Add a new element to the array
 function insertNewElem(i, val) {
     var arrayLength = control.getArrayClone().length;
     if (arrayLength > 10)
@@ -124,6 +129,7 @@ function insertNewElem(i, val) {
     $("#arrayUL").append("<li id='arrayElem" + i + "'><div class='index'>" + i + "</div><div class='content' id='arrayContent" + i + "'>" + val + "</div></li>");
     var left = (i * 70) + "px";
     $("#arrayElem" + i).animate({ left: left }, 1000);
+    insertNewNode(i, val);
 }
 // Connecting two nodes
 function connectNodes(child, parent) {
@@ -136,10 +142,10 @@ function connectNodes(child, parent) {
         });
         return;
     }
-    console.log("parent: " + allNodes[parent]);
-    console.log("child: " + child);
     var parentNode = allNodes[parent];
     var childNode = allNodes[child];
+    console.log(parentNode);
+    console.log(childNode);
     //To avoid removing and re-adding a child to its own parent
     if (childNode.parent == parentNode) {
         return;
@@ -299,3 +305,12 @@ function setupSpeedButtons() {
     });
 }
 setupSpeedButtons();
+function setUpAddButton() {
+    $("#addElem").click(function () {
+        var val = prompt("Which value do you want to add? Integer >= 0");
+        while (isNaN(parseInt(val)) && parseInt(val) < 0)
+            val = prompt("Which value do you want to add? Integer >= 0");
+        viewer.addNode(parseInt(val));
+    });
+}
+setUpAddButton();

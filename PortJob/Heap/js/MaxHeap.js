@@ -20,10 +20,10 @@ var MaxHeap = /** @class */ (function () {
         for (var i = 0; i <= Math.floor(this.array.length / 2); i++) {
             var parent_1 = i;
             if (this.array[2 * i + 1] !== null) {
-                connectNodes(this.array[2 * i + 1], this.array[parent_1]);
+                connectNodes(2 * i + 1, parent_1);
             }
             if (this.array[2 * i + 2] !== null) {
-                connectNodes(this.array[(2 * i) + 2], this.array[parent_1]);
+                connectNodes((2 * i) + 2, parent_1);
             }
         }
     };
@@ -49,7 +49,7 @@ var MaxHeap = /** @class */ (function () {
         this.array.push(a);
         insertNewElem(this.array.length - 1, a); // Create element in frontendarray
         control.saveState(this.array); // Save the new state
-        control.connectNodes(this.array.length - 1, Math.floor((this.array.length - 1) / 2));
+        control.connectNodes(this.array.length - 1, Math.floor((this.array.length - 2) / 2));
         // Swim to te correct index and start frontendevents
         this.swim(this.array.length - 1);
     };

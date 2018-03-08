@@ -179,9 +179,8 @@ var View = /** @class */ (function () {
         var arr = JSON.stringify(clone).toString();
         saveState(arr);
     };
-    View.prototype.addNode = function (i) {
-        i = 12;
-        control.addNode(i);
+    View.prototype.addNode = function (val) {
+        control.addNode(val);
         setOnClickListener();
         setKeyListener();
         setupRadio();
