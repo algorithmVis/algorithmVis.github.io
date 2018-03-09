@@ -7,13 +7,13 @@ var sortArray = [];
 var copyArray = [];
 var n = 10;
 var running = true;
-var mid = 0;
-var left;
-var right;
 function checkIfAlreadyRunning() {
     if (running) {
         manager.clear();
-        setArray(viewer.serializeArray(setRandomArray()));
+        var arry = setRandomArray();
+        console.log(arry);
+        setArray(viewer.serializeArray(arry));
+        viewer.pause();
     }
     else {
         running = true;
@@ -24,17 +24,21 @@ function startMergeSort() {
     mergesort(sortArray);
 }
 function mergesort(array) {
-    if (array.length < 2) {
+    if (array.length === 1) {
         viewer.deselectPivotElement(array[0]);
         return array;
     }
     else {
+        var mid = void 0;
+        var left = void 0;
+        var right = void 0;
         mid = Math.floor(array.length * 0.5);
         viewer.setPivotElement(mid);
         left = array.slice(0, mid);
         viewer.lowerElements(0, mid);
         right = array.slice(mid);
         viewer.lowerElements(mid, array.length);
+        viewer.deselectPivotElement(mid);
         //Split until there is only 1 element left
         return merge(mergesort(left), mergesort(right));
     }
@@ -47,6 +51,7 @@ function merge(left, right) {
     while (indexLeft < left.length && indexRight < right.length) {
         //Compare the elements from each array
         if (left[indexLeft] < right[indexRight]) {
+            console.log("left < right" + left[indexLeft] + " " + right[indexRight]);
             result.push(left[indexLeft]);
             viewer.deselectPivotElement(indexLeft);
             viewer.liftElements(indexLeft, indexLeft);
@@ -59,19 +64,26 @@ function merge(left, right) {
             indexRight++;
         }
     }
-    while (indexLeft < left.length) {
+    /**
+    while(indexLeft < left.length) {
         result.push(left[indexLeft]);
         viewer.liftElements(left.indexOf(0), indexLeft);
         viewer.deselectPivotElement(indexLeft);
+
         indexLeft++;
     }
-    while (indexRight < right.length) {
+
+    while(indexRight < right.length) {
         result.push(right[indexRight]);
+
         viewer.liftElements(right.lastIndexOf(0), indexRight);
         viewer.deselectPivotElement(indexLeft);
+
         indexRight++;
     }
-    return result;
+     */
+    //console.log(result.concat(left.slice(indexLeft)).concat(right.slice(indexRight)));
+    return result.concat(left.slice(indexLeft)).concat(right.slice(indexRight));
 }
 function delay() {
     try {

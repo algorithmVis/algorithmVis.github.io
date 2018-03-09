@@ -9,14 +9,15 @@ let sortArray: number[] = [];
 let copyArray: number[] = [];
 const n = 10;
 let running = true;
-let mid: number = 0;
-let left: number[];
-let right: number[];
+
 
 function checkIfAlreadyRunning(){
     if (running) {
         manager.clear();
-        setArray(viewer.serializeArray(setRandomArray()));
+        let arry = setRandomArray();
+        console.log(arry)
+        setArray(viewer.serializeArray(arry));
+        viewer.pause();
     }
     else {
         running = true;
@@ -30,12 +31,17 @@ function startMergeSort() {
 }
 
 function mergesort(array: number[]) {
-    if (array.length < 2) {
+    if (array.length  === 1) {
         viewer.deselectPivotElement(array[0]);
         return array;
+
     } else {
 
-        mid = Math.floor(array.length *0.5);
+        let mid: number;
+        let left: number[];
+        let right: number[];
+
+        mid = Math.floor(array.length * 0.5);
         viewer.setPivotElement(mid);
 
 
@@ -44,9 +50,8 @@ function mergesort(array: number[]) {
 
         right = array.slice(mid);
         viewer.lowerElements(mid, array.length);
-
+        viewer.deselectPivotElement(mid);
         //Split until there is only 1 element left
-
         return merge(mergesort(left), mergesort(right));
     }
 
@@ -60,10 +65,13 @@ function merge(left: number[], right: number[]) {
     let indexLeft = 0;
     let indexRight = 0;
 
+
+
     while(indexLeft < left.length && indexRight < right.length) {
 
         //Compare the elements from each array
         if(left[indexLeft] < right[indexRight]) {
+            console.log("left < right" + left[indexLeft] + " " + right[indexRight]);
             result.push(left[indexLeft]);
 
             viewer.deselectPivotElement(indexLeft);
@@ -81,7 +89,7 @@ function merge(left: number[], right: number[]) {
 
         }
     }
-
+    /**
     while(indexLeft < left.length) {
         result.push(left[indexLeft]);
         viewer.liftElements(left.indexOf(0), indexLeft);
@@ -98,8 +106,10 @@ function merge(left: number[], right: number[]) {
 
         indexRight++;
     }
+     */
+    //console.log(result.concat(left.slice(indexLeft)).concat(right.slice(indexRight)));
+     return result.concat(left.slice(indexLeft)).concat(right.slice(indexRight));
 
-    return result;
 }
 
 

@@ -22,7 +22,6 @@ function liftElements(start : number, end : number) {
     for (var i = 0; i < array.length; i++) {
         if (i >= start && i <= end) {
             var $elem = $("#" + insElemNr + i);
-            console.log($elem.offset().top)
             //Test to check if it should stop going up, might need a var instead of number
             if ($elem.offset().top > 168) {
                 var newTop : number = parseInt($elem.css('top'), 10) - LEVEL_HEIGHT;
