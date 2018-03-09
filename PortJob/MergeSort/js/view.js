@@ -1,4 +1,3 @@
-"use strict";
 ///<reference path="MergeSortAlgorithm.ts"/>
 ///<reference path="methods.ts"/>
 var view = /** @class */ (function () {
@@ -29,8 +28,7 @@ var view = /** @class */ (function () {
                 swapId(toIndex, fromIndex);
                 setPosition(fromIndex, toIndex * 70, 0);
             };
-        };
-        (fromIndex, toIndex);
+        }(fromIndex, toIndex);
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
     view.prototype.setColorInArrayElement = function (index, color, colorOn) {

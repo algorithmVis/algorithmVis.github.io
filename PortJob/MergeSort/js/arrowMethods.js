@@ -1,4 +1,3 @@
-"use strict";
 ///<reference path="initArray.ts"/>
 ///<reference path="methods.ts"/>
 var MARGIN_TO_ARROW = 100;

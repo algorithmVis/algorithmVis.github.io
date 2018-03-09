@@ -31,8 +31,8 @@ function startMergeSort() {
 
 function mergesort(array: number[]) {
     if (array.length < 2) {
+        viewer.deselectPivotElement(array[0]);
         return array;
-        viewer.deselectPivotElement(indexLeft);
     } else {
 
         mid = Math.floor(array.length *0.5);

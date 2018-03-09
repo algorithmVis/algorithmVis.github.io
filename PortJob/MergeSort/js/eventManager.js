@@ -1,4 +1,3 @@
-"use strict";
 /**
  * Created by knutandersstokke on 16.10.2016.
  *
@@ -16,7 +15,6 @@ var eventManager = /** @class */ (function () {
             return;
         }
         var event = this.nextEvents.shift();
-        console.log(this.nextEvents);
         event.next();
         this.previousEvents.push(event);
         if (event.duration == 0)

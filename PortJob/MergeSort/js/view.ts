@@ -37,7 +37,7 @@ class view {
             }
         }(fromIndex, toIndex);
 
-        var backwardSteps(fromIndex, toIndex) {
+        var backwardSteps = function(fromIndex, toIndex) {
             return function() {
                 swapId(toIndex, fromIndex);
                 setPosition(fromIndex, toIndex * 70, 0);

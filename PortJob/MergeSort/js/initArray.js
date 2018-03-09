@@ -1,4 +1,3 @@
-"use strict";
 ///<reference path="arrowMethods.ts"/>
 var array;
 if (typeof javaBinder != "undefined") {

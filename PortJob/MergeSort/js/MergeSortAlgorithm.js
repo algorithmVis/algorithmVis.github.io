@@ -1,4 +1,3 @@
-"use strict";
 /**
  * File created bu Philip Hoang 12.02.18
  */
@@ -26,8 +25,8 @@ function startMergeSort() {
 }
 function mergesort(array) {
     if (array.length < 2) {
+        viewer.deselectPivotElement(array[0]);
         return array;
-        viewer.deselectPivotElement(indexLeft);
     }
     else {
         mid = Math.floor(array.length * 0.5);
