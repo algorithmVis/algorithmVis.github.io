@@ -23,16 +23,18 @@
         <script src="js/eventManager.js"></script>
 
 
+
+
         <!-- For debugging -->
         <!-- <script type='text/js' src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script> -->
 
         <!-- Insert this line after script imports -->
-        <script>if (window.module) module = window.module;</script>
-        <script> startMergeSort();</script>
+        <script>if (window.module) module = window.module;</script>;
     </head>
 
 
     <body>
+    <script> startMergeSort()</script>
         <div class="container text-center">
             <img id="paused" class="pauseIcon" src="assets/pause.png"/>
             <h1 id="header">MergeSort</h1>
@@ -47,15 +49,15 @@
             <script src="js/fillWithListElements.js"></script>
             <br>
             <div class="row underArray">
-
                 <button id="togglePause" class="btn btn-primary" onclick="viewer.pause()">Play/Pause</button>
                 <button id="backward" class="btn btn-primary" onclick="viewer.backward()">Backward</button>
                 <button id="forward" class="btn btn-primary" onclick="viewer.forward()">Forward</button>
                 <!-- TODO: speed buttons -->
             </div>
             <br>
+
             <div class="row">
-                <button id="start" class="btn btn-primary" onclick="startMergeSort()">Merge</button>
+
                 <!-- TODO: Play if paused -->
                 <button id="random" class="btn btn-primary" onclick="getArray('random')">Random</button>
                 <button id="almost" class="btn btn-primary" onclick="getArray('amostSorted')">Almost Sorted</button>
@@ -64,6 +66,7 @@
             </div>
 
         </div>
-
+    <script src="js/eventManager.js"></script>
+    <script>startMergeSort()</script>
     </body>
 </html>
