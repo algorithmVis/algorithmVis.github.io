@@ -3,7 +3,7 @@
  */
 ///<reference path="eventManager.ts"/>
 ///<reference path="view.ts"/>
-// /<reference path="initArray.ts"/>
+///<reference path="initArray.ts"/>
 var sortArray = [];
 var copyArray = [];
 var n = 10;

@@ -96,11 +96,14 @@ function centerElements() {
     $("#rightBracket").animate({left : (arrayWidth + 15) + "px"}, 600);
 }
 
+
 if (typeof javaBinder !== 'undefined') {
     javaBinder.setRandomArray();
 } else {
     $(document).ready(function() {
-        var testArray = [4, 3, 3, 1, 6, 5, 8, 7];
+        var testArray = returnArray();
+        setArray(JSON.stringify(testArray));
+
     });
 }
 

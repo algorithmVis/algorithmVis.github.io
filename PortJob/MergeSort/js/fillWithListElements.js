@@ -1,7 +1,10 @@
 //noinspection SpellCheckingInspection
+///<reference path="mergeSortAlgorithm.ts"/>
 /**
  * This script deserializes the array and writes them to DOM
  */
+
+var arr = [];
 
 function setArray(serializedArray) {
     // Remove elements
@@ -41,22 +44,37 @@ function centerElements() {
 
 }
 
-
 getArray("random");
+
+function returnArray() {
+    return arr;
+}
 
 function getArray(ran) {
     var rand = true;
 // Setting Random array
-    if (ran === "random")
-        setArray(viewer.serializeArray(setRandomArray()));
-    else if (ran === "sorted")
-        setArray(viewer.serializeArray(setSortedArray()));
-    else if (ran === "inverted")
-        setArray(viewer.serializeArray(setInvSortedArray()));
-    else if (ran === "almostSorted")
-        setArray(viewer.serializeArray(setAlmostSortedArray()));
-    else // If page is tested in another browser
-        setArray('14|17|19|18|7|17|15|5');
+    if (ran === "random") {
+        arr = setRandomArray();
+        setArray(viewer.serializeArray(arr));
+    }
+    else if (ran === "sorted") {
+        arr = setSortedArray();
+        setArray(viewer.serializeArray(arr));
+    }
+
+    else if (ran === "inverted"){
+        arr = setInvSortedArray();
+        setArray(viewer.serializeArray(arr));
+    }
+    else if (ran === "almostSorted") {
+        arr = setAlmostSortedArray();
+        setArray(viewer.serializeArray(arr));
+    }
+    else { // If page is tested in another browser
+        array = ('14|17|19|18|7|17|15|5');
+        setArray(viewer.serializeArray(arr));
+    }
+
 
 // If another browser
     if (typeof javaLog == 'undefined')

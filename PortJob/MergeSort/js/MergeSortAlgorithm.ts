@@ -4,7 +4,7 @@
 
 ///<reference path="eventManager.ts"/>
 ///<reference path="view.ts"/>
-// /<reference path="initArray.ts"/>
+///<reference path="initArray.ts"/>
 
 let sortArray: number[] = [];
 let copyArray: number[] = [];
