@@ -2,16 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a880816f-0142-4864-bbdf-48e2820a7914" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/PortJob/MergeSort/MergeSort.html" afterPath="$PROJECT_DIR$/PortJob/MergeSort/MergeSort.html" />
       <change beforePath="$PROJECT_DIR$/PortJob/MergeSort/js/MergeSortAlgorithm.js" afterPath="$PROJECT_DIR$/PortJob/MergeSort/js/MergeSortAlgorithm.js" />
       <change beforePath="$PROJECT_DIR$/PortJob/MergeSort/js/MergeSortAlgorithm.ts" afterPath="$PROJECT_DIR$/PortJob/MergeSort/js/MergeSortAlgorithm.ts" />
-      <change beforePath="$PROJECT_DIR$/PortJob/MergeSort/js/arrowMethods.js" afterPath="$PROJECT_DIR$/PortJob/MergeSort/js/arrowMethods.js" />
-      <change beforePath="$PROJECT_DIR$/PortJob/MergeSort/js/eventManager.js" afterPath="$PROJECT_DIR$/PortJob/MergeSort/js/eventManager.js" />
-      <change beforePath="$PROJECT_DIR$/PortJob/MergeSort/js/eventManager.ts" afterPath="$PROJECT_DIR$/PortJob/MergeSort/js/eventManager.ts" />
       <change beforePath="$PROJECT_DIR$/PortJob/MergeSort/js/initArray.js" afterPath="$PROJECT_DIR$/PortJob/MergeSort/js/initArray.js" />
+      <change beforePath="$PROJECT_DIR$/PortJob/MergeSort/js/initArray.ts" afterPath="$PROJECT_DIR$/PortJob/MergeSort/js/initArray.ts" />
       <change beforePath="$PROJECT_DIR$/PortJob/MergeSort/js/methods.js" afterPath="$PROJECT_DIR$/PortJob/MergeSort/js/methods.js" />
       <change beforePath="$PROJECT_DIR$/PortJob/MergeSort/js/methods.ts" afterPath="$PROJECT_DIR$/PortJob/MergeSort/js/methods.ts" />
-      <change beforePath="$PROJECT_DIR$/PortJob/MergeSort/js/view.js" afterPath="$PROJECT_DIR$/PortJob/MergeSort/js/view.js" />
-      <change beforePath="$PROJECT_DIR$/PortJob/MergeSort/js/view.ts" afterPath="$PROJECT_DIR$/PortJob/MergeSort/js/view.ts" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,54 +19,24 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
+    <splitter split-orientation="horizontal" split-proportion="0.48687553">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-          <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/PortJob/UnionFind/index.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="graphs.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/PortJob/Graphs/graphs.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="DfsBfs.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/PortJob/Graphs/DfsBfs.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-9">
-                  <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file leaf-file-name="MergeSort.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/PortJob/MergeSort/MergeSort.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="837">
-                  <caret line="31" column="11" lean-forward="true" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="11" />
+                <state relative-caret-position="196">
+                  <caret line="23" column="50" lean-forward="true" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="methods.ts" pinned="false" current-in-tab="true">
+          <file leaf-file-name="methods.ts" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/PortJob/MergeSort/js/methods.ts">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="600">
-                  <caret line="24" column="43" lean-forward="true" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
+                <state relative-caret-position="631">
+                  <caret line="37" column="38" lean-forward="false" selection-start-line="37" selection-start-column="38" selection-end-line="37" selection-end-column="38" />
                   <folding>
                     <element signature="n#!!doc" expanded="true" />
                   </folding>
@@ -79,30 +47,18 @@
           <file leaf-file-name="eventManager.ts" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/PortJob/MergeSort/js/eventManager.ts">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="850">
-                  <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
+                <state relative-caret-position="175">
+                  <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="eventManager.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/PortJob/MergeSort/js/eventManager.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="550">
-                  <caret line="22" column="35" lean-forward="true" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
-                  <folding>
-                    <element signature="n#!!doc" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="MergeSortAlgorithm.ts" pinned="false" current-in-tab="false">
+          <file leaf-file-name="MergeSortAlgorithm.ts" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/PortJob/MergeSort/js/MergeSortAlgorithm.ts">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="234">
-                  <caret line="19" column="5" lean-forward="false" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+                <state relative-caret-position="450">
+                  <caret line="65" column="23" lean-forward="true" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="23" />
                   <folding />
                 </state>
               </provider>
@@ -115,11 +71,21 @@
           <file leaf-file-name="view.ts" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/PortJob/MergeSort/js/view.ts">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="385">
-                  <caret line="52" column="24" lean-forward="false" selection-start-line="52" selection-start-column="16" selection-end-line="52" selection-end-column="24" />
+                <state relative-caret-position="413">
+                  <caret line="100" column="0" lean-forward="true" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
                   <folding>
                     <element signature="n#!!doc" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="initArray.ts" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/PortJob/MergeSort/js/initArray.ts">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="532">
+                  <caret line="55" column="1" lean-forward="true" selection-start-line="55" selection-start-column="1" selection-end-line="55" selection-end-column="1" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -130,7 +96,17 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
+      <find>color</find>
+      <find>start</find>
+      <find>merge</find>
+      <find>setarr</find>
+      <find>setar</find>
       <find>lower</find>
+      <find>inita</find>
+      <find>init</find>
+      <find>swap</find>
+      <find>setRan</find>
+      <find>setRandom</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -139,11 +115,14 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/PortJob/MergeSort/js/MergeSortAlgorithm.ts" />
         <option value="$PROJECT_DIR$/PortJob/MergeSort/js/eventManager.ts" />
         <option value="$PROJECT_DIR$/PortJob/MergeSort/js/view.js" />
         <option value="$PROJECT_DIR$/PortJob/MergeSort/js/view.ts" />
+        <option value="$PROJECT_DIR$/PortJob/MergeSort/js/MergeSortAlgorithm.js" />
+        <option value="$PROJECT_DIR$/PortJob/MergeSort/MergeSort.html" />
         <option value="$PROJECT_DIR$/PortJob/MergeSort/js/methods.ts" />
+        <option value="$PROJECT_DIR$/PortJob/MergeSort/js/initArray.ts" />
+        <option value="$PROJECT_DIR$/PortJob/MergeSort/js/MergeSortAlgorithm.ts" />
       </list>
     </option>
   </component>
@@ -154,9 +133,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="width" value="2216" />
-    <option name="height" value="1782" />
+    <option name="x" value="443" />
+    <option name="y" value="-29" />
+    <option name="width" value="2131" />
+    <option name="height" value="1282" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -205,7 +185,7 @@
               <item name="PortJob" type="462c0819:PsiDirectoryNode" />
               <item name="MergeSort" type="462c0819:PsiDirectoryNode" />
               <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="eventManager.ts" type="620a8d5e:NestingTreeNode" />
+              <item name="initArray.ts" type="620a8d5e:NestingTreeNode" />
             </path>
             <path>
               <item name="INF219" type="b2602c69:ProjectViewProjectNode" />
@@ -261,12 +241,12 @@
       <updated>1518608546826</updated>
       <workItem from="1518608550834" duration="30000" />
       <workItem from="1518608617637" duration="1836000" />
-      <workItem from="1520628217954" duration="3333000" />
+      <workItem from="1520628217954" duration="15925000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5199000" />
+    <option name="totallyTimeSpent" value="17791000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -290,7 +270,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3294263" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3294263" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -313,7 +293,9 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -341,10 +323,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PortJob/UnionFind/index.html">
+    <entry file="file://$PROJECT_DIR$/PortJob/SimpleSort/js/view.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="371">
+          <caret line="146" column="32" lean-forward="true" selection-start-line="146" selection-start-column="32" selection-end-line="146" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PortJob/MergeSort/js/eventManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="22" column="35" lean-forward="true" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PortJob/Graphs/DfsBfs.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="850">
+          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -357,75 +357,132 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PortJob/Graphs/DfsBfs.html">
+    <entry file="file://$PROJECT_DIR$/PortJob/UnionFind/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+        <state relative-caret-position="671">
+          <caret line="81" column="63" lean-forward="false" selection-start-line="81" selection-start-column="63" selection-end-line="81" selection-end-column="63" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PortJob/MergeSort/js/MergeSortAlgorithm.ts">
+    <entry file="file://$PROJECT_DIR$/PortJob/MergeSort/js/MergeSortAlgorithm.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="19" column="5" lean-forward="false" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PortJob/MergeSort/MergeSort.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="837">
-          <caret line="31" column="11" lean-forward="true" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="11" />
+        <state relative-caret-position="625">
+          <caret line="25" column="46" lean-forward="true" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PortJob/MergeSort/js/view.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="775">
-          <caret line="31" column="39" lean-forward="false" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="87" />
+        <state relative-caret-position="522">
+          <caret line="79" column="16" lean-forward="false" selection-start-line="79" selection-start-column="16" selection-end-line="79" selection-end-column="16" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PortJob/MergeSort/js/view.ts">
+    <entry file="file://$PROJECT_DIR$/PortJob/MergeSort/js/initArray.js.map">
+      <provider editor-type-id="sourcemapFileViewerProvider">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="52" column="24" lean-forward="false" selection-start-line="52" selection-start-column="16" selection-end-line="52" selection-end-column="24" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PortJob/MergeSort/js/eventManager.js">
+    <entry file="file://$PROJECT_DIR$/PortJob/MergeSort/js/initArray.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="22" column="35" lean-forward="true" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+        <state relative-caret-position="350">
+          <caret line="15" column="27" lean-forward="false" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PortJob/SimpleSort/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="4" column="59" lean-forward="false" selection-start-line="4" selection-start-column="55" selection-end-line="4" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.es5.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="601" column="4" lean-forward="false" selection-start-line="601" selection-start-column="4" selection-end-line="601" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PortJob/SimpleSort/js/insertionSort.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="875">
+          <caret line="116" column="0" lean-forward="true" selection-start-line="116" selection-start-column="0" selection-end-line="121" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PortJob/MergeSort/js/fillWithListElements.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="949">
+          <caret line="50" column="45" lean-forward="false" selection-start-line="50" selection-start-column="45" selection-end-line="50" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PortJob/MergeSort/MergeSort.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="23" column="50" lean-forward="true" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PortJob/MergeSort/js/eventManager.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
+        <state relative-caret-position="175">
+          <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PortJob/MergeSort/js/methods.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="24" column="43" lean-forward="true" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
+        <state relative-caret-position="631">
+          <caret line="37" column="38" lean-forward="false" selection-start-line="37" selection-start-column="38" selection-end-line="37" selection-end-column="38" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PortJob/MergeSort/js/initArray.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="55" column="1" lean-forward="true" selection-start-line="55" selection-start-column="1" selection-end-line="55" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PortJob/MergeSort/js/view.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="413">
+          <caret line="100" column="0" lean-forward="true" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PortJob/MergeSort/js/MergeSortAlgorithm.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="65" column="23" lean-forward="true" selection-start-line="65" selection-start-column="23" selection-end-line="65" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>

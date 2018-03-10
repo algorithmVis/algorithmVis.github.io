@@ -27,6 +27,7 @@ function liftElements(start, end) {
     liftArrows(300);
 }
 function swapElements(a, b) {
+    console.log("arrayElem: " + getArrayElement(a) + " " + getArrayElement(b) + "ins " + insElemNr);
     getArrayElement(a).swap(getArrayElement(b), insElemNr, 1500);
 }
 function setPauseButtonText(n) {

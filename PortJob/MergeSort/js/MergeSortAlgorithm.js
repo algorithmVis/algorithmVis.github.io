@@ -3,6 +3,7 @@
  */
 ///<reference path="eventManager.ts"/>
 ///<reference path="view.ts"/>
+// /<reference path="initArray.ts"/>
 var sortArray = [];
 var copyArray = [];
 var n = 10;
@@ -10,9 +11,6 @@ var running = true;
 function checkIfAlreadyRunning() {
     if (running) {
         manager.clear();
-        var arry = setRandomArray();
-        console.log(arry);
-        setArray(viewer.serializeArray(arry));
         viewer.pause();
     }
     else {
@@ -24,7 +22,8 @@ function startMergeSort() {
     mergesort(sortArray);
 }
 function mergesort(array) {
-    if (array.length === 1) {
+    if (array.length < 2) {
+        //console.log("if array.lenght " + array)
         viewer.deselectPivotElement(array[0]);
         return array;
     }
@@ -40,6 +39,7 @@ function mergesort(array) {
         viewer.lowerElements(mid, array.length);
         viewer.deselectPivotElement(mid);
         //Split until there is only 1 element left
+        //console.log(mergesort(left), mergesort(right));
         return merge(mergesort(left), mergesort(right));
     }
 }
@@ -49,15 +49,19 @@ function merge(left, right) {
     var indexLeft = 0;
     var indexRight = 0;
     while (indexLeft < left.length && indexRight < right.length) {
+        console.log(left, right);
+        console.log(indexLeft + " " + left.length);
         //Compare the elements from each array
         if (left[indexLeft] < right[indexRight]) {
-            console.log("left < right" + left[indexLeft] + " " + right[indexRight]);
+            //console.log("left < right" + left[indexLeft] + " " + right[indexRight]);
             result.push(left[indexLeft]);
             viewer.deselectPivotElement(indexLeft);
             viewer.liftElements(indexLeft, indexLeft);
             indexLeft++;
         }
         else {
+            console.log("value: " + indexLeft + " " + indexRight);
+            viewer.swapElements(indexLeft, indexRight);
             result.push(right[indexRight]);
             viewer.liftElements(indexLeft, indexLeft);
             viewer.deselectPivotElement(indexRight);

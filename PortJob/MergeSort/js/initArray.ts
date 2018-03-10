@@ -101,7 +101,6 @@ if (typeof javaBinder !== 'undefined') {
 } else {
     $(document).ready(function() {
         var testArray = [4, 3, 3, 1, 6, 5, 8, 7];
-        setArray(JSON.stringify(testArray));
     });
 }
 

@@ -33,6 +33,8 @@ function liftElements(start : number, end : number) {
 }
 
 function swapElements(a : number, b : number) {
+    console.log("arrayElem: " + getArrayElement(a) + " " + getArrayElement(b) + "ins " + insElemNr);
+
     getArrayElement(a).swap(getArrayElement(b), insElemNr, 1500);
 }
 

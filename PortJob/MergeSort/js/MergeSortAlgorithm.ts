@@ -4,6 +4,7 @@
 
 ///<reference path="eventManager.ts"/>
 ///<reference path="view.ts"/>
+// /<reference path="initArray.ts"/>
 
 let sortArray: number[] = [];
 let copyArray: number[] = [];
@@ -14,9 +15,6 @@ let running = true;
 function checkIfAlreadyRunning(){
     if (running) {
         manager.clear();
-        let arry = setRandomArray();
-        console.log(arry)
-        setArray(viewer.serializeArray(arry));
         viewer.pause();
     }
     else {
@@ -31,7 +29,8 @@ function startMergeSort() {
 }
 
 function mergesort(array: number[]) {
-    if (array.length  === 1) {
+    if (array.length  < 2) {
+        //console.log("if array.lenght " + array)
         viewer.deselectPivotElement(array[0]);
         return array;
 
@@ -52,6 +51,7 @@ function mergesort(array: number[]) {
         viewer.lowerElements(mid, array.length);
         viewer.deselectPivotElement(mid);
         //Split until there is only 1 element left
+        //console.log(mergesort(left), mergesort(right));
         return merge(mergesort(left), mergesort(right));
     }
 
@@ -65,13 +65,13 @@ function merge(left: number[], right: number[]) {
     let indexLeft = 0;
     let indexRight = 0;
 
-
-
     while(indexLeft < left.length && indexRight < right.length) {
-
+        console.log(left, right)
+        console.log(indexLeft + " " + left.length)
         //Compare the elements from each array
         if(left[indexLeft] < right[indexRight]) {
-            console.log("left < right" + left[indexLeft] + " " + right[indexRight]);
+            //console.log("left < right" + left[indexLeft] + " " + right[indexRight]);
+
             result.push(left[indexLeft]);
 
             viewer.deselectPivotElement(indexLeft);
@@ -80,6 +80,8 @@ function merge(left: number[], right: number[]) {
             indexLeft++;
 
         } else {
+            console.log("value: " + indexLeft + " " + indexRight);
+            viewer.swapElements(indexLeft, indexRight);
 
             result.push(right[indexRight]);
             viewer.liftElements(indexLeft, indexLeft);
