@@ -1,4 +1,5 @@
 ///<reference path="methods.ts"/>
+///<reference path="drawGraph.ts"/>
 /**
  * File created by Øyvind Skeie Liland on 24.02.18
  */
@@ -42,14 +43,16 @@ var MaxHeap = /** @class */ (function () {
     MaxHeap.prototype.exch = function (number, number2) {
         var tmp = this.array[number];
         this.array[number] = this.array[number2];
+        control.setValueAtIndex(number, this.array[number]);
         this.array[number2] = tmp;
+        control.setValueAtIndex(number2, this.array[number2]);
     };
     MaxHeap.prototype.add = function (a) {
         // Add to array and start frontendevents
         this.array.push(a);
         insertNewElem(this.array.length - 1, a); // Create element in frontendarray
+        insertNewElemConnect(this.array.length - 1, Math.floor((this.array.length - 2) / 2));
         control.saveState(this.array); // Save the new state
-        control.connectNodes(this.array.length - 1, Math.floor((this.array.length - 2) / 2));
         // Swim to te correct index and start frontendevents
         this.swim(this.array.length - 1);
     };
@@ -64,11 +67,20 @@ var MaxHeap = /** @class */ (function () {
         var right = index * 2 + 2;
     };
     MaxHeap.prototype.swim = function (index) {
-        var other = Math.floor(index / 2);
+        console.log(allNodes[index].parent);
+        var other = Math.floor((index - 1) / 2);
         while (other >= 0 && this.array[index] > this.array[other]) {
+            control.highlightNode(index, "orange");
+            control.highlightNode(other, "orange");
+            control.swapNode(index, other);
             this.exch(index, other);
-            index = Math.floor(index / 2);
-            other = Math.floor(index / 2);
+            control.highlightNode(index, "green");
+            control.highlightNode(other, "green");
+            control.removeHighlight(index);
+            control.removeHighlight(other);
+            index = Math.floor((index - 1) / 2);
+            other = Math.floor((index - 1) / 2);
+            control.saveState(this.getArray());
         }
     };
     MaxHeap.prototype.getName = function () {

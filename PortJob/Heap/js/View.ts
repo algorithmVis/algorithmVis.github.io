@@ -227,6 +227,21 @@ class View implements IView {
         setKeyListener();
         setupRadio();
     }
+
+    swapNode(child: number, parent: number) {
+        let forward = function (child, parent) {
+            return function () {
+                swapNodes(child, parent);
+            }
+        }(child, parent);
+
+        let backward = function (child, parent) {
+            return function () {
+                swapNodes(parent, child);
+            }
+        }(child, parent);
+        manager.addEvent(new FrontendEvent(forward, backward, 1000));
+    }
 }
 
 var viewer: View = new View();

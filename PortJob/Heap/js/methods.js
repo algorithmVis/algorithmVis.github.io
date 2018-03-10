@@ -2,8 +2,8 @@
 ///<reference path="Controller.ts"/>
 ///<reference path="View.ts"/>
 /**
- * Methods called in JavaScript
- * @author Knut Anders, Kristian, Ragnhild, Øyvind
+ * Methods called from Viewer and Algorithms
+ * @author Øyvind
  *
  */
 //declare var javaBinder; // Used to communicate with java
@@ -128,8 +128,53 @@ function insertNewElem(i, val) {
         });
     $("#arrayUL").append("<li id='arrayElem" + i + "'><div class='index'>" + i + "</div><div class='content' id='arrayContent" + i + "'>" + val + "</div></li>");
     var left = (i * 70) + "px";
-    $("#arrayElem" + i).animate({ left: left }, 1000);
+    $("#arrayElem" + i).animate({ left: left }, 0);
     insertNewNode(i, val);
+}
+function insertNewElemConnect(child, parent) {
+    if (allNodes[child] === undefined)
+        return;
+    // If the two nodes are the same
+    if (child == parent) {
+        $("#graphUL li").each(function () {
+            $(this).removeClass("selected");
+        });
+        return;
+    }
+    var parentNode = allNodes[parent];
+    var childNode = allNodes[child];
+    //To avoid removing and re-adding a child to its own parent
+    if (childNode.parent == parentNode) {
+        return;
+    }
+    parentNode.addChild(childNode);
+    positioningNodes(500);
+}
+// Swap position of two graphNodes
+function swapNodes(child, parent) {
+    // Get coordinates
+    var tmp = allNodes[parent].value;
+    var pTop = allNodes[parent].top;
+    var pLeft = allNodes[parent].left;
+    var cTop = allNodes[child].top;
+    var cLeft = allNodes[child].left;
+    // Animate swap => when done change value and reset position
+    $("#node" + parent).animate({
+        left: allNodes[child].left + 'px',
+        top: allNodes[child].top + 'px'
+    }, 1000, function () {
+        allNodes[parent].changeValue(allNodes[child].value);
+        // Reset node position
+        $("#node" + parent).css({ 'left': pLeft + 'px', 'top': pTop + 'px' });
+    });
+    $("#node" + child).animate({
+        left: allNodes[parent].left + 'px',
+        top: allNodes[parent].top + 'px'
+    }, 1000, function () {
+        allNodes[child].changeValue(tmp);
+        // Reset node position
+        $("#node" + child).css({ 'left': cLeft + 'px', 'top': cTop + 'px' });
+    });
 }
 // Connecting two nodes
 function connectNodes(child, parent) {
@@ -144,8 +189,6 @@ function connectNodes(child, parent) {
     }
     var parentNode = allNodes[parent];
     var childNode = allNodes[child];
-    console.log(parentNode);
-    console.log(childNode);
     //To avoid removing and re-adding a child to its own parent
     if (childNode.parent == parentNode) {
         return;
@@ -160,11 +203,11 @@ function selectIndex(index, select) {
         }
         else {
             $(this).removeClass("selected");
-            clearMethodParameters();
         }
     });
 }
 function highlightNode(index, color) {
+    console.log("highlighting: " + index);
     if (color.toLowerCase() == "green" || color.toLowerCase() == "orange") {
         $("#arrayElem" + index + ", #node" + index).each(function () {
             removeHighlight(index);
@@ -181,14 +224,8 @@ function removeHighlight(index) {
         $(this).removeClass("orange");
     });
 }
-function clearMethodParameters() {
-    $("#radio_id1").next().text(" union( _ , _ )");
-    $("#radio_id2").next().text(" connected( _ , _ )");
-    $("#radio_id3").next().text(" find( _ )");
-}
 function resetElementSelections() {
     firstSelected = -1;
-    clearMethodParameters();
     for (var i = 0; i < 10; i++) {
         selectIndex(i, false);
     }
@@ -217,7 +254,6 @@ function setState(backendArrayJSON, twoDimRelationshipArrayJSON) {
             allNodes[j].addChild(allNodes[twoDimRelationshipArray[j][i]]);
         }
     }
-    console.log(backendArray);
     // Set the frontend array based on the given param (using setValueAtIndex())
     for (var i = 0; i < backendArray.length; i++) {
         setValueAtIndex(i, backendArray[i]);
@@ -308,8 +344,9 @@ setupSpeedButtons();
 function setUpAddButton() {
     $("#addElem").click(function () {
         var val = prompt("Which value do you want to add? Integer >= 0");
-        while (isNaN(parseInt(val)) && parseInt(val) < 0)
+        while (isNaN(parseInt(val))) {
             val = prompt("Which value do you want to add? Integer >= 0");
+        }
         viewer.addNode(parseInt(val));
     });
 }

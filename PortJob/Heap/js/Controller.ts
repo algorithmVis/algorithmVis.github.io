@@ -115,6 +115,10 @@ class Controller {
     addNode(i: number) {
         this.algorithm.add(i);
     }
+
+    swapNode(child: number, parent: number) {
+        viewer.swapNode(child, parent);
+    }
 }
 
 var control: Controller = new Controller();

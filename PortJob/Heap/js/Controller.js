@@ -88,6 +88,9 @@ var Controller = /** @class */ (function () {
     Controller.prototype.addNode = function (i) {
         this.algorithm.add(i);
     };
+    Controller.prototype.swapNode = function (child, parent) {
+        viewer.swapNode(child, parent);
+    };
     return Controller;
 }());
 var control = new Controller();

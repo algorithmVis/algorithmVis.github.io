@@ -185,6 +185,19 @@ var View = /** @class */ (function () {
         setKeyListener();
         setupRadio();
     };
+    View.prototype.swapNode = function (child, parent) {
+        var forward = function (child, parent) {
+            return function () {
+                swapNodes(child, parent);
+            };
+        }(child, parent);
+        var backward = function (child, parent) {
+            return function () {
+                swapNodes(parent, child);
+            };
+        }(child, parent);
+        manager.addEvent(new FrontendEvent(forward, backward, 1000));
+    };
     return View;
 }());
 var viewer = new View();

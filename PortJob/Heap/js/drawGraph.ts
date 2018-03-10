@@ -51,6 +51,11 @@ class GraphNode {
         }
     }
 
+    changeValue(val: number) {
+        this.value = val;
+        $("#node" + this.id).text(this.value);
+    }
+
     addChild(child: GraphNode) {
         // remove from last parents child list
         if (child.parent !== undefined && child.parent !== null) {
@@ -219,8 +224,7 @@ function insertNewNode(i: number, val: number): void {
     allNodes.push(node);
     node.parent = superNode;
     superNode.children.push(node);
-    $("#graphUL").append('<li id="node' + i + '">' + i + '</li>');
-    //connectNodes(allNodes.length - 1, Math.floor((allNodes.length - 1) / 2));
+    $("#graphUL").append('<li id="node' + i + '">' + val + '</li>');
 }
 
 function positioningNodes(time: number) {

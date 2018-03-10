@@ -1,4 +1,5 @@
 ///<reference path="methods.ts"/>
+///<reference path="drawGraph.ts"/>
 
 /**
  * File created by Øyvind Skeie Liland on 24.02.18
@@ -52,19 +53,20 @@ class MaxHeap implements IAlgorithm {
     private exch(number: number, number2: number) {
         let tmp = this.array[number];
         this.array[number] = this.array[number2];
+        control.setValueAtIndex(number, this.array[number]);
         this.array[number2] = tmp;
+        control.setValueAtIndex(number2, this.array[number2]);
     }
 
     add(a: number): void {
         // Add to array and start frontendevents
         this.array.push(a);
         insertNewElem(this.array.length - 1, a); // Create element in frontendarray
+        insertNewElemConnect(this.array.length - 1, Math.floor((this.array.length - 2) / 2));
         control.saveState(this.array); // Save the new state
-        control.connectNodes(this.array.length - 1, Math.floor((this.array.length-2) / 2));
 
         // Swim to te correct index and start frontendevents
         this.swim(this.array.length - 1);
-
     }
 
     remove(): void {
@@ -80,11 +82,20 @@ class MaxHeap implements IAlgorithm {
     }
 
     private swim(index: number): void {
-        let other: number = Math.floor(index / 2);
+        console.log(allNodes[index].parent);
+        let other: number = Math.floor((index - 1) / 2);
         while (other >= 0 && this.array[index] > this.array[other]) {
+            control.highlightNode(index, "orange");
+            control.highlightNode(other, "orange");
+            control.swapNode(index, other);
             this.exch(index, other);
-            index = Math.floor(index / 2);
-            other = Math.floor(index / 2);
+            control.highlightNode(index, "green");
+            control.highlightNode(other, "green");
+            control.removeHighlight(index);
+            control.removeHighlight(other);
+            index = Math.floor((index - 1) / 2);
+            other = Math.floor((index - 1) / 2);
+            control.saveState(this.getArray());
         }
     }
 
