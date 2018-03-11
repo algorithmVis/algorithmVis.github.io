@@ -20,6 +20,7 @@ var ArrayElement = /** @class */ (function () {
         this.id = newId;
     };
     ArrayElement.prototype.swap = function (otherElement, arrayId, animTime) {
+        console.log("Swap: " + this.id + " med " + otherElement.id);
         // Swap Id
         var thisId = this.id;
         var otherId = otherElement.id;
@@ -30,6 +31,30 @@ var ArrayElement = /** @class */ (function () {
         var thisLeft = this.left;
         this.animateLeft(otherElement.left, animTime, arrayId);
         otherElement.animateLeft(thisLeft, animTime, arrayId);
+    };
+    ArrayElement.prototype.push = function (index, arrayID, animTime) {
+        var tempElem = arrayElements;
+        arrayElements = new Array;
+        for (var i = 0; i < tempElem.length; i++) {
+            if (this.id != tempElem[i].id) {
+                if (i == index) {
+                    var tmp = tempElem[i];
+                    arrayElements.push(this);
+                    arrayElements.push(tmp);
+                    var thisLeft = this.left;
+                    this.animateLeft(tempElem[i].left, animTime, arrayID);
+                    tmp.animateLeft(thisLeft, animTime, arrayID);
+                }
+                else if (i < index) {
+                    arrayElements.push(tempElem[i]);
+                }
+                else {
+                    //e detta rett ?
+                    arrayElements.push(tempElem[i]);
+                    tempElem[i].animateLeft(tempElem[i].left, animTime, arrayID);
+                }
+            }
+        }
     };
     return ArrayElement;
 }());
@@ -92,7 +117,8 @@ function returnArray() {
 function getArray(ran) {
     // Setting Random array
     if (ran === "random") {
-        array = setRandomMyArray();
+        //array = setRandomMyArray();
+        array = [79, 76, 22, 95, 61, 7, 51, 73, 17, 91];
     }
     else if (ran === "sorted") {
         array = setSortedArray();

@@ -30,6 +30,9 @@ function swapElements(a, b) {
     console.log("arrayElem: " + getArrayElement(a) + " " + getArrayElement(b) + "ins " + insElemNr);
     getArrayElement(a).swap(getArrayElement(b), insElemNr, 1500);
 }
+function pushElement(i, place) {
+    getArrayElement(i).push(place, insElemNr, 1500);
+}
 function setPauseButtonText(n) {
     // console.log("PauseButtonText: " + n);
 }

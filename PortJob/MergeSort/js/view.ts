@@ -109,6 +109,16 @@ class view {
         manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
     }
 
+    pushElement(i : number, place : number){
+        var forwardSteps = function(i, j){
+            return function() {
+                pushElement(i, j);
+            }
+        }(i, place)
+
+        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
+    }
+
     setPivotElement(index: number) {
         var forwardSteps = function(index) {
             return function() {

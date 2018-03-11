@@ -8,6 +8,7 @@ var sortArray = [];
 var copyArray = [];
 var n = 10;
 var running = true;
+var tempArray = new Array;
 function checkIfAlreadyRunning() {
     if (running) {
         manager.clear();
@@ -50,49 +51,43 @@ function merge(left, right) {
     while (indexLeft < left.length && indexRight < right.length) {
         //Compare the elements from each array
         if (left[indexLeft] < right[indexRight]) {
-            console.log("merge " + left[indexLeft] + " mindre enn " + right[indexRight]);
             result.push(left[indexLeft]);
+            tempArray.push(left[indexLeft]);
+            viewer.pushElement(copyArray.indexOf(left[indexLeft]), copyArray.indexOf(left[indexLeft]));
             viewer.liftElements(copyArray.indexOf(left[indexLeft]), copyArray.indexOf(left[indexLeft]));
             indexLeft++;
         }
         else {
-            console.log("------------");
-            console.log("merge (L>R) " + left[indexLeft] + " større enn " + right[indexRight]);
-            console.log("SWAP " + copyArray.indexOf(left[indexLeft]), copyArray.indexOf(right[indexRight]));
-            console.log(copyArray);
             result.push(right[indexRight]);
-            console.log("For Swap array " + copyArray[copyArray.indexOf(left[indexLeft])] + " " + copyArray[copyArray.indexOf(right[indexRight])]);
-            viewer.swapElements(copyArray.indexOf(left[indexLeft]), copyArray.indexOf(right[indexRight]));
-            swapInArray(copyArray.indexOf(left[indexLeft]), copyArray.indexOf(right[indexRight]));
-            console.log("etter " + copyArray[copyArray.indexOf(left[indexLeft])] + " " + copyArray[copyArray.indexOf(right[indexRight])]);
-            console.log("etter viewer swap " + copyArray[copyArray.indexOf(left[indexLeft])] + " " + copyArray[copyArray.indexOf(right[indexRight])]);
+            tempArray.push(right[indexRight]);
+            viewer.pushElement(copyArray.indexOf(left[indexLeft]), copyArray.indexOf(right[indexRight]));
+            //viewer.swapElements(copyArray.indexOf(left[indexLeft]), copyArray.indexOf(right[indexRight]));
+            //swapInArray(copyArray.indexOf(left[indexLeft]), copyArray.indexOf(right[indexRight]));
             viewer.liftElements(copyArray.indexOf(left[indexLeft]), copyArray.indexOf(left[indexLeft]));
             viewer.liftElements(copyArray.indexOf(right[indexRight]), copyArray.indexOf(right[indexRight]));
             indexRight++;
         }
     }
     if (right.length > 0) {
-        console.log("right slice = " + right.slice(indexRight));
         for (var i = 0; i < right.slice(indexRight).length; i++) {
             viewer.liftElements(copyArray.indexOf(right.slice(indexRight)[i]), copyArray.indexOf(right.slice(indexRight)[i]));
             viewer.deselectPivotElement(copyArray.indexOf(right.slice(indexRight)[i]));
         }
     }
     if (left.length > 0) {
-        console.log("left slice = " + left.slice(indexLeft));
         for (var i = 0; i < left.slice(indexLeft).length; i++) {
             viewer.liftElements(copyArray.indexOf(left.slice(indexLeft)[i]), copyArray.indexOf(left.slice(indexLeft)[i]));
             viewer.deselectPivotElement(copyArray.indexOf(left.slice(indexLeft)[i]));
         }
     }
     console.log(copyArray + "right slice = " + right.slice(indexRight) + "left slice = " + left.slice(indexLeft));
-    console.log("result : " + result.concat(left.slice(indexLeft)).concat(right.slice(indexRight)));
+    console.log("concat : " + tempArray.concat(left.slice(indexLeft)).concat(right.slice(indexRight)));
+    tempArray = tempArray.concat(left.slice(indexLeft)).concat(right.slice(indexRight));
     return result.concat(left.slice(indexLeft)).concat(right.slice(indexRight));
 }
-function swapInArray(a, b) {
-    var tempVal = copyArray[a];
-    copyArray[a] = copyArray[b];
-    copyArray[b] = tempVal;
+function pushInArr(val) {
+    var tempArr;
+    var tmpVal;
 }
 function delay() {
     try {

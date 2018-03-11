@@ -38,6 +38,11 @@ function swapElements(a : number, b : number) {
     getArrayElement(a).swap(getArrayElement(b), insElemNr, 1500);
 }
 
+function pushElement(i : number, place : number){
+    getArrayElement(i).push(place, insElemNr, 1500);
+}
+
+
 function setPauseButtonText(n:number){
     // console.log("PauseButtonText: " + n);
 }

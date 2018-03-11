@@ -82,6 +82,14 @@ var view = /** @class */ (function () {
         }(i, j);
         manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
     };
+    view.prototype.pushElement = function (i, place) {
+        var forwardSteps = function (i, j) {
+            return function () {
+                pushElement(i, j);
+            };
+        }(i, place);
+        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
+    };
     view.prototype.setPivotElement = function (index) {
         var forwardSteps = function (index) {
             return function () {
