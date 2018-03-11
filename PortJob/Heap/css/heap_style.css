@@ -120,10 +120,22 @@ div.settings {
     text-align: center;
     padding: 10px 25px;
     vertical-align: top;
+    height: 110px;
     border-right: 2px black solid;
     border-left: 2px black solid;
 }
 
+div.inputSettings {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+    margin-left: 25px;
+    margin-right: 25px;
+    font-size: 1.3em;
+}
+div.inputSettings button {
+    margin-bottom: 2px;
+}
 div.radioSettings {
     display: inline-block;
     text-align: left;

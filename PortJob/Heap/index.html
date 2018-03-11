@@ -57,7 +57,13 @@
         <div class="radioSettings">
             <form id="algorithm">
                 <input id="MaxHeap" type="radio" name="algorithm" value="max" checked
-                       onclick="viewer.switchAlgorithm('MaxHeap')">Max Heap<br>
+                       onclick="viewer.switchAlgorithm('MaxHeap')">Predefined<br>
+                <input id="MaxHeapFree" type="radio" name="algorithm" value="max"
+                       onclick="viewer.switchAlgorithm('MaxHeap')">FreeMode<br>
+                <input id="HeapSort" type="radio" name="algorithm" value="max"
+                       onclick="viewer.switchAlgorithm('MaxHeap')">HeapSort<br>
+                <input id="Heapify" type="radio" name="algorithm" value="max"
+                       onclick="viewer.switchAlgorithm('MaxHeap')">Construct Heap<br>
             </form>
         </div>
         <div class="settings">
@@ -66,16 +72,19 @@
                 <button id="backward" class="btn btn-primary" onclick="stepBack();">Backward</button>
                 <button id="forward" class="btn btn-primary"
                         onclick="viewer.stepForward(getGraphState(), getArrayState());">Forward
-                </button>
-                <button id="addElem" class="btn btn-primary" onclick="viewer.addNode(12)">
-                    Add element
-                </button>
             </div>
-            <div class="buttons">
-                <button id="slow" class="btn btn-success" onclick="setSlow()">Slow</button>
-                <button id="medium" class="btn btn-success" onclick="setMedium()">Medium</button>
-                <button id="fast" class="btn btn-success" onclick="setFast()">Fast</button>
-            </div>
+        </div>
+        </button>
+        <div class="inputSettings">
+            <button id="addElem" class="btn btn-primary">
+                <!-- Click-Event handled in setUpAddButton in methods.ts-->
+                Add value
+            </button>
+            <br/>
+            <button id="removeElem" class="btn btn-primary">
+                <!-- Click-Event handled in setUpRemoveButton in methods.ts-->
+                Remove max
+            </button>
         </div>
     </div>
 </div>
