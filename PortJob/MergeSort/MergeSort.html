@@ -21,7 +21,7 @@
         <script src="js/view.js"></script>
         <script src="js/MergeSortAlgorithm.js"></script>
         <script src="js/eventManager.js"></script>
-        <script src="js/fillWithListElements.js"></script>
+        <script src="js/initArray.js"></script>
 
 
         <!-- For debugging -->
@@ -53,9 +53,8 @@
                 <!-- TODO: speed buttons -->
             </div>
             <br>
-            <script src="js/initArray.js"></script>
-            <div class="row">
 
+            <div class="row">
                 <!-- TODO: Play if paused -->
                 <button id="random" class="btn btn-primary" onclick="getArray('random')">Random</button>
                 <button id="almost" class="btn btn-primary" onclick="getArray('amostSorted')">Almost Sorted</button>
@@ -65,7 +64,8 @@
 
         </div>
 
-
+        <script>getArray("random")</script>
         <script>startMergeSort()</script>
+
     </body>
 </html>

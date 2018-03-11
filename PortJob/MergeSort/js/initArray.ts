@@ -1,4 +1,5 @@
 ///<reference path="arrowMethods.ts"/>
+///<reference path="MergeSortAlgorithm.ts"/>
 declare var $;
 declare var javaBinder;
 
@@ -55,7 +56,7 @@ function getArrayElement(id:number) {
     return arrayElements.filter(function(elem:ArrayElement) { return elem.id == id } )[0];
 }
 
-function setArray(jsonArray : string) {
+function setMyArray(jsonArray : string) {
     array = JSON.parse(jsonArray);
     arrayElements = [];
 
@@ -80,6 +81,8 @@ function setArray(jsonArray : string) {
         }
     });
 
+
+
     // Center elements
     centerElements();
     $(window).resize(centerElements());
@@ -97,13 +100,55 @@ function centerElements() {
 }
 
 
+/**
+ * This bricks the visualisation of the right array because it makes a new one.
 if (typeof javaBinder !== 'undefined') {
     javaBinder.setRandomArray();
 } else {
     $(document).ready(function() {
-        var testArray = returnArray();
-        setArray(JSON.stringify(testArray));
+        //getArray("random");
 
     });
 }
+ */
 
+function returnArray() {
+    return array;
+}
+
+function getArray(ran) {
+// Setting Random array
+    if (ran === "random") {
+        array = setRandomMyArray();
+    }
+    else if (ran === "sorted") {
+        array = setSortedArray();
+    }
+    else if (ran === "inverted") {
+        array = setInvSortedArray();
+    }
+    else if (ran === "almostSorted") {
+        array = setAlmostSortedArray();
+    }
+    else { // If page is tested in another browser
+        array = ('14|17|19|18|7|17|15|5');
+    }
+
+    if (checkDupli(array)) {
+        return getArray(ran);
+    } else {
+        viewer.serializeArray(array);
+        setMyArray(JSON.stringify(array));
+    }
+}
+
+function checkDupli(arr : number[]) {
+    for(var i = 0; i <= arr.length; i++) {
+        for(var j = i; j <= arr.length; j++) {
+            if(i != j && arr[i] == arr[j]) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
