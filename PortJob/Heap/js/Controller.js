@@ -91,6 +91,12 @@ var Controller = /** @class */ (function () {
     Controller.prototype.swapNode = function (child, parent) {
         viewer.swapNode(child, parent);
     };
+    Controller.prototype.removeNode = function () {
+        this.algorithm.remove();
+    };
+    Controller.prototype.removeElem = function (i) {
+        viewer.removeElem(i);
+    };
     return Controller;
 }());
 var control = new Controller();

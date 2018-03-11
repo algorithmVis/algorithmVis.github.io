@@ -142,11 +142,11 @@ function setValueAtIndex(i: number, value: number) {
 
 // Add a new element to the array
 function insertNewElem(i: number, val: number): void {
+    console.log(allNodes);
     let arrayLength = control.getArrayClone().length;
-    if (arrayLength > 10)
-        $("#rightBracket").css({
-            "left": 683 + ((arrayLength - 10) * 70) + "px"
-        });
+    $("#rightBracket").css({
+        "left": 683 + ((arrayLength - 10) * 70) + "px"
+    });
     $("#arrayUL").append("<li id='arrayElem" + i + "'><div class='index'>" + i + "</div><div class='content' id='arrayContent" + i + "'>" + val + "</div></li>");
     var left = (i * 70) + "px";
     $("#arrayElem" + i).animate({left: left}, 0);
@@ -172,9 +172,30 @@ function insertNewElemConnect(child: number, parent: number): void {
     if (childNode.parent == parentNode) {
         return;
     }
-
     parentNode.addChild(childNode);
     positioningNodes(500);
+}
+
+function removeElem(i: number) {
+    // Set timeout to avoid deleting node before swapElement function has finished executing
+    setTimeout(function () {
+        let arrayLength = control.getArrayClone().length;
+
+        $("#rightBracket").css({
+            "left": 683 + ((arrayLength - 10) * 70) + "px"
+        });
+        $("#arrayElem" + i).remove();
+
+        console.log(allNodes[i].parent);
+        //allNodes[i].reset();
+        $("#node" + i).fadeOut(2000, function () {
+            $(this).remove();
+        });
+
+        allNodes[i].parent.removeChild(allNodes[i]);
+        //allNodes[i].reset();
+        allNodes.pop();
+    }, 1000);
 }
 
 // Swap position of two graphNodes
@@ -242,7 +263,6 @@ function selectIndex(index: number, select: boolean) {
 }
 
 function highlightNode(index: number, color: String) {
-    console.log("highlighting: " + index);
     if (color.toLowerCase() == "green" || color.toLowerCase() == "orange") {
         $("#arrayElem" + index + ", #node" + index).each(function () {
             removeHighlight(index);
@@ -402,3 +422,11 @@ function setUpAddButton() {
 }
 
 setUpAddButton();
+
+function setUpRemoveButton() {
+    $("#removeElem").click(function () {
+        viewer.removeNode();
+    });
+}
+
+setUpRemoveButton();

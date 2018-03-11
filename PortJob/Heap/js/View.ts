@@ -228,6 +228,10 @@ class View implements IView {
         setupRadio();
     }
 
+    removeNode() {
+        control.removeNode();
+    }
+
     swapNode(child: number, parent: number) {
         let forward = function (child, parent) {
             return function () {
@@ -241,6 +245,16 @@ class View implements IView {
             }
         }(child, parent);
         manager.addEvent(new FrontendEvent(forward, backward, 1000));
+    }
+
+    removeElem(i: number) {
+        let forward = function (index) {
+            return function () {
+                removeElem(index);
+            }
+        }(i);
+
+        manager.addEvent(new FrontendEvent(forward, forward, manager.delayTime));
     }
 }
 

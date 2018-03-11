@@ -119,6 +119,14 @@ class Controller {
     swapNode(child: number, parent: number) {
         viewer.swapNode(child, parent);
     }
+
+    removeNode() {
+        this.algorithm.remove();
+    }
+
+    removeElem(i : number) {
+        viewer.removeElem(i);
+    }
 }
 
 var control: Controller = new Controller();

@@ -121,11 +121,11 @@ function setValueAtIndex(i, value) {
 }
 // Add a new element to the array
 function insertNewElem(i, val) {
+    console.log(allNodes);
     var arrayLength = control.getArrayClone().length;
-    if (arrayLength > 10)
-        $("#rightBracket").css({
-            "left": 683 + ((arrayLength - 10) * 70) + "px"
-        });
+    $("#rightBracket").css({
+        "left": 683 + ((arrayLength - 10) * 70) + "px"
+    });
     $("#arrayUL").append("<li id='arrayElem" + i + "'><div class='index'>" + i + "</div><div class='content' id='arrayContent" + i + "'>" + val + "</div></li>");
     var left = (i * 70) + "px";
     $("#arrayElem" + i).animate({ left: left }, 0);
@@ -149,6 +149,24 @@ function insertNewElemConnect(child, parent) {
     }
     parentNode.addChild(childNode);
     positioningNodes(500);
+}
+function removeElem(i) {
+    // Set timeout to avoid deleting node before swapElement function has finished executing
+    setTimeout(function () {
+        var arrayLength = control.getArrayClone().length;
+        $("#rightBracket").css({
+            "left": 683 + ((arrayLength - 10) * 70) + "px"
+        });
+        $("#arrayElem" + i).remove();
+        console.log(allNodes[i].parent);
+        //allNodes[i].reset();
+        $("#node" + i).fadeOut(2000, function () {
+            $(this).remove();
+        });
+        allNodes[i].parent.removeChild(allNodes[i]);
+        //allNodes[i].reset();
+        allNodes.pop();
+    }, 1000);
 }
 // Swap position of two graphNodes
 function swapNodes(child, parent) {
@@ -207,7 +225,6 @@ function selectIndex(index, select) {
     });
 }
 function highlightNode(index, color) {
-    console.log("highlighting: " + index);
     if (color.toLowerCase() == "green" || color.toLowerCase() == "orange") {
         $("#arrayElem" + index + ", #node" + index).each(function () {
             removeHighlight(index);
@@ -351,3 +368,9 @@ function setUpAddButton() {
     });
 }
 setUpAddButton();
+function setUpRemoveButton() {
+    $("#removeElem").click(function () {
+        viewer.removeNode();
+    });
+}
+setUpRemoveButton();

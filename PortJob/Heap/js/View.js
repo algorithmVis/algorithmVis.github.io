@@ -185,6 +185,9 @@ var View = /** @class */ (function () {
         setKeyListener();
         setupRadio();
     };
+    View.prototype.removeNode = function () {
+        control.removeNode();
+    };
     View.prototype.swapNode = function (child, parent) {
         var forward = function (child, parent) {
             return function () {
@@ -197,6 +200,14 @@ var View = /** @class */ (function () {
             };
         }(child, parent);
         manager.addEvent(new FrontendEvent(forward, backward, 1000));
+    };
+    View.prototype.removeElem = function (i) {
+        var forward = function (index) {
+            return function () {
+                removeElem(index);
+            };
+        }(i);
+        manager.addEvent(new FrontendEvent(forward, forward, manager.delayTime));
     };
     return View;
 }());

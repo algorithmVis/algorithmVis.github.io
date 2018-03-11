@@ -58,13 +58,38 @@ var MaxHeap = /** @class */ (function () {
     };
     MaxHeap.prototype.remove = function () {
         // Remove root element, set last element to root and start frontendevents
-        this.array[0] = this.array[this.array.length - 1];
-        this.array[this.array.length - 1] = null;
+        this.exch(0, this.array.length - 1);
+        control.swapNode(this.array.length - 1, 0);
+        control.removeElem(this.array.length - 1);
+        this.array.pop();
+        control.saveState(this.array);
         this.sink(0, this.array.length - 1);
     };
     MaxHeap.prototype.sink = function (index, length) {
         var left = index * 2 + 1;
         var right = index * 2 + 2;
+        if (right > length)
+            return;
+        if (this.array[index] >= this.array[left] && this.array[index] >= this.array[right])
+            return;
+        // Sink
+        var other;
+        if (this.array[right] > this.array[left]) {
+            other = right;
+        }
+        else {
+            other = left;
+        }
+        control.highlightNode(index, "orange");
+        control.highlightNode(other, "orange");
+        control.swapNode(index, other);
+        this.exch(index, other);
+        control.highlightNode(index, "green");
+        control.highlightNode(other, "green");
+        control.removeHighlight(index);
+        control.removeHighlight(other);
+        control.saveState(this.getArray());
+        this.sink(other, length);
     };
     MaxHeap.prototype.swim = function (index) {
         console.log(allNodes[index].parent);

@@ -71,14 +71,40 @@ class MaxHeap implements IAlgorithm {
 
     remove(): void {
         // Remove root element, set last element to root and start frontendevents
-        this.array[0] = this.array[this.array.length - 1];
-        this.array[this.array.length - 1] = null;
+        this.exch(0, this.array.length - 1);
+        control.swapNode(this.array.length - 1, 0);
+        control.removeElem(this.array.length - 1);
+        this.array.pop();
+        control.saveState(this.array);
         this.sink(0, this.array.length - 1);
     }
 
     private sink(index: number, length: number): void {
         let left: number = index * 2 + 1;
         let right: number = index * 2 + 2;
+
+        if (right > length)
+            return;
+        if (this.array[index] >= this.array[left] && this.array[index] >= this.array[right])
+            return;
+
+        // Sink
+        let other;
+        if (this.array[right] > this.array[left]) {
+            other = right;
+        } else {
+            other = left;
+        }
+        control.highlightNode(index, "orange");
+        control.highlightNode(other, "orange");
+        control.swapNode(index, other);
+        this.exch(index, other);
+        control.highlightNode(index, "green");
+        control.highlightNode(other, "green");
+        control.removeHighlight(index);
+        control.removeHighlight(other);
+        control.saveState(this.getArray());
+        this.sink(other, length);
     }
 
     private swim(index: number): void {
