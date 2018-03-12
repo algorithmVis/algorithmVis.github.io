@@ -10,8 +10,6 @@ let sortArray: number[] = [];
 let copyArray: number[] = [];
 const n = 10;
 let running = true;
-var tempArray = new Array;
-
 
 function checkIfAlreadyRunning() {
     if (running) {
@@ -20,7 +18,6 @@ function checkIfAlreadyRunning() {
     }
     else {
         running = true;
-
     }
 }
 
@@ -59,64 +56,82 @@ function mergesort(array: number[]) {
 
 
 function merge(left: number[], right: number[]) {
-    console.log("MERGE her med " + left + " : " + right);
+    console.log("--------------------------------------------------");
+    console.log("--------------------------------------------------");
+    console.log("--------------------------------------------------");
 
     let result: number[] = [];
-    let indexLeft: number = 0;
-    let indexRight: number = 0;
+    let tempLeftIndex: number = 0;
+    let tempRightIndex: number = 0;
 
-    while (indexLeft < left.length && indexRight < right.length) {
+    let start : number =  copyArray.indexOf(left[0])
+    let end : number = copyArray.indexOf(right[right.length-1]);
+    let counter : number = start;
+    let testing  : number[] = copyArray;
+
+
+    while (tempLeftIndex < left.length && tempRightIndex < right.length) {
         //Compare the elements from each array
-        if (left[indexLeft] < right[indexRight]) {
 
-            result.push(left[indexLeft]);
-            tempArray.push(left[indexLeft]);
+        //viewer.highLightNode(tempLeftIndex)
+        //viewer.highLightNode(tempRightIndex)
 
-            viewer.pushElement(copyArray.indexOf(left[indexLeft]), copyArray.indexOf(left[indexLeft]));
-            viewer.liftElements(copyArray.indexOf(left[indexLeft]), copyArray.indexOf(left[indexLeft]));
+        if (left[tempLeftIndex] < right[tempRightIndex]) {
 
-            indexLeft++;
+            viewer.liftElements(copyArray.indexOf(left[tempLeftIndex]), copyArray.indexOf(left[tempLeftIndex]));
+            //viewer.moveElement(tempLeftIndex, counter)
+            //viewer.pushElements(counter, end, !left)  to the right
+
+            result.push(left[tempLeftIndex]);
+            testing[counter] = left[tempLeftIndex];
+
+            counter++;
+            tempLeftIndex++;
 
         } else {
-            result.push(right[indexRight]);
-            tempArray.push(right[indexRight]);
 
-            viewer.pushElement(copyArray.indexOf(left[indexLeft]), copyArray.indexOf(right[indexRight]));
-            viewer.liftElements(copyArray.indexOf(left[indexLeft]), copyArray.indexOf(left[indexLeft]));
-            viewer.liftElements(copyArray.indexOf(right[indexRight]), copyArray.indexOf(right[indexRight]));
+            viewer.liftElements(copyArray.indexOf(right[tempRightIndex]), copyArray.indexOf(right[tempRightIndex]));
+            //viewer.moveElement(tempRightIndex, counter)
+            //viewer.pushElements(counter, end, !left)  to the right
 
-            indexRight++;
+            result.push(right[tempRightIndex]);
+            testing[counter] = right[tempRightIndex];
+
+            counter++;
+            tempRightIndex++;
         }
     }
 
 
-    if (right.length > 0) {
-        for (let i = 0; i < right.slice(indexRight).length; i++) {
-            viewer.liftElements(copyArray.indexOf(right.slice(indexRight)[i]), copyArray.indexOf(right.slice(indexRight)[i]));
-            viewer.deselectPivotElement(copyArray.indexOf(right.slice(indexRight)[i]));
+    if (right.slice(tempRightIndex).length > 0) {
+        let moreRight = right.slice(tempRightIndex);
+        for (let i = 0; i < moreRight.length; i++) {
+            viewer.liftElements(copyArray.indexOf(right.slice(tempRightIndex)[i]), copyArray.indexOf(right.slice(tempRightIndex)[i]));
+            viewer.deselectPivotElement(copyArray.indexOf(right.slice(tempRightIndex)[i]));
+            //moveElement(tempRightIndex, counter)
+            //pushElements(counter, end, !left)  to the right????
+
+            testing[counter] = moreRight[i];
+            counter++;
         }
     }
-    if (left.length > 0) {
-        for (let i = 0; i < left.slice(indexLeft).length; i++) {
-            viewer.liftElements(copyArray.indexOf(left.slice(indexLeft)[i]), copyArray.indexOf(left.slice(indexLeft)[i]));
-            viewer.deselectPivotElement(copyArray.indexOf(left.slice(indexLeft)[i]));
+    if (left.slice(tempLeftIndex).length > 0) {
+        let moreLeft = left.slice(tempLeftIndex);
+        for (let i = 0; i < moreLeft.length; i++) {
+            viewer.liftElements(copyArray.indexOf(left.slice(tempLeftIndex)[i]), copyArray.indexOf(left.slice(tempLeftIndex)[i]));
+            viewer.deselectPivotElement(copyArray.indexOf(left.slice(tempLeftIndex)[i]));
+            //moveElement(tempLeftIndex, counter)
+            //pushElements(counter, end, !left)  to the right???
+
+            testing[counter] = moreLeft[i];
+            counter++;
         }
     }
-    console.log(copyArray + "right slice = " + right.slice(indexRight) + "left slice = " + left.slice(indexLeft));
 
-    console.log("concat : " + tempArray.concat(left.slice(indexLeft)).concat(right.slice(indexRight)));
-    tempArray = tempArray.concat(left.slice(indexLeft)).concat(right.slice(indexRight));
-    return result.concat(left.slice(indexLeft)).concat(right.slice(indexRight));
-
+    console.log("ArrEnd: " + testing);
+    copyArray = testing;
+    return result.concat(left.slice(tempLeftIndex)).concat(right.slice(tempRightIndex));
 }
-
-function pushInArr(val: number[]) {
-    var tempArr;
-    var tmpVal;
-
-
-}
-
 
 function delay() {
     try {

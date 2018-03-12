@@ -148,7 +148,7 @@ function getArray(ran) {
 // Setting Random array
     if (ran === "random") {
         //array = setRandomMyArray();
-        array = [79, 76, 22, 95, 61, 7, 51, 73, 17, 91];
+        array = [4, 1, 10, 7, 3, 5, 20, 15, 2, 21];
     }
     else if (ran === "sorted") {
         array = setSortedArray();
