@@ -132,7 +132,7 @@ function insertNewElem(i, val) {
     insertNewNode(i, val);
 }
 function insertNewElemConnect(child, parent) {
-    if (allNodes[child] === undefined)
+    if (allNodes[child] === undefined || allNodes[parent] === undefined)
         return;
     // If the two nodes are the same
     if (child == parent) {
@@ -150,14 +150,15 @@ function insertNewElemConnect(child, parent) {
     parentNode.addChild(childNode);
     positioningNodes(500);
 }
-function removeElem(i) {
+function removeElem(i, delArray) {
     // Set timeout to avoid deleting node before swapElement function has finished executing
     setTimeout(function () {
         var arrayLength = control.getArrayClone().length;
         $("#rightBracket").css({
             "left": 683 + ((arrayLength - 10) * 70) + "px"
         });
-        $("#arrayElem" + i).remove();
+        if (delArray)
+            $("#arrayElem" + i).remove();
         console.log(allNodes[i].parent);
         //allNodes[i].reset();
         $("#node" + i).fadeOut(2000, function () {

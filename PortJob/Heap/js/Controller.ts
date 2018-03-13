@@ -23,10 +23,16 @@ class Controller {
         this.algorithm = algo;
         this.speed = 50;
         viewer.changeToCurrentAlgorithm();
-        this.algorithm.setIndex();
-        viewer.displayThisArray(this.algorithm.getArray());
-        manager.start();
-        this.algorithm.connectNodes();
+        if (algo.getName() == "FreeMode") {
+            (<MaxHeapFree> this.algorithm).clearArrayValues();
+            (<MaxHeapFree> this.algorithm).maxHeapFreeInit();
+            manager.start();
+        } else {
+            this.algorithm.setIndex();
+            viewer.displayThisArray(this.algorithm.getArray());
+            manager.start();
+            this.algorithm.connectNodes();
+        }
     }
 
     changeSpeed(newSpeed: number) {
@@ -60,7 +66,7 @@ class Controller {
         viewer.selectThisIndex(index, select);
     }
 
-    setValueAtIndex(i: number, bValue: number) {
+    setValueAtIndex(i: number, bValue) {
         viewer.setValueAtThisIndex(i, bValue);
     }
 
@@ -124,8 +130,8 @@ class Controller {
         this.algorithm.remove();
     }
 
-    removeElem(i : number) {
-        viewer.removeElem(i);
+    removeElem(i: number, removeArr : boolean) {
+        viewer.removeElem(i, removeArr);
     }
 }
 

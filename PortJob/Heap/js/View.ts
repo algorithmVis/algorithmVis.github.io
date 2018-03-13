@@ -7,6 +7,7 @@
 ///<reference path="StateController.ts"/>
 ///<reference path="methods.ts"/>
 ///<reference path="MaxHeap.ts"/>
+// /<reference path="MaxHeapFree.ts"/>
 
 
 declare var $;
@@ -61,7 +62,7 @@ class View implements IView {
         manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
     }
 
-    setValueAtThisIndex(i: number, bValue: number) {
+    setValueAtThisIndex(i: number, bValue) {
         let forwardSteps = function (i, bValue) {
             return function () {
                 setValueAtIndex(i, bValue);
@@ -156,11 +157,11 @@ class View implements IView {
     }
 
     resetAll() {
-        //let arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+        let arr: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
         stepper = new StateController(control, this);
 
-        //this.resetArray(arr);
-        //this.displayThisArray(arr);
+        this.resetArray(arr);
+        this.displayThisArray(arr);
     }
 
     changeToCurrentAlgorithm() {
@@ -198,7 +199,13 @@ class View implements IView {
     switchAlgorithm(algo: string) {
         switch (algo) {
             case "MaxHeap": {
+                this.resetAll();
                 control.initController(new MaxHeap(10));
+                break;
+            }
+            case "MaxHeapFree": {
+                this.resetAll();
+                control.initController(new MaxHeapFree(10));
                 break;
             }
             default: {
@@ -247,12 +254,12 @@ class View implements IView {
         manager.addEvent(new FrontendEvent(forward, backward, 1000));
     }
 
-    removeElem(i: number) {
-        let forward = function (index) {
+    removeElem(i: number, removeArr: boolean) {
+        let forward = function (index, removeArr) {
             return function () {
-                removeElem(index);
+                removeElem(index, removeArr);
             }
-        }(i);
+        }(i, removeArr);
 
         manager.addEvent(new FrontendEvent(forward, forward, manager.delayTime));
     }

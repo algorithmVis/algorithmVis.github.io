@@ -134,7 +134,7 @@ function setArrow(index: number) {
 }
 
 // New value in arrayElem
-function setValueAtIndex(i: number, value: number) {
+function setValueAtIndex(i: number, value) {
     var $elem = $("#arrayElem" + i).children(".content");
     $elem.empty();
     $elem.append("" + value);
@@ -155,7 +155,7 @@ function insertNewElem(i: number, val: number): void {
 }
 
 function insertNewElemConnect(child: number, parent: number): void {
-    if (allNodes[child] === undefined)
+    if (allNodes[child] === undefined || allNodes[parent] === undefined)
         return;
 
     // If the two nodes are the same
@@ -176,7 +176,7 @@ function insertNewElemConnect(child: number, parent: number): void {
     positioningNodes(500);
 }
 
-function removeElem(i: number) {
+function removeElem(i: number, delArray: boolean) {
     // Set timeout to avoid deleting node before swapElement function has finished executing
     setTimeout(function () {
         let arrayLength = control.getArrayClone().length;
@@ -184,7 +184,8 @@ function removeElem(i: number) {
         $("#rightBracket").css({
             "left": 683 + ((arrayLength - 10) * 70) + "px"
         });
-        $("#arrayElem" + i).remove();
+        if (delArray)
+            $("#arrayElem" + i).remove();
 
         console.log(allNodes[i].parent);
         //allNodes[i].reset();

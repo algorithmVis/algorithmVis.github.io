@@ -7,6 +7,7 @@ var MaxHeap = /** @class */ (function () {
     function MaxHeap(size) {
         this.name = "MaxHeap";
         this.arraySize = size;
+        this.currIndex = size - 1;
         this.array = new Array;
         for (var i = 0; i < size; i++)
             this.array[i] = i;
@@ -60,7 +61,7 @@ var MaxHeap = /** @class */ (function () {
         // Remove root element, set last element to root and start frontendevents
         this.exch(0, this.array.length - 1);
         control.swapNode(this.array.length - 1, 0);
-        control.removeElem(this.array.length - 1);
+        control.removeElem(this.array.length - 1, true);
         this.array.pop();
         control.saveState(this.array);
         this.sink(0, this.array.length - 1);
@@ -92,7 +93,6 @@ var MaxHeap = /** @class */ (function () {
         this.sink(other, length);
     };
     MaxHeap.prototype.swim = function (index) {
-        console.log(allNodes[index].parent);
         var other = Math.floor((index - 1) / 2);
         while (other >= 0 && this.array[index] > this.array[other]) {
             control.highlightNode(index, "orange");

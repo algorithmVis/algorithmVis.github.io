@@ -7,11 +7,14 @@
 
 class MaxHeap implements IAlgorithm {
     private arraySize: number;
-    private array: number[];
+    protected array: number[];
     private name: string = "MaxHeap";
+    protected currIndex: number;
+
 
     constructor(size: number) {
         this.arraySize = size;
+        this.currIndex = size - 1;
         this.array = new Array;
         for (let i = 0; i < size; i++)
             this.array[i] = i;
@@ -50,7 +53,7 @@ class MaxHeap implements IAlgorithm {
         }
     }
 
-    private exch(number: number, number2: number) {
+    protected exch(number: number, number2: number) {
         let tmp = this.array[number];
         this.array[number] = this.array[number2];
         control.setValueAtIndex(number, this.array[number]);
@@ -73,13 +76,13 @@ class MaxHeap implements IAlgorithm {
         // Remove root element, set last element to root and start frontendevents
         this.exch(0, this.array.length - 1);
         control.swapNode(this.array.length - 1, 0);
-        control.removeElem(this.array.length - 1);
+        control.removeElem(this.array.length - 1, true);
         this.array.pop();
         control.saveState(this.array);
         this.sink(0, this.array.length - 1);
     }
 
-    private sink(index: number, length: number): void {
+    protected sink(index: number, length: number): void {
         let left: number = index * 2 + 1;
         let right: number = index * 2 + 2;
 
@@ -107,8 +110,7 @@ class MaxHeap implements IAlgorithm {
         this.sink(other, length);
     }
 
-    private swim(index: number): void {
-        console.log(allNodes[index].parent);
+    protected swim(index: number): void {
         let other: number = Math.floor((index - 1) / 2);
         while (other >= 0 && this.array[index] > this.array[other]) {
             control.highlightNode(index, "orange");

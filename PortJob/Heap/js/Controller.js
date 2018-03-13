@@ -16,10 +16,17 @@ var Controller = /** @class */ (function () {
         this.algorithm = algo;
         this.speed = 50;
         viewer.changeToCurrentAlgorithm();
-        this.algorithm.setIndex();
-        viewer.displayThisArray(this.algorithm.getArray());
-        manager.start();
-        this.algorithm.connectNodes();
+        if (algo.getName() == "FreeMode") {
+            this.algorithm.clearArrayValues();
+            this.algorithm.maxHeapFreeInit();
+            manager.start();
+        }
+        else {
+            this.algorithm.setIndex();
+            viewer.displayThisArray(this.algorithm.getArray());
+            manager.start();
+            this.algorithm.connectNodes();
+        }
     };
     Controller.prototype.changeSpeed = function (newSpeed) {
         this.speed = newSpeed;
@@ -94,8 +101,8 @@ var Controller = /** @class */ (function () {
     Controller.prototype.removeNode = function () {
         this.algorithm.remove();
     };
-    Controller.prototype.removeElem = function (i) {
-        viewer.removeElem(i);
+    Controller.prototype.removeElem = function (i, removeArr) {
+        viewer.removeElem(i, removeArr);
     };
     return Controller;
 }());
