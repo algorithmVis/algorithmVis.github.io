@@ -256,6 +256,38 @@ class view {
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
 
+    highlightNode(index: number) {
+        var forwardSteps = function(index) {
+            return function() {
+                highlightNode(index);
+            }
+        }(index);
+
+        var backwardSteps = function(index) {
+            return function() {
+                deHighlightNode(index);
+            }
+        }(index);
+
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed))
+    }
+
+    deHighlightNode(index: number) {
+        var forwardSteps = function(index) {
+            return function() {
+                deHighlightNode(index);
+            }
+        }(index);
+
+        var backwardSteps = function(index) {
+            return function() {
+                highlightNode(index);
+            }
+        }(index);
+
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
+    }
+
     setArrowNumber(nr: number) {
         var forwardSteps = function(nr) {
             return function() {
@@ -282,6 +314,7 @@ class view {
         arrayIsReset = true;
       }
      */
+
 
     pause() {
         if (!this.paused) {

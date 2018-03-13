@@ -61,6 +61,15 @@ function selectPivotElement(index:number) {
     insElem.append('<p id="pivotChar">P</p>');
 }
 
+function highlightNode(index: number) {
+    $("#insElemNr" + index).addClass("highlightNode");
+}
+
+function deHighlightNode(index: number) {
+    $("#insElemNr" + index).removeClass("highlightNode");
+}
+
+
 function deselectPivotElement(index:number) {
     $("#insElemNr" + index).removeClass("pivot");
     $("#insElemNr" + index).children("p").remove();
