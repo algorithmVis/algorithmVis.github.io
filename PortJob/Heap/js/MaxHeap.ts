@@ -45,15 +45,22 @@ class MaxHeap implements IAlgorithm {
      */
     build() {
         let n: number = this.array.length;
-        for (let k: number = n / 2; k >= 0; k--)
+        for (let k: number = Math.floor((n - 1) / 2); k >= 0; k--)
             this.sink(k, n);
-        while (n > 1) {
-            this.exch(1, n--);
-            this.sink(1, n);
-        }
+        /*        while (n > 1) {
+                    this.exch(0, n--);
+                    this.sink(0, n);
+                }
+        */
+        console.log(this.array);
     }
 
     protected exch(number: number, number2: number) {
+        if (this.array[number] === undefined || this.array[number2] === undefined)
+            return;
+        console.log(this.array[number]);
+        console.log(this.array[number2]);
+        console.log("-------------------------");
         let tmp = this.array[number];
         this.array[number] = this.array[number2];
         control.setValueAtIndex(number, this.array[number]);

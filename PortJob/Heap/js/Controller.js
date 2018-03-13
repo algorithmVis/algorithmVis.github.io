@@ -34,6 +34,9 @@ var Controller = /** @class */ (function () {
     Controller.prototype.getSpeed = function () {
         return this.speed;
     };
+    Controller.prototype.getAlgorithm = function () {
+        return this.algorithm;
+    };
     /**
      * Remove the maximum/minimum element
      */

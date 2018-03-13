@@ -1,5 +1,6 @@
-///<reference path="methods.ts"/>
-///<reference path="drawGraph.ts"/>
+/**
+ * Created by Øyvind Skeie Liland on 13.03.18
+ */
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -10,6 +11,8 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+///<reference path="methods.ts"/>
+///<reference path="drawGraph.ts"/>
 var MaxHeapFree = /** @class */ (function (_super) {
     __extends(MaxHeapFree, _super);
     function MaxHeapFree(size) {

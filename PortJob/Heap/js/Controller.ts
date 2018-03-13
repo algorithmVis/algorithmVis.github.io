@@ -43,6 +43,10 @@ class Controller {
         return this.speed;
     }
 
+    getAlgorithm() {
+        return this.algorithm;
+    }
+
     /**
      * Remove the maximum/minimum element
      */
@@ -130,7 +134,7 @@ class Controller {
         this.algorithm.remove();
     }
 
-    removeElem(i: number, removeArr : boolean) {
+    removeElem(i: number, removeArr: boolean) {
         viewer.removeElem(i, removeArr);
     }
 }

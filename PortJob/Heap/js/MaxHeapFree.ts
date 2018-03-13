@@ -1,3 +1,7 @@
+/**
+ * Created by Øyvind Skeie Liland on 13.03.18
+ */
+
 ///<reference path="methods.ts"/>
 ///<reference path="drawGraph.ts"/>
 

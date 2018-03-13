@@ -169,6 +169,11 @@ var View = /** @class */ (function () {
                 control.initController(new MaxHeapFree(10));
                 break;
             }
+            case "BuildHeap": {
+                this.resetAll();
+                control.initController(new BuildHeap(10));
+                break;
+            }
             default: {
                 control.initController(new MaxHeap(10));
                 break;

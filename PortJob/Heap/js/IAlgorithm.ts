@@ -31,6 +31,11 @@ interface IAlgorithm {
     getArray(): number[];
 
     /**
+     * Build heap
+     */
+    build(): void
+
+    /**
      *  Set the current state of the algorithm to the given array
      * @param array
      */
