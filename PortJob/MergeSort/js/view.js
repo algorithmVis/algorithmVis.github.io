@@ -214,6 +214,14 @@ var view = /** @class */ (function () {
         this.lastArrowNr = nr;
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
+    view.prototype.moveElementToPlace = function (tempElement, end, moveTo) {
+        var forwardSteps = function (tempElement, end, moveTo) {
+            return function () {
+                moveElementToPlace(tempElement, end, moveTo);
+            };
+        }(tempElement, end, moveTo);
+        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
+    };
     /*
       setRandomArray() {
         manager.clear();
