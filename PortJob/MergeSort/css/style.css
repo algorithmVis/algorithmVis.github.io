@@ -39,6 +39,21 @@ ul.insElements li.pivot div {
     background-color: #f1f500;
 }
 
+ul.insElements li.pivot div {
+    background-color: #f1f500;
+}
+
+ul.insElements li.highlightNode div {
+    background-color: #f4a742;
+}
+ul.insElements li.pivot div {
+    background-color: #f1f500;
+}
+
+ul.insElements li.highlightNode div {
+    background-color: #f4a742;
+}
+
 div#array ul#arrayUl {
     font-weight: bold;
     font-size: 2em;

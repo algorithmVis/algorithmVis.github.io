@@ -65,3 +65,50 @@ function clearScreen() {
 function setLevelHeight(height) {
     LEVEL_HEIGHT = height;
 }
+function moveElementToPlace(element, end, moveTo) {
+    console.log("elem " + element + " end " + end + " moveTo " + moveTo);
+    var copy = array;
+    var first;
+    var second;
+    var notSwap = false;
+    for (var i = element; i <= end; i++) {
+        console.log("help me  " + i + element);
+        if (i == element && !notSwap) {
+            first = i;
+            var $elem = $("#" + insElemNr + i);
+            var moveLeft = $("#" + insElemNr + moveTo).css("left");
+            second = moveTo;
+            console.log(moveLeft);
+            $elem.animate({ left: moveLeft }, 1000, function () {
+                $("#" + insElemNr + 0).attr("id", insElemNr + 100);
+                $("#" + insElemNr + i).attr("id", insElemNr + moveTo);
+            });
+            notSwap = true;
+        }
+        else if (i == end) {
+            var $elem = $("#" + insElemNr + 100);
+            var moveLeft = $("#" + insElemNr + moveTo).css("left");
+            console.log(moveLeft + " " + moveTo);
+            moveLeft.replace("px", "");
+            second = moveTo;
+            console.log(moveLeft);
+            $elem.animate({ left: (Number(moveLeft)) + "px" }, 1000, function () {
+                $("#" + insElemNr + 100).attr("id", insElemNr + end);
+            });
+        }
+        else {
+            var $elem = $("#" + insElemNr + 100);
+            var moveLeft = $("#" + insElemNr + moveTo).css("left");
+            console.log(moveLeft + " " + moveTo);
+            moveLeft.replace("px", "");
+            second = moveTo;
+            console.log(moveLeft);
+            $elem.animate({ left: (Number(moveLeft)) + "px" }, 1000, function () {
+                $("#" + insElemNr + 100).attr("id", insElemNr + moveTo);
+                $("#" + insElemNr + moveTo + 1).attr("id", insElemNr + 100);
+            });
+        }
+        moveTo++;
+        i = moveTo;
+    }
+}

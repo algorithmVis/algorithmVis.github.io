@@ -32,30 +32,6 @@ var ArrayElement = /** @class */ (function () {
         this.animateLeft(otherElement.left, animTime, arrayId);
         otherElement.animateLeft(thisLeft, animTime, arrayId);
     };
-    ArrayElement.prototype.push = function (index, arrayID, animTime) {
-        var tempElem = arrayElements;
-        arrayElements = new Array;
-        for (var i = 0; i < tempElem.length; i++) {
-            if (this.id != tempElem[i].id) {
-                if (i == index) {
-                    var tmp = tempElem[i];
-                    arrayElements.push(this);
-                    arrayElements.push(tmp);
-                    var thisLeft = this.left;
-                    this.animateLeft(tempElem[i].left, animTime, arrayID);
-                    tmp.animateLeft(thisLeft, animTime, arrayID);
-                }
-                else if (i < index) {
-                    arrayElements.push(tempElem[i]);
-                }
-                else {
-                    //e detta rett ?
-                    arrayElements.push(tempElem[i]);
-                    tempElem[i].animateLeft(tempElem[i].left, animTime, arrayID);
-                }
-            }
-        }
-    };
     return ArrayElement;
 }());
 var arrayElements = new Array;
