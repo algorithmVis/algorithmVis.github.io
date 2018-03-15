@@ -6,6 +6,7 @@
 ///<reference path="EventManager.ts"/>
 ///<reference path="IView.ts"/>
 ///<reference path="methods.ts"/>
+///<reference path="MaxHeapFree.ts"/>
 var iColor = 2;
 var jColor = 0;
 var Controller = /** @class */ (function () {
@@ -59,11 +60,17 @@ var Controller = /** @class */ (function () {
     Controller.prototype.setValueAtIndex = function (i, bValue) {
         viewer.setValueAtThisIndex(i, bValue);
     };
+    Controller.prototype.setValueAtSortIndex = function (i, bValue) {
+        viewer.setValueAtThisSortIndex(i, bValue);
+    };
     Controller.prototype.connectNodes = function (child, parent) {
         viewer.connectThisNodes(child, parent);
     };
     Controller.prototype.highlightNode = function (index, color) {
         viewer.highlightThisNode(index, color);
+    };
+    Controller.prototype.highlightSortElem = function (index, color) {
+        viewer.highlightThisSortElem(index, color);
     };
     Controller.prototype.setAlgorithm = function (algo) {
         this.algorithm = algo;

@@ -6,6 +6,8 @@
 ///<reference path="EventManager.ts"/>
 ///<reference path="IView.ts"/>
 ///<reference path="methods.ts"/>
+///<reference path="MaxHeapFree.ts"/>
+
 
 let iColor = 2;
 let jColor = 0;
@@ -74,12 +76,20 @@ class Controller {
         viewer.setValueAtThisIndex(i, bValue);
     }
 
+    setValueAtSortIndex(i: number, bValue) {
+        viewer.setValueAtThisSortIndex(i, bValue);
+    }
+
     connectNodes(child: number, parent: number) {
         viewer.connectThisNodes(child, parent);
     }
 
     highlightNode(index: number, color: string) {
         viewer.highlightThisNode(index, color);
+    }
+
+    highlightSortElem(index: number, color: string) {
+        viewer.highlightThisSortElem(index, color);
     }
 
     setAlgorithm(algo: IAlgorithm) {

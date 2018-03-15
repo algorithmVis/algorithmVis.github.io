@@ -35,7 +35,6 @@
     <div class="arrayRow">
         <div id="array">
             <ul id="arrayUL">
-                <img id="arrow" class="hidden" src="assets/up_arrow.png"/>
                 <img id="leftBracket" class="bracket" src="assets/square_left.png"/>
                 <img id="rightBracket" class="bracket" src="assets/square_right.png"/>
             </ul>
@@ -52,6 +51,16 @@
             </ul>
         </div>
     </div>
+    <br/>
+    <div class="arrayRow">
+        <div id="sortArray" style="display: none;">
+            <ul id="sortArrayUL">
+                <img id="arrow" class="hidden" src="assets/up_arrow.png"/>
+                <img id="leftBracketS" class="bracket" src="assets/square_left.png"/>
+                <img id="rightBracketS" class="bracket" src="assets/square_right.png"/>
+            </ul>
+        </div>
+    </div>
     <br><br><br><br>
     <div class="settingsWrapper">
         <div class="radioSettings">
@@ -59,11 +68,11 @@
                 <input id="MaxHeap" type="radio" name="algorithm" value="max" checked
                        onclick="viewer.switchAlgorithm('MaxHeap')">Predefined<br>
                 <input id="MaxHeapFree" type="radio" name="algorithm" value="max"
-                       onclick="viewer.switchAlgorithm('MaxHeap')">FreeMode<br>
+                       onclick="viewer.switchAlgorithm('MaxHeapFree')">FreeMode<br>
                 <input id="HeapSort" type="radio" name="algorithm" value="max"
-                       onclick="viewer.switchAlgorithm('MaxHeap')">HeapSort<br>
+                       onclick="viewer.switchAlgorithm('HeapSort')">HeapSort<br>
                 <input id="Heapify" type="radio" name="algorithm" value="max"
-                       onclick="viewer.switchAlgorithm('MaxHeap')">Construct Heap<br>
+                       onclick="viewer.switchAlgorithm('BuildHeap')">Construct Heap<br>
             </form>
         </div>
         <div class="settings">
@@ -72,9 +81,15 @@
                 <button id="backward" class="btn btn-primary" onclick="stepBack();">Backward</button>
                 <button id="forward" class="btn btn-primary"
                         onclick="viewer.stepForward(getGraphState(), getArrayState());">Forward
+                </button>
+                <button id="play" class="btn btn-primary" onclick="viewer.play()">Play</button>
+            </div>
+            <div class="buttons">
+                <button id="slow" class="btn btn-success" onclick="setSlow()">Slow</button>
+                <button id="medium" class="btn btn-success" onclick="setMedium()">Medium</button>
+                <button id="fast" class="btn btn-success" onclick="setFast()">Fast</button>
             </div>
         </div>
-        </button>
         <div class="inputSettings">
             <button id="addElem" class="btn btn-primary">
                 <!-- Click-Event handled in setUpAddButton in methods.ts-->
@@ -94,6 +109,9 @@
 <script src="js/drawGraph.js"></script>
 <script src="js/methods.js"></script>
 <script src="js/MaxHeap.js"></script>
+<script src="js/MaxHeapFree.js"></script>
+<script src="js/BuildHeap.js"></script>
+<script src="js/HeapSort.js"></script>
 
 </html>
 

@@ -7,7 +7,8 @@
 ///<reference path="StateController.ts"/>
 ///<reference path="methods.ts"/>
 ///<reference path="MaxHeap.ts"/>
-// /<reference path="MaxHeapFree.ts"/>
+///<reference path="MaxHeapFree.ts"/>
+///<reference path="BuildHeap.ts"/>
 
 
 declare var $;
@@ -78,6 +79,23 @@ class View implements IView {
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
 
+    setValueAtThisSortIndex(i: number, bValue) {
+        let forwardSteps = function (i, bValue) {
+            return function () {
+                setValueAtSortIndex(i, bValue);
+            }
+        }(i, bValue);
+
+        let backwardSteps = function (i, bValue) {
+            return function () {
+                setValueAtSortIndex(i, i);
+            }
+        }(i, bValue);
+
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
+
+    }
+
     connectThisNodes(child: number, parent: number) {
         let forwardSteps = function (child, parent) {
             return function () {
@@ -103,6 +121,17 @@ class View implements IView {
 
         manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
     }
+
+    highlightThisSortElem(index: number, color: string) {
+        let forward = function (index: number, color: string) {
+            return function () {
+                sortHighlightElem(index, color);
+            }
+        }(index, color);
+
+        manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
+    }
+
 
     removeThisHighlight(index: number) {
         let forward = function (index: number) {
@@ -157,9 +186,9 @@ class View implements IView {
     }
 
     resetAll() {
+        this.paused = false;
         let arr: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
         stepper = new StateController(control, this);
-
         this.resetArray(arr);
         this.displayThisArray(arr);
     }
@@ -197,6 +226,8 @@ class View implements IView {
     }
 
     switchAlgorithm(algo: string) {
+        $("#sortArray").hide();
+        $("#sortArrayUL").children("li").remove();
         switch (algo) {
             case "MaxHeap": {
                 this.resetAll();
@@ -211,6 +242,12 @@ class View implements IView {
             case "BuildHeap": {
                 this.resetAll();
                 control.initController(new BuildHeap(10));
+                break;
+            }
+            case "HeapSort": {
+                this.resetAll();
+                $("#sortArray").show();
+                control.initController(new HeapSort(10));
                 break;
             }
             default: {
@@ -267,6 +304,18 @@ class View implements IView {
         }(i, removeArr);
 
         manager.addEvent(new FrontendEvent(forward, forward, manager.delayTime));
+    }
+
+    play() {
+        this.paused = true;
+        let algo = control.getAlgorithm().getName();
+        if (algo === "BuildHeap" && !this.paused)
+            control.getAlgorithm().build();
+        else if (algo === "HeapSort" && !this.paused)
+            (<HeapSort>control.getAlgorithm()).sort();
+        else {
+            return;
+        }
     }
 }
 

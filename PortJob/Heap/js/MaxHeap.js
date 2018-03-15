@@ -36,19 +36,11 @@ var MaxHeap = /** @class */ (function () {
         var n = this.array.length;
         for (var k = Math.floor((n - 1) / 2); k >= 0; k--)
             this.sink(k, n);
-        /*        while (n > 1) {
-                    this.exch(0, n--);
-                    this.sink(0, n);
-                }
-        */
         console.log(this.array);
     };
     MaxHeap.prototype.exch = function (number, number2) {
         if (this.array[number] === undefined || this.array[number2] === undefined)
             return;
-        console.log(this.array[number]);
-        console.log(this.array[number2]);
-        console.log("-------------------------");
         var tmp = this.array[number];
         this.array[number] = this.array[number2];
         control.setValueAtIndex(number, this.array[number]);

@@ -41,6 +41,35 @@ div.unionSort {
     position: relative;
 }
 
+ul#sortArrayUL {
+    list-style-type: none;
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    width: 0;
+    font-weight: bold;
+}
+
+ul #sortArrayUL li {
+    position: absolute;
+    text-align: center;
+    top: 0;
+    background-color: white;
+}
+
+ul#sortArrayUL li {
+    position: absolute;
+    text-align: center;
+    top: 0;
+    background-color: white;
+}
+
+ul#sortArrayUL li div.content {
+    width: 50px;
+    border: 2px solid black;
+    padding: 10px;
+}
+
 ul#graphUL {
     position: relative;
     height: 300px;
@@ -133,9 +162,11 @@ div.inputSettings {
     margin-right: 25px;
     font-size: 1.3em;
 }
+
 div.inputSettings button {
     margin-bottom: 2px;
 }
+
 div.radioSettings {
     display: inline-block;
     text-align: left;
@@ -160,4 +191,18 @@ img#rightBracket {
     left: 683px;
 }
 
+img#leftBracketS {
+    left: -55px;
+}
 
+img#rightBracketS {
+    left: 683px;
+}
+
+.highlightgreen {
+    background-color: green;
+}
+
+.highlightorange {
+    background-color: orange;
+}

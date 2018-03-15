@@ -99,13 +99,14 @@ function setupRadio() {
 setupRadio();
 // Methods for positioning arrow
 function setArrow(index) {
+    console.log(index);
     var $arrow = $("#arrow");
     if (index == -1) {
         $arrow.addClass("hidden");
-        $arrow.animate({ left: ($("#arrayElem0").position().left + 9) + "px" }, 0);
+        $arrow.animate({ left: ($("#sortArrayElem0").position().left + 9) + "px" }, 0);
         return;
     }
-    var left = $("#arrayElem" + index).position().left + 9;
+    var left = $("#sortArrayElem" + index).position().left + 9;
     if ($arrow.hasClass("hidden")) {
         $arrow.removeClass("hidden");
     }
@@ -116,6 +117,12 @@ function setArrow(index) {
 // New value in arrayElem
 function setValueAtIndex(i, value) {
     var $elem = $("#arrayElem" + i).children(".content");
+    $elem.empty();
+    $elem.append("" + value);
+}
+// New value in arrayElem
+function setValueAtSortIndex(i, value) {
+    var $elem = $("#sortArrayElem" + i).children(".content");
     $elem.empty();
     $elem.append("" + value);
 }
@@ -151,6 +158,8 @@ function insertNewElemConnect(child, parent) {
     positioningNodes(500);
 }
 function removeElem(i, delArray) {
+    if (allNodes[i] === undefined)
+        return;
     // Set timeout to avoid deleting node before swapElement function has finished executing
     setTimeout(function () {
         var arrayLength = control.getArrayClone().length;
@@ -171,6 +180,8 @@ function removeElem(i, delArray) {
 }
 // Swap position of two graphNodes
 function swapNodes(child, parent) {
+    if (allNodes[parent] === undefined)
+        return;
     // Get coordinates
     var tmp = allNodes[parent].value;
     var pTop = allNodes[parent].top;
@@ -190,6 +201,8 @@ function swapNodes(child, parent) {
         left: allNodes[parent].left + 'px',
         top: allNodes[parent].top + 'px'
     }, 1000, function () {
+        if (allNodes[child] == undefined)
+            return;
         allNodes[child].changeValue(tmp);
         // Reset node position
         $("#node" + child).css({ 'left': cLeft + 'px', 'top': cTop + 'px' });
@@ -235,6 +248,18 @@ function highlightNode(index, color) {
     else {
         console.log("*** WARNING: Unknown color, " + color + " *** ");
     }
+}
+function sortHighlightElem(index, color) {
+    if (color.toLowerCase() == "green" || color.toLowerCase() == "orange") {
+        removeSortHighlight(index);
+        $("#sortArrayContent" + index).addClass("highlight" + color);
+    }
+    else {
+        console.log("*** WARNING: Unknown color, " + color + " *** ");
+    }
+}
+function removeSortHighlight(index) {
+    $("#sortArrayContent" + index).removeClass("highlightgreen highlightorange");
 }
 function removeHighlight(index) {
     $("#arrayElem" + index + ", #node" + index).each(function () {

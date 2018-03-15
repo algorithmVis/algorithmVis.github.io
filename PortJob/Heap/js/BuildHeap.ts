@@ -7,7 +7,6 @@ class BuildHeap extends MaxHeap {
     constructor(size: number) {
         super(size);
         this.array.reverse(); // revert back
-        $(".buttons").append("<button id='play' class='btn btn-primary' onclick='control.getAlgorithm().build()'> Play </button>");
     }
 
     getName(): string {

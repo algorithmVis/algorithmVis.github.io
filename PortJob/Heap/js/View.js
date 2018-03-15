@@ -6,6 +6,8 @@
 ///<reference path="StateController.ts"/>
 ///<reference path="methods.ts"/>
 ///<reference path="MaxHeap.ts"/>
+///<reference path="MaxHeapFree.ts"/>
+///<reference path="BuildHeap.ts"/>
 var View = /** @class */ (function () {
     function View() {
         this.colors = ["#7FFF00", "not used", "#FFB366"];
@@ -62,6 +64,19 @@ var View = /** @class */ (function () {
         }(i, bValue);
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
+    View.prototype.setValueAtThisSortIndex = function (i, bValue) {
+        var forwardSteps = function (i, bValue) {
+            return function () {
+                setValueAtSortIndex(i, bValue);
+            };
+        }(i, bValue);
+        var backwardSteps = function (i, bValue) {
+            return function () {
+                setValueAtSortIndex(i, i);
+            };
+        }(i, bValue);
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
+    };
     View.prototype.connectThisNodes = function (child, parent) {
         var forwardSteps = function (child, parent) {
             return function () {
@@ -79,6 +94,14 @@ var View = /** @class */ (function () {
         var forward = function (index, color) {
             return function () {
                 highlightNode(index, color);
+            };
+        }(index, color);
+        manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
+    };
+    View.prototype.highlightThisSortElem = function (index, color) {
+        var forward = function (index, color) {
+            return function () {
+                sortHighlightElem(index, color);
             };
         }(index, color);
         manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
@@ -125,6 +148,7 @@ var View = /** @class */ (function () {
             stepper.stepBack(relationships, backendArr);
     };
     View.prototype.resetAll = function () {
+        this.paused = false;
         var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
         stepper = new StateController(control, this);
         this.resetArray(arr);
@@ -158,6 +182,8 @@ var View = /** @class */ (function () {
         this.animSpeed = 750;
     };
     View.prototype.switchAlgorithm = function (algo) {
+        $("#sortArray").hide();
+        $("#sortArrayUL").children("li").remove();
         switch (algo) {
             case "MaxHeap": {
                 this.resetAll();
@@ -172,6 +198,12 @@ var View = /** @class */ (function () {
             case "BuildHeap": {
                 this.resetAll();
                 control.initController(new BuildHeap(10));
+                break;
+            }
+            case "HeapSort": {
+                this.resetAll();
+                $("#sortArray").show();
+                control.initController(new HeapSort(10));
                 break;
             }
             default: {
@@ -219,6 +251,17 @@ var View = /** @class */ (function () {
             };
         }(i, removeArr);
         manager.addEvent(new FrontendEvent(forward, forward, manager.delayTime));
+    };
+    View.prototype.play = function () {
+        this.paused = true;
+        var algo = control.getAlgorithm().getName();
+        if (algo === "BuildHeap" && !this.paused)
+            control.getAlgorithm().build();
+        else if (algo === "HeapSort" && !this.paused)
+            control.getAlgorithm().sort();
+        else {
+            return;
+        }
     };
     return View;
 }());

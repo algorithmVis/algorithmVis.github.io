@@ -17,7 +17,6 @@ var BuildHeap = /** @class */ (function (_super) {
     function BuildHeap(size) {
         var _this = _super.call(this, size) || this;
         _this.array.reverse(); // revert back
-        $(".buttons").append("<button id='play' class='btn btn-primary' onclick='control.getAlgorithm().build()'> Play </button>");
         return _this;
     }
     BuildHeap.prototype.getName = function () {
