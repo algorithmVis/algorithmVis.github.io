@@ -46,32 +46,6 @@ class ArrayElement {
         this.animateLeft(otherElement.left, animTime, arrayId);
         otherElement.animateLeft(thisLeft, animTime, arrayId);
     }
-
-    push(index : number, arrayID : string, animTime : number) {
-        var tempElem = arrayElements;
-        arrayElements = new Array;
-        for (let i = 0; i < tempElem.length; i++) {
-            if (this.id != tempElem[i].id) {
-                if (i == index) {
-                    let tmp = tempElem[i];
-                    arrayElements.push(this);
-                    arrayElements.push(tmp);
-
-                    var thisLeft = this.left;
-                    this.animateLeft(tempElem[i].left, animTime, arrayID);
-                    tmp.animateLeft(thisLeft, animTime, arrayID);
-                } else if (i < index) {
-                        arrayElements.push(tempElem[i]);
-                } else {
-                    //e detta rett ?
-                    arrayElements.push(tempElem[i]);
-                    tempElem[i].animateLeft(tempElem[i].left, animTime, arrayID);
-                }
-            }
-
-        }
-
-    }
 }
 
 var arrayElements = new Array;
@@ -172,8 +146,8 @@ function getArray(ran) {
 }
 
 function checkDupli(arr : number[]) {
-    for(var i = 0; i <= arr.length; i++) {
-        for(var j = i; j <= arr.length; j++) {
+    for(let i = 0; i <= arr.length; i++) {
+        for(let j = i; j <= arr.length; j++) {
             if(i != j && arr[i] == arr[j]) {
                 return true;
             }

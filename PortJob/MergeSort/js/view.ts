@@ -29,33 +29,33 @@ class view {
         return returnString.substring(0, returnString.length - 1);
     }
 
-    moveArrayElementToIndex(fromIndex: number, toIndex : number)  {
-        var forwardSteps = function(fromIndex, toIndex) {
+    moveArrayElementToIndex(fromIndex: number, toIndex: number) {
+        var forwardSteps = function (fromIndex, toIndex) {
             return function () {
                 setPosition(fromIndex, toIndex * 70, 0);
                 swapId(fromIndex, toIndex);
             }
         }(fromIndex, toIndex);
 
-        var backwardSteps = function(fromIndex, toIndex) {
-            return function() {
+        var backwardSteps = function (fromIndex, toIndex) {
+            return function () {
                 swapId(toIndex, fromIndex);
                 setPosition(fromIndex, toIndex * 70, 0);
             }
         }(fromIndex, toIndex);
 
-        manager.addEvent(new FrontendEvent(forwardSteps,backwardSteps, this.animSpeed));
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
 
-    setColorInArrayElement(index : number, color: string, colorOn: boolean) {
-        var forwardSteps = function(index, color, colorOn) {
-            return function() {
+    setColorInArrayElement(index: number, color: string, colorOn: boolean) {
+        var forwardSteps = function (index, color, colorOn) {
+            return function () {
                 setColor(index, color, colorOn);
             }
         }(index, color, colorOn);
 
-        var backwardSteps = function(index, color, colorOn) {
-            return function() {
+        var backwardSteps = function (index, color, colorOn) {
+            return function () {
                 setColor(index, color, !colorOn);
             }
         }(index, color, colorOn);
@@ -66,14 +66,14 @@ class view {
     lowerElements(lo: number, hi: number) {
         if (lo > hi) return;
 
-        var forwardSteps = function(lo, hi) {
+        var forwardSteps = function (lo, hi) {
             return function () {
                 lowerElements(lo, hi);
             }
         }(lo, hi);
 
-        var backwardSteps = function(lo ,hi) {
-            return function() {
+        var backwardSteps = function (lo, hi) {
+            return function () {
                 liftElements(lo, hi);
             }
         }(lo, hi);
@@ -84,13 +84,13 @@ class view {
     liftElements(lo: number, hi: number) {
         if (lo > hi) return;
 
-        var forwardSteps = function(lo ,hi) {
-            return function() {
+        var forwardSteps = function (lo, hi) {
+            return function () {
                 liftElements(lo, hi);
             }
         }(lo, hi);
 
-        var backwardSteps = function(lo, hi) {
+        var backwardSteps = function (lo, hi) {
             return function () {
                 lowerElements(lo, hi);
             }
@@ -100,34 +100,34 @@ class view {
     }
 
     swapElements(i: number, j: number) {
-        var forwardSteps = function(i, j){
-            return function() {
+        var forwardSteps = function (i, j) {
+            return function () {
                 swapElements(i, j);
             }
-        }(i, j)
+        }(i, j);
 
         manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
     }
 
-    pushElement(i : number, place : number){
-        var forwardSteps = function(i, j){
-            return function() {
+    pushElement(i: number, place: number) {
+        var forwardSteps = function (i, j) {
+            return function () {
                 pushElement(i, j);
             }
-        }(i, place)
+        }(i, place);
 
         manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
     }
 
     setPivotElement(index: number) {
-        var forwardSteps = function(index) {
-            return function() {
+        var forwardSteps = function (index) {
+            return function () {
                 selectPivotElement(index);
             }
         }(index);
 
-        var backwardSteps = function(index) {
-            return function() {
+        var backwardSteps = function (index) {
+            return function () {
                 deselectPivotElement(index);
             }
         }(index);
@@ -136,14 +136,14 @@ class view {
     }
 
     deselectPivotElement(index: number) {
-        var forwardSteps = function(index) {
-            return function() {
+        var forwardSteps = function (index) {
+            return function () {
                 deselectPivotElement(index);
             }
         }(index);
 
-        var backwardSteps = function(index) {
-            return function() {
+        var backwardSteps = function (index) {
+            return function () {
                 selectPivotElement(index);
             }
         }(index);
@@ -155,14 +155,14 @@ class view {
     setArrow(arrowNr: number) {
         if (this.lastArrowIndex == arrowNr) return;
 
-        var forwardSteps = function(arrowNr) {
-            return function() {
+        var forwardSteps = function (arrowNr) {
+            return function () {
                 moveArrowToIndex(arrowNr, 0);
             }
         }(arrowNr);
 
-        var backwardSteps = function(lastArrowIndex) {
-            return function() {
+        var backwardSteps = function (lastArrowIndex) {
+            return function () {
                 moveArrowToIndex(lastArrowIndex, 0);
             }
         }(this.lastArrowIndex);
@@ -173,14 +173,14 @@ class view {
     }
 
     showArrow() {
-        var forwardSteps = function() {
+        var forwardSteps = function () {
             return function () {
                 showArrow();
             }
         };
 
-        var backwardSteps = function() {
-            return function() {
+        var backwardSteps = function () {
+            return function () {
                 hideArrow();
             }
         };
@@ -189,14 +189,14 @@ class view {
     }
 
     hideArrow() {
-        var forwardSteps = function() {
+        var forwardSteps = function () {
             return function () {
                 hideArrow();
             }
         };
 
-        var backwardSteps = function() {
-            return function() {
+        var backwardSteps = function () {
+            return function () {
                 showArrow();
             }
         };
@@ -205,14 +205,14 @@ class view {
     }
 
     moveArrow(index: number) {
-        var forwardSteps = function(index) {
-            return function() {
+        var forwardSteps = function (index) {
+            return function () {
                 moveArrowToIndex(index, 1000);
             }
         }(index);
 
-        var backwardSteps = function(lastArrowIndex) {
-            return function() {
+        var backwardSteps = function (lastArrowIndex) {
+            return function () {
                 moveArrowToIndex(lastArrowIndex, 1000);
             }
         }(this.lastArrowIndex);
@@ -223,14 +223,14 @@ class view {
     }
 
     setToFinished(index: number) {
-        var forwardSteps = function(index) {
-            return function(){
+        var forwardSteps = function (index) {
+            return function () {
                 setToFinished(index);
             }
         }(index);
 
-        var backwardSteps = function(index) {
-            return function() {
+        var backwardSteps = function (index) {
+            return function () {
                 setToNotFinished(index);
             }
         }(index);
@@ -257,14 +257,14 @@ class view {
     }
 
     highlightNode(index: number) {
-        var forwardSteps = function(index) {
-            return function() {
+        var forwardSteps = function (index) {
+            return function () {
                 highlightNode(index);
             }
         }(index);
 
-        var backwardSteps = function(index) {
-            return function() {
+        var backwardSteps = function (index) {
+            return function () {
                 deHighlightNode(index);
             }
         }(index);
@@ -273,14 +273,14 @@ class view {
     }
 
     deHighlightNode(index: number) {
-        var forwardSteps = function(index) {
-            return function() {
+        var forwardSteps = function (index) {
+            return function () {
                 deHighlightNode(index);
             }
         }(index);
 
-        var backwardSteps = function(index) {
-            return function() {
+        var backwardSteps = function (index) {
+            return function () {
                 highlightNode(index);
             }
         }(index);
@@ -289,20 +289,29 @@ class view {
     }
 
     setArrowNumber(nr: number) {
-        var forwardSteps = function(nr) {
-            return function() {
+        var forwardSteps = function (nr) {
+            return function () {
                 setArrowNumber(nr);
             }
         }(nr);
 
-        var backwardSteps = function(lastArrowNr) {
-            return function() {
+        var backwardSteps = function (lastArrowNr) {
+            return function () {
                 setArrowNumber(lastArrowNr);
             }
         }(this.lastArrowNr);
 
         this.lastArrowNr = nr;
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
+    }
+
+    moveElementToPlace(tempElement: number, end: number, moveTo: number) {
+        var forwardSteps = function (tempElement, end, moveTo) {
+            return function () {
+                moveElementToPlace(tempElement, end, moveTo);
+            }
+        }(tempElement, end, moveTo);
+        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
     }
 
 
@@ -314,7 +323,6 @@ class view {
         arrayIsReset = true;
       }
      */
-
 
     pause() {
         if (!this.paused) {
