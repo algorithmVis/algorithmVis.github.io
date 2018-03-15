@@ -200,6 +200,32 @@ var view = /** @class */ (function () {
         }(index);
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
+    view.prototype.highlightNode = function (index) {
+        var forwardSteps = function (index) {
+            return function () {
+                highlightNode(index);
+            };
+        }(index);
+        var backwardSteps = function (index) {
+            return function () {
+                deHighlightNode(index);
+            };
+        }(index);
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
+    };
+    view.prototype.deHighlightNode = function (index) {
+        var forwardSteps = function (index) {
+            return function () {
+                deHighlightNode(index);
+            };
+        }(index);
+        var backwardSteps = function (index) {
+            return function () {
+                highlightNode(index);
+            };
+        }(index);
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
+    };
     view.prototype.setArrowNumber = function (nr) {
         var forwardSteps = function (nr) {
             return function () {
@@ -214,12 +240,12 @@ var view = /** @class */ (function () {
         this.lastArrowNr = nr;
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
-    view.prototype.moveElementToPlace = function (tempElement, end, moveTo) {
-        var forwardSteps = function (tempElement, end, moveTo) {
+    view.prototype.moveElementToPlace = function (tempElement, end, moveTo, rest) {
+        var forwardSteps = function (tempElement, end, moveTo, rest) {
             return function () {
-                moveElementToPlace(tempElement, end, moveTo);
+                moveElementToPlace(tempElement, end, moveTo, rest);
             };
-        }(tempElement, end, moveTo);
+        }(tempElement, end, moveTo, rest);
         manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
     };
     /*

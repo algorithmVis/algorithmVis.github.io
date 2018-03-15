@@ -4,7 +4,7 @@
 declare var $;
 declare var javaBinder;
 var insElemNr = "insElemNr";
-var LEVEL_HEIGHT: number = 30;
+var LEVEL_HEIGHT: number = 85;
 
 function lowerElements(start: number, end: number) {
     var newTop: number;
@@ -90,52 +90,57 @@ function setLevelHeight(height: number) {
     LEVEL_HEIGHT = height;
 }
 
-function moveElementToPlace(element: number, end: number, moveTo: number) {
+function moveElementToPlace(element: number, end: number, moveTo: number, rest: boolean) {
+    console.log("--------------------------------------------------------");
     console.log("elem " + element + " end " + end + " moveTo " + moveTo);
-    var copy = array;
 
-    let first: number;
-    let second: number;
-    let notSwap: boolean = false;
+    let swap: boolean = true;
+    let place: number = moveTo;
+    let steps : number = element - moveTo;
+    if (element != moveTo) {
+        for (let i = element; i <= end; i++) {
+            if (i == element && swap) {
+                swap = false;
+                console.log("swap me");
+                var $elem = $("#" + insElemNr + i);
+                let moveLeft: number = $("#" + insElemNr + moveTo).css("left");
+                console.log(moveLeft);
+                $("#" + insElemNr + moveTo).attr("id", insElemNr + 100);
+                $("#" + insElemNr + element).attr("id", insElemNr + moveTo);
+                $elem.animate({left: moveLeft}, 500);
+                i = place - 1;
+            } else if (steps == 1 || steps == -1) {
+                console.log("steps == 1");
+                var $elem = $("#" + insElemNr + 100);
+                let moveLeft: string = $elem.css("left");
+                let move: number = (((Number)(moveLeft.substring(0, moveLeft.length - 2))) + 85);
+                $elem.attr("id", insElemNr + element);
+                $elem.animate({left: move + "px"}, 500);
+                break;
+            } else if (place == end) {
+                console.log("i == end-1");
+                var $elem = $("#" + insElemNr + 100);
+                let moveLeft: string = $elem.css("left");
+                let move: number = (((Number)(moveLeft.substring(0, moveLeft.length - 2))) + 85);
+                $elem.attr("id", insElemNr + place);
+                $elem.animate({left: move + "px"}, 500);
 
-    for (var i = element; i <= end; i++) {
-        console.log("help me  " + i + element);
-        if (i == element && !notSwap) {
-            first = i;
-            var $elem = $("#" + insElemNr + i);
-            let moveLeft: number = $("#" + insElemNr + moveTo).css("left");
-            second = moveTo;
-            console.log(moveLeft);
-            $elem.animate({left: moveLeft}, 1000, function () {
-                $("#" + insElemNr + 0).attr("id", insElemNr + 100);
-                $("#" + insElemNr + i).attr("id", insElemNr + moveTo);
-            });
-            notSwap = true;
-        } else if (i == end) {
-            var $elem = $("#" + insElemNr + 100);
-            let moveLeft: string = $("#" + insElemNr + moveTo).css("left");
-            console.log(moveLeft + " " + moveTo);
-            moveLeft.replace("px", "");
-            second = moveTo;
-            console.log(moveLeft);
-            $elem.animate({left: (Number(moveLeft)) + "px"}, 1000, function () {
-                $("#" + insElemNr + 100).attr("id", insElemNr + end);
-            });
-        } else {
-            var $elem = $("#" + insElemNr + 100);
-            let moveLeft: string = $("#" + insElemNr + moveTo).css("left");
-            console.log(moveLeft + " " + moveTo);
-            moveLeft.replace("px", "");
-            second = moveTo;
-            console.log(moveLeft);
-            $elem.animate({left: (Number(moveLeft)) + "px"}, 1000, function () {
-                $("#" + insElemNr + 100).attr("id", insElemNr + moveTo);
-                $("#" + insElemNr + moveTo + 1).attr("id", insElemNr + 100);
-            });
+            } else if (i < end - 1) {
+                console.log("else" + i);
+                var $elem = $("#" + insElemNr + 100);
+                let moveLeft: string = $elem.css("left");
+                let move: number = (((Number)(moveLeft.substring(0, moveLeft.length - 2))) + 85);
+                $("#" + insElemNr + i).attr("id", insElemNr + 100);
+                $elem.attr("id", insElemNr + i);
+                $elem.animate({left: move + "px"}, 500);
+            }
+
+
+            place++;
         }
-        moveTo++;
-        i = moveTo;
     }
+
+
 }
 
 

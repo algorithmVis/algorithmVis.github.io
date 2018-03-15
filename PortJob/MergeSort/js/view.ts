@@ -305,12 +305,12 @@ class view {
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
 
-    moveElementToPlace(tempElement: number, end: number, moveTo: number) {
-        var forwardSteps = function (tempElement, end, moveTo) {
+    moveElementToPlace(tempElement: number, end: number, moveTo: number, rest: boolean) {
+        var forwardSteps = function (tempElement, end, moveTo, rest) {
             return function () {
-                moveElementToPlace(tempElement, end, moveTo);
+                moveElementToPlace(tempElement, end, moveTo, rest);
             }
-        }(tempElement, end, moveTo);
+        }(tempElement, end, moveTo, rest);
         manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
     }
 
