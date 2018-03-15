@@ -253,12 +253,15 @@ var View = /** @class */ (function () {
         manager.addEvent(new FrontendEvent(forward, forward, manager.delayTime));
     };
     View.prototype.play = function () {
-        this.paused = true;
         var algo = control.getAlgorithm().getName();
-        if (algo === "BuildHeap" && !this.paused)
+        if (algo === "BuildHeap" && !this.paused) {
             control.getAlgorithm().build();
-        else if (algo === "HeapSort" && !this.paused)
+            this.paused = true;
+        }
+        else if (algo === "HeapSort" && !this.paused) {
             control.getAlgorithm().sort();
+            this.paused = true;
+        }
         else {
             return;
         }

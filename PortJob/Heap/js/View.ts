@@ -307,13 +307,14 @@ class View implements IView {
     }
 
     play() {
-        this.paused = true;
         let algo = control.getAlgorithm().getName();
-        if (algo === "BuildHeap" && !this.paused)
+        if (algo === "BuildHeap" && !this.paused) {
             control.getAlgorithm().build();
-        else if (algo === "HeapSort" && !this.paused)
+            this.paused = true;
+        } else if (algo === "HeapSort" && !this.paused) {
             (<HeapSort>control.getAlgorithm()).sort();
-        else {
+            this.paused = true;
+        } else {
             return;
         }
     }

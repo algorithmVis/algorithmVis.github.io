@@ -77,7 +77,7 @@
         </div>
         <div class="settings">
             <div class="buttons">
-                <button id="reset" class="btn btn-primary" onclick="viewer.resetAll();">Reset</button>
+                <button id="reset" class="btn btn-primary" onclick="viewer.switchAlgorithm(control.getAlgorithm().getName());">Reset</button>
                 <button id="backward" class="btn btn-primary" onclick="stepBack();">Backward</button>
                 <button id="forward" class="btn btn-primary"
                         onclick="viewer.stepForward(getGraphState(), getArrayState());">Forward

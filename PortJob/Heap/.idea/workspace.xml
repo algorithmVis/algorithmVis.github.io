@@ -2,20 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac1c7acf-84ff-4e8e-a7c5-d286564c67b1" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/js/HeapSort.ts" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/css/heap_style.css" afterPath="$PROJECT_DIR$/css/heap_style.css" />
       <change beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change beforePath="$PROJECT_DIR$/js/BuildHeap.js" afterPath="$PROJECT_DIR$/js/BuildHeap.js" />
-      <change beforePath="$PROJECT_DIR$/js/BuildHeap.ts" afterPath="$PROJECT_DIR$/js/BuildHeap.ts" />
-      <change beforePath="$PROJECT_DIR$/js/Controller.js" afterPath="$PROJECT_DIR$/js/Controller.js" />
-      <change beforePath="$PROJECT_DIR$/js/Controller.ts" afterPath="$PROJECT_DIR$/js/Controller.ts" />
-      <change beforePath="$PROJECT_DIR$/js/MaxHeap.js" afterPath="$PROJECT_DIR$/js/MaxHeap.js" />
-      <change beforePath="$PROJECT_DIR$/js/MaxHeap.ts" afterPath="$PROJECT_DIR$/js/MaxHeap.ts" />
       <change beforePath="$PROJECT_DIR$/js/View.js" afterPath="$PROJECT_DIR$/js/View.js" />
       <change beforePath="$PROJECT_DIR$/js/View.ts" afterPath="$PROJECT_DIR$/js/View.ts" />
-      <change beforePath="$PROJECT_DIR$/js/methods.js" afterPath="$PROJECT_DIR$/js/methods.js" />
-      <change beforePath="$PROJECT_DIR$/js/methods.ts" afterPath="$PROJECT_DIR$/js/methods.ts" />
       <change beforePath="$PROJECT_DIR$/../UnionFind/index.html" afterPath="$PROJECT_DIR$/../UnionFind/index.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -43,8 +33,8 @@
       <file leaf-file-name="View.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/View.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="188" column="28" lean-forward="false" selection-start-line="188" selection-start-column="28" selection-end-line="188" selection-end-column="28" />
+            <state relative-caret-position="85">
+              <caret line="216" column="22" lean-forward="false" selection-start-line="216" selection-start-column="22" selection-end-line="216" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -53,8 +43,8 @@
       <file leaf-file-name="methods.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/methods.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="550">
-              <caret line="239" column="19" lean-forward="false" selection-start-line="239" selection-start-column="19" selection-end-line="239" selection-end-column="19" />
+            <state relative-caret-position="200">
+              <caret line="297" column="12" lean-forward="true" selection-start-line="297" selection-start-column="12" selection-end-line="297" selection-end-column="12" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -65,8 +55,8 @@
       <file leaf-file-name="MaxHeap.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/MaxHeap.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="20" column="29" lean-forward="false" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
+            <state relative-caret-position="1050">
+              <caret line="48" column="28" lean-forward="true" selection-start-line="48" selection-start-column="28" selection-end-line="48" selection-end-column="28" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -74,11 +64,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-40">
-              <caret line="86" column="33" lean-forward="false" selection-start-line="86" selection-start-column="33" selection-end-line="86" selection-end-column="33" />
+            <state relative-caret-position="485">
+              <caret line="83" column="25" lean-forward="true" selection-start-line="83" selection-start-column="25" selection-end-line="83" selection-end-column="25" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -96,11 +86,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HeapSort.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HeapSort.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/HeapSort.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+            <state relative-caret-position="300">
+              <caret line="12" column="25" lean-forward="true" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -124,19 +114,19 @@
         <option value="$PROJECT_DIR$/css/union_style.css" />
         <option value="$PROJECT_DIR$/js/Heapify.ts" />
         <option value="$PROJECT_DIR$/js/drawHeap.ts" />
-        <option value="$PROJECT_DIR$/js/EventManager.ts" />
         <option value="$PROJECT_DIR$/js/drawGraph.ts" />
         <option value="$PROJECT_DIR$/js/insertArrayAndNodes.js" />
         <option value="$PROJECT_DIR$/js/MaxHeapFree.ts" />
         <option value="$PROJECT_DIR$/js/IAlgorithm.ts" />
         <option value="$PROJECT_DIR$/css/heap_style.css" />
-        <option value="$PROJECT_DIR$/js/MaxHeap.ts" />
         <option value="$PROJECT_DIR$/js/Controller.ts" />
         <option value="$PROJECT_DIR$/js/methods.ts" />
         <option value="$PROJECT_DIR$/js/BuildHeap.ts" />
-        <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/js/View.ts" />
         <option value="$PROJECT_DIR$/js/HeapSort.ts" />
+        <option value="$PROJECT_DIR$/js/MaxHeap.ts" />
+        <option value="$PROJECT_DIR$/js/View.ts" />
+        <option value="$PROJECT_DIR$/js/EventManager.ts" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -228,12 +218,20 @@
       <workItem from="1519493785232" duration="106231000" />
       <workItem from="1520956084449" duration="4777000" />
       <workItem from="1521119089060" duration="7950000" />
-      <workItem from="1521127066694" duration="5563000" />
+      <workItem from="1521127066694" duration="7579000" />
     </task>
+    <task id="LOCAL-00001" summary="HeapSort - pretty much finished">
+      <created>1521132697575</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1521132697575</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="124521000" />
+    <option name="totallyTimeSpent" value="126537000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1056" extended-state="6" />
@@ -281,6 +279,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="HeapSort - pretty much finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="HeapSort - pretty much finished" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -522,13 +524,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/EventManager.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="9" column="24" lean-forward="false" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/drawGraph.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4700">
@@ -569,16 +564,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/methods.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="239" column="19" lean-forward="false" selection-start-line="239" selection-start-column="19" selection-end-line="239" selection-end-column="19" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/heap_style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3610">
@@ -595,6 +580,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/MaxHeap.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1050">
+          <caret line="48" column="28" lean-forward="true" selection-start-line="48" selection-start-column="28" selection-end-line="48" selection-end-column="28" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/MaxHeapFree.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
@@ -603,39 +598,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/MaxHeap.ts">
+    <entry file="file://$PROJECT_DIR$/js/EventManager.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="20" column="29" lean-forward="false" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
+        <state relative-caret-position="210">
+          <caret line="20" column="37" lean-forward="false" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/methods.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="297" column="12" lean-forward="true" selection-start-line="297" selection-start-column="12" selection-end-line="297" selection-end-column="12" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/js/HeapSort.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-40">
-          <caret line="86" column="33" lean-forward="false" selection-start-line="86" selection-start-column="33" selection-end-line="86" selection-end-column="33" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="300">
+          <caret line="12" column="25" lean-forward="true" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/View.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="188" column="28" lean-forward="false" selection-start-line="188" selection-start-column="28" selection-end-line="188" selection-end-column="28" />
+        <state relative-caret-position="85">
+          <caret line="216" column="22" lean-forward="false" selection-start-line="216" selection-start-column="22" selection-end-line="216" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/HeapSort.ts">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="485">
+          <caret line="83" column="25" lean-forward="true" selection-start-line="83" selection-start-column="25" selection-end-line="83" selection-end-column="25" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
