@@ -80,7 +80,24 @@ function hideArrayValues() {
 function selectElement(index: number) {
 
     // Set new class for selected index
-    selectIndex(index, true);
+    deselectNodeSelections();
+    deselectArrayElemSelections();
+
+    let $selected = $("#arrayElem" + index);
+    if ($selected.hasClass("selected")) {
+        $selected.removeClass("selected");
+    }
+    else {
+        selectIndex(index, true);
+        //Children to the highlighted node
+        let highlightChildren : GraphNode[] = allNodes[index].children;
+        console.log(highlightChildren);
+        if (highlightChildren.length > 0) {
+            for (var i = 0; i < highlightChildren.length; i++) {
+                highlightNode(highlightChildren[i].id, "green");
+            }
+        }
+    }
 
     var $method = $('input[name=method]:checked', '#method');
     if ($method.val() == 'Find') {
@@ -280,6 +297,17 @@ function selectIndex(index: number, select: boolean) {
     });
 }
 
+function deselectNodeIndex(index: number) {
+    $("#node" + index).each(function () {
+            $(this).removeClass("selected");
+            $(this).removeClass("green");
+    });
+}
+
+function deselectArrayElement(index: number) {
+    $("#arrayElem" + index).removeClass("selected");
+}
+
 function highlightNode(index: number, color: String) {
     if (color.toLowerCase() == "green" || color.toLowerCase() == "orange") {
         $("#arrayElem" + index + ", #node" + index).each(function () {
@@ -315,6 +343,18 @@ function resetElementSelections() {
     firstSelected = -1;
     for (var i: number = 0; i < 10; i++) {
         selectIndex(i, false);
+    }
+}
+
+function deselectNodeSelections() {
+    for (var i: number = 0; i < 10; i++) {
+        deselectNodeIndex(i);
+    }
+}
+
+function deselectArrayElemSelections() {
+    for (var i: number = 0; i < 10; i++) {
+        deselectArrayElement(i);
     }
 }
 

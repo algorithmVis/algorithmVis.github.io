@@ -64,7 +64,23 @@ function hideArrayValues() {
 // Selects an element. If method==find call method, else wait for second element before union or connected
 function selectElement(index) {
     // Set new class for selected index
-    selectIndex(index, true);
+    deselectNodeSelections();
+    deselectArrayElemSelections();
+    var $selected = $("#arrayElem" + index);
+    if ($selected.hasClass("selected")) {
+        $selected.removeClass("selected");
+    }
+    else {
+        selectIndex(index, true);
+        //Children to the highlighted node
+        var highlightChildren = allNodes[index].children;
+        console.log(highlightChildren);
+        if (highlightChildren.length > 0) {
+            for (var i = 0; i < highlightChildren.length; i++) {
+                highlightNode(highlightChildren[i].id, "green");
+            }
+        }
+    }
     var $method = $('input[name=method]:checked', '#method');
     if ($method.val() == 'Find') {
         $method.next().text(" find( " + index + " )");
@@ -238,6 +254,15 @@ function selectIndex(index, select) {
         }
     });
 }
+function deselectNodeIndex(index) {
+    $("#node" + index).each(function () {
+        $(this).removeClass("selected");
+        $(this).removeClass("green");
+    });
+}
+function deselectArrayElement(index) {
+    $("#arrayElem" + index).removeClass("selected");
+}
 function highlightNode(index, color) {
     if (color.toLowerCase() == "green" || color.toLowerCase() == "orange") {
         $("#arrayElem" + index + ", #node" + index).each(function () {
@@ -271,6 +296,16 @@ function resetElementSelections() {
     firstSelected = -1;
     for (var i = 0; i < 10; i++) {
         selectIndex(i, false);
+    }
+}
+function deselectNodeSelections() {
+    for (var i = 0; i < 10; i++) {
+        deselectNodeIndex(i);
+    }
+}
+function deselectArrayElemSelections() {
+    for (var i = 0; i < 10; i++) {
+        deselectArrayElement(i);
     }
 }
 function saveState(backendArray) {
