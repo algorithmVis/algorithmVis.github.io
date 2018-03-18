@@ -16,9 +16,12 @@ class MaxHeap implements IAlgorithm {
         this.arraySize = size;
         this.currIndex = size - 1;
         this.array = new Array;
-        for (let i = 0; i < size; i++)
-            this.array[i] = i;
-        this.array.reverse();
+        for (let i = 0; i < size; i++) {
+            this.array[i] = Math.floor((Math.random() * 10)) + 1;
+        }
+        this.backEndBuild();
+        //    this.array[i] = i;
+        //this.array.reverse();
     }
 
     setIndex() {
@@ -38,6 +41,54 @@ class MaxHeap implements IAlgorithm {
                 connectNodes((2 * i) + 2, parent);
             }
         }
+    }
+
+    /**
+     * Build a max heap on the backend with no frontend events
+     */
+    backEndBuild() {
+        let n: number = this.array.length;
+        for (let k: number = Math.floor((n - 1) / 2); k >= 0; k--) {
+            this.backendSink(k, n);
+        }
+    }
+
+    /**
+     * Sink on the backend with no frontend events
+     * @param {number} index
+     * @param {number} length
+     */
+    backendSink(index: number, length: number) {
+        let left: number = index * 2 + 1;
+        let right: number = index * 2 + 2;
+
+        if (left > length)
+            return;
+        if (this.array[index] >= this.array[left] && this.array[index] >= this.array[right])
+            return;
+
+        // Sink
+        let other;
+        if (right >= length)
+            other = left;
+        else if (this.array[right] > this.array[left]) {
+            other = right;
+        } else {
+            other = left;
+        }
+
+        // Check once more before exchange
+        if (this.array[index] >= this.array[other])
+            return;
+
+        this.backEndExch(index, other);
+        this.backendSink(other, length);
+    }
+
+    backEndExch(index: number, other: number) {
+        let tmp: number = this.array[other];
+        this.array[other] = this.array[index];
+        this.array[index] = tmp;
     }
 
     /**

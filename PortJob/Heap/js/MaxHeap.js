@@ -9,9 +9,12 @@ var MaxHeap = /** @class */ (function () {
         this.arraySize = size;
         this.currIndex = size - 1;
         this.array = new Array;
-        for (var i = 0; i < size; i++)
-            this.array[i] = i;
-        this.array.reverse();
+        for (var i = 0; i < size; i++) {
+            this.array[i] = Math.floor((Math.random() * 10)) + 1;
+        }
+        this.backEndBuild();
+        //    this.array[i] = i;
+        //this.array.reverse();
     }
     MaxHeap.prototype.setIndex = function () {
         for (var i = 0; i < this.array.length; i++) {
@@ -28,6 +31,48 @@ var MaxHeap = /** @class */ (function () {
                 connectNodes((2 * i) + 2, parent_1);
             }
         }
+    };
+    /**
+     * Build a max heap on the backend with no frontend events
+     */
+    MaxHeap.prototype.backEndBuild = function () {
+        var n = this.array.length;
+        for (var k = Math.floor((n - 1) / 2); k >= 0; k--) {
+            this.backendSink(k, n);
+        }
+    };
+    /**
+     * Sink on the backend with no frontend events
+     * @param {number} index
+     * @param {number} length
+     */
+    MaxHeap.prototype.backendSink = function (index, length) {
+        var left = index * 2 + 1;
+        var right = index * 2 + 2;
+        if (left > length)
+            return;
+        if (this.array[index] >= this.array[left] && this.array[index] >= this.array[right])
+            return;
+        // Sink
+        var other;
+        if (right >= length)
+            other = left;
+        else if (this.array[right] > this.array[left]) {
+            other = right;
+        }
+        else {
+            other = left;
+        }
+        // Check once more before exchange
+        if (this.array[index] >= this.array[other])
+            return;
+        this.backEndExch(index, other);
+        this.backendSink(other, length);
+    };
+    MaxHeap.prototype.backEndExch = function (index, other) {
+        var tmp = this.array[other];
+        this.array[other] = this.array[index];
+        this.array[index] = tmp;
     };
     /**
      * Build a max heap
