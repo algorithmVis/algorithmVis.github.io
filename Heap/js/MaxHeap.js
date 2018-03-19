@@ -94,14 +94,17 @@ var MaxHeap = /** @class */ (function () {
     };
     MaxHeap.prototype.add = function (a) {
         // Add to array and start frontendevents
+        control.lockScreen(true);
         this.array.push(a);
         insertNewElem(this.array.length - 1, a); // Create element in frontendarray
         insertNewElemConnect(this.array.length - 1, Math.floor((this.array.length - 2) / 2));
         control.saveState(this.array); // Save the new state
         // Swim to te correct index and start frontendevents
         this.swim(this.array.length - 1);
+        control.lockScreen(false);
     };
     MaxHeap.prototype.remove = function () {
+        control.lockScreen(true);
         // Remove root element, set last element to root and start frontendevents
         this.exch(0, this.array.length - 1);
         control.swapNode(this.array.length - 1, 0);
@@ -109,6 +112,7 @@ var MaxHeap = /** @class */ (function () {
         this.array.pop();
         control.saveState(this.array);
         this.sink(0, this.array.length - 1);
+        control.lockScreen(false);
     };
     MaxHeap.prototype.sink = function (index, length) {
         var left = index * 2 + 1;

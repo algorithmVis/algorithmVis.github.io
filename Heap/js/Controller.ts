@@ -49,6 +49,10 @@ class Controller {
         return this.algorithm;
     }
 
+    lockScreen(b: boolean) {
+        viewer.screenLockThis(b);
+    }
+
     /**
      * Remove the maximum/minimum element
      */

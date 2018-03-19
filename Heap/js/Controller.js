@@ -38,6 +38,9 @@ var Controller = /** @class */ (function () {
     Controller.prototype.getAlgorithm = function () {
         return this.algorithm;
     };
+    Controller.prototype.lockScreen = function (b) {
+        viewer.screenLockThis(b);
+    };
     /**
      * Remove the maximum/minimum element
      */
