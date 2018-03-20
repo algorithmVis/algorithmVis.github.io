@@ -1,70 +1,73 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>MergeSort</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- Bootstrap -->
-        <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-        <link href="css/style.css" rel="stylesheet">
+<head>
+    <title>MergeSort</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/style.css" rel="stylesheet">
 
-        <!-- Insert this line above script imports  -->
-        <script>if (typeof module === 'object') {
-            window.module = module; module = undefined;
-        }</script>
+    <!-- Insert this line above script imports  -->
+    <script>if (typeof module === 'object') {
+        window.module = module;
+        module = undefined;
+    }</script>
 
-        <script src="js/jquery.min.js"></script>
-        <script src="js/jquery-ui-1.12.0/jquery-ui.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui-1.12.0/jquery-ui.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 
-        <script src="js/methods.js"></script>
-        <script src="js/arrowMethods.js"></script>
-        <script src="js/view.js"></script>
-        <script src="js/MergeSortAlgorithm.js"></script>
-        <script src="js/eventManager.js"></script>
-        <script src="js/initArray.js"></script>
+    <script src="js/Methods.js"></script>
+    <script src="js/View.js"></script>
+    <script src="js/MergeSortAlgorithm.js"></script>
+    <script src="js/EventManager.js"></script>
+    <script src="js/InitArray.js"></script>
 
-        <!-- For debugging -->
-        <!-- <script type='text/js' src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script> -->
+    <!-- For debugging -->
+    <!-- <script type='text/js' src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script> -->
 
-        <!-- Insert this line after script imports -->
-        <script>if (window.module) module = window.module;</script>;
-    </head>
+    <!-- Insert this line after script imports -->
+    <script>if (window.module) module = window.module;</script>
+    ;
+</head>
 
 
-    <body>
-        <div class="container text-center">
-            <img id="paused" class="pauseIcon" src="assets/pause.png"/>
-            <h1 id="header">MergeSort</h1>
-            <div id="array" class="row insertionSort">
-                <div id="indices"></div>
-                <ul id='arrayUl' class='insElements'>
-                    <img id="leftBracket" class="bracket" src="assets/square_left.png"/>
-                    <img id="rightBracket" class="bracket" src="assets/square_right.png"/>
-                    <div id="leftArrow" class="arrow hidden"><img src="assets/up_arrow.png"/><div class="arrowText"></div></div>
-                </ul>
+<body>
+<div class="container text-center">
+    <img id="paused" class="pauseIcon" src="assets/pause.png"/>
+    <h1 id="header">MergeSort</h1>
+    <div id="array" class="row insertionSort">
+        <div id="indices"></div>
+        <ul id='arrayUl' class='insElements'>
+            <img id="leftBracket" class="bracket" src="assets/square_left.png"/>
+            <img id="rightBracket" class="bracket" src="assets/square_right.png"/>
+            <div id="leftArrow" class="arrow hidden"><img src="assets/up_arrow.png"/>
+                <div class="arrowText"></div>
             </div>
+        </ul>
+    </div>
 
-            <br>
-            <div class="row underArray">
-                <button id="togglePause" class="btn btn-primary" onclick="viewer.pause()">Play/Pause</button>
-                <button id="backward" class="btn btn-primary" onclick="viewer.backward()">Backward</button>
-                <button id="forward" class="btn btn-primary" onclick="viewer.forward()">Forward</button>
-                <!-- TODO: speed buttons -->
-            </div>
-            <br>
+    <br>
+    <div class="row underArray">
+        <button id="togglePause" class="btn btn-primary" onclick="viewer.pause()">Play/Pause</button>
+        <button id="backward" class="btn btn-primary" onclick="viewer.backward()">Backward</button>
+        <button id="forward" class="btn btn-primary" onclick="viewer.forward()">Forward</button>
+        <!-- TODO: speed buttons -->
+    </div>
+    <br>
 
-            <div class="row">
-                <!-- TODO: Play if paused -->
-                <button id="random" class="btn btn-primary" onclick="getArray('random')">Random</button>
-                <button id="almost" class="btn btn-primary" onclick="getArray('almostSorted')">Almost Sorted</button>
-                <button id="sorted" class="btn btn-primary" onclick="getArray('sorted')">Sorted</button>
-                <button id="invertedSorted" class="btn btn-primary" onclick="getArray('inverted')">Inverted Sorted</button>
-            </div>
+    <div class="row">
+        <!-- TODO: Play if paused -->
+        <button id="random" class="btn btn-primary" onclick="getArray('random')">Random</button>
+        <button id="almost" class="btn btn-primary" onclick="getArray('almostSorted')">Almost Sorted</button>
+        <button id="sorted" class="btn btn-primary" onclick="getArray('sorted')">Sorted</button>
+        <button id="invertedSorted" class="btn btn-primary" onclick="getArray('inverted')">Inverted Sorted</button>
+    </div>
 
-        </div>
+</div>
 
-        <script>getArray("random")</script>
-        <script>startMergeSort()</script>
+<script>getArray("random")</script>
+<script>startMergeSort()</script>
 
-    </body>
+</body>
 </html>

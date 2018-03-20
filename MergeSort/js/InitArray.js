@@ -1,4 +1,3 @@
-///<reference path="arrowMethods.ts"/>
 ///<reference path="MergeSortAlgorithm.ts"/>
 var array;
 if (typeof javaBinder != "undefined") {
@@ -14,34 +13,9 @@ var ArrayElement = /** @class */ (function () {
         this.left = left;
         $("#" + arrayId + this.id).animate({ left: left }, animTime);
     };
-    ArrayElement.prototype.changeId = function (newId, arrayId) {
-        $("#" + arrayId + this.id).stop();
-        $("#" + arrayId + this.id).attr("id", arrayId + newId);
-        this.id = newId;
-    };
-    ArrayElement.prototype.swap = function (otherElement, arrayId, animTime) {
-        console.log("Swap: " + this.id + " med " + otherElement.id);
-        // Swap Id
-        var thisId = this.id;
-        var otherId = otherElement.id;
-        this.changeId(100, arrayId); // So it doesnt get selected when selecting the other element
-        otherElement.changeId(thisId, arrayId);
-        this.changeId(otherId, arrayId);
-        // Swap position
-        var thisLeft = this.left;
-        this.animateLeft(otherElement.left, animTime, arrayId);
-        otherElement.animateLeft(thisLeft, animTime, arrayId);
-    };
     return ArrayElement;
 }());
 var arrayElements = new Array;
-function getArrayElement(id) {
-    if (id < 0 || id >= arrayElements.length) {
-        console.log("Illegal argument for getArrayElement: " + id);
-        return;
-    }
-    return arrayElements.filter(function (elem) { return elem.id == id; })[0];
-}
 function setMyArray(jsonArray) {
     array = JSON.parse(jsonArray);
     arrayElements = [];
@@ -66,7 +40,6 @@ function setMyArray(jsonArray) {
     // Center elements
     centerElements();
     $(window).resize(centerElements());
-    setupArrows();
 }
 function centerElements() {
     var arrayWidth = ((array.length - 1) * 85) + 50;
@@ -76,17 +49,6 @@ function centerElements() {
     $("svg#k-svg").animate({ left: (left - 7) + "px" }, 500);
     $("#rightBracket").animate({ left: (arrayWidth + 15) + "px" }, 600);
 }
-/**
- * This bricks the visualisation of the right array because it makes a new one.
-if (typeof javaBinder !== 'undefined') {
-    javaBinder.setRandomArray();
-} else {
-    $(document).ready(function() {
-        //getArray("random");
-
-    });
-}
- */
 function returnArray() {
     return array;
 }

@@ -2,13 +2,13 @@
  * File created bu Philip Hoang 12.02.18
  */
 
-///<reference path="eventManager.ts"/>
-///<reference path="view.ts"/>
-///<reference path="initArray.ts"/>
+///<reference path="EventManager.ts"/>
+///<reference path="View.ts"/>
+///<reference path="InitArray.ts"/>
+let n: number = 10;
 
 let sortArray: number[] = [];
 let copyArray: number[] = [];
-const n = 10;
 let running = true;
 
 function checkIfAlreadyRunning() {
@@ -28,10 +28,8 @@ function startMergeSort() {
     mergesort(copyArray);
 }
 
-function mergesort(array :number[]) {
+function mergesort(array: number[]) {
     if (array.length < 2) {
-        //viewer.deselectPivotElement(sortArray.indexOf(array[0]));
-        //viewer.liftElements(copyArray.indexOf(array[0]), copyArray.indexOf(array[0]));
         return array;
 
     } else {
@@ -45,14 +43,11 @@ function mergesort(array :number[]) {
 
         left = array.slice(0, mid);
         for (let i = 0; i < left.length; i++) {
-            console.log("left " + left[i]);
             viewer.lowerElement(left[i]);
         }
 
-
         right = array.slice(mid);
         for (let i = 0; i < right.length; i++) {
-            console.log("right " + right[i]);
             viewer.lowerElement(right[i]);
         }
 
@@ -63,25 +58,20 @@ function mergesort(array :number[]) {
 
 
 function merge(left: number[], right: number[]) {
-    console.log("array " + copyArray + " left " + left + "right " + right);
     let result: number[] = [];
+    let testing: number[] = copyArray.slice(0);
+
     let tempLeftIndex: number = 0;
     let tempRightIndex: number = 0;
-
     let counter: number = copyArray.indexOf(left[0]);
-    let testing: number[] = copyArray.slice(0);
 
     while (tempLeftIndex < left.length && tempRightIndex < right.length) {
         //Compare the elements from each array
-
         //viewer.highLightNode(tempLeftIndex)
         //viewer.highLightNode(tempRightIndex)
 
         if (left[tempLeftIndex] < right[tempRightIndex]) {
-
-            console.log("LEFT of : " + left[tempLeftIndex] + " to place " + counter*85);
-            //viewer.liftElement(left[tempLeftIndex]);
-            viewer.moveElementToPlace(left[tempLeftIndex], counter*85);
+            viewer.moveElementToPlace(left[tempLeftIndex], counter * 85);
 
             result.push(left[tempLeftIndex]);
             testing[counter] = left[tempLeftIndex];
@@ -90,9 +80,7 @@ function merge(left: number[], right: number[]) {
             tempLeftIndex++;
 
         } else {
-            console.log("RIGHT  of : " + right[tempRightIndex] + " to place " + counter*85);
-            //viewer.liftElement(right[tempRightIndex]);
-            viewer.moveElementToPlace(right[tempRightIndex], counter*85);
+            viewer.moveElementToPlace(right[tempRightIndex], counter * 85);
 
             result.push(right[tempRightIndex]);
             testing[counter] = right[tempRightIndex];
@@ -102,57 +90,33 @@ function merge(left: number[], right: number[]) {
         }
     }
 
-
     if (right.slice(tempRightIndex).length > 0) {
         let moreRight = right.slice(tempRightIndex);
         for (let i = 0; i < moreRight.length; i++) {
-            console.log("MoRe right " + moreRight[i] + " to place " + counter*85);
-            testing[counter] = moreRight[i];
-            viewer.moveElementToPlace(moreRight[i], counter*85);
-            //viewer.liftElement(moreRight[i]);
-            viewer.deselectPivotElement(moreRight[i]);
+            viewer.moveElementToPlace(moreRight[i], counter * 85);
 
+            testing[counter] = moreRight[i];
             counter++;
         }
     }
     if (left.slice(tempLeftIndex).length > 0) {
         let moreLeft = left.slice(tempLeftIndex);
         for (let i = 0; i < moreLeft.length; i++) {
-            console.log("MoRe right " + moreLeft[i] + " to place " + counter*85);
+            viewer.moveElementToPlace(moreLeft[i], counter * 85);
+
             testing[counter] = moreLeft[i];
-            viewer.moveElementToPlace(moreLeft[i], counter*85);
-            //viewer.liftElement(moreLeft[i]);
-            viewer.deselectPivotElement(moreLeft[i]);
             counter++;
         }
     }
-    console.log("------------------------");
 
-    console.log(copyArray);
-    console.log(testing);
-    console.log("------------------------");
     copyArray = testing.slice(0);
     return result.concat(left.slice(tempLeftIndex)).concat(right.slice(tempRightIndex));
-}
-
-function delay() {
-    try {
-        setTimeout(0);
-    } catch (e) {
-        e.printStackTrace();
-    }
-}
-
-
-function getThisArray() {
-    return sortArray;
 }
 
 function setRandomMyArray() {
     for (let i: number = 0; i < n; i++) {
         sortArray[i] = randomInt(0, 100);
     }
-
     return sortArray;
 }
 
@@ -162,12 +126,10 @@ function setSortedArray() {
 }
 
 function setInvSortedArray() {
-
     return setSortedArray().reverse();
 }
 
 function isSorted(arr: number[]) {
-
     return arr.forEach((n1, n2) => n1 <= n2);
 }
 
@@ -186,12 +148,10 @@ function setAlmostSortedArray(): number[] {
             }
         }
     }
-
     //If sorted array, try again.
     if (isSorted(arr)) {
         return setAlmostSortedArray();
     }
-
     return arr;
 }
 

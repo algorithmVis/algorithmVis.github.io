@@ -1,5 +1,4 @@
-///<reference path="initArray.ts"/>
-///<reference path="arrowMethods.ts"/>
+///<reference path="InitArray.ts"/>
 
 declare var $;
 declare var javaBinder;
@@ -11,7 +10,6 @@ function lowerElement(element: number) {
     var $elem = $("#" + insElemNr + element);
     newTop = parseInt($elem.css('top'), 10) + LEVEL_HEIGHT;
     $elem.animate({top: newTop + "px"}, 500);
-    lowerArrows(300);
 }
 
 function liftElement(element: number) {
@@ -20,19 +18,7 @@ function liftElement(element: number) {
         var newTop: number = parseInt($elem.css('top'), 10) - LEVEL_HEIGHT;
         $elem.animate({top: newTop + "px"}, 500);
     }
-    liftArrows(300);
 }
-
-function swapElements(a: number, b: number) {
-    console.log("arrayElem: " + getArrayElement(a) + " " + getArrayElement(b) + "ins " + insElemNr);
-
-    getArrayElement(a).swap(getArrayElement(b), insElemNr, 1500);
-}
-
-function pushElement(i: number, place: number) {
-    getArrayElement(i).push(place, insElemNr, 1500);
-}
-
 
 function setPauseButtonText(n: number) {
     // console.log("PauseButtonText: " + n);
@@ -65,29 +51,11 @@ function deselectPivotElement(index: number) {
     $("#insElemNr" + index).children("p").remove();
 }
 
-function setToFinished(index: number) {
-    $("#insElemNr" + index).addClass("finished");
-}
-
-function setToNotFinished(index: number) {
-    $("#insElemNr" + index).removeClass("finished");
-}
-
-function clearScreen() {
-    resetArrows();
-}
-
-function setLevelHeight(height: number) {
-    LEVEL_HEIGHT = height;
-}
-
 function moveElementToPlace(element: number, px: number) {
-    console.log("--------------------------------------------------------");
     let $elem = $("#" + insElemNr + element);
     let moveLeft: string = $elem.css("left");
-
     let pos: number = (Number)(moveLeft.substring(0, moveLeft.length - 2));
-    console.log(pos + " " + px);
+
     if (pos > px) {
         if ($elem.offset().top > 170) {
             var newTop: number = parseInt($elem.css('top'), 10) - LEVEL_HEIGHT;
@@ -101,7 +69,6 @@ function moveElementToPlace(element: number, px: number) {
             $elem.animate({top: newTop + "px"}, 500);
         }
     }
-
 
 
 }

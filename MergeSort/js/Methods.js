@@ -1,5 +1,4 @@
-///<reference path="initArray.ts"/>
-///<reference path="arrowMethods.ts"/>
+///<reference path="InitArray.ts"/>
 var insElemNr = "insElemNr";
 var LEVEL_HEIGHT = 85;
 function lowerElement(element) {
@@ -7,7 +6,6 @@ function lowerElement(element) {
     var $elem = $("#" + insElemNr + element);
     newTop = parseInt($elem.css('top'), 10) + LEVEL_HEIGHT;
     $elem.animate({ top: newTop + "px" }, 500);
-    lowerArrows(300);
 }
 function liftElement(element) {
     var $elem = $("#" + insElemNr + element);
@@ -15,14 +13,6 @@ function liftElement(element) {
         var newTop = parseInt($elem.css('top'), 10) - LEVEL_HEIGHT;
         $elem.animate({ top: newTop + "px" }, 500);
     }
-    liftArrows(300);
-}
-function swapElements(a, b) {
-    console.log("arrayElem: " + getArrayElement(a) + " " + getArrayElement(b) + "ins " + insElemNr);
-    getArrayElement(a).swap(getArrayElement(b), insElemNr, 1500);
-}
-function pushElement(i, place) {
-    getArrayElement(i).push(place, insElemNr, 1500);
 }
 function setPauseButtonText(n) {
     // console.log("PauseButtonText: " + n);
@@ -50,24 +40,10 @@ function deselectPivotElement(index) {
     $("#insElemNr" + index).removeClass("pivot");
     $("#insElemNr" + index).children("p").remove();
 }
-function setToFinished(index) {
-    $("#insElemNr" + index).addClass("finished");
-}
-function setToNotFinished(index) {
-    $("#insElemNr" + index).removeClass("finished");
-}
-function clearScreen() {
-    resetArrows();
-}
-function setLevelHeight(height) {
-    LEVEL_HEIGHT = height;
-}
 function moveElementToPlace(element, px) {
-    console.log("--------------------------------------------------------");
     var $elem = $("#" + insElemNr + element);
     var moveLeft = $elem.css("left");
     var pos = (Number)(moveLeft.substring(0, moveLeft.length - 2));
-    console.log(pos + " " + px);
     if (pos > px) {
         if ($elem.offset().top > 170) {
             var newTop = parseInt($elem.css('top'), 10) - LEVEL_HEIGHT;
