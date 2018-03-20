@@ -187,6 +187,10 @@ class View implements IView {
 
     resetAll() {
         this.paused = false;
+        manager.pause();
+        manager.nextEvents = new Array;
+        manager.previousEvents = new Array;
+        screenLock(false);
         let arr: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
         stepper = new StateController(control, this);
         this.resetArray(arr);
@@ -215,14 +219,25 @@ class View implements IView {
 
     setSlow() {
         this.animSpeed = 250;
+        manager.delayTime = 900;
+        this.restartManager();
     }
 
     setMedium() {
-        this.animSpeed = 500;
+        this.animSpeed = 600;
+        manager.delayTime = 600;
+        this.restartManager();
     }
 
     setFast() {
-        this.animSpeed = 750;
+        this.animSpeed = 300;
+        manager.delayTime = 300;
+        this.restartManager();
+    }
+
+    restartManager() {
+        manager.pause();
+        manager.start();
     }
 
     switchAlgorithm(algo: string) {
@@ -242,12 +257,14 @@ class View implements IView {
             case "BuildHeap": {
                 this.resetAll();
                 control.initController(new BuildHeap(10));
+                screenLock(true);
                 break;
             }
             case "HeapSort": {
                 this.resetAll();
                 $("#sortArray").show();
                 control.initController(new HeapSort(10));
+                screenLock(true);
                 break;
             }
             default: {

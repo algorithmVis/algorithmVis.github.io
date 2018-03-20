@@ -29,9 +29,20 @@ function setOnClickListener() {
             for (let i = 0; i < id.length; i++)
                 if (!isNaN(parseInt(id[i])))
                     idInt += id[i];
+            if (isHighlighted(parseInt(idInt))) {
+                deselectArrayElemSelections();
+                deselectNodeSelections();
+                return;
+            }
             selectElement(parseInt(idInt));
         });
     });
+}
+
+function isHighlighted(id: number): boolean {
+    if ($("#arrayElem" + id).hasClass("selected"))
+        return true;
+    return false;
 }
 
 setOnClickListener();
@@ -90,12 +101,14 @@ function selectElement(index: number) {
     else {
         selectIndex(index, true);
         //Children to the highlighted node
-        let highlightChildren : GraphNode[] = allNodes[index].children;
+        let highlightChildren: GraphNode[] = allNodes[index].children;
         console.log(highlightChildren);
         if (highlightChildren.length > 0) {
             for (var i = 0; i < highlightChildren.length; i++) {
                 highlightNode(highlightChildren[i].id, "green");
             }
+            selectIndex(index * 2 + 1, true);
+            selectIndex(index * 2 + 2, true);
         }
     }
 
@@ -299,8 +312,8 @@ function selectIndex(index: number, select: boolean) {
 
 function deselectNodeIndex(index: number) {
     $("#node" + index).each(function () {
-            $(this).removeClass("selected");
-            $(this).removeClass("green");
+        $(this).removeClass("selected");
+        $(this).removeClass("green");
     });
 }
 
@@ -425,13 +438,12 @@ function setWrongMark(check: boolean, indexA: number, indexB: number) {
 function screenLock(lock: boolean) {
     locked = lock;
     if (lock) {
-        $("#algorithm input:radio , #method input:radio").each(function () {
-            $(this).attr({disabled: "true"})
-        });
+        $("#addElem").attr({"disabled": "true"});
+        $("#removeElem").attr({"disabled": "true"});
+
     } else {
-        $("#algorithm input , #method input:radio").each(function () {
-            $(this).removeAttr('disabled');
-        });
+        $("#addElem").removeAttr("disabled");
+        $("#removeElem").removeAttr("disabled");
     }
 }
 
@@ -485,7 +497,8 @@ function setUpAddButton() {
     $("#addElem").click(function () {
         let val = prompt("Which value do you want to add? Integer >= 0");
         while (isNaN(parseInt(val))) {
-            val = prompt("Which value do you want to add? Integer >= 0");
+            //val = prompt("Which value do you want to add? Integer >= 0");
+            return;
         }
         viewer.addNode(parseInt(val));
     });

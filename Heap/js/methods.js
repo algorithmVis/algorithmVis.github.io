@@ -27,9 +27,19 @@ function setOnClickListener() {
             for (var i = 0; i < id.length; i++)
                 if (!isNaN(parseInt(id[i])))
                     idInt += id[i];
+            if (isHighlighted(parseInt(idInt))) {
+                deselectArrayElemSelections();
+                deselectNodeSelections();
+                return;
+            }
             selectElement(parseInt(idInt));
         });
     });
+}
+function isHighlighted(id) {
+    if ($("#arrayElem" + id).hasClass("selected"))
+        return true;
+    return false;
 }
 setOnClickListener();
 function setKeyListener() {
@@ -79,6 +89,8 @@ function selectElement(index) {
             for (var i = 0; i < highlightChildren.length; i++) {
                 highlightNode(highlightChildren[i].id, "green");
             }
+            selectIndex(index * 2 + 1, true);
+            selectIndex(index * 2 + 2, true);
         }
     }
     var $method = $('input[name=method]:checked', '#method');
@@ -370,14 +382,12 @@ function setWrongMark(check, indexA, indexB) {
 function screenLock(lock) {
     locked = lock;
     if (lock) {
-        $("#algorithm input:radio , #method input:radio").each(function () {
-            $(this).attr({ disabled: "true" });
-        });
+        $("#addElem").attr({ "disabled": "true" });
+        $("#removeElem").attr({ "disabled": "true" });
     }
     else {
-        $("#algorithm input , #method input:radio").each(function () {
-            $(this).removeAttr('disabled');
-        });
+        $("#addElem").removeAttr("disabled");
+        $("#removeElem").removeAttr("disabled");
     }
 }
 function stepBack() {
@@ -423,7 +433,8 @@ function setUpAddButton() {
     $("#addElem").click(function () {
         var val = prompt("Which value do you want to add? Integer >= 0");
         while (isNaN(parseInt(val))) {
-            val = prompt("Which value do you want to add? Integer >= 0");
+            //val = prompt("Which value do you want to add? Integer >= 0");
+            return;
         }
         viewer.addNode(parseInt(val));
     });

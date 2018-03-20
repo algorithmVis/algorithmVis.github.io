@@ -30,8 +30,11 @@ var HeapSort = /** @class */ (function (_super) {
     HeapSort.prototype.remove = function () {
         // Remove root element, set last element to root and start frontendevents
         this.currIndex--;
+        control.setSelectedIndex(0, true);
+        control.highlightNode(0, "orange");
         control.highlightSortElem(this.sortIndex, "orange");
         control.setValueAtSortIndex(this.sortIndex, this.array[0]);
+        control.setSelectedIndex(0, false);
         this.exch(0, this.currIndex);
         control.swapNode(this.currIndex, 0);
         control.removeElem(this.currIndex, false);
