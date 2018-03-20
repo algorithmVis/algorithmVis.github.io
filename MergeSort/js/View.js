@@ -115,25 +115,22 @@ var view = /** @class */ (function () {
         }(element, px);
         manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
     };
-    /*
-      setRandomArray() {
-        manager.clear();
-        manager.start();
-        controller.setRandomArray();
-        arrayIsReset = true;
-      }
-     */
     view.prototype.pause = function () {
         if (!this.paused) {
             this.paused = true;
             manager.pause();
-            $("#togglePause").html("resume");
+            $("#togglePause").html("Resume");
         }
         else {
             this.paused = false;
             manager.unpause();
-            $("#togglePause").html("pause");
+            $("#togglePause").html("Pause");
         }
+    };
+    view.prototype.setPause = function () {
+        this.paused = true;
+        manager.pause();
+        $("#togglePause").html("Start");
     };
     view.prototype.forward = function () {
         manager.next();

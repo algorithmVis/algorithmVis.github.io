@@ -5,13 +5,6 @@
  * File created by Philip Hoang 12.2.18
  */
 
-/*
- Note to self; Funksjoner som ikke finnes i Methods.ts, men som blir kalt her
- - setPosition()
- - swapId()
- - setColor()
- */
-
 declare var $;
 
 class view {
@@ -150,26 +143,22 @@ class view {
         manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
     }
 
-
-    /*
-      setRandomArray() {
-        manager.clear();
-        manager.start();
-        controller.setRandomArray();
-        arrayIsReset = true;
-      }
-     */
-
     pause() {
         if (!this.paused) {
             this.paused = true;
             manager.pause();
-            $("#togglePause").html("resume");
+            $("#togglePause").html("Resume");
         } else {
             this.paused = false;
             manager.unpause();
-            $("#togglePause").html("pause");
+            $("#togglePause").html("Pause");
         }
+    }
+
+    setPause() {
+        this.paused = true;
+        manager.pause();
+        $("#togglePause").html("Start");
     }
 
     forward() {

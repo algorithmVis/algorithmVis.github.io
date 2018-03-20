@@ -1,10 +1,5 @@
 ///<reference path="MergeSortAlgorithm.ts"/>
 var array;
-if (typeof javaBinder != "undefined") {
-    console.log = function (msg) {
-        javaBinder.print(msg);
-    };
-}
 var ArrayElement = /** @class */ (function () {
     function ArrayElement(id) {
         this.id = id;
@@ -76,6 +71,7 @@ function getArray(ran) {
     else {
         viewer.serializeArray(array);
         setMyArray(JSON.stringify(array));
+        startMergeSort();
     }
 }
 function checkDupli(arr) {

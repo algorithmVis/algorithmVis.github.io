@@ -1,7 +1,6 @@
 ///<reference path="InitArray.ts"/>
 
 declare var $;
-declare var javaBinder;
 var insElemNr = "insElemNr";
 var LEVEL_HEIGHT: number = 85;
 

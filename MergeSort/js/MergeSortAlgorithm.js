@@ -1,5 +1,6 @@
 /**
- * File created bu Philip Hoang 12.02.18
+ * File created by Philip Hoang 12.02.18
+ * File designed and written by Kenneth Apeland
  */
 ///<reference path="EventManager.ts"/>
 ///<reference path="View.ts"/>
@@ -9,13 +10,8 @@ var sortArray = [];
 var copyArray = [];
 var running = true;
 function checkIfAlreadyRunning() {
-    if (running) {
-        manager.clear();
-        viewer.pause();
-    }
-    else {
-        running = true;
-    }
+    manager.clear();
+    viewer.setPause();
 }
 function startMergeSort() {
     checkIfAlreadyRunning();

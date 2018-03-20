@@ -1,14 +1,7 @@
 ///<reference path="MergeSortAlgorithm.ts"/>
 declare var $;
-declare var javaBinder;
 
 let array: number[];
-
-if (typeof javaBinder != "undefined") {
-    console.log = function (msg) {
-        javaBinder.print(msg);
-    }
-}
 
 class ArrayElement {
     left: number;
@@ -93,6 +86,7 @@ function getArray(ran:string) {
     } else {
         viewer.serializeArray(array);
         setMyArray(JSON.stringify(array));
+        startMergeSort();
     }
 }
 
