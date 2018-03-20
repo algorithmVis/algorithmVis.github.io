@@ -86,6 +86,7 @@ var MaxHeap = /** @class */ (function () {
     MaxHeap.prototype.exch = function (number, number2) {
         if (this.array[number] === undefined || this.array[number2] === undefined)
             return;
+        control.saveState(this.array);
         var tmp = this.array[number];
         this.array[number] = this.array[number2];
         control.setValueAtIndex(number, this.array[number]);
@@ -93,24 +94,26 @@ var MaxHeap = /** @class */ (function () {
         control.setValueAtIndex(number2, this.array[number2]);
     };
     MaxHeap.prototype.add = function (a) {
+        control.saveState(this.array); // Save the new state
         // Add to array and start frontendevents
         control.lockScreen(true);
         this.array.push(a);
-        insertNewElem(this.array.length - 1, a); // Create element in frontendarray
-        insertNewElemConnect(this.array.length - 1, Math.floor((this.array.length - 2) / 2));
-        control.saveState(this.array); // Save the new state
+        //insertNewElem(this.array.length - 1, a); // Create element in frontendarray
+        //insertNewElemConnect(this.array.length - 1, Math.floor((this.array.length - 2) / 2));
+        control.insertNewElem(this.array.length - 1, a, Math.floor((this.array.length - 2) / 2));
         // Swim to te correct index and start frontendevents
         this.swim(this.array.length - 1);
         control.lockScreen(false);
+        control.saveState(this.array);
     };
     MaxHeap.prototype.remove = function () {
+        control.saveState(this.array);
         control.lockScreen(true);
         // Remove root element, set last element to root and start frontendevents
         this.exch(0, this.array.length - 1);
         control.swapNode(this.array.length - 1, 0);
         control.removeElem(this.array.length - 1, true);
         this.array.pop();
-        control.saveState(this.array);
         this.sink(0, this.array.length - 1);
         control.lockScreen(false);
     };
@@ -129,6 +132,7 @@ var MaxHeap = /** @class */ (function () {
         else {
             other = left;
         }
+        control.saveState(this.array);
         control.highlightNode(index, "orange");
         control.highlightNode(other, "orange");
         control.swapNode(index, other);
@@ -137,12 +141,12 @@ var MaxHeap = /** @class */ (function () {
         control.highlightNode(other, "green");
         control.removeHighlight(index);
         control.removeHighlight(other);
-        control.saveState(this.getArray());
         this.sink(other, length);
     };
     MaxHeap.prototype.swim = function (index) {
         var other = Math.floor((index - 1) / 2);
         while (other >= 0 && this.array[index] > this.array[other]) {
+            control.saveState(this.array);
             control.highlightNode(index, "orange");
             control.highlightNode(other, "orange");
             control.swapNode(index, other);
@@ -153,7 +157,6 @@ var MaxHeap = /** @class */ (function () {
             control.removeHighlight(other);
             index = Math.floor((index - 1) / 2);
             other = Math.floor((index - 1) / 2);
-            control.saveState(this.getArray());
         }
     };
     MaxHeap.prototype.getName = function () {

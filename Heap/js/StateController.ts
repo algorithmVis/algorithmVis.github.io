@@ -89,6 +89,7 @@ class StateController {
      * @param State
      */
     private setState(st: State): void {
+        console.log(st.getTwoDimRelationshipArray());
         this.GUI.setThisState(st.getTwoDimRelationshipArray(), st.getBackendArrayJSON());
         this.controll.setArray(st.getBackendArray());
     }

@@ -105,6 +105,9 @@ class MaxHeap implements IAlgorithm {
     protected exch(number: number, number2: number) {
         if (this.array[number] === undefined || this.array[number2] === undefined)
             return;
+
+        control.saveState(this.array);
+
         let tmp = this.array[number];
         this.array[number] = this.array[number2];
         control.setValueAtIndex(number, this.array[number]);
@@ -113,26 +116,29 @@ class MaxHeap implements IAlgorithm {
     }
 
     add(a: number): void {
+        control.saveState(this.array); // Save the new state
         // Add to array and start frontendevents
         control.lockScreen(true)
         this.array.push(a);
-        insertNewElem(this.array.length - 1, a); // Create element in frontendarray
-        insertNewElemConnect(this.array.length - 1, Math.floor((this.array.length - 2) / 2));
-        control.saveState(this.array); // Save the new state
+        //insertNewElem(this.array.length - 1, a); // Create element in frontendarray
+        //insertNewElemConnect(this.array.length - 1, Math.floor((this.array.length - 2) / 2));
+        control.insertNewElem(this.array.length - 1, a, Math.floor((this.array.length - 2) / 2));
 
         // Swim to te correct index and start frontendevents
         this.swim(this.array.length - 1);
         control.lockScreen(false);
+        control.saveState(this.array);
     }
 
     remove(): void {
+        control.saveState(this.array);
+
         control.lockScreen(true);
         // Remove root element, set last element to root and start frontendevents
         this.exch(0, this.array.length - 1);
         control.swapNode(this.array.length - 1, 0);
         control.removeElem(this.array.length - 1, true);
         this.array.pop();
-        control.saveState(this.array);
         this.sink(0, this.array.length - 1);
         control.lockScreen(false);
     }
@@ -153,6 +159,9 @@ class MaxHeap implements IAlgorithm {
         } else {
             other = left;
         }
+
+        control.saveState(this.array);
+
         control.highlightNode(index, "orange");
         control.highlightNode(other, "orange");
         control.swapNode(index, other);
@@ -161,13 +170,13 @@ class MaxHeap implements IAlgorithm {
         control.highlightNode(other, "green");
         control.removeHighlight(index);
         control.removeHighlight(other);
-        control.saveState(this.getArray());
         this.sink(other, length);
     }
 
     protected swim(index: number): void {
         let other: number = Math.floor((index - 1) / 2);
         while (other >= 0 && this.array[index] > this.array[other]) {
+            control.saveState(this.array);
             control.highlightNode(index, "orange");
             control.highlightNode(other, "orange");
             control.swapNode(index, other);
@@ -178,7 +187,6 @@ class MaxHeap implements IAlgorithm {
             control.removeHighlight(other);
             index = Math.floor((index - 1) / 2);
             other = Math.floor((index - 1) / 2);
-            control.saveState(this.getArray());
         }
     }
 

@@ -151,6 +151,10 @@ class Controller {
     removeElem(i: number, removeArr: boolean) {
         viewer.removeElem(i, removeArr);
     }
+
+    insertNewElem(child: number, value: number, parent: number) {
+        viewer.insertNewElemThis(child, value, parent);
+    }
 }
 
 var control: Controller = new Controller();

@@ -64,17 +64,18 @@ class View implements IView {
     }
 
     setValueAtThisIndex(i: number, bValue) {
+        let val = $("#arrayElem" + i).text();
         let forwardSteps = function (i, bValue) {
             return function () {
                 setValueAtIndex(i, bValue);
             }
         }(i, bValue);
 
-        let backwardSteps = function (i, bValue) {
+        let backwardSteps = function (i, oldVal) {
             return function () {
-                setValueAtIndex(i, i);
+                setValueAtIndex(i, oldVal);
             }
-        }(i, bValue);
+        }(i, val);
 
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
@@ -307,20 +308,28 @@ class View implements IView {
 
         let backward = function (child, parent) {
             return function () {
-                swapNodes(parent, child);
+                swapNodes(child, parent);
             }
         }(child, parent);
         manager.addEvent(new FrontendEvent(forward, backward, 1000));
     }
 
     removeElem(i: number, removeArr: boolean) {
+        let val = control.getArrayClone()[i];
         let forward = function (index, removeArr) {
             return function () {
                 removeElem(index, removeArr);
             }
         }(i, removeArr);
 
-        manager.addEvent(new FrontendEvent(forward, forward, manager.delayTime));
+        let backward = function (index, val) {
+            return function () {
+                insertNewElem(index, val);
+            }
+        }(i, val);
+
+
+        manager.addEvent(new FrontendEvent(forward, backward, manager.delayTime));
     }
 
     play() {
@@ -334,6 +343,26 @@ class View implements IView {
         } else {
             return;
         }
+    }
+
+    insertNewElemThis(child: number, value: number, parent: number) {
+        let forward = function (index, value, parent) {
+            return function () {
+                insertNewElem(index, value);
+                insertNewElemConnect(index, parent);
+            }
+        }(child, value, parent);
+
+        let backward = function (index, parent) {
+            return function () {
+                allNodes[parent].removeChild(allNodes[index]);
+                removeElem(index, true);
+            }
+        }(child, parent);
+
+
+        manager.addEvent(new FrontendEvent(forward, backward, manager.delayTime));
+
     }
 }
 

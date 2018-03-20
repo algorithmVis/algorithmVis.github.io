@@ -52,16 +52,17 @@ var View = /** @class */ (function () {
         manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
     };
     View.prototype.setValueAtThisIndex = function (i, bValue) {
+        var val = $("#arrayElem" + i).text();
         var forwardSteps = function (i, bValue) {
             return function () {
                 setValueAtIndex(i, bValue);
             };
         }(i, bValue);
-        var backwardSteps = function (i, bValue) {
+        var backwardSteps = function (i, oldVal) {
             return function () {
-                setValueAtIndex(i, i);
+                setValueAtIndex(i, oldVal);
             };
-        }(i, bValue);
+        }(i, val);
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
     View.prototype.setValueAtThisSortIndex = function (i, bValue) {
@@ -255,18 +256,24 @@ var View = /** @class */ (function () {
         }(child, parent);
         var backward = function (child, parent) {
             return function () {
-                swapNodes(parent, child);
+                swapNodes(child, parent);
             };
         }(child, parent);
         manager.addEvent(new FrontendEvent(forward, backward, 1000));
     };
     View.prototype.removeElem = function (i, removeArr) {
+        var val = control.getArrayClone()[i];
         var forward = function (index, removeArr) {
             return function () {
                 removeElem(index, removeArr);
             };
         }(i, removeArr);
-        manager.addEvent(new FrontendEvent(forward, forward, manager.delayTime));
+        var backward = function (index, val) {
+            return function () {
+                insertNewElem(index, val);
+            };
+        }(i, val);
+        manager.addEvent(new FrontendEvent(forward, backward, manager.delayTime));
     };
     View.prototype.play = function () {
         var algo = control.getAlgorithm().getName();
@@ -281,6 +288,21 @@ var View = /** @class */ (function () {
         else {
             return;
         }
+    };
+    View.prototype.insertNewElemThis = function (child, value, parent) {
+        var forward = function (index, value, parent) {
+            return function () {
+                insertNewElem(index, value);
+                insertNewElemConnect(index, parent);
+            };
+        }(child, value, parent);
+        var backward = function (index, parent) {
+            return function () {
+                allNodes[parent].removeChild(allNodes[index]);
+                removeElem(index, true);
+            };
+        }(child, parent);
+        manager.addEvent(new FrontendEvent(forward, backward, manager.delayTime));
     };
     return View;
 }());

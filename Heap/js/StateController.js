@@ -68,6 +68,7 @@ var StateController = /** @class */ (function () {
      * @param State
      */
     StateController.prototype.setState = function (st) {
+        console.log(st.getTwoDimRelationshipArray());
         this.GUI.setThisState(st.getTwoDimRelationshipArray(), st.getBackendArrayJSON());
         this.controll.setArray(st.getBackendArray());
     };

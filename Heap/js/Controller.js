@@ -117,6 +117,9 @@ var Controller = /** @class */ (function () {
     Controller.prototype.removeElem = function (i, removeArr) {
         viewer.removeElem(i, removeArr);
     };
+    Controller.prototype.insertNewElem = function (child, value, parent) {
+        viewer.insertNewElemThis(child, value, parent);
+    };
     return Controller;
 }());
 var control = new Controller();
