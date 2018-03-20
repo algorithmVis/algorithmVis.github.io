@@ -20,7 +20,7 @@ function checkIfAlreadyRunning() {
 function startMergeSort() {
     checkIfAlreadyRunning();
     copyArray = returnArray();
-    mergesort(returnArray());
+    mergesort(copyArray);
 }
 function mergesort(array) {
     if (array.length < 2) {
@@ -33,11 +33,17 @@ function mergesort(array) {
         var left = void 0;
         var right = void 0;
         mid = Math.floor(array.length * 0.5);
-        viewer.setPivotElement(copyArray.indexOf(array[mid - 1]));
+        //viewer.setPivotElement(copyArray.indexOf(array[mid - 1]));
         left = array.slice(0, mid);
-        viewer.lowerElements(copyArray.indexOf(left[0]), copyArray.indexOf(left[left.length - 1]));
+        for (var i = 0; i < left.length; i++) {
+            console.log("left " + left[i]);
+            viewer.lowerElement(left[i]);
+        }
         right = array.slice(mid);
-        viewer.lowerElements(copyArray.indexOf(right[0]), copyArray.indexOf(right[right.length - 1]));
+        for (var i = 0; i < right.length; i++) {
+            console.log("right " + right[i]);
+            viewer.lowerElement(right[i]);
+        }
         //Split until there is only 1 element left
         return merge(mergesort(left), mergesort(right));
     }
@@ -47,27 +53,25 @@ function merge(left, right) {
     var result = [];
     var tempLeftIndex = 0;
     var tempRightIndex = 0;
-    var start = copyArray.indexOf(left[0]);
-    var end = copyArray.indexOf(right[right.length - 1]);
-    var counter = start;
+    var counter = copyArray.indexOf(left[0]);
     var testing = copyArray.slice(0);
     while (tempLeftIndex < left.length && tempRightIndex < right.length) {
         //Compare the elements from each array
         //viewer.highLightNode(tempLeftIndex)
         //viewer.highLightNode(tempRightIndex)
         if (left[tempLeftIndex] < right[tempRightIndex]) {
-            console.log("LEFT of : " + copyArray.indexOf(left[tempLeftIndex]) + " end " + end + " to place " + counter);
-            viewer.liftElements(copyArray.indexOf(left[tempLeftIndex]), copyArray.indexOf(left[tempLeftIndex]));
-            viewer.moveElementToPlace(copyArray.indexOf(left[tempLeftIndex]), end, counter, false);
+            console.log("LEFT of : " + left[tempLeftIndex] + " to place " + counter * 85);
+            //viewer.liftElement(left[tempLeftIndex]);
+            viewer.moveElementToPlace(left[tempLeftIndex], counter * 85);
             result.push(left[tempLeftIndex]);
             testing[counter] = left[tempLeftIndex];
             counter++;
             tempLeftIndex++;
         }
         else {
-            console.log("RIGHT  of : " + copyArray.indexOf(right[tempRightIndex]) + " end " + end + " to place " + counter);
-            viewer.liftElements(copyArray.indexOf(right[tempRightIndex]), copyArray.indexOf(right[tempRightIndex]));
-            viewer.moveElementToPlace(copyArray.indexOf(right[tempRightIndex]), end, counter, false);
+            console.log("RIGHT  of : " + right[tempRightIndex] + " to place " + counter * 85);
+            //viewer.liftElement(right[tempRightIndex]);
+            viewer.moveElementToPlace(right[tempRightIndex], counter * 85);
             result.push(right[tempRightIndex]);
             testing[counter] = right[tempRightIndex];
             counter++;
@@ -76,21 +80,23 @@ function merge(left, right) {
     }
     if (right.slice(tempRightIndex).length > 0) {
         var moreRight = right.slice(tempRightIndex);
-        console.log("MoRe right " + moreRight);
         for (var i = 0; i < moreRight.length; i++) {
+            console.log("MoRe right " + moreRight[i] + " to place " + counter * 85);
             testing[counter] = moreRight[i];
-            viewer.liftElements(testing.indexOf(moreRight[i]), testing.indexOf(moreRight[i]));
-            viewer.deselectPivotElement(copyArray.indexOf(moreRight[i]));
+            viewer.moveElementToPlace(moreRight[i], counter * 85);
+            //viewer.liftElement(moreRight[i]);
+            viewer.deselectPivotElement(moreRight[i]);
             counter++;
         }
     }
     if (left.slice(tempLeftIndex).length > 0) {
         var moreLeft = left.slice(tempLeftIndex);
-        console.log("MoRe left " + moreLeft);
         for (var i = 0; i < moreLeft.length; i++) {
+            console.log("MoRe right " + moreLeft[i] + " to place " + counter * 85);
             testing[counter] = moreLeft[i];
-            viewer.liftElements(testing.indexOf(moreLeft[i]), testing.indexOf(moreLeft[i]));
-            viewer.deselectPivotElement(copyArray.indexOf(moreLeft[i]));
+            viewer.moveElementToPlace(moreLeft[i], counter * 85);
+            //viewer.liftElement(moreLeft[i]);
+            viewer.deselectPivotElement(moreLeft[i]);
             counter++;
         }
     }

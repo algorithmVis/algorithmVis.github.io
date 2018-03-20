@@ -51,8 +51,8 @@ function setMyArray(jsonArray) {
     });
     for (var i = 0; i < array.length; i++) {
         $("#indices").append("<p id='ind" + i + "' >" + i + "</p>");
-        $("#arrayUl").append("<li id='insElemNr" + i + "'><div>" + array[i] + "</div></li>");
-        arrayElements.push(new ArrayElement(i));
+        $("#arrayUl").append("<li id='insElemNr" + array[i] + "'><div>" + array[i] + "</div></li>");
+        arrayElements.push(new ArrayElement(array[i]));
     }
     // Spreading elements horizontally
     $(document).ready(function () {
@@ -106,7 +106,7 @@ function getArray(ran) {
         array = setAlmostSortedArray();
     }
     else {
-        array = ('14|17|19|18|7|17|15|5');
+        array = [14, 11, 19, 18, 7, 17, 15, 5];
     }
     if (checkDupli(array)) {
         return getArray(ran);

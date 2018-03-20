@@ -5,7 +5,7 @@
 /** Manager for events stored in queue. Manager is also responsible for executing events automatically */
 var eventManager = /** @class */ (function () {
     function eventManager() {
-        this.delayTime = 500; // Original value
+        this.delayTime = 1000; // Original value
         this.nextEvents = [];
         this.previousEvents = [];
     }

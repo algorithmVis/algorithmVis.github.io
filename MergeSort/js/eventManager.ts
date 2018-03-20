@@ -7,7 +7,7 @@ declare var $;
 
 /** Manager for events stored in queue. Manager is also responsible for executing events automatically */
 class eventManager {
-    delayTime: number = 500; // Original value
+    delayTime: number = 1000; // Original value
     nextEvents: FrontendEvent[] = [];
     previousEvents: FrontendEvent[] = [];
     eventThread: number;

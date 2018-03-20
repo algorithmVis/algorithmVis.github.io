@@ -6,28 +6,19 @@ declare var javaBinder;
 var insElemNr = "insElemNr";
 var LEVEL_HEIGHT: number = 85;
 
-function lowerElements(start: number, end: number) {
+function lowerElement(element: number) {
     var newTop: number;
-    for (var i = 0; i < array.length; i++) {
-        if (i >= start && i <= end) {
-            var $elem = $("#" + insElemNr + i);
-            newTop = parseInt($elem.css('top'), 10) + LEVEL_HEIGHT;
-            $elem.animate({top: newTop + "px"}, 300);
-        }
-    }
+    var $elem = $("#" + insElemNr + element);
+    newTop = parseInt($elem.css('top'), 10) + LEVEL_HEIGHT;
+    $elem.animate({top: newTop + "px"}, 500);
     lowerArrows(300);
 }
 
-function liftElements(start: number, end: number) {
-    for (var i = 0; i < array.length; i++) {
-        if (i >= start && i <= end) {
-            var $elem = $("#" + insElemNr + i);
-            //Test to check if it should stop going up, might need a var instead of number
-            if ($elem.offset().top > 168) {
-                var newTop: number = parseInt($elem.css('top'), 10) - LEVEL_HEIGHT;
-                $elem.animate({top: newTop + "px"}, 300);
-            }
-        }
+function liftElement(element: number) {
+    var $elem = $("#" + insElemNr + element);
+    if ($elem.offset().top > 170) {
+        var newTop: number = parseInt($elem.css('top'), 10) - LEVEL_HEIGHT;
+        $elem.animate({top: newTop + "px"}, 500);
     }
     liftArrows(300);
 }
@@ -90,57 +81,30 @@ function setLevelHeight(height: number) {
     LEVEL_HEIGHT = height;
 }
 
-function moveElementToPlace(element: number, end: number, moveTo: number, rest: boolean) {
+function moveElementToPlace(element: number, px: number) {
     console.log("--------------------------------------------------------");
-    console.log("elem " + element + " end " + end + " moveTo " + moveTo);
+    let $elem = $("#" + insElemNr + element);
+    let moveLeft: string = $elem.css("left");
 
-    let swap: boolean = true;
-    let place: number = moveTo;
-    let steps : number = element - moveTo;
-    if (element != moveTo) {
-        for (let i = element; i <= end; i++) {
-            if (i == element && swap) {
-                swap = false;
-                console.log("swap me");
-                var $elem = $("#" + insElemNr + i);
-                let moveLeft: number = $("#" + insElemNr + moveTo).css("left");
-                console.log(moveLeft);
-                $("#" + insElemNr + moveTo).attr("id", insElemNr + 100);
-                $("#" + insElemNr + element).attr("id", insElemNr + moveTo);
-                $elem.animate({left: moveLeft}, 500);
-                i = place - 1;
-            } else if (steps == 1 || steps == -1) {
-                console.log("steps == 1");
-                var $elem = $("#" + insElemNr + 100);
-                let moveLeft: string = $elem.css("left");
-                let move: number = (((Number)(moveLeft.substring(0, moveLeft.length - 2))) + 85);
-                $elem.attr("id", insElemNr + element);
-                $elem.animate({left: move + "px"}, 500);
-                break;
-            } else if (place == end) {
-                console.log("i == end-1");
-                var $elem = $("#" + insElemNr + 100);
-                let moveLeft: string = $elem.css("left");
-                let move: number = (((Number)(moveLeft.substring(0, moveLeft.length - 2))) + 85);
-                $elem.attr("id", insElemNr + place);
-                $elem.animate({left: move + "px"}, 500);
-
-            } else if (i < end - 1) {
-                console.log("else" + i);
-                var $elem = $("#" + insElemNr + 100);
-                let moveLeft: string = $elem.css("left");
-                let move: number = (((Number)(moveLeft.substring(0, moveLeft.length - 2))) + 85);
-                $("#" + insElemNr + i).attr("id", insElemNr + 100);
-                $elem.attr("id", insElemNr + i);
-                $elem.animate({left: move + "px"}, 500);
-            }
-
-
-            place++;
+    let pos: number = (Number)(moveLeft.substring(0, moveLeft.length - 2));
+    console.log(pos + " " + px);
+    if (pos > px) {
+        if ($elem.offset().top > 170) {
+            var newTop: number = parseInt($elem.css('top'), 10) - LEVEL_HEIGHT;
+            $elem.animate({top: newTop + "px"}, 500);
+        }
+        $elem.animate({left: px + "px"}, 1000);
+    } else {
+        $elem.animate({left: px + "px"}, 1000);
+        if ($elem.offset().top > 170) {
+            var newTop: number = parseInt($elem.css('top'), 10) - LEVEL_HEIGHT;
+            $elem.animate({top: newTop + "px"}, 500);
         }
     }
 
 
+
 }
+
 
 

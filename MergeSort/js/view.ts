@@ -63,38 +63,36 @@ class view {
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
 
-    lowerElements(lo: number, hi: number) {
-        if (lo > hi) return;
+    lowerElement(lo: number) {
 
-        var forwardSteps = function (lo, hi) {
+        var forwardSteps = function (lo) {
             return function () {
-                lowerElements(lo, hi);
+                lowerElement(lo);
             }
-        }(lo, hi);
+        }(lo);
 
-        var backwardSteps = function (lo, hi) {
+        var backwardSteps = function (lo) {
             return function () {
-                liftElements(lo, hi);
+                liftElement(lo);
             }
-        }(lo, hi);
+        }(lo);
 
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
 
-    liftElements(lo: number, hi: number) {
-        if (lo > hi) return;
+    liftElement(lo: number) {
 
-        var forwardSteps = function (lo, hi) {
+        var forwardSteps = function (lo) {
             return function () {
-                liftElements(lo, hi);
+                liftElement(lo);
             }
-        }(lo, hi);
+        }(lo);
 
-        var backwardSteps = function (lo, hi) {
+        var backwardSteps = function (lo) {
             return function () {
-                lowerElements(lo, hi);
+                lowerElement(lo);
             }
-        }(lo, hi);
+        }(lo);
 
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
@@ -305,12 +303,12 @@ class view {
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
 
-    moveElementToPlace(tempElement: number, end: number, moveTo: number, rest: boolean) {
+    moveElementToPlace(element: number, px: number) {
         var forwardSteps = function (tempElement, end, moveTo, rest) {
             return function () {
-                moveElementToPlace(tempElement, end, moveTo, rest);
+                moveElementToPlace(element, px);
             }
-        }(tempElement, end, moveTo, rest);
+        }(element, px);
         manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
     }
 
