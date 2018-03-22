@@ -2,7 +2,9 @@
 
 declare var $;
 var insElemNr = "insElemNr";
-var LEVEL_HEIGHT: number = 85;
+let LEVEL_HEIGHT: number = 85;
+let defaultColor: string = "#fff";
+let colors: string[] = ["#f1f500", "#f4a742", "#f49050", "#3adb04"];
 
 function lowerElements(elements: number[]) {
     for (let i = 0; i < elements.length; i++) {
@@ -24,37 +26,33 @@ function liftElements(elements: number[]) {
 }
 
 function selectPivotElement(index: number) {
-    var insElem = $("#insElemNr" + index);
-    insElem.addClass("pivot");
-    insElem.append('<p id="pivotChar">P</p>');
+    console.log(index);
+    $("#insElemNr" + index).addClass("middle");
 }
 
-function highlightNode(index: number) {
-    $("#insElemNr" + index).addClass("highlightNode");
-}
-
-function deHighlightNode(index: number) {
-    $("#insElemNr" + index).removeClass("highlightNode");
-}
-
-function highlightNodes(index: number[]) {
-    for (let i = 0; i < index.length; i++) {
-        $("#insElemNr" + index[i]).addClass("highlightNode");
+function setColor(index: number, color: number, colorOn: boolean) {
+    if (colorOn) {
+        $("#insElemNr" + index).css('backgroundColor', colors[color]);
+    } else {
+        $("#insElemNr" + index).css('backgroundColor', defaultColor); // Default color here
     }
 }
 
-function deHighlightNodes(index: number[]) {
+function setColors(index: number[], color: number, colorOn: boolean) {
+
     for (let i = 0; i < index.length; i++) {
-        $("#insElemNr" + index[i]).removeClass("highlightNode");
+        if (colorOn) {
+            $("#insElemNr" + index[i]).css('backgroundColor', colors[color]);
+        } else {
+            $("#insElemNr" + index[i]).css('backgroundColor', defaultColor); // Default color here
+        }
     }
+
 }
 
 function deselectPivotElement(index: number) {
-    $("#insElemNr" + index).removeClass("pivot");
-    $("#insElemNr" + index).children("p").remove();
+    $("#insElemNr" + index).removeClass("middle");
 }
-
-
 
 function moveElementToPlace(element: number, px: number) {
     let $elem = $("#" + insElemNr + element);

@@ -35,23 +35,15 @@ ul.insElements li.finished div {
     background-color: #3adb04;
 }
 
-ul.insElements li.pivot div {
-    background-color: #f1f500;
-}
-
-ul.insElements li.pivot div {
-    background-color: #f1f500;
-}
-
-ul.insElements li.highlightNode div {
-    background-color: #f4a742;
-}
-ul.insElements li.pivot div {
-    background-color: #f1f500;
-}
-
-ul.insElements li.highlightNode div {
-    background-color: #f4a742;
+ul.insElements li.middle div:after {
+    content: "";
+    background-color: #000;
+    position: absolute;
+    width: 4px;
+    height: 100px;
+    top: -20px;
+    right: 73px;
+    display: block;
 }
 
 div#array ul#arrayUl {
@@ -137,12 +129,4 @@ div.arrow {
 
 div.underArray {
     margin-top: 400px;
-}
-
-div#pivotChar {
-    position: absolute;
-    font-weight: bold;
-    font-size: 1.2em;
-    /*top: 100px;*/
-    /*left: 200px;*/
 }

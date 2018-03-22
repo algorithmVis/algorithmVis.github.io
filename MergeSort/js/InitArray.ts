@@ -76,7 +76,7 @@ function getArray(ran:string) {
     else if (ran === "almostSorted") {
         array = setAlmostSortedArray();
     }
-    else { // If page is tested in another browser
+    else { // If all else fails
         array = [14, 11, 19, 18, 7, 17, 15, 5];
     }
 

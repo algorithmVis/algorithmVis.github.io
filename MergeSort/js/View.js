@@ -2,7 +2,6 @@
 ///<reference path="Methods.ts"/>
 var view = /** @class */ (function () {
     function view() {
-        this.colors = ["#7FFF00", "not used", "#FFB366"];
         this.paused = false;
         this.lastArrowIndex = 0;
         this.lastArrowNr = 0;
@@ -68,58 +67,6 @@ var view = /** @class */ (function () {
         }(index);
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
-    view.prototype.highlightNode = function (index) {
-        var forwardSteps = function (index) {
-            return function () {
-                highlightNode(index);
-            };
-        }(index);
-        var backwardSteps = function (index) {
-            return function () {
-                deHighlightNode(index);
-            };
-        }(index);
-        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
-    };
-    view.prototype.deHighlightNode = function (index) {
-        var forwardSteps = function (index) {
-            return function () {
-                deHighlightNode(index);
-            };
-        }(index);
-        var backwardSteps = function (index) {
-            return function () {
-                highlightNode(index);
-            };
-        }(index);
-        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
-    };
-    view.prototype.highlightNodes = function (index) {
-        var forwardSteps = function (index) {
-            return function () {
-                highlightNodes(index);
-            };
-        }(index);
-        var backwardSteps = function (index) {
-            return function () {
-                deHighlightNodes(index);
-            };
-        }(index);
-        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
-    };
-    view.prototype.deHighlightNodes = function (index) {
-        var forwardSteps = function (index) {
-            return function () {
-                deHighlightNodes(index);
-            };
-        }(index);
-        var backwardSteps = function (index) {
-            return function () {
-                highlightNodes(index);
-            };
-        }(index);
-        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
-    };
     view.prototype.moveElementToPlace = function (element, px, back) {
         var forwardSteps = function (element, px) {
             return function () {
@@ -131,6 +78,32 @@ var view = /** @class */ (function () {
                 moveElementBackToPlace(element, back);
             };
         }(element, back);
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
+    };
+    view.prototype.setColorInArrayElement = function (index, i, colorOn) {
+        var forwardSteps = function (index, i, colorOn, colors) {
+            return function () {
+                setColor(index, i, colorOn);
+            };
+        }(index, i, colorOn, colors);
+        var backwardSteps = function (index, i, colorOn, colors) {
+            return function () {
+                setColor(index, i, !colorOn);
+            };
+        }(index, i, colorOn, colors);
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
+    };
+    view.prototype.setColorInArrayElements = function (index, i, colorOn) {
+        var forwardSteps = function (index, i, colorOn, colors) {
+            return function () {
+                setColors(index, i, colorOn);
+            };
+        }(index, i, colorOn, colors);
+        var backwardSteps = function (index, i, colorOn, colors) {
+            return function () {
+                setColors(index, i, !colorOn);
+            };
+        }(index, i, colorOn, colors);
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
     view.prototype.pause = function () {
