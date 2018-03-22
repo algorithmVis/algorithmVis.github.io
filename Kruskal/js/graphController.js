@@ -7,6 +7,7 @@
 ///<reference path="KruskalAlgorithm.ts"/>
 ///<reference path="View.ts"/>
 ///<reference path="EventManager.ts"/>
+///<reference path="Methods.ts"/>
 var graphController = /** @class */ (function () {
     function graphController() {
         this.randomWeight = 0;
@@ -32,10 +33,13 @@ var graphController = /** @class */ (function () {
         edges = 0;
         manager = new EventManager();
     };
-    graphController.prototype.highlightEdge = function (edgeId, highlight) {
-        console.log("hello");
+    graphController.prototype.highlightMyEdge = function (edgeId, highlight) {
+        console.log("graph");
         //$("#edge" + 2).css({"stroke": "rgb(16, 130, 219)", "stroke-width": "6"});
-        viewer.setHighlightEdge(2, true);
+        viewer.setHighlightEdge(edgeId, highlight);
+    };
+    graphController.prototype.removeMyEdge = function (edgeId) {
+        viewer.removeEdge(edgeId);
     };
     return graphController;
 }());
