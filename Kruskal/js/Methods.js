@@ -2,17 +2,17 @@
 ///<reference path="graphUI.ts"/>
 ///<reference path="graphController.ts"/>
 ///<reference path="View.ts"/>
+///<reference path="KruskalAlgorithm".ts"/>
 var randomWeight = 0;
 var nodes = 0;
 var MAX_NODES = 8;
 var edges = 0;
-function highilightThisEdge(index, highlight) {
-    if (highlight == true)
-        'æ';
-    {
+function highlightThisMyEdge(index, highlight) {
+    console.log("methods");
+    if (highlight == true) {
         $("#edge" + index).css({ "stroke": "rgb(16, 130, 219)", "stroke-width": "6" });
     } //add highlight
-    {
+    else {
         $("#edge" + index).css({ "stroke": "rgb(0, 0, 0)", "stroke-width": "4" });
     } //remove highlight
 }

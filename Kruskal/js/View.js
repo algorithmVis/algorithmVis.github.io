@@ -1,3 +1,4 @@
+"use strict";
 ///<reference path="KruskalAlgorithm.ts"/>
 ///<reference path="graphController.ts"/>
 ///<reference path="graphUI.ts"/>
@@ -5,17 +6,18 @@
 ///<reference path="Methods.ts"/>
 var View = /** @class */ (function () {
     function View() {
-        this.highlightEventDuration = 0;
+        this.highlightEventDuration = 1000;
     }
     View.prototype.setHighlightEdge = function (edgeId, highlight) {
+        console.log("view");
         var forward = function (edgeId, highlight) {
             return function () {
-                highilightThisEdge(edgeId, highlight);
+                highlightThisMyEdge(edgeId, highlight);
             };
         }(edgeId, highlight);
         var backward = function (edgeId, highlight) {
             return function () {
-                highilightThisEdge(edgeId, highlight);
+                highlightThisMyEdge(edgeId, highlight);
             };
         }(edgeId, highlight);
         manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));

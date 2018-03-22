@@ -1,14 +1,16 @@
 ///<reference path="graphUI.ts"/>
 ///<reference path="graphController.ts"/>
 ///<reference path="View.ts"/>
+///<reference path="KruskalAlgorithm".ts"/>
 
 let randomWeight = 0;
 let nodes: number = 0;
 let MAX_NODES: number = 8;
 let edges: number = 0;
 
-function highilightThisEdge(index: number, highlight: boolean) {
-    if (highlight == true)'æ' {
+function highlightThisMyEdge(index: number, highlight: boolean) {
+    console.log("methods");
+    if (highlight == true) {
         $("#edge" + index).css({"stroke": "rgb(16, 130, 219)", "stroke-width": "6"});
     } //add highlight
     else {

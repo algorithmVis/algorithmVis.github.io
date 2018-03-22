@@ -1,5 +1,5 @@
 /**
- * File created by Kenneth Apeland 03.02.18.
+ * File created by Øyvind Liland on 22.02.18.
  */
 ///<reference path="View.ts"/>
 ///<reference path="IAlgorithm.ts"/>
@@ -8,18 +8,10 @@
 ///<reference path="methods.ts"/>
 ///<reference path="MaxHeapFree.ts"/>
 
-
-let iColor = 2;
-let jColor = 0;
-
 class Controller {
 
-    //algorithm og methodToUse skal ikke være string, men dei e det for nå
-    //programmet vil ikje fungere
     private algorithm: IAlgorithm;
-    private methodToUse: string = "Union";
     private speed: number;
-    private GUI: IView; // Mulig forskjellig View for ulike algoritmer?
 
     initController(algo: IAlgorithm) {
         this.algorithm = algo;
@@ -37,35 +29,12 @@ class Controller {
         }
     }
 
-    changeSpeed(newSpeed: number) {
-        this.speed = newSpeed;
-    }
-
-    getSpeed() {
-        return this.speed;
-    }
-
     getAlgorithm() {
         return this.algorithm;
     }
 
     lockScreen(b: boolean) {
         viewer.screenLockThis(b);
-    }
-
-    /**
-     * Remove the maximum/minimum element
-     */
-    remove() {
-        viewer.screenLockThis(true);
-        //this.algorithm.remove();
-        viewer.screenLockThis(false);
-    }
-
-    union(firstIndex: number, secondIndex: number) {
-        viewer.screenLockThis(true);
-        //this.algorithm.union(firstIndex, secondIndex);
-        viewer.screenLockThis(false);
     }
 
     setArrow(index: number) {
@@ -95,17 +64,9 @@ class Controller {
     highlightSortElem(index: number, color: string) {
         viewer.highlightThisSortElem(index, color);
     }
-
-    setAlgorithm(algo: IAlgorithm) {
-        this.algorithm = algo;
-    }
-
+    
     removeHighlight(node: number) {
         viewer.removeThisHighlight(node);
-    }
-
-    setMethodToUse(methodToUse: string) {
-        this.methodToUse = methodToUse;
     }
 
     getNameOfCurrentAlgorithm() {
@@ -120,20 +81,12 @@ class Controller {
         this.algorithm.setArray(array);
     }
 
-    checkMark(aIndex: number, bIndex: number, set: boolean) {
-        viewer.checkMark(aIndex, bIndex, set);
-    }
-
-    redCross(aIndex: number, bIndex: number, set: boolean) {
-        viewer.redCross(aIndex, bIndex, set);
-    }
-
     displaySize(root: number, size: number) {
         viewer.displayNodeSize(root, size);
     }
 
     saveState(arr: number[]) {
-        viewer.executeSaveMethodInJavaScript(this.getArrayClone());
+        viewer.executeSaveMethodInJavaScript(arr);
     }
 
     addNode(i: number) {
@@ -144,6 +97,9 @@ class Controller {
         viewer.swapNode(child, parent);
     }
 
+    /**
+     * Remove the maximum/minimum element
+     */
     removeNode() {
         this.algorithm.remove();
     }

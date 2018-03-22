@@ -11,10 +11,9 @@
 var View = /** @class */ (function () {
     function View() {
         this.colors = ["#7FFF00", "not used", "#FFB366"];
-        this.arrayIsReset = false;
         this.k = 0;
-        this.currentAlgorithmName = "MaxHeap";
         this.paused = false;
+        this.playing = false;
         this.animSpeed = 500;
     }
     View.prototype.displayThisArray = function (array) {
@@ -115,22 +114,6 @@ var View = /** @class */ (function () {
         }(index);
         manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
     };
-    View.prototype.checkMark = function (aIndex, bIndex, set) {
-        var forward = function (aIndex, bIndex, set) {
-            return function () {
-                setCheckMark(set, aIndex, bIndex);
-            };
-        }(aIndex, bIndex, set);
-        manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
-    };
-    View.prototype.redCross = function (aIndex, bIndex, set) {
-        var forward = function (aIndex, bIndex, set) {
-            return function () {
-                setWrongMark(set, aIndex, bIndex);
-            };
-        }(aIndex, bIndex, set);
-        manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
-    };
     View.prototype.setThisState = function (relationships, backendArray) {
         setState(JSON.stringify(backendArray).toString(), JSON.stringify(relationships).toString());
     };
@@ -150,6 +133,8 @@ var View = /** @class */ (function () {
     };
     View.prototype.resetAll = function () {
         this.paused = false;
+        this.playing = false;
+        $("#play").text("Play");
         manager.pause();
         manager.nextEvents = new Array;
         manager.previousEvents = new Array;
@@ -199,6 +184,7 @@ var View = /** @class */ (function () {
     View.prototype.switchAlgorithm = function (algo) {
         $("#sortArray").hide();
         $("#sortArrayUL").children("li").remove();
+        lockPlay(true);
         switch (algo) {
             case "MaxHeap": {
                 this.resetAll();
@@ -212,12 +198,14 @@ var View = /** @class */ (function () {
             }
             case "BuildHeap": {
                 this.resetAll();
+                lockPlay(false);
                 control.initController(new BuildHeap(10));
                 screenLock(true);
                 break;
             }
             case "HeapSort": {
                 this.resetAll();
+                lockPlay(false);
                 $("#sortArray").show();
                 control.initController(new HeapSort(10));
                 screenLock(true);
@@ -277,16 +265,29 @@ var View = /** @class */ (function () {
     };
     View.prototype.play = function () {
         var algo = control.getAlgorithm().getName();
-        if (algo === "BuildHeap" && !this.paused) {
+        if (algo === "BuildHeap" && !this.paused && !this.playing) {
             control.getAlgorithm().build();
             this.paused = true;
+            this.playing = true;
+            $("#play").text("Pause");
         }
-        else if (algo === "HeapSort" && !this.paused) {
+        else if (algo === "HeapSort" && !this.paused && !this.playing) {
             control.getAlgorithm().sort();
             this.paused = true;
+            this.playing = true;
+            $("#play").text("Pause");
         }
         else {
-            return;
+            if (this.playing) {
+                manager.pause();
+                $("#play").text("Resume");
+                this.playing = false;
+            }
+            else {
+                this.playing = true;
+                manager.start();
+                $("#play").text("Pause");
+            }
         }
     };
     View.prototype.insertNewElemThis = function (child, value, parent) {

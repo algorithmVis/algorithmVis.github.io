@@ -22,10 +22,6 @@ interface IView {
 
     removeThisHighlight(node: number): void;
 
-    checkMark(aIndex: number, bIndex: number, set: boolean): void;
-
-    redCross(aIndex: number, bIndex: number, set: boolean): void;
-
     displayNodeSize(root: number, size: number): void;
 
     setThisState(arrayObject: JSON, array: JSON): void;

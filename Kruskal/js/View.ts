@@ -8,19 +8,20 @@ declare var $;
 
 class View {
 
-    highlightEventDuration = 0;
+    highlightEventDuration = 1000;
 
 
     setHighlightEdge(edgeId: number, highlight: boolean) {
+        console.log("view");
         var forward = function (edgeId, highlight) {
             return function () {
-                highilightThisEdge(edgeId, highlight);
+                highlightThisMyEdge(edgeId, highlight);
             };
         }(edgeId, highlight);
 
         var backward = function (edgeId, highlight) {
             return function () {
-                highilightThisEdge(edgeId, highlight);
+                highlightThisMyEdge(edgeId, highlight);
             };
         }(edgeId, highlight);
 

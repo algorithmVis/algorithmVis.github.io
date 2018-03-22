@@ -8,6 +8,7 @@
 ///<reference path="KruskalAlgorithm.ts"/>
 ///<reference path="View.ts"/>
 ///<reference path="EventManager.ts"/>
+    ///<reference path="Methods.ts"/>
 
 class graphController {
 
@@ -37,11 +38,15 @@ class graphController {
         manager = new EventManager();
     }
 
-    highlightEdge(edgeId: number, highlight: boolean) {
-        console.log("hello");
+    highlightMyEdge(edgeId: number, highlight: boolean) {
+        console.log("graph");
         //$("#edge" + 2).css({"stroke": "rgb(16, 130, 219)", "stroke-width": "6"});
-        viewer.setHighlightEdge(2, true);
+        viewer.setHighlightEdge(edgeId, highlight);
 
+    }
+
+    removeMyEdge(edgeId: number) {
+        viewer.removeEdge(edgeId);
     }
 
 }

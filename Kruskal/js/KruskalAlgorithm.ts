@@ -8,7 +8,8 @@
 ///<reference path="View.ts"/>
 
 var visited: boolean [];
-var queue: number [];
+var arr: number[] = [];
+var queue: number [] = [];
 var currentEdge: number = 0;
 
 /*
@@ -24,16 +25,59 @@ console.log(a + " " + b + " " + c);
 function startKruskal() {
     exampleGraph1();
 
-    let edgeList = sortEdges();
-    console.log(edgeList);
-    let [node1, node2, weight] = edgeList[0];
 
+    let edgeList = sortEdges();
+
+    for (let i = 0; i < edgeList.length; i++) {
+        arr[i] = i;
+    }
+
+
+    while (edgeList.length > 0) {
+        let [node1, node2, weight] = edgeList.pop();
+        currentEdge = getEdgeId(node1, node2);
+        controller.highlightMyEdge(currentEdge, true);
+
+        if (connected(node1, node2) == false) {
+            union(node1, node2);
+            controller.highlightMyEdge(currentEdge, true);
+        }
+        else {
+            controller.removeMyEdge(currentEdge);
+        }
+
+    }
 }
 
 
-function highlightMe() {
-    //$("#edge" + getEdgeId(0,1)).css({"stroke": "rgb(16, 130, 219)", "stroke-width": "6"});
-    highilightThisEdge(1, true);
+function simpleFind(index: number) {
+    let root: number = index;
+
+    while (root != arr[root]) {
+        root = arr[root];
+    }
+
+    return root;
+}
+
+function connected(aIndex: number, bIndex: number){
+    let aRoot = simpleFind(aIndex);
+    let bRoot = simpleFind(bIndex);
+    console.log("a " + aRoot);
+    console.log("b " + bRoot);
+
+    let connected: boolean = (aRoot == bRoot);
+    console.log(connected);
+    return connected;
+}
+
+function union(aIndex: number, bIndex: number) {
+    let aRoot = simpleFind(aIndex);
+    let bRoot = simpleFind(bIndex);
+
+    if (aRoot != bRoot) {
+        arr[aRoot] = bRoot;
+    }
 }
 
 function sortEdges() {
@@ -43,7 +87,7 @@ function sortEdges() {
         for (var j = 0; j < sorted.length; j++) {
             let [a, b, c] = sorted[i];
             let [d, e, f] = sorted[j];
-            if (c < f) {
+            if (c > f) {
                 temp = sorted[i];
                 sorted[i] = sorted[j];
                 sorted[j] = temp;
