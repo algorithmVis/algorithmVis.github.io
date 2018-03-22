@@ -22,50 +22,34 @@ class view {
         return returnString.substring(0, returnString.length - 1);
     }
 
-    setColorInArrayElement(index: number, color: string, colorOn: boolean) {
-        var forwardSteps = function (index, color, colorOn) {
+    lowerElements(elems: number[]) {
+        var forwardSteps = function (elems) {
             return function () {
-                setColor(index, color, colorOn);
+                lowerElements(elems);
             }
-        }(index, color, colorOn);
+        }(elems);
 
-        var backwardSteps = function (index, color, colorOn) {
+        var backwardSteps = function (elems) {
             return function () {
-                setColor(index, color, !colorOn);
+                liftElements(elems);
             }
-        }(index, color, colorOn);
+        }(elems);
 
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
 
-    lowerElement(lo: number) {
-        var forwardSteps = function (lo) {
+    liftElements(elems: number[]) {
+        var forwardSteps = function (elems) {
             return function () {
-                lowerElement(lo);
+                liftElements(elems);
             }
-        }(lo);
+        }(elems);
 
-        var backwardSteps = function (lo) {
+        var backwardSteps = function (elems) {
             return function () {
-                liftElement(lo);
+                lowerElements(elems);
             }
-        }(lo);
-
-        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
-    }
-
-    liftElement(lo: number) {
-        var forwardSteps = function (lo) {
-            return function () {
-                liftElement(lo);
-            }
-        }(lo);
-
-        var backwardSteps = function (lo) {
-            return function () {
-                lowerElement(lo);
-            }
-        }(lo);
+        }(elems);
 
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
@@ -134,13 +118,52 @@ class view {
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
 
-    moveElementToPlace(element: number, px: number) {
+    highlightNodes(index: number[]) {
+        var forwardSteps = function (index) {
+            return function () {
+                highlightNodes(index);
+            }
+        }(index);
+
+        var backwardSteps = function (index) {
+            return function () {
+                deHighlightNodes(index);
+            }
+        }(index);
+
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed))
+    }
+
+    deHighlightNodes(index: number[]) {
+        var forwardSteps = function (index) {
+            return function () {
+                deHighlightNodes(index);
+            }
+        }(index);
+
+        var backwardSteps = function (index) {
+            return function () {
+                highlightNodes(index);
+            }
+        }(index);
+
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
+    }
+
+    moveElementToPlace(element: number, px: number, back: number) {
         var forwardSteps = function (element, px) {
             return function () {
                 moveElementToPlace(element, px);
             }
         }(element, px);
-        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
+
+        var backwardSteps = function (element, back) {
+            return function () {
+                moveElementBackToPlace(element, back);
+            }
+        }(element, back);
+
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
 
     pause() {

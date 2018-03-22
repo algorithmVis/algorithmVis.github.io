@@ -29,13 +29,13 @@ function mergesort(array) {
         mid = Math.floor(array.length * 0.5);
         //viewer.setPivotElement(copyArray.indexOf(array[mid - 1]));
         left = array.slice(0, mid);
-        for (var i = 0; i < left.length; i++) {
-            viewer.lowerElement(left[i]);
-        }
+        viewer.highlightNodes(left);
+        viewer.lowerElements(left);
+        viewer.deHighlightNodes(left);
         right = array.slice(mid);
-        for (var i = 0; i < right.length; i++) {
-            viewer.lowerElement(right[i]);
-        }
+        viewer.highlightNodes(right);
+        viewer.lowerElements(right);
+        viewer.deHighlightNodes(right);
         //Split until there is only 1 element left
         return merge(mergesort(left), mergesort(right));
     }
@@ -48,17 +48,19 @@ function merge(left, right) {
     var counter = copyArray.indexOf(left[0]);
     while (tempLeftIndex < left.length && tempRightIndex < right.length) {
         //Compare the elements from each array
-        //viewer.highLightNode(tempLeftIndex)
-        //viewer.highLightNode(tempRightIndex)
+        viewer.highlightNode(left[tempLeftIndex]);
+        viewer.highlightNode(right[tempRightIndex]);
         if (left[tempLeftIndex] < right[tempRightIndex]) {
-            viewer.moveElementToPlace(left[tempLeftIndex], counter * 85);
+            viewer.moveElementToPlace(left[tempLeftIndex], counter, copyArray.indexOf(left[tempLeftIndex]));
+            viewer.deHighlightNode(left[tempLeftIndex]);
             result.push(left[tempLeftIndex]);
             testing[counter] = left[tempLeftIndex];
             counter++;
             tempLeftIndex++;
         }
         else {
-            viewer.moveElementToPlace(right[tempRightIndex], counter * 85);
+            viewer.moveElementToPlace(right[tempRightIndex], counter, copyArray.indexOf(right[tempRightIndex]));
+            viewer.deHighlightNode(right[tempRightIndex]);
             result.push(right[tempRightIndex]);
             testing[counter] = right[tempRightIndex];
             counter++;
@@ -67,16 +69,20 @@ function merge(left, right) {
     }
     if (right.slice(tempRightIndex).length > 0) {
         var moreRight = right.slice(tempRightIndex);
+        viewer.highlightNodes(moreRight);
         for (var i = 0; i < moreRight.length; i++) {
-            viewer.moveElementToPlace(moreRight[i], counter * 85);
+            viewer.moveElementToPlace(moreRight[i], counter, copyArray.indexOf(moreRight[i]));
+            viewer.deHighlightNode(moreRight[i]);
             testing[counter] = moreRight[i];
             counter++;
         }
     }
     if (left.slice(tempLeftIndex).length > 0) {
         var moreLeft = left.slice(tempLeftIndex);
+        viewer.highlightNodes(moreLeft);
         for (var i = 0; i < moreLeft.length; i++) {
-            viewer.moveElementToPlace(moreLeft[i], counter * 85);
+            viewer.moveElementToPlace(moreLeft[i], counter, copyArray.indexOf(moreLeft[i]));
+            viewer.deHighlightNode(moreLeft[i]);
             testing[counter] = moreLeft[i];
             counter++;
         }

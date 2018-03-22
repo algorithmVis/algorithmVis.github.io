@@ -16,43 +16,30 @@ var view = /** @class */ (function () {
         }
         return returnString.substring(0, returnString.length - 1);
     };
-    view.prototype.setColorInArrayElement = function (index, color, colorOn) {
-        var forwardSteps = function (index, color, colorOn) {
+    view.prototype.lowerElements = function (elems) {
+        var forwardSteps = function (elems) {
             return function () {
-                setColor(index, color, colorOn);
+                lowerElements(elems);
             };
-        }(index, color, colorOn);
-        var backwardSteps = function (index, color, colorOn) {
+        }(elems);
+        var backwardSteps = function (elems) {
             return function () {
-                setColor(index, color, !colorOn);
+                liftElements(elems);
             };
-        }(index, color, colorOn);
+        }(elems);
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
-    view.prototype.lowerElement = function (lo) {
-        var forwardSteps = function (lo) {
+    view.prototype.liftElements = function (elems) {
+        var forwardSteps = function (elems) {
             return function () {
-                lowerElement(lo);
+                liftElements(elems);
             };
-        }(lo);
-        var backwardSteps = function (lo) {
+        }(elems);
+        var backwardSteps = function (elems) {
             return function () {
-                liftElement(lo);
+                lowerElements(elems);
             };
-        }(lo);
-        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
-    };
-    view.prototype.liftElement = function (lo) {
-        var forwardSteps = function (lo) {
-            return function () {
-                liftElement(lo);
-            };
-        }(lo);
-        var backwardSteps = function (lo) {
-            return function () {
-                lowerElement(lo);
-            };
-        }(lo);
+        }(elems);
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
     view.prototype.setPivotElement = function (index) {
@@ -107,13 +94,44 @@ var view = /** @class */ (function () {
         }(index);
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
-    view.prototype.moveElementToPlace = function (element, px) {
+    view.prototype.highlightNodes = function (index) {
+        var forwardSteps = function (index) {
+            return function () {
+                highlightNodes(index);
+            };
+        }(index);
+        var backwardSteps = function (index) {
+            return function () {
+                deHighlightNodes(index);
+            };
+        }(index);
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
+    };
+    view.prototype.deHighlightNodes = function (index) {
+        var forwardSteps = function (index) {
+            return function () {
+                deHighlightNodes(index);
+            };
+        }(index);
+        var backwardSteps = function (index) {
+            return function () {
+                highlightNodes(index);
+            };
+        }(index);
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
+    };
+    view.prototype.moveElementToPlace = function (element, px, back) {
         var forwardSteps = function (element, px) {
             return function () {
                 moveElementToPlace(element, px);
             };
         }(element, px);
-        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
+        var backwardSteps = function (element, back) {
+            return function () {
+                moveElementBackToPlace(element, back);
+            };
+        }(element, back);
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
     view.prototype.pause = function () {
         if (!this.paused) {

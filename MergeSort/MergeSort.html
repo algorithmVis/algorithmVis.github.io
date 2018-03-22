@@ -7,12 +7,6 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="css/style.css" rel="stylesheet">
 
-    <!-- Insert this line above script imports  -->
-    <script>if (typeof module === 'object') {
-        window.module = module;
-        module = undefined;
-    }</script>
-
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery-ui-1.12.0/jquery-ui.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -22,19 +16,11 @@
     <script src="js/MergeSortAlgorithm.js"></script>
     <script src="js/EventManager.js"></script>
     <script src="js/InitArray.js"></script>
-
-    <!-- For debugging -->
-    <!-- <script type='text/js' src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script> -->
-
-    <!-- Insert this line after script imports -->
-    <script>if (window.module) module = window.module;</script>
-    ;
 </head>
 
 
 <body>
 <div class="container text-center">
-    <img id="paused" class="pauseIcon" src="assets/pause.png"/>
     <h1 id="header">MergeSort</h1>
     <div id="array" class="row insertionSort">
         <div id="indices"></div>
@@ -57,7 +43,6 @@
     <br>
 
     <div class="row">
-        <!-- TODO: Play if paused -->
         <button id="random" class="btn btn-primary" onclick="getArray('random')">Random</button>
         <button id="almost" class="btn btn-primary" onclick="getArray('almostSorted')">Almost Sorted</button>
         <button id="sorted" class="btn btn-primary" onclick="getArray('sorted')">Sorted</button>
