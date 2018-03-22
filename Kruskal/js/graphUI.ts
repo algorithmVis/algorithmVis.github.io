@@ -1,4 +1,7 @@
 ///<reference path="graphController.ts"/>
+///<reference path="KruskalAlgorithm.ts"/>
+///<reference path="View.ts"/>
+///<reference path="EventManager.ts"/>
 
 declare var $;
 
@@ -39,6 +42,7 @@ function addWeightedEdge(id: number, n1: number, n2: number, weight: number) {
 function addNodeAndEdge(id: number, node1: number, node2: number, weight: number) {
     triplets[id] = [node1, node2, weight];
 }
+
 
 function resetGraphUI() {
     $("#graphUI div.nodeUI").each(function () {

@@ -2,74 +2,49 @@
  * File created by Knut Anders Stokke, Kristiand Rosland, Ragnhild AAlvik
  * Modified by Philip Hoang 21.03.2018
  */
+
 ///<reference path="graphUI.ts"/>
-///<reference path="methods.ts"/>
+///<reference path="View.ts"/>
+///<reference path="KruskalAlgorithm.ts"/>
+///<reference path="View.ts"/>
+///<reference path="EventManager.ts"/>
 
+class graphController {
 
-var randomWeight = 0; //Tilfeldig number for hver funksjon kall?
-var nodes: number = 0;
-var MAX_NODES: number = 8;
-var edges: number = 0;
+    private randomWeight = 0;
+    private nodes: number = 0;
+    private MAX_NODES: number = 8;
+    private edges: number = 0;
 
-/**
- * Add a node to the graph
- *
- * @param {number} x is the x-position
- * @param {number} y is the y-position
- */
-function addThisNode(x: number, y: number) {
-    if (nodes < MAX_NODES) {
-        addNode(nodes, x, y);
-        nodes++;
+    addNode(x: number, y: number) {
+        viewer.addNodeToGraph(x, y);
     }
-}
 
-/**
- * Connect two nodes and give the edge a weight
- *
- * @param {number} node1 First node
- * @param {number} node2 Second node
- */
-function connectTwoNodes(node1: number, node2: number) {
-    randomWeight = Math.floor(Math.random() * 10) + 1;
-    addWeightedEdge(edges++, node1, node2, randomWeight);
-}
+    /**
+     * Connect two nodes and give the edge a weight
+     *
+     * @param {number} node1 First node
+     * @param {number} node2 Second node
+     */
+    connectTwoNodes(node1: number, node2: number) {
+        viewer.connectTheseNodes(node1, node2);
+    }
 
-function resetGraph() {
-    resetGraphUI();
-    nodes = 0;
-    edges = 0;
-    manager = new EventManager();
-}
+    resetGraph() {
+        resetGraphUI();
+        nodes = 0;
+        edges = 0;
+        manager = new EventManager();
+    }
 
-function highlightMe() {
-    $("#edge" + 4).remove();
-    /*
-    $("#edge" + 4).each(function () {
-        $(this).remove();
-    });
-    */
-}
+    highlightEdge(edgeId: number, highlight: boolean) {
+        console.log("hello");
+        //$("#edge" + 2).css({"stroke": "rgb(16, 130, 219)", "stroke-width": "6"});
+        viewer.setHighlightEdge(2, true);
 
-function exampleGraph1() {
-    resetGraph();
-    // Add nodes
-    addThisNode(150, 300);
-    addThisNode(320, 450);
-    addThisNode(320, 120);
-    addThisNode(620, 450);
-    addThisNode(620, 120);
-    addThisNode(820, 300);
-
-    // Add edges
-    connectTwoNodes(0, 1);
-    connectTwoNodes(1, 2);
-    connectTwoNodes(0, 2);
-    connectTwoNodes(2, 3);
-    connectTwoNodes(3, 4);
-    connectTwoNodes(3, 5);
-    connectTwoNodes(4, 5);
-    console.log(weights);
+    }
 
 }
+
+var controller: graphController = new graphController();
 

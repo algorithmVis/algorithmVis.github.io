@@ -1,11 +1,10 @@
 ///<reference path="graphController.ts"/>
+///<reference path="KruskalAlgorithm.ts"/>
+///<reference path="View.ts"/>
+///<reference path="EventManager.ts"/>
 var edgeIdList = [[]];
 var weights = [];
 var triplets = [];
-triplets[0] = [1, "s", true];
-triplets[1] = ["t", 2, false];
-var _a = triplets[0], a = _a[0], b = _a[1], c = _a[2];
-console.log(a + " " + b + " " + c);
 function addNode(id, xPos, yPos) {
     edgeIdList.push([]);
     $("#graphUI").append("<div id='node" + id + "' class='nodeUI' style='left:" + (xPos - 40) + "px; top:" + (yPos - 40) + "px;'><p>" + id + "</p></div>");
@@ -20,7 +19,7 @@ function addEdge(id, node1, node2) {
 }
 function addWeightedEdge(id, n1, n2, weight) {
     addEdge(id, n1, n2);
-    weights[id] = weight;
+    addNodeAndEdge(id, n1, n2, weight);
     var edge = $("#edge" + id);
     var x1 = parseInt(edge.attr("x1")), y1 = parseInt(edge.attr("y1"));
     var x2 = parseInt(edge.attr("x2")), y2 = parseInt(edge.attr("y2"));
@@ -32,6 +31,9 @@ function addWeightedEdge(id, n1, n2, weight) {
         "class='edgeWeight' " +
         "style='top: " + (y + unitScale * unit.y) + "px; left: " + (x + unitScale * unit.x) + "px'>" +
         weight + "</p>");
+}
+function addNodeAndEdge(id, node1, node2, weight) {
+    triplets[id] = [node1, node2, weight];
 }
 function resetGraphUI() {
     $("#graphUI div.nodeUI").each(function () {

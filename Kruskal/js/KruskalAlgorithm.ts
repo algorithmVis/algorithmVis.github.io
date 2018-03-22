@@ -4,13 +4,14 @@
 
 ///<reference path="graphUI.ts"/>
 ///<reference path="graphController.ts"/>
-///<reference path="eventManager.ts"/>
-// /<reference path="methods.ts"/>
+///<reference path="EventManager.ts"/>
+///<reference path="View.ts"/>
 
 var visited: boolean [];
 var queue: number [];
 var currentEdge: number = 0;
 
+/*
 let triplets: any[] = [];
 
 triplets[0] = [1, "s", true];
@@ -18,20 +19,36 @@ triplets[1] = ["t", 2, false];
 let [a, b, c] = triplets[0];
 
 console.log(a + " " + b + " " + c);
-
+*/
 
 function startKruskal() {
     exampleGraph1();
 
-    queue = [];
-    console.log("Not sorted: " + weights);
-    var sortedWeights = weights.sort();
-    console.log("Sorted: "  + sortedWeights);
+    let edgeList = sortEdges();
+    console.log(edgeList);
+    let [node1, node2, weight] = edgeList[0];
 
-    while (sortedWeights.length > 1) {
-        var currentEdge = sortedWeights.pop();
-        console.log(currentEdge);
+}
+
+
+function highlightMe() {
+    //$("#edge" + getEdgeId(0,1)).css({"stroke": "rgb(16, 130, 219)", "stroke-width": "6"});
+    highilightThisEdge(1, true);
+}
+
+function sortEdges() {
+    let temp = 0;
+    let sorted = triplets;
+    for (var i = 0; i < sorted.length; i++) {
+        for (var j = 0; j < sorted.length; j++) {
+            let [a, b, c] = sorted[i];
+            let [d, e, f] = sorted[j];
+            if (c < f) {
+                temp = sorted[i];
+                sorted[i] = sorted[j];
+                sorted[j] = temp;
+            }
+        }
     }
-
-
+    return sorted;
 }
