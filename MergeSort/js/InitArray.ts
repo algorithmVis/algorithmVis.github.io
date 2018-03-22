@@ -65,8 +65,7 @@ function returnArray() {
 function getArray(ran:string) {
 // Setting Random array
     if (ran === "random") {
-        //array = setRandomMyArray();
-        array = [4, 1, 10, 7, 3, 5, 20, 15, 2, 21];
+        array = setRandomMyArray();
     }
     else if (ran === "sorted") {
         array = setSortedArray();

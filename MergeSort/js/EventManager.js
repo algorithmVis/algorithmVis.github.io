@@ -22,6 +22,7 @@ var eventManager = /** @class */ (function () {
     };
     // Executing the previous event
     eventManager.prototype.previous = function () {
+        this.pause();
         if (this.previousEvents.length == 0)
             return;
         var event = this.previousEvents.pop();

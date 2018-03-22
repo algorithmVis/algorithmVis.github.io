@@ -17,7 +17,7 @@ class eventManager {
         if (this.nextEvents.length == 0) {
             return;
         }
-        var event: FrontendEvent = (<FrontendEvent> this.nextEvents.shift());
+        let event: FrontendEvent = (<FrontendEvent> this.nextEvents.shift());
         event.next();
         this.previousEvents.push(event);
         if (event.duration == 0)
@@ -26,9 +26,10 @@ class eventManager {
 
     // Executing the previous event
     previous() {
+        this.pause();
         if (this.previousEvents.length == 0)
             return;
-        var event: FrontendEvent = (<FrontendEvent> this.previousEvents.pop());
+        let event: FrontendEvent = (<FrontendEvent> this.previousEvents.pop());
         //this.delayTime = 500; //this line set to 0 caused: when resuming all animations are played out. Intention Delay when stepping backwards.
         event.previous();
         this.nextEvents.unshift(event);
@@ -39,7 +40,7 @@ class eventManager {
     }
 
     start() {
-        var manager = this; // Anonymous functions cannot access this...
+        let manager = this; // Anonymous functions cannot access this...
         this.eventThread = setInterval(function () {
             manager.next();
         }, manager.delayTime);
@@ -50,7 +51,7 @@ class eventManager {
     }
 
     unpause() {
-        var manager = this;
+        let manager = this;
         this.eventThread = setInterval(function () {
             manager.next();
         }, manager.delayTime);
@@ -75,7 +76,7 @@ class FrontendEvent {
     }
 }
 
-var manager: eventManager = new eventManager();
+let manager: eventManager = new eventManager();
 
 /*
 /** How to add FrontendEvents to manager

@@ -38,20 +38,19 @@ function mergesort(array: number[]) {
         //viewer.setPivotElement(copyArray.indexOf(array[mid - 1]));
 
         left = array.slice(0, mid);
-        for (let i = 0; i < left.length; i++) {
-            viewer.lowerElement(left[i]);
-        }
+        viewer.highlightNodes(left);
+        viewer.lowerElements(left);
+        viewer.deHighlightNodes(left);
 
         right = array.slice(mid);
-        for (let i = 0; i < right.length; i++) {
-            viewer.lowerElement(right[i]);
-        }
+        viewer.highlightNodes(right);
+        viewer.lowerElements(right);
+        viewer.deHighlightNodes(right);
 
         //Split until there is only 1 element left
         return merge(mergesort(left), mergesort(right));
     }
 }
-
 
 function merge(left: number[], right: number[]) {
     let result: number[] = [];
@@ -63,11 +62,12 @@ function merge(left: number[], right: number[]) {
 
     while (tempLeftIndex < left.length && tempRightIndex < right.length) {
         //Compare the elements from each array
-        //viewer.highLightNode(tempLeftIndex)
-        //viewer.highLightNode(tempRightIndex)
+        viewer.highlightNode(left[tempLeftIndex]);
+        viewer.highlightNode(right[tempRightIndex]);
 
         if (left[tempLeftIndex] < right[tempRightIndex]) {
-            viewer.moveElementToPlace(left[tempLeftIndex], counter * 85);
+            viewer.moveElementToPlace(left[tempLeftIndex], counter, copyArray.indexOf(left[tempLeftIndex]));
+            viewer.deHighlightNode(left[tempLeftIndex]);
 
             result.push(left[tempLeftIndex]);
             testing[counter] = left[tempLeftIndex];
@@ -76,8 +76,8 @@ function merge(left: number[], right: number[]) {
             tempLeftIndex++;
 
         } else {
-            viewer.moveElementToPlace(right[tempRightIndex], counter * 85);
-
+            viewer.moveElementToPlace(right[tempRightIndex], counter, copyArray.indexOf(right[tempRightIndex]));
+            viewer.deHighlightNode(right[tempRightIndex]);
             result.push(right[tempRightIndex]);
             testing[counter] = right[tempRightIndex];
 
@@ -88,8 +88,10 @@ function merge(left: number[], right: number[]) {
 
     if (right.slice(tempRightIndex).length > 0) {
         let moreRight = right.slice(tempRightIndex);
+        viewer.highlightNodes(moreRight);
         for (let i = 0; i < moreRight.length; i++) {
-            viewer.moveElementToPlace(moreRight[i], counter * 85);
+            viewer.moveElementToPlace(moreRight[i], counter, copyArray.indexOf(moreRight[i]));
+            viewer.deHighlightNode(moreRight[i]);
 
             testing[counter] = moreRight[i];
             counter++;
@@ -97,8 +99,10 @@ function merge(left: number[], right: number[]) {
     }
     if (left.slice(tempLeftIndex).length > 0) {
         let moreLeft = left.slice(tempLeftIndex);
+        viewer.highlightNodes(moreLeft);
         for (let i = 0; i < moreLeft.length; i++) {
-            viewer.moveElementToPlace(moreLeft[i], counter * 85);
+            viewer.moveElementToPlace(moreLeft[i], counter, copyArray.indexOf(moreLeft[i]));
+            viewer.deHighlightNode(moreLeft[i]);
 
             testing[counter] = moreLeft[i];
             counter++;
