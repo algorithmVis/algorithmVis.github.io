@@ -16,10 +16,9 @@ declare var $;
 class View implements IView {
 
     colors: string[] = ["#7FFF00", "not used", "#FFB366"];
-    arrayIsReset: boolean = false;
-    k: number = 0
-    currentAlgorithmName: string = "MaxHeap";
+    k: number = 0;
     paused: boolean = false;
+    playing: boolean = false;
     animSpeed: number = 500;
 
     displayThisArray(array: number[]) {
@@ -144,27 +143,6 @@ class View implements IView {
         manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
     }
 
-    checkMark(aIndex: number, bIndex: number, set: boolean) {
-        let forward = function (aIndex: number, bIndex: number, set: boolean) {
-            return function () {
-                setCheckMark(set, aIndex, bIndex);
-            }
-        }(aIndex, bIndex, set);
-
-        manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
-    }
-
-    redCross(aIndex: number, bIndex: number, set: boolean) {
-        let forward = function (aIndex: number, bIndex: number, set: boolean) {
-            return function () {
-                setWrongMark(set, aIndex, bIndex);
-
-            }
-        }(aIndex, bIndex, set);
-
-        manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
-    }
-
     setThisState(relationships: JSON, backendArray: JSON) {
         setState(JSON.stringify(backendArray).toString(), JSON.stringify(relationships).toString());
     }
@@ -188,6 +166,8 @@ class View implements IView {
 
     resetAll() {
         this.paused = false;
+        this.playing = false;
+        $("#play").text("Play");
         manager.pause();
         manager.nextEvents = new Array;
         manager.previousEvents = new Array;
@@ -244,6 +224,7 @@ class View implements IView {
     switchAlgorithm(algo: string) {
         $("#sortArray").hide();
         $("#sortArrayUL").children("li").remove();
+        lockPlay(true);
         switch (algo) {
             case "MaxHeap": {
                 this.resetAll();
@@ -257,12 +238,14 @@ class View implements IView {
             }
             case "BuildHeap": {
                 this.resetAll();
+                lockPlay(false);
                 control.initController(new BuildHeap(10));
                 screenLock(true);
                 break;
             }
             case "HeapSort": {
                 this.resetAll();
+                lockPlay(false);
                 $("#sortArray").show();
                 control.initController(new HeapSort(10));
                 screenLock(true);
@@ -334,16 +317,29 @@ class View implements IView {
 
     play() {
         let algo = control.getAlgorithm().getName();
-        if (algo === "BuildHeap" && !this.paused) {
+        if (algo === "BuildHeap" && !this.paused && !this.playing) {
             control.getAlgorithm().build();
             this.paused = true;
-        } else if (algo === "HeapSort" && !this.paused) {
+            this.playing = true;
+            $("#play").text("Pause");
+        } else if (algo === "HeapSort" && !this.paused && !this.playing) {
             (<HeapSort>control.getAlgorithm()).sort();
             this.paused = true;
+            this.playing = true;
+            $("#play").text("Pause");
         } else {
-            return;
+            if (this.playing) {
+                manager.pause();
+                $("#play").text("Resume");
+                this.playing = false;
+            } else {
+                this.playing = true;
+                manager.start();
+                $("#play").text("Pause");
+            }
         }
     }
+
 
     insertNewElemThis(child: number, value: number, parent: number) {
         let forward = function (index, value, parent) {

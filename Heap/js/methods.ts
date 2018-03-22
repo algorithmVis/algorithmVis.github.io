@@ -111,37 +111,13 @@ function selectElement(index: number) {
             selectIndex(index * 2 + 2, true);
         }
     }
-
-    var $method = $('input[name=method]:checked', '#method');
-    if ($method.val() == 'Find') {
-        $method.next().text(" find( " + index + " )");
-        control.find(index);
-        firstSelected = -1;
-    }
-    else if (firstSelected < 0) {
-        var methodName: string = "union";
-        if ($method.val() == 'Connected') {
-            methodName = "connected";
-        }
-        $method.next().text(methodName + "( " + index + " , _ )");
-
-        firstSelected = index;
-    } else if ($method.val() == 'Union') {
-        $method.next().text(" union( " + firstSelected + " , " + index + " )");
-        control.union(firstSelected, index);
-        firstSelected = -1;
-
-    } else if ($method.val() == 'Connected') {
-        $method.next().text(" connected( " + firstSelected + " , " + index + " )");
-        control.connected(firstSelected, index);
-        firstSelected = -1;
-    }
 }
 
 // Reset selected values when new method is chosen
 function setupRadio() {
     $('input[name=method]:radio', '#method').change(function () {
         resetElementSelections();
+        deselectArrayElemSelections();
     });
 }
 
@@ -411,29 +387,6 @@ function setState(backendArrayJSON: string, twoDimRelationshipArrayJSON: string)
     positioningNodes(0);
 }
 
-function setCheckMark(check: boolean, indexA: number, indexB: number) {
-    if (check) {
-        var $A = allNodes[indexA];
-        var $B = allNodes[indexB];
-        $("#correctImgA").css({left: $A.left, top: $A.top}).removeClass("hidden");
-        $("#correctImgB").css({left: $B.left, top: $B.top}).removeClass("hidden");
-    } else {
-        $("#correctImgA").addClass("hidden");
-        $("#correctImgB").addClass("hidden");
-    }
-}
-
-function setWrongMark(check: boolean, indexA: number, indexB: number) {
-    if (check) {
-        var $A = allNodes[indexA];
-        var $B = allNodes[indexB];
-        $("#wrongImgA").css({left: $A.left, top: $A.top}).removeClass("hidden");
-        $("#wrongImgB").css({left: $B.left, top: $B.top}).removeClass("hidden");
-    } else {
-        $("#wrongImgA").addClass("hidden");
-        $("#wrongImgB").addClass("hidden");
-    }
-}
 
 function screenLock(lock: boolean) {
     locked = lock;
@@ -444,6 +397,14 @@ function screenLock(lock: boolean) {
     } else {
         $("#addElem").removeAttr("disabled");
         $("#removeElem").removeAttr("disabled");
+    }
+}
+
+function lockPlay(lock: boolean) {
+    if (lock) {
+        $("#play").attr({"disabled": "true"});
+    } else {
+        $("#play").removeAttr("disabled");
     }
 }
 
@@ -460,44 +421,10 @@ function setHeaderText(text: string) {
     $("#headerText").html(text);
 }
 
-function setSlow() {
-    animationTime = 6000;
-    viewer.setSlow();
-}
-
-function setMedium() {
-    animationTime = 2500;
-    viewer.setMedium();
-}
-
-function setFast() {
-    animationTime = 1000;
-    viewer.setFast();
-}
-
-function setupSpeedButtons() {
-    // Default is medium
-    setMedium();
-    $("#medium").addClass("active");
-
-    // Set onClickListener
-    $("#slow , #medium , #fast").each(function () {
-        $(this).click(function () {
-            $("#slow , #medium , #fast").each(function () {
-                $(this).removeClass('active');
-            });
-            $(this).addClass('active');
-        })
-    });
-}
-
-setupSpeedButtons();
-
 function setUpAddButton() {
     $("#addElem").click(function () {
-        let val = prompt("Which value do you want to add? Integer >= 0");
-        while (isNaN(parseInt(val))) {
-            //val = prompt("Which value do you want to add? Integer >= 0");
+        let val = prompt("Which value do you want to add? Integer >= 0. Maximum number of elements is 10");
+        if (isNaN(parseInt(val)) || control.getArrayClone().length >= 10) {
             return;
         }
         viewer.addNode(parseInt(val));

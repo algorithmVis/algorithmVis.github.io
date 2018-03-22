@@ -1,5 +1,5 @@
 /**
- * File created by Kenneth Apeland 03.02.18.
+ * File created by Øyvind Liland on 22.02.18.
  */
 ///<reference path="View.ts"/>
 ///<reference path="IAlgorithm.ts"/>
@@ -7,11 +7,8 @@
 ///<reference path="IView.ts"/>
 ///<reference path="methods.ts"/>
 ///<reference path="MaxHeapFree.ts"/>
-var iColor = 2;
-var jColor = 0;
 var Controller = /** @class */ (function () {
     function Controller() {
-        this.methodToUse = "Union";
     }
     Controller.prototype.initController = function (algo) {
         this.algorithm = algo;
@@ -29,30 +26,11 @@ var Controller = /** @class */ (function () {
             this.algorithm.connectNodes();
         }
     };
-    Controller.prototype.changeSpeed = function (newSpeed) {
-        this.speed = newSpeed;
-    };
-    Controller.prototype.getSpeed = function () {
-        return this.speed;
-    };
     Controller.prototype.getAlgorithm = function () {
         return this.algorithm;
     };
     Controller.prototype.lockScreen = function (b) {
         viewer.screenLockThis(b);
-    };
-    /**
-     * Remove the maximum/minimum element
-     */
-    Controller.prototype.remove = function () {
-        viewer.screenLockThis(true);
-        //this.algorithm.remove();
-        viewer.screenLockThis(false);
-    };
-    Controller.prototype.union = function (firstIndex, secondIndex) {
-        viewer.screenLockThis(true);
-        //this.algorithm.union(firstIndex, secondIndex);
-        viewer.screenLockThis(false);
     };
     Controller.prototype.setArrow = function (index) {
         viewer.setThisArrow(index);
@@ -75,14 +53,8 @@ var Controller = /** @class */ (function () {
     Controller.prototype.highlightSortElem = function (index, color) {
         viewer.highlightThisSortElem(index, color);
     };
-    Controller.prototype.setAlgorithm = function (algo) {
-        this.algorithm = algo;
-    };
     Controller.prototype.removeHighlight = function (node) {
         viewer.removeThisHighlight(node);
-    };
-    Controller.prototype.setMethodToUse = function (methodToUse) {
-        this.methodToUse = methodToUse;
     };
     Controller.prototype.getNameOfCurrentAlgorithm = function () {
         return this.algorithm.getName();
@@ -93,17 +65,11 @@ var Controller = /** @class */ (function () {
     Controller.prototype.setArray = function (array) {
         this.algorithm.setArray(array);
     };
-    Controller.prototype.checkMark = function (aIndex, bIndex, set) {
-        viewer.checkMark(aIndex, bIndex, set);
-    };
-    Controller.prototype.redCross = function (aIndex, bIndex, set) {
-        viewer.redCross(aIndex, bIndex, set);
-    };
     Controller.prototype.displaySize = function (root, size) {
         viewer.displayNodeSize(root, size);
     };
     Controller.prototype.saveState = function (arr) {
-        viewer.executeSaveMethodInJavaScript(this.getArrayClone());
+        viewer.executeSaveMethodInJavaScript(arr);
     };
     Controller.prototype.addNode = function (i) {
         this.algorithm.add(i);
@@ -111,6 +77,9 @@ var Controller = /** @class */ (function () {
     Controller.prototype.swapNode = function (child, parent) {
         viewer.swapNode(child, parent);
     };
+    /**
+     * Remove the maximum/minimum element
+     */
     Controller.prototype.removeNode = function () {
         this.algorithm.remove();
     };

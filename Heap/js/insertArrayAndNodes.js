@@ -1,5 +1,4 @@
 /**
- * Modified by Øyvind Skeie Liland on 06.03.18
  * Created by knutandersstokke on 11.08.2016.
  */
 
@@ -8,11 +7,6 @@ var arrayLength = arrayLength || 10;
 // This functions inserts the array into the webpage
 function insertArray() {
     for (var i = 0; i < arrayLength; i++) {
-        /*        if (arrayLength > 10)
-                    $("#rightBracket").css({
-                        "left": 683 + ((arrayLength - 10) * 70) + "px"
-                    });
-        */
         $("#arrayUL").append("<li id='arrayElem" + i + "'><div class='index'>" + i + "</div><div class='content' id='arrayContent" + i + "'>" + i + "</div></li>");
     }
 
