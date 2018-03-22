@@ -1,3 +1,4 @@
+"use strict";
 ///<reference path="KruskalAlgorithm.ts"/>
 ///<reference path="graphController.ts"/>
 ///<reference path="graphUI.ts"/>

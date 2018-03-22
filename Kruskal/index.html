@@ -6,8 +6,11 @@
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/Methods.js"></script>
+    <script src="js/View.js"></script>
     <script src="js/graphController.js"></script>
-    <script src="js/EventManager.js"></script>
+    <script src="Bjs/EventManager.js"></script>
+    <script src="js/KruskalAlgorithm.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
@@ -15,20 +18,19 @@
 <body>
 <script src="js/graphUI.js"></script>
 
-    <div id="graphUI" class="main-container dfs">
+    <div id="graphUI" class="main-container kruskal">
         <svg id="edgeSvg" height="100%" width="100%"></svg>
     </div>
 
     <div id="buttonDiv" class="bottom-container left-bottom">
         <!-- Testing: Creating a already defined graph -->
-        <button id="graph" class="my-button" onclick="exampleGraph1()">Create</button>
-        <button id="graph" class="my-button" onclick="highlightMe()">Create</button>
-        <button id="kruskal" class="my-button" onclick="startKruskal(0);">Run</button>
+        <button id="kruskal" class="my-button" onclick="manager.start()">Start</button>
+        <button id="graph" class="my-button" onclick="highlightMe();">Highlight</button>
         <button id="prev" class="my-button" onclick="manager.previous();">Previous</button>
         <button id="next" class="my-button" onclick="manager.next();">Next</button>
         <button id="reset" class="my-button" onclick="resetGraph();">Reset</button>
     </div>
 
-
+<script>startKruskal(0);</script>
 </body>
 </html>

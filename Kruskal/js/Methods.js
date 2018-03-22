@@ -1,3 +1,4 @@
+"use strict";
 ///<reference path="graphUI.ts"/>
 ///<reference path="graphController.ts"/>
 ///<reference path="View.ts"/>

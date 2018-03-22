@@ -1,3 +1,4 @@
+"use strict";
 /**
  * File created by Knut Anders Stokke, Kristiand Rosland, Ragnhild AAlvik
  * Modified by Philip Hoang 21.03.2018

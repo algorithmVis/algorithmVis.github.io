@@ -12,8 +12,8 @@ body {
     overflow: hidden;
 }
 
-div#graphUI.dfs {
-    width: 50%;
+div#graphUI.kruskal {
+    width: 80%;
     border: solid 3px #b6b6b6;
     border-radius: 10px;
 }
@@ -38,7 +38,7 @@ div#queueUI {
     padding-left: 30px;
     padding-top: 30px;
     padding-bottom: 15px;
-    width: 20%;
+    width: 50%;
 }
 
 .right-bottom {
