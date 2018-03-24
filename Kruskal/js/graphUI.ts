@@ -1,4 +1,4 @@
-///<reference path="graphController.ts"/>
+///<reference path="Controller.ts"/>
 ///<reference path="KruskalAlgorithm.ts"/>
 ///<reference path="View.ts"/>
 ///<reference path="EventManager.ts"/>
@@ -60,6 +60,7 @@ function resetGraphUI() {
 
     edgeIdList = [[]];
     weights = [];
+    triplets = [];
 }
 
 function parseLine(id: number, x1: number, y1: number, x2: number, y2: number) {

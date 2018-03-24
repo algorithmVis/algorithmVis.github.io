@@ -3,28 +3,18 @@
  */
 
 ///<reference path="graphUI.ts"/>
-///<reference path="graphController.ts"/>
+///<reference path="Controller.ts"/>
 ///<reference path="EventManager.ts"/>
 ///<reference path="View.ts"/>
 
-var visited: boolean [];
-var arr: number[] = [];
-var queue: number [] = [];
-var currentEdge: number = 0;
+let arr: number[] = [];
+let queue: number [] = [];
+let currentEdge: number = 0;
 
-/*
-let triplets: any[] = [];
 
-triplets[0] = [1, "s", true];
-triplets[1] = ["t", 2, false];
-let [a, b, c] = triplets[0];
-
-console.log(a + " " + b + " " + c);
-*/
 
 function startKruskal() {
-    exampleGraph1();
-
+    controller.disableStartButton();
 
     let edgeList = sortEdges();
 
@@ -32,25 +22,29 @@ function startKruskal() {
         arr[i] = i;
     }
 
-
     while (edgeList.length > 0) {
         let [node1, node2, weight] = edgeList.pop();
         currentEdge = getEdgeId(node1, node2);
-        controller.highlightMyEdge(currentEdge, true);
-
+        controller.selectTwoNodes(node1, node2);
+        controller.highlightMyEdge(currentEdge);
         if (connected(node1, node2) == false) {
             union(node1, node2);
-            controller.highlightMyEdge(currentEdge, true);
         }
         else {
-            controller.removeMyEdge(currentEdge);
+            controller.dehighlightMyEdge(currentEdge);
+            controller.transparentMyEdge(currentEdge);
         }
-
+        controller.deselectTwoNodes(node1, node2);
     }
+
+    arr = [];
+    queue = [];
+    currentEdge = 0;
+
+    controller.enableStartButtion();
 }
 
-
-function simpleFind(index: number) {
+function find(index: number) {
     let root: number = index;
 
     while (root != arr[root]) {
@@ -61,19 +55,16 @@ function simpleFind(index: number) {
 }
 
 function connected(aIndex: number, bIndex: number){
-    let aRoot = simpleFind(aIndex);
-    let bRoot = simpleFind(bIndex);
-    console.log("a " + aRoot);
-    console.log("b " + bRoot);
-
+    let aRoot = find(aIndex);
+    let bRoot = find(bIndex);
     let connected: boolean = (aRoot == bRoot);
-    console.log(connected);
+
     return connected;
 }
 
 function union(aIndex: number, bIndex: number) {
-    let aRoot = simpleFind(aIndex);
-    let bRoot = simpleFind(bIndex);
+    let aRoot = find(aIndex);
+    let bRoot = find(bIndex);
 
     if (aRoot != bRoot) {
         arr[aRoot] = bRoot;
@@ -83,14 +74,18 @@ function union(aIndex: number, bIndex: number) {
 function sortEdges() {
     let temp = 0;
     let sorted = triplets;
-    for (var i = 0; i < sorted.length; i++) {
-        for (var j = 0; j < sorted.length; j++) {
-            let [a, b, c] = sorted[i];
-            let [d, e, f] = sorted[j];
-            if (c > f) {
-                temp = sorted[i];
-                sorted[i] = sorted[j];
-                sorted[j] = temp;
+    console.log(triplets);
+    console.log(sorted);
+    if (sorted.length > 0) {
+        for (var i = 0; i < sorted.length; i++) {
+            for (var j = 0; j < sorted.length; j++) {
+                let [a, b, c] = sorted[i];
+                let [d, e, f] = sorted[j];
+                if (c > f) {
+                    temp = sorted[i];
+                    sorted[i] = sorted[j];
+                    sorted[j] = temp;
+                }
             }
         }
     }

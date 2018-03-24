@@ -8,29 +8,40 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/Methods.js"></script>
     <script src="js/View.js"></script>
-    <script src="js/graphController.js"></script>
-    <script src="Bjs/EventManager.js"></script>
+    <script src="js/Controller.js"></script>
+    <script src="js/EventManager.js"></script>
     <script src="js/KruskalAlgorithm.js"></script>
+    <script src="js/exampleGraphs.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 </head>
 
 <body>
-<script src="js/graphUI.js"></script>
+    <h1 id="headerText">Kruskal's Algorithm</h1>
+    <script src="js/graphUI.js"></script>
 
     <div id="graphUI" class="main-container kruskal">
         <svg id="edgeSvg" height="100%" width="100%"></svg>
     </div>
-
+    <script>graph3();</script>
     <div id="buttonDiv" class="bottom-container left-bottom">
         <!-- Testing: Creating a already defined graph -->
-        <button id="kruskal" class="my-button" onclick="manager.start()">Start</button>
-        <button id="graph" class="my-button" onclick="highlightMe();">Highlight</button>
-        <button id="prev" class="my-button" onclick="manager.previous();">Previous</button>
-        <button id="next" class="my-button" onclick="manager.next();">Next</button>
-        <button id="reset" class="my-button" onclick="resetGraph();">Reset</button>
+        <button id="start" class="my-button"
+                onclick="startKruskal(); manager.start();">Start</button>
+        <button id="togglePause" class="my-button" onclick="viewer.pause()">Pause</button>
+        <button id="prev" class="my-button" onclick="viewer.backward();">Previous</button>
+        <button id="next" class="my-button" onclick="viewer.forward();">Next</button>
+        <select id="nodes" onchange="numberOfNodes(value)">
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select>
     </div>
 
-<script>startKruskal(0);</script>
 </body>
 </html>

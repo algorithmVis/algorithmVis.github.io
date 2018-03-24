@@ -78,7 +78,7 @@ div#queueUI {
     width: 100px;
 }
 
-.my-button:hover {
+.my-button:hover:not([disabled]) {
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #1e62d0), color-stop(1, #3d94f6));
     background: -moz-linear-gradient(top, #1e62d0 5%, #3d94f6 100%);
     background: -webkit-linear-gradient(top, #1e62d0 5%, #3d94f6 100%);
@@ -125,7 +125,8 @@ div.nodeUI {
 }
 
 div.nodeUI.selected {
-    background-color: rgb(255, 189, 59);
+    /* background-color: rgb(255, 189, 59); */
+    border-color: #3adb04;
 }
 
 div.nodeUI p {

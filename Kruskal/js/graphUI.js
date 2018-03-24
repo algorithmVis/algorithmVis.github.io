@@ -1,5 +1,4 @@
-"use strict";
-///<reference path="graphController.ts"/>
+///<reference path="Controller.ts"/>
 ///<reference path="KruskalAlgorithm.ts"/>
 ///<reference path="View.ts"/>
 ///<reference path="EventManager.ts"/>
@@ -51,6 +50,7 @@ function resetGraphUI() {
     });
     edgeIdList = [[]];
     weights = [];
+    triplets = [];
 }
 function parseLine(id, x1, y1, x2, y2) {
     var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');

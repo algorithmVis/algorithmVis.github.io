@@ -1,4 +1,3 @@
-"use strict";
 /**
  * Created by knutandersstokke on 16.10.2016.
  *
@@ -6,7 +5,7 @@
 /** Manager for events stored in queue. Manager is also responsible for executing events automatically */
 var EventManager = /** @class */ (function () {
     function EventManager() {
-        this.delayTime = 700; // Original value
+        this.delayTime = 450; // Original value
         this.nextEvents = [];
         this.previousEvents = [];
     }

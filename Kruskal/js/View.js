@@ -1,25 +1,40 @@
-"use strict";
+/**
+ * File created by Philip Hoang 22.03.18
+ */
 ///<reference path="KruskalAlgorithm.ts"/>
-///<reference path="graphController.ts"/>
+///<reference path="Controller.ts"/>
 ///<reference path="graphUI.ts"/>
 ///<reference path="EventManager.ts"/>
 ///<reference path="Methods.ts"/>
 var View = /** @class */ (function () {
     function View() {
         this.highlightEventDuration = 1000;
+        this.paused = false;
     }
-    View.prototype.setHighlightEdge = function (edgeId, highlight) {
-        console.log("view");
-        var forward = function (edgeId, highlight) {
+    View.prototype.setHighlightEdge = function (edgeId) {
+        var forward = function (edgeId) {
             return function () {
-                highlightThisMyEdge(edgeId, highlight);
+                highlightThisEdge(edgeId);
             };
-        }(edgeId, highlight);
-        var backward = function (edgeId, highlight) {
+        }(edgeId);
+        var backward = function (edgeId) {
             return function () {
-                highlightThisMyEdge(edgeId, highlight);
+                dehighlightThisEdge(edgeId);
             };
-        }(edgeId, highlight);
+        }(edgeId);
+        manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
+    };
+    View.prototype.setDehighlightEdge = function (edgeId) {
+        var forward = function (edgeId) {
+            return function () {
+                dehighlightThisEdge(edgeId);
+            };
+        }(edgeId);
+        var backward = function (edgeId) {
+            return function () {
+                highlightThisEdge(edgeId);
+            };
+        }(edgeId);
         manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
     };
     View.prototype.removeEdge = function (edgeId) {
@@ -31,6 +46,32 @@ var View = /** @class */ (function () {
         var backward = function (edgeId) {
             return function () {
                 removeEdge(edgeId);
+            };
+        }(edgeId);
+        manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
+    };
+    View.prototype.transparentEdge = function (edgeId) {
+        var forward = function (edgeId) {
+            return function () {
+                transparentEdge(edgeId);
+            };
+        }(edgeId);
+        var backward = function (edgeId) {
+            return function () {
+                detransparentEdge(edgeId);
+            };
+        }(edgeId);
+        manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
+    };
+    View.prototype.detransparentEdge = function (edgeId) {
+        var forward = function (edgeId) {
+            return function () {
+                detransparentEdge(edgeId);
+            };
+        }(edgeId);
+        var backward = function (edgeId) {
+            return function () {
+                transparentEdge(edgeId);
             };
         }(edgeId);
         manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
@@ -62,6 +103,86 @@ var View = /** @class */ (function () {
             };
         }(node1, node2);
         manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
+    };
+    View.prototype.selectTheseNodes = function (node1, node2) {
+        var forward = function (node1, node2) {
+            return function () {
+                selectNodes(node1, node2, true);
+            };
+        }(node1, node2);
+        var backward = function (node1, node2) {
+            return function () {
+                selectNodes(node1, node2, false);
+            };
+        }(node1, node2);
+        manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
+    };
+    View.prototype.deselectTheseNodes = function (node1, node2) {
+        var forward = function (node1, node2) {
+            return function () {
+                selectNodes(node1, node2, false);
+            };
+        }(node1, node2);
+        var backward = function (node1, node2) {
+            return function () {
+                selectNodes(node1, node2, true);
+            };
+        }(node1, node2);
+        manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
+    };
+    View.prototype.disableThisButton = function () {
+        var forward = function () {
+            return function () {
+                disableButton();
+            };
+        }();
+        var backward = function () {
+            return function () {
+                enableButton();
+            };
+        }();
+        manager.addEvent(new FrontendEvent(forward, backward, 10));
+    };
+    View.prototype.enableThisButton = function () {
+        var forward = function () {
+            return function () {
+                enableButton();
+            };
+        }();
+        var backward = function () {
+            return function () {
+                disableButton();
+            };
+        }();
+        manager.addEvent(new FrontendEvent(forward, backward, 10));
+    };
+    View.prototype.resetAll = function () {
+        resetGraphUI();
+        manager = new EventManager();
+        manager.pause();
+        manager.nextEvents = new Array;
+        manager.previousEvents = new Array;
+        arr = [];
+        nodes = 0;
+        edges = 0;
+    };
+    View.prototype.pause = function () {
+        if (!this.paused) {
+            this.paused = true;
+            manager.pause();
+            $("#togglePause").html("Resume");
+        }
+        else {
+            this.paused = false;
+            manager.start();
+            $("#togglePause").html("Pause");
+        }
+    };
+    View.prototype.forward = function () {
+        manager.next();
+    };
+    View.prototype.backward = function () {
+        manager.previous();
     };
     return View;
 }());
