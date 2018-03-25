@@ -298,14 +298,14 @@ function highlightNode(index: number, color: String) {
 function sortHighlightElem(index: number, color: String) {
     if (color.toLowerCase() == "green" || color.toLowerCase() == "orange") {
         removeSortHighlight(index);
-        $("#sortArrayContent" + index).addClass("highlight" + color);
+        $("#sortArrayElem" + index).addClass(color);
     } else {
         console.log("*** WARNING: Unknown color, " + color + " *** ");
     }
 }
 
 function removeSortHighlight(index: number) {
-    $("#sortArrayContent" + index).removeClass("highlightgreen highlightorange");
+    $("#sortArrayElem" + index).removeClass("orange green");
 }
 
 function removeHighlight(index: number) {

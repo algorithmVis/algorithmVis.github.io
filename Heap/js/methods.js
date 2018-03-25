@@ -257,14 +257,14 @@ function highlightNode(index, color) {
 function sortHighlightElem(index, color) {
     if (color.toLowerCase() == "green" || color.toLowerCase() == "orange") {
         removeSortHighlight(index);
-        $("#sortArrayContent" + index).addClass("highlight" + color);
+        $("#sortArrayElem" + index).addClass(color);
     }
     else {
         console.log("*** WARNING: Unknown color, " + color + " *** ");
     }
 }
 function removeSortHighlight(index) {
-    $("#sortArrayContent" + index).removeClass("highlightgreen highlightorange");
+    $("#sortArrayElem" + index).removeClass("orange green");
 }
 function removeHighlight(index) {
     $("#arrayElem" + index + ", #node" + index).each(function () {
