@@ -53,9 +53,6 @@ function setKeyListener() {
             resetElementSelections();
             viewer.changeToCurrentAlgorithm();
         }
-        else if (key == 72) {
-            hideArrayValues();
-        }
         else if (key == 37) {
             stepBack();
         }
@@ -65,12 +62,6 @@ function setKeyListener() {
     });
 }
 setKeyListener();
-function hideArrayValues() {
-    for (var i = 0; i < 10; i++) {
-        $("#arrayContent" + i).css('color', contentHidden ? "#000000" : "#FFFFFF");
-    }
-    contentHidden = !contentHidden;
-}
 // Selects an element. If method==find call method, else wait for second element before union or connected
 function selectElement(index) {
     // Set new class for selected index
@@ -96,7 +87,7 @@ function selectElement(index) {
 }
 // Reset selected values when new method is chosen
 function setupRadio() {
-    $('input[name=method]:radio', '#method').change(function () {
+    $('input[name=algorithm]:radio').change(function () {
         resetElementSelections();
         deselectArrayElemSelections();
     });

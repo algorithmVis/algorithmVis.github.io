@@ -7,12 +7,6 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="css/heap_style.css" rel="stylesheet">
 
-    <!-- Insert this line above script imports  -->
-    <script>if (typeof module === 'object') {
-        window.module = module;
-        module = undefined;
-    }</script>
-
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery-ui-1.12.0/jquery-ui.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -21,11 +15,10 @@
     <script src="js/EventManager.js"></script>
     <script src="js/State.js"></script>
     <script src="js/StateController.js"></script>
-    <!-- For debugging -->
-    <!-- <script type='text/js' src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script> -->
-
-    <!-- Insert this line after script imports -->
-    <script>if (window.module) module = window.module;</script>
+    <script src="js/MaxHeap.js"></script>
+    <script src="js/MaxHeapFree.js"></script>
+    <script src="js/BuildHeap.js"></script>
+    <script src="js/HeapSort.js"></script>
 </head>
 
 
@@ -77,7 +70,9 @@
         </div>
         <div class="settings">
             <div class="buttons">
-                <button id="reset" class="btn btn-primary" onclick="viewer.switchAlgorithm(control.getAlgorithm().getName());">Reset</button>
+                <button id="reset" class="btn btn-primary"
+                        onclick="viewer.switchAlgorithm(control.getAlgorithm().getName());">Reset
+                </button>
                 <button id="backward" class="btn btn-primary" onclick="stepBack();">Backward</button>
                 <button id="forward" class="btn btn-primary"
                         onclick="viewer.stepForward(getGraphState(), getArrayState());">Forward
@@ -85,9 +80,9 @@
                 <button id="play" class="btn btn-primary" onclick="viewer.play()">Play</button>
             </div>
             <div class="buttons">
-                <button id="slow" class="btn btn-success" onclick="setSlow()">Slow</button>
-                <button id="medium" class="btn btn-success" onclick="setMedium()">Medium</button>
-                <button id="fast" class="btn btn-success" onclick="setFast()">Fast</button>
+                <button id="slow" class="btn btn-success" onclick="viewer.setSlow()">Slow</button>
+                <button id="medium" class="btn btn-success" onclick="viewer.setMedium()">Medium</button>
+                <button id="fast" class="btn btn-success" onclick="viewer.setFast()">Fast</button>
             </div>
         </div>
         <div class="inputSettings">
@@ -108,10 +103,6 @@
 <script src="js/insertArrayAndNodes.js"></script>
 <script src="js/drawGraph.js"></script>
 <script src="js/methods.js"></script>
-<script src="js/MaxHeap.js"></script>
-<script src="js/MaxHeapFree.js"></script>
-<script src="js/BuildHeap.js"></script>
-<script src="js/HeapSort.js"></script>
 
 </html>
 
