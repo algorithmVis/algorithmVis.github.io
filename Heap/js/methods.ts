@@ -94,8 +94,8 @@ function selectElement(index: number) {
             for (var i = 0; i < highlightChildren.length; i++) {
                 highlightNode(highlightChildren[i].id, "green");
             }
-            selectIndex(index * 2 + 1, true);
-            selectIndex(index * 2 + 2, true);
+            selectChild(index * 2 + 1);
+            selectChild(index * 2 + 2);
         }
     }
 }
@@ -273,6 +273,11 @@ function selectIndex(index: number, select: boolean) {
     });
 }
 
+function selectChild(index: number) {
+    $("#arrayElem" + index).addClass("child");
+    $("#node" + index).addClass("green");
+}
+
 function deselectNodeIndex(index: number) {
     $("#node" + index).each(function () {
         $(this).removeClass("selected");
@@ -281,7 +286,7 @@ function deselectNodeIndex(index: number) {
 }
 
 function deselectArrayElement(index: number) {
-    $("#arrayElem" + index).removeClass("selected");
+    $("#arrayElem" + index).removeClass("selected child");
 }
 
 function highlightNode(index: number, color: String) {
