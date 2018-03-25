@@ -17,32 +17,32 @@
       <file leaf-file-name="Controller.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/Controller.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="1085">
               <caret line="66" column="4" lean-forward="false" selection-start-line="66" selection-start-column="4" selection-end-line="66" selection-end-column="4" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="methods.ts" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/methods.ts">
+      <file leaf-file-name="View.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/View.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="550">
-              <caret line="97" column="24" lean-forward="false" selection-start-line="97" selection-start-column="24" selection-end-line="97" selection-end-column="24" />
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-                <marker date="1521982268363" expanded="true" signature="9646:9654" ph="{...}" />
-              </folding>
+            <state relative-caret-position="7450">
+              <caret line="333" column="37" lean-forward="false" selection-start-line="333" selection-start-column="37" selection-end-line="333" selection-end-column="37" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="heap_style.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/css/heap_style.css">
+      <file leaf-file-name="methods.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/methods.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="105" column="78" lean-forward="false" selection-start-line="105" selection-start-column="78" selection-end-line="105" selection-end-column="78" />
-              <folding />
+            <state relative-caret-position="514">
+              <caret line="124" column="1" lean-forward="true" selection-start-line="124" selection-start-column="1" selection-end-line="124" selection-end-column="1" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+                <marker date="1521983539734" expanded="true" signature="9582:9590" ph="{...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -50,11 +50,21 @@
       <file leaf-file-name="MaxHeap.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/MaxHeap.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="25">
+            <state relative-caret-position="360">
               <caret line="129" column="38" lean-forward="false" selection-start-line="129" selection-start-column="38" selection-end-line="129" selection-end-column="38" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HeapSort.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/HeapSort.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="18" column="45" lean-forward="false" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -82,7 +92,6 @@
         <option value="$PROJECT_DIR$/js/IAlgorithm.ts" />
         <option value="$PROJECT_DIR$/js/BuildHeap.ts" />
         <option value="$PROJECT_DIR$/js/EventManager.ts" />
-        <option value="$PROJECT_DIR$/js/HeapSort.ts" />
         <option value="$PROJECT_DIR$/js/MaxHeap.ts" />
         <option value="$PROJECT_DIR$/js/StateController.ts" />
         <option value="$PROJECT_DIR$/js/IView.ts" />
@@ -92,6 +101,7 @@
         <option value="$PROJECT_DIR$/js/View.ts" />
         <option value="$PROJECT_DIR$/css/heap_style.css" />
         <option value="$PROJECT_DIR$/js/methods.ts" />
+        <option value="$PROJECT_DIR$/js/HeapSort.ts" />
       </list>
     </option>
   </component>
@@ -192,7 +202,7 @@
       <workItem from="1521713709215" duration="3550000" />
       <workItem from="1521748620014" duration="2321000" />
       <workItem from="1521975728775" duration="406000" />
-      <workItem from="1521976289553" duration="3353000" />
+      <workItem from="1521976289553" duration="4625000" />
     </task>
     <task id="LOCAL-00001" summary="HeapSort - pretty much finished">
       <created>1521132697575</created>
@@ -212,7 +222,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="150750000" />
+    <option name="totallyTimeSpent" value="152022000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-11" y="-11" width="1942" height="1056" extended-state="6" />
@@ -313,7 +323,7 @@
           <caret line="297" column="12" lean-forward="true" selection-start-line="297" selection-start-column="12" selection-end-line="297" selection-end-column="12" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <marker date="1521982268363" expanded="true" signature="9646:9654" ph="{...}" />
+            <marker date="1521983539734" expanded="true" signature="9582:9590" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -374,7 +384,7 @@
           <caret line="287" column="1" lean-forward="false" selection-start-line="287" selection-start-column="1" selection-end-line="287" selection-end-column="1" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <marker date="1521982268363" expanded="true" signature="9646:9654" ph="{...}" />
+            <marker date="1521983539734" expanded="true" signature="9582:9590" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -474,7 +484,7 @@
           <caret line="202" column="51" lean-forward="false" selection-start-line="202" selection-start-column="51" selection-end-line="202" selection-end-column="51" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <marker date="1521982268363" expanded="true" signature="9646:9654" ph="{...}" />
+            <marker date="1521983539734" expanded="true" signature="9582:9590" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -501,7 +511,7 @@
           <caret line="138" column="18" lean-forward="false" selection-start-line="138" selection-start-column="18" selection-end-line="138" selection-end-column="18" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <marker date="1521982268363" expanded="true" signature="9646:9654" ph="{...}" />
+            <marker date="1521983539734" expanded="true" signature="9582:9590" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -621,14 +631,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/HeapSort.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="30" column="43" lean-forward="false" selection-start-line="30" selection-start-column="43" selection-end-line="30" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
@@ -639,7 +641,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/MaxHeap.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
+        <state relative-caret-position="360">
           <caret line="129" column="38" lean-forward="false" selection-start-line="129" selection-start-column="38" selection-end-line="129" selection-end-column="38" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
@@ -647,25 +649,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/View.ts">
+    <entry file="file://$PROJECT_DIR$/js/Controller.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="333" column="37" lean-forward="false" selection-start-line="333" selection-start-column="37" selection-end-line="333" selection-end-column="37" />
+        <state relative-caret-position="1085">
+          <caret line="66" column="4" lean-forward="false" selection-start-line="66" selection-start-column="4" selection-end-line="66" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/Controller.ts">
+    <entry file="file://$PROJECT_DIR$/js/View.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="66" column="4" lean-forward="false" selection-start-line="66" selection-start-column="4" selection-end-line="66" selection-end-column="4" />
+        <state relative-caret-position="7450">
+          <caret line="333" column="37" lean-forward="false" selection-start-line="333" selection-start-column="37" selection-end-line="333" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/heap_style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
+        <state relative-caret-position="-1740">
           <caret line="105" column="78" lean-forward="false" selection-start-line="105" selection-start-column="78" selection-end-line="105" selection-end-column="78" />
           <folding />
         </state>
@@ -673,12 +675,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/methods.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="97" column="24" lean-forward="false" selection-start-line="97" selection-start-column="24" selection-end-line="97" selection-end-column="24" />
+        <state relative-caret-position="514">
+          <caret line="124" column="1" lean-forward="true" selection-start-line="124" selection-start-column="1" selection-end-line="124" selection-end-column="1" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
-            <marker date="1521982268363" expanded="true" signature="9646:9654" ph="{...}" />
+            <marker date="1521983539734" expanded="true" signature="9582:9590" ph="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/HeapSort.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="18" column="45" lean-forward="false" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
+          <folding />
         </state>
       </provider>
     </entry>

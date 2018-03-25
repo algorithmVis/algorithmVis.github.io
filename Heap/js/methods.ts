@@ -120,11 +120,8 @@ function setArrow(index: number) {
         return;
     }
     var left: number = $("#sortArrayElem" + index).position().left + 9;
-    if ($arrow.hasClass("hidden")) {
-        $arrow.removeClass("hidden");
-    } else {
-        $arrow.animate({left: left + "px"}, 200);
-    }
+    $arrow.removeClass("hidden");
+    $arrow.animate({left: left + "px"}, 200);
 }
 
 // New value in arrayElem

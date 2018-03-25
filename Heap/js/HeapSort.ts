@@ -15,8 +15,8 @@ class HeapSort extends MaxHeap {
     }
 
     sort() {
-        console.log(this.array);
         for (let i = this.array.length; i >= 0; i--) {
+            control.setArrow(this.sortIndex);
             this.remove();
         }
     }

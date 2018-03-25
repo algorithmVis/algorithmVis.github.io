@@ -103,12 +103,8 @@ function setArrow(index) {
         return;
     }
     var left = $("#sortArrayElem" + index).position().left + 9;
-    if ($arrow.hasClass("hidden")) {
-        $arrow.removeClass("hidden");
-    }
-    else {
-        $arrow.animate({ left: left + "px" }, 200);
-    }
+    $arrow.removeClass("hidden");
+    $arrow.animate({ left: left + "px" }, 200);
 }
 // New value in arrayElem
 function setValueAtIndex(i, value) {

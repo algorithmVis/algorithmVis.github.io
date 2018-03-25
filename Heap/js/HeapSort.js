@@ -22,8 +22,8 @@ var HeapSort = /** @class */ (function (_super) {
         return _this;
     }
     HeapSort.prototype.sort = function () {
-        console.log(this.array);
         for (var i = this.array.length; i >= 0; i--) {
+            control.setArrow(this.sortIndex);
             this.remove();
         }
     };
