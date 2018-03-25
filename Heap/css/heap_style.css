@@ -90,7 +90,7 @@ ul#graphUL li {
     z-index: 2;
 }
 
-ul#graphUL li.selected, ul#arrayUL li.selected div.content {
+ul#graphUL li.selected, ul#arrayUL li.selected div.content, ul#sortArrayUL li.orange div.content {
     background-color: #ffecbf;
 }
 
@@ -103,7 +103,7 @@ ul#graphUL li.wrong {
 }
 
 /** WARNING: Do not change the name of "green" or "orange" class. Js uses strings sent from java to set class **/
-ul#graphUL li.green {
+ul#graphUL li.green, ul#sortArrayUL li.green div.content {
     border: 3px solid rgb(0, 204, 0);
 }
 
@@ -197,12 +197,4 @@ img#leftBracketS {
 
 img#rightBracketS {
     left: 683px;
-}
-
-.highlightgreen {
-    background-color: green;
-}
-
-.highlightorange {
-    background-color: orange;
 }
