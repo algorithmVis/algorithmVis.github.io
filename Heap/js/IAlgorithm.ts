@@ -36,6 +36,11 @@ interface IAlgorithm {
     build(): void
 
     /**
+     * Get size of array
+     */
+    getArrayLength(): number
+
+    /**
      *  Set the current state of the algorithm to the given array
      * @param array
      */
@@ -50,4 +55,9 @@ interface IAlgorithm {
      * Connect parent and child nodes
      */
     connectNodes(): void
+
+    /**
+     * Remove nodes in indexes > currIndex
+     */
+    removeNodes(): void
 }

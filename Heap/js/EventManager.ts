@@ -3,14 +3,14 @@
  *
  */
 
-declare var $ : any;
+declare var $: any;
 
 /** Manager for events stored in queue. Manager is also responsible for executing events automatically */
 class EventManager {
-    delayTime:number = 600; // Original value
-    nextEvents:FrontendEvent[] = [];
-    previousEvents:FrontendEvent[] = [];
-    eventThread : number;
+    delayTime: number = 600; // Original value
+    nextEvents: FrontendEvent[] = [];
+    previousEvents: FrontendEvent[] = [];
+    eventThread: number;
 
     // Executing the next event in the queue, adding it to 'previous'
     next() {
@@ -18,7 +18,7 @@ class EventManager {
             return;
         }
         var event = (<FrontendEvent>this.nextEvents.shift());
-        console.log(this.nextEvents);
+        //console.log(this.nextEvents);
         event.next();
         this.previousEvents.push(event);
         if (event.duration == 0)
@@ -29,22 +29,22 @@ class EventManager {
     previous() {
         if (this.previousEvents.length == 0)
             return;
-        var event :FrontendEvent = (<FrontendEvent>this.previousEvents.pop());
+        var event: FrontendEvent = (<FrontendEvent>this.previousEvents.pop());
         //this.delayTime = 0; //TODO: Should there be a delay when stepping backwards?
         event.previous();
         this.nextEvents.unshift(event);
     }
 
-    addEvent(event : FrontendEvent) {
+    addEvent(event: FrontendEvent) {
         this.nextEvents.push(event);
     }
 
     start() {
         clearInterval(this.eventThread);
         var manager = this; // Anonymous functions cannot access this...
-        this.eventThread = setInterval(function() {
+        this.eventThread = setInterval(function () {
             manager.next();
-        },  manager.delayTime);
+        }, manager.delayTime);
     }
 
     pause() {
@@ -53,17 +53,18 @@ class EventManager {
 }
 
 class FrontendEvent {
-    next : Function;
-    previous : Function;
-    duration:number;
-    constructor(n : Function, p : Function, d:number) {
+    next: Function;
+    previous: Function;
+    duration: number;
+
+    constructor(n: Function, p: Function, d: number) {
         this.next = n;
         this.previous = p;
         this.duration = d;
     }
 }
 
-var manager:EventManager = new EventManager();
+var manager: EventManager = new EventManager();
 
 /*
 /** How to add FrontendEvents to manager

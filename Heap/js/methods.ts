@@ -89,7 +89,6 @@ function selectElement(index: number) {
         selectIndex(index, true);
         //Children to the highlighted node
         let highlightChildren: GraphNode[] = allNodes[index].children;
-        console.log(highlightChildren);
         if (highlightChildren.length > 0) {
             for (var i = 0; i < highlightChildren.length; i++) {
                 highlightNode(highlightChildren[i].id, "green");
@@ -112,7 +111,6 @@ setupRadio();
 
 // Methods for positioning arrow
 function setArrow(index: number) {
-    console.log(index);
     var $arrow = $("#arrow");
     if (index == -1) {
         $arrow.addClass("hidden");
@@ -141,11 +139,6 @@ function setValueAtSortIndex(i: number, value) {
 
 // Add a new element to the array
 function insertNewElem(i: number, val: number): void {
-    console.log(allNodes);
-    let arrayLength = control.getArrayClone().length;
-    $("#rightBracket").css({
-        "left": 683 + ((arrayLength - 10) * 70) + "px"
-    });
     $("#arrayUL").append("<li id='arrayElem" + i + "'><div class='index'>" + i + "</div><div class='content' id='arrayContent" + i + "'>" + val + "</div></li>");
     var left = (i * 70) + "px";
     $("#arrayElem" + i).animate({left: left}, 0);
@@ -189,7 +182,6 @@ function removeElem(i: number, delArray: boolean) {
         if (delArray)
             $("#arrayElem" + i).remove();
 
-        console.log(allNodes[i].parent);
         //allNodes[i].reset();
         $("#node" + i).fadeOut(2000, function () {
             $(this).remove();
@@ -413,7 +405,7 @@ function setHeaderText(text: string) {
 function setUpAddButton() {
     $("#addElem").click(function () {
         let val = prompt("Which value do you want to add? Integer >= 0. Maximum number of elements is 10");
-        if (isNaN(parseInt(val)) || control.getArrayClone().length >= 10) {
+        if (isNaN(parseInt(val)) || control.getArrayLength() >= 10) {
             return;
         }
         viewer.addNode(parseInt(val));

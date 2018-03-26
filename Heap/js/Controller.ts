@@ -24,6 +24,7 @@ class Controller {
         } else {
             this.algorithm.setIndex();
             viewer.displayThisArray(this.algorithm.getArray());
+            this.algorithm.removeNodes();
             manager.start();
             this.algorithm.connectNodes();
         }
@@ -64,7 +65,7 @@ class Controller {
     highlightSortElem(index: number, color: string) {
         viewer.highlightThisSortElem(index, color);
     }
-    
+
     removeHighlight(node: number) {
         viewer.removeThisHighlight(node);
     }
@@ -110,6 +111,10 @@ class Controller {
 
     insertNewElem(child: number, value: number, parent: number) {
         viewer.insertNewElemThis(child, value, parent);
+    }
+
+    getArrayLength() {
+        return this.algorithm.getArrayLength();
     }
 }
 

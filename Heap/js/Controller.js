@@ -22,6 +22,7 @@ var Controller = /** @class */ (function () {
         else {
             this.algorithm.setIndex();
             viewer.displayThisArray(this.algorithm.getArray());
+            this.algorithm.removeNodes();
             manager.start();
             this.algorithm.connectNodes();
         }
@@ -88,6 +89,9 @@ var Controller = /** @class */ (function () {
     };
     Controller.prototype.insertNewElem = function (child, value, parent) {
         viewer.insertNewElemThis(child, value, parent);
+    };
+    Controller.prototype.getArrayLength = function () {
+        return this.algorithm.getArrayLength();
     };
     return Controller;
 }());

@@ -14,9 +14,9 @@ class MaxHeap implements IAlgorithm {
 
     constructor(size: number) {
         this.arraySize = size;
-        this.currIndex = size - 1;
+        this.currIndex = size;
         this.array = new Array;
-        for (let i = 0; i < size; i++) {
+        for (let i = 0; i < 10; i++) {
             this.array[i] = Math.floor((Math.random() * 10)) + 1;
         }
         this.backEndBuild();
@@ -26,7 +26,18 @@ class MaxHeap implements IAlgorithm {
 
     setIndex() {
         for (let i = 0; i < this.array.length; i++) {
-            setValueAtIndex(i, this.array[i]);
+            if (i >= this.currIndex)
+                setValueAtIndex(i, " ");
+            else
+                setValueAtIndex(i, this.array[i]);
+        }
+    }
+
+    removeNodes() {
+        for (let i = this.currIndex; i < this.getArray().length; i++) {
+            allNodes.pop();
+            superNode.children.pop();
+            $("#node" + i).remove();
         }
     }
 
@@ -98,12 +109,10 @@ class MaxHeap implements IAlgorithm {
         let n: number = this.array.length;
         for (let k: number = Math.floor((n - 1) / 2); k >= 0; k--)
             this.sink(k, n);
-
-        console.log(this.array);
     }
 
     protected exch(number: number, number2: number) {
-        if (this.array[number] === undefined || this.array[number2] === undefined)
+        if (this.array[number] === undefined || this.array[number2] === undefined || number > this.currIndex || number > this.currIndex)
             return;
 
         control.saveState(this.array);
@@ -116,18 +125,26 @@ class MaxHeap implements IAlgorithm {
     }
 
     add(a: number): void {
-        control.saveState(this.array); // Save the new state
+        control.saveState(this.array);
+
         // Add to array and start frontendevents
-        control.lockScreen(true)
-        this.array.push(a);
-        //insertNewElem(this.array.length - 1, a); // Create element in frontendarray
-        //insertNewElemConnect(this.array.length - 1, Math.floor((this.array.length - 2) / 2));
-        control.insertNewElem(this.array.length - 1, a, Math.floor((this.array.length - 2) / 2));
+        if (this.currIndex > 10) {
+            return;
+        } else {
+            control.lockScreen(true);
+            this.array[this.currIndex] = a;
+            setValueAtIndex(this.currIndex, a);
+            insertNewNode(this.currIndex++, a);
+        }
 
         // Swim to te correct index and start frontendevents
-        this.swim(this.array.length - 1);
+        if (this.currIndex == 1) {
+            positioningNodes(1000);
+        } else {
+            insertNewElemConnect(this.currIndex - 1, Math.floor((this.currIndex - 2) / 2));
+            this.swim(this.currIndex - 1);
+        }
         control.lockScreen(false);
-        control.saveState(this.array);
     }
 
     remove(): void {
@@ -135,11 +152,13 @@ class MaxHeap implements IAlgorithm {
 
         control.lockScreen(true);
         // Remove root element, set last element to root and start frontendevents
-        this.exch(0, this.array.length - 1);
-        control.swapNode(this.array.length - 1, 0);
-        control.removeElem(this.array.length - 1, true);
-        this.array.pop();
-        this.sink(0, this.array.length - 1);
+        this.currIndex--;
+        this.exch(0, this.currIndex);
+        control.swapNode(this.currIndex, 0);
+        control.removeElem(this.currIndex, false);
+        control.setValueAtIndex(this.currIndex, " ");
+        this.sink(0, this.currIndex - 1);
+        control.saveState(this.array);
         control.lockScreen(false);
     }
 
@@ -196,6 +215,10 @@ class MaxHeap implements IAlgorithm {
 
     getArray(): number[] {
         return this.array;
+    }
+
+    getArrayLength(): number {
+        return this.currIndex;
     }
 
     setArray(array: number[]): void {

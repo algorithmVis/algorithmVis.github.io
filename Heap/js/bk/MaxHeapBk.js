@@ -7,9 +7,9 @@ var MaxHeap = /** @class */ (function () {
     function MaxHeap(size) {
         this.name = "MaxHeap";
         this.arraySize = size;
-        this.currIndex = size;
+        this.currIndex = size - 1;
         this.array = new Array;
-        for (var i = 0; i < 10; i++) {
+        for (var i = 0; i < size; i++) {
             this.array[i] = Math.floor((Math.random() * 10)) + 1;
         }
         this.backEndBuild();
@@ -18,17 +18,7 @@ var MaxHeap = /** @class */ (function () {
     }
     MaxHeap.prototype.setIndex = function () {
         for (var i = 0; i < this.array.length; i++) {
-            if (i >= this.currIndex)
-                setValueAtIndex(i, " ");
-            else
-                setValueAtIndex(i, this.array[i]);
-        }
-    };
-    MaxHeap.prototype.removeNodes = function () {
-        for (var i = this.currIndex; i < this.getArray().length; i++) {
-            allNodes.pop();
-            superNode.children.pop();
-            $("#node" + i).remove();
+            setValueAtIndex(i, this.array[i]);
         }
     };
     MaxHeap.prototype.connectNodes = function () {
@@ -91,9 +81,10 @@ var MaxHeap = /** @class */ (function () {
         var n = this.array.length;
         for (var k = Math.floor((n - 1) / 2); k >= 0; k--)
             this.sink(k, n);
+        console.log(this.array);
     };
     MaxHeap.prototype.exch = function (number, number2) {
-        if (this.array[number] === undefined || this.array[number2] === undefined || number > this.currIndex || number > this.currIndex)
+        if (this.array[number] === undefined || this.array[number2] === undefined)
             return;
         control.saveState(this.array);
         var tmp = this.array[number];
@@ -103,38 +94,27 @@ var MaxHeap = /** @class */ (function () {
         control.setValueAtIndex(number2, this.array[number2]);
     };
     MaxHeap.prototype.add = function (a) {
-        control.saveState(this.array);
+        control.saveState(this.array); // Save the new state
         // Add to array and start frontendevents
-        if (this.currIndex > 10) {
-            return;
-        }
-        else {
-            control.lockScreen(true);
-            this.array[this.currIndex] = a;
-            setValueAtIndex(this.currIndex, a);
-            insertNewNode(this.currIndex++, a);
-        }
+        control.lockScreen(true);
+        this.array.push(a);
+        //insertNewElem(this.array.length - 1, a); // Create element in frontendarray
+        //insertNewElemConnect(this.array.length - 1, Math.floor((this.array.length - 2) / 2));
+        control.insertNewElem(this.array.length - 1, a, Math.floor((this.array.length - 2) / 2));
         // Swim to te correct index and start frontendevents
-        if (this.currIndex == 1) {
-            positioningNodes(1000);
-        }
-        else {
-            insertNewElemConnect(this.currIndex - 1, Math.floor((this.currIndex - 2) / 2));
-            this.swim(this.currIndex - 1);
-        }
+        this.swim(this.array.length - 1);
         control.lockScreen(false);
+        control.saveState(this.array);
     };
     MaxHeap.prototype.remove = function () {
         control.saveState(this.array);
         control.lockScreen(true);
         // Remove root element, set last element to root and start frontendevents
-        this.currIndex--;
-        this.exch(0, this.currIndex);
-        control.swapNode(this.currIndex, 0);
-        control.removeElem(this.currIndex, false);
-        control.setValueAtIndex(this.currIndex, " ");
-        this.sink(0, this.currIndex - 1);
-        control.saveState(this.array);
+        this.exch(0, this.array.length - 1);
+        control.swapNode(this.array.length - 1, 0);
+        control.removeElem(this.array.length - 1, true);
+        this.array.pop();
+        this.sink(0, this.array.length - 1);
         control.lockScreen(false);
     };
     MaxHeap.prototype.sink = function (index, length) {
@@ -184,9 +164,6 @@ var MaxHeap = /** @class */ (function () {
     };
     MaxHeap.prototype.getArray = function () {
         return this.array;
-    };
-    MaxHeap.prototype.getArrayLength = function () {
-        return this.currIndex;
     };
     MaxHeap.prototype.setArray = function (array) {
     };

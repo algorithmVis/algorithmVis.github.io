@@ -9,6 +9,7 @@
 ///<reference path="MaxHeap.ts"/>
 ///<reference path="MaxHeapFree.ts"/>
 ///<reference path="BuildHeap.ts"/>
+///<reference path="HeapSort.ts"/>
 
 
 declare var $;
@@ -228,7 +229,7 @@ class View implements IView {
         switch (algo) {
             case "MaxHeap": {
                 this.resetAll();
-                control.initController(new MaxHeap(10));
+                control.initController(new MaxHeap(5));
                 break;
             }
             case "MaxHeapFree": {

@@ -8,6 +8,7 @@
 ///<reference path="MaxHeap.ts"/>
 ///<reference path="MaxHeapFree.ts"/>
 ///<reference path="BuildHeap.ts"/>
+///<reference path="HeapSort.ts"/>
 var View = /** @class */ (function () {
     function View() {
         this.colors = ["#7FFF00", "not used", "#FFB366"];
@@ -188,7 +189,7 @@ var View = /** @class */ (function () {
         switch (algo) {
             case "MaxHeap": {
                 this.resetAll();
-                control.initController(new MaxHeap(10));
+                control.initController(new MaxHeap(5));
                 break;
             }
             case "MaxHeapFree": {
