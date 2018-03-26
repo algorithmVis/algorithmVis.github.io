@@ -178,6 +178,12 @@ var MaxHeap = /** @class */ (function () {
             index = Math.floor((index - 1) / 2);
             other = Math.floor((index - 1) / 2);
         }
+        if (index !== 0) {
+            control.highlightNode(index, "green");
+            control.highlightNode(other, "green");
+            control.removeHighlight(index);
+            control.removeHighlight(other);
+        }
     };
     MaxHeap.prototype.getName = function () {
         return this.name;
