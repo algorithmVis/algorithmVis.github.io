@@ -1,30 +1,27 @@
-"use strict";
 /**
  * File created by Øyvind Skeie Liland 01.02.18.
  */
-///<reference path="controller.ts"/>
-///<reference path="eventManager.ts"/>
+///<reference path="Controller.ts"/>
+///<reference path="EventManager.ts"/>
+///<reference path="fillWithListElements.ts"/>
 //private IntArrayGenerator gen = new IntArrayGenerator();
 var array = [];
 var n = 10;
-var running = false;
 /**
  * Check if an algorithm is already running - if that is the case reset the view
  */
 function checkIfAlreadyRunning() {
-    if (running) {
-        manager.clear();
-        setArray(viewer.serializeArray(setRandomArray()));
-    }
-    else {
-        running = true;
-    }
+    var arr = setRandomArray();
+    setArray(viewer.serializeArray(arr));
+    manager.clear();
+    viewer.setPause();
 }
 /**
  * Start insertionSort
  */
 function startInsertionSort() {
     checkIfAlreadyRunning();
+    viewer.setPause();
     control.hideK();
     control.setHeadText("Insertion Sort");
     var j; // Elements sorted, starting on second position
@@ -84,29 +81,12 @@ function startShellSort() {
     control.hideK();
     manager.start();
 }
-function delay() {
-    try {
-        setTimeout(0);
-    }
-    catch (e) {
-        e.printStackTrace();
-    }
-}
-/*
-function setArray(arr: number[]) {
-    array = arr;
-}
-*/
-function getThisArray() {
-    return array;
-}
 /**
  * Fill the array with random integers
  */
 function setRandomArray() {
     for (var i = 0; i < n; i++)
         array[i] = randomInt(0, 100);
-    //controller.setArrayInFrontend(array);
     return array;
 }
 function setSortedArray() {

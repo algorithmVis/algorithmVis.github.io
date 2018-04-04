@@ -75,9 +75,6 @@ var eventManager = /** @class */ (function () {
             this.start();
         }
     };
-    eventManager.prototype.getDelayTime = function () {
-        return this.delayTime;
-    };
     return eventManager;
 }());
 var FrontendEvent = /** @class */ (function () {

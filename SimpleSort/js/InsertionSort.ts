@@ -2,24 +2,23 @@
  * File created by Øyvind Skeie Liland 01.02.18.
  */
 
-///<reference path="controller.ts"/>
-///<reference path="eventManager.ts"/>
+///<reference path="Controller.ts"/>
+///<reference path="EventManager.ts"/>
+///<reference path="fillWithListElements.ts"/>
 
 //private IntArrayGenerator gen = new IntArrayGenerator();
 let array: number[] = [];
 const n = 10;
-let running = false;
 
 /**
  * Check if an algorithm is already running - if that is the case reset the view
  */
 function checkIfAlreadyRunning() {
-    if (running) {
-        manager.clear();
-        setArray(viewer.serializeArray(setRandomArray()));
-    } else {
-        running = true;
-    }
+
+    let arr = setRandomArray();
+    setArray(viewer.serializeArray(arr));
+    manager.clear();
+    viewer.setPause();
 }
 
 /**
@@ -27,11 +26,12 @@ function checkIfAlreadyRunning() {
  */
 function startInsertionSort() {
     checkIfAlreadyRunning();
+    viewer.setPause();
     control.hideK();
     control.setHeadText("Insertion Sort");
-    var j: number; // Elements sorted, starting on second position
-    var key: number; // Current element
-    var i: number; // Index moving backwards with key
+    let j: number; // Elements sorted, starting on second position
+    let key: number; // Current element
+    let i: number; // Index moving backwards with key
     console.log(array.toString());
     for (j = 1; j < array.length; j++) {
         control.setJElement(j, true);
@@ -94,30 +94,12 @@ function startShellSort() {
     manager.start()
 }
 
-function delay() {
-    try {
-        setTimeout(0);
-    } catch (e) {
-        e.printStackTrace();
-    }
-}
-
-/*
-function setArray(arr: number[]) {
-    array = arr;
-}
-*/
-function getThisArray() {
-    return array;
-}
-
 /**
  * Fill the array with random integers
  */
 function setRandomArray() {
     for (let i: number = 0; i < n; i++)
         array[i] = randomInt(0, 100);
-    //controller.setArrayInFrontend(array);
     return array;
 }
 
@@ -133,7 +115,6 @@ function setInvSortedArray() {
 function isSorted(arr: number[]) {
     return arr.forEach((n1, n2) => n1 <= n2);
 }
-
 
 function setAlmostSortedArray(): number[] {
     let arr: number[] = setSortedArray();

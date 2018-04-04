@@ -25,7 +25,7 @@ function startMergeSort() {
     control.setColorInArrayElements(copyArray, 3, true);
 }
 
-function mergesort(array: number[]):any {
+function mergesort(array: number[]): any {
     if (array.length < 2) {
         //denne er ekkel
         control.deselectPivotElement(array[0]);

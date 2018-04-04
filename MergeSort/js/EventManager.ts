@@ -89,11 +89,6 @@ class eventManager {
             this.start();
         }
     }
-
-    getDelayTime() {
-        return this.delayTime;
-    }
-
 }
 
 class FrontendEvent {

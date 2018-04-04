@@ -1,7 +1,7 @@
 /**
  * File created by Øyvind Skeie Liland 01.02.18.
  */
-///<reference path="view.ts"/>
+///<reference path="View.ts"/>
 let iColor = 2;
 let jColor = 0;
 
