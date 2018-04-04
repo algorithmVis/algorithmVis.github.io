@@ -101,34 +101,34 @@ class view {
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
 
-    setColorInArrayElement(index: number, i: number, colorOn: boolean) {
-        var forwardSteps = function (index, i, colorOn, colors) {
+    setColorInArrayElement(index: number, color: number, colorOn: boolean) {
+        var forwardSteps = function (index, color, colorOn) {
             return function () {
-                setColor(index, i, colorOn);
+                setColor(index, color, colorOn);
             }
-        }(index, i, colorOn, colors);
+        }(index, color, colorOn);
 
-        var backwardSteps = function (index, i, colorOn, colors) {
+        var backwardSteps = function (index, color, colorOn) {
             return function () {
-                setColor(index, i, !colorOn);
+                setColor(index, color, !colorOn);
             }
-        }(index, i, colorOn, colors);
+        }(index, color, colorOn);
 
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
 
-    setColorInArrayElements(index: number[], i: number, colorOn: boolean) {
-        var forwardSteps = function (index, i, colorOn, colors) {
+    setColorInArrayElements(index: number[], color: number, colorOn: boolean) {
+        var forwardSteps = function (index, color, colorOn) {
             return function () {
-                setColors(index, i, colorOn);
+                setColors(index, color, colorOn);
             }
-        }(index, i, colorOn, colors);
+        }(index, color, colorOn);
 
-        var backwardSteps = function (index, i, colorOn, colors) {
+        var backwardSteps = function (index, color, colorOn) {
             return function () {
-                setColors(index, i, !colorOn);
+                setColors(index, color, !colorOn);
             }
-        }(index, i, colorOn, colors);
+        }(index, color, colorOn);
 
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
@@ -137,10 +137,14 @@ class view {
         if (!this.paused) {
             this.paused = true;
             manager.pause();
+            $('#backward').removeAttr('disabled');
+            $('#forward').removeAttr('disabled');
             $("#togglePause").html("Resume");
         } else {
             this.paused = false;
             manager.unpause();
+            $('#backward').attr('disabled','disabled');
+            $('#forward').attr('disabled','disabled');
             $("#togglePause").html("Pause");
         }
     }
@@ -149,6 +153,8 @@ class view {
         this.paused = true;
         manager.pause();
         $("#togglePause").html("Start");
+        $('#backward').removeAttr('disabled');
+        $('#forward').removeAttr('disabled');
     }
 
     forward() {
@@ -157,6 +163,16 @@ class view {
 
     backward() {
         manager.previous();
+    }
+
+    slow() {
+        manager.slow();
+    }
+    medium() {
+        manager.medium();
+    }
+    fast() {
+        manager.fast();
     }
 
 }

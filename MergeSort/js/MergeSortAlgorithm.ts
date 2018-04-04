@@ -24,7 +24,7 @@ function startMergeSort() {
     mergesort(copyArray);
 }
 
-function mergesort(array: number[]) {
+function mergesort(array: number[]):any {
     if (array.length < 2) {
         //denne er ekkel
         viewer.deselectPivotElement(array[0]);
@@ -49,8 +49,7 @@ function mergesort(array: number[]) {
         viewer.lowerElements(left);
         viewer.lowerElements(right);
 
-        viewer.setColorInArrayElements(left, 1, false);
-        viewer.setColorInArrayElements(right, 2, false);
+        viewer.setColorInArrayElements(array, 1, false);
 
         //Split until there is only 1 element left
         return merge(mergesort(left), mergesort(right));
@@ -112,8 +111,8 @@ function merge(left: number[], right: number[]) {
             counter++;
         }
     }
-
-    viewer.setColorInArrayElements(testing, 3, false);
+    if (!isSorted(testing))
+        viewer.setColorInArrayElements(testing, 3, false);
 
     copyArray = testing.slice(0);
     return result.concat(left.slice(tempLeftIndex)).concat(right.slice(tempRightIndex));

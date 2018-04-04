@@ -5,7 +5,7 @@ var defaultColor = "#fff";
 var colors = ["#f1f500", "#f4a742", "#f49050", "#3adb04"];
 function lowerElements(elements) {
     for (var i = 0; i < elements.length; i++) {
-        var newTop;
+        var newTop = void 0;
         var $elem = $("#" + insElemNr + elements[i]);
         newTop = parseInt($elem.css('top'), 10) + LEVEL_HEIGHT;
         $elem.animate({ top: newTop + "px" }, 500);

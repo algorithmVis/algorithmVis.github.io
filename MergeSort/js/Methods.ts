@@ -1,15 +1,15 @@
 ///<reference path="InitArray.ts"/>
 
 declare var $;
-var insElemNr = "insElemNr";
+let insElemNr: string = "insElemNr";
 let LEVEL_HEIGHT: number = 85;
 let defaultColor: string = "#fff";
 let colors: string[] = ["#f1f500", "#f4a742", "#f49050", "#3adb04"];
 
 function lowerElements(elements: number[]) {
     for (let i = 0; i < elements.length; i++) {
-        var newTop: number;
-        var $elem = $("#" + insElemNr + elements[i]);
+        let newTop: number;
+        let $elem = $("#" + insElemNr + elements[i]);
         newTop = parseInt($elem.css('top'), 10) + LEVEL_HEIGHT;
         $elem.animate({top: newTop + "px"}, 500);
     }
@@ -17,9 +17,9 @@ function lowerElements(elements: number[]) {
 
 function liftElements(elements: number[]) {
     for (let i = 0; i < elements.length; i++) {
-        var $elem = $("#" + insElemNr + elements[i]);
+        let $elem = $("#" + insElemNr + elements[i]);
         if ($elem.offset().top > 170) {
-            var newTop: number = parseInt($elem.css('top'), 10) - LEVEL_HEIGHT;
+            let newTop: number = parseInt($elem.css('top'), 10) - LEVEL_HEIGHT;
             $elem.animate({top: newTop + "px"}, 500);
         }
     }

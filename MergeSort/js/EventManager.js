@@ -8,6 +8,7 @@ var eventManager = /** @class */ (function () {
         this.delayTime = 1000; // Original value
         this.nextEvents = [];
         this.previousEvents = [];
+        this.paused = true;
     }
     // Executing the next event in the queue, adding it to 'previous'
     eventManager.prototype.next = function () {
@@ -35,15 +36,18 @@ var eventManager = /** @class */ (function () {
     };
     eventManager.prototype.start = function () {
         var manager = this; // Anonymous functions cannot access this...
+        this.paused = false;
         this.eventThread = setInterval(function () {
             manager.next();
         }, manager.delayTime);
     };
     eventManager.prototype.pause = function () {
+        this.paused = true;
         clearInterval(this.eventThread);
     };
     eventManager.prototype.unpause = function () {
         var manager = this;
+        this.paused = false;
         this.eventThread = setInterval(function () {
             manager.next();
         }, manager.delayTime);
@@ -52,6 +56,27 @@ var eventManager = /** @class */ (function () {
         clearInterval(this.eventThread);
         this.nextEvents = [];
         this.previousEvents = [];
+    };
+    eventManager.prototype.slow = function () {
+        this.delayTime = 1500;
+        this.helpSetInterval();
+    };
+    eventManager.prototype.medium = function () {
+        this.delayTime = 1000;
+        this.helpSetInterval();
+    };
+    eventManager.prototype.fast = function () {
+        this.delayTime = 500;
+        this.helpSetInterval();
+    };
+    eventManager.prototype.helpSetInterval = function () {
+        if (!this.paused) {
+            this.pause();
+            this.start();
+        }
+    };
+    eventManager.prototype.getDelayTime = function () {
+        return this.delayTime;
     };
     return eventManager;
 }());

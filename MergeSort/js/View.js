@@ -80,41 +80,45 @@ var view = /** @class */ (function () {
         }(element, back);
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
-    view.prototype.setColorInArrayElement = function (index, i, colorOn) {
-        var forwardSteps = function (index, i, colorOn, colors) {
+    view.prototype.setColorInArrayElement = function (index, color, colorOn) {
+        var forwardSteps = function (index, color, colorOn) {
             return function () {
-                setColor(index, i, colorOn);
+                setColor(index, color, colorOn);
             };
-        }(index, i, colorOn, colors);
-        var backwardSteps = function (index, i, colorOn, colors) {
+        }(index, color, colorOn);
+        var backwardSteps = function (index, color, colorOn) {
             return function () {
-                setColor(index, i, !colorOn);
+                setColor(index, color, !colorOn);
             };
-        }(index, i, colorOn, colors);
+        }(index, color, colorOn);
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
-    view.prototype.setColorInArrayElements = function (index, i, colorOn) {
-        var forwardSteps = function (index, i, colorOn, colors) {
+    view.prototype.setColorInArrayElements = function (index, color, colorOn) {
+        var forwardSteps = function (index, color, colorOn) {
             return function () {
-                setColors(index, i, colorOn);
+                setColors(index, color, colorOn);
             };
-        }(index, i, colorOn, colors);
-        var backwardSteps = function (index, i, colorOn, colors) {
+        }(index, color, colorOn);
+        var backwardSteps = function (index, color, colorOn) {
             return function () {
-                setColors(index, i, !colorOn);
+                setColors(index, color, !colorOn);
             };
-        }(index, i, colorOn, colors);
+        }(index, color, colorOn);
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
     view.prototype.pause = function () {
         if (!this.paused) {
             this.paused = true;
             manager.pause();
+            $('#backward').removeAttr('disabled');
+            $('#forward').removeAttr('disabled');
             $("#togglePause").html("Resume");
         }
         else {
             this.paused = false;
             manager.unpause();
+            $('#backward').attr('disabled', 'disabled');
+            $('#forward').attr('disabled', 'disabled');
             $("#togglePause").html("Pause");
         }
     };
@@ -122,12 +126,23 @@ var view = /** @class */ (function () {
         this.paused = true;
         manager.pause();
         $("#togglePause").html("Start");
+        $('#backward').removeAttr('disabled');
+        $('#forward').removeAttr('disabled');
     };
     view.prototype.forward = function () {
         manager.next();
     };
     view.prototype.backward = function () {
         manager.previous();
+    };
+    view.prototype.slow = function () {
+        manager.slow();
+    };
+    view.prototype.medium = function () {
+        manager.medium();
+    };
+    view.prototype.fast = function () {
+        manager.fast();
     };
     return view;
 }());

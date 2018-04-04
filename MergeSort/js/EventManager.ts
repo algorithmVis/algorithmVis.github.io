@@ -3,7 +3,7 @@
  *
  */
 
-declare var $;
+declare var $: any;
 
 /** Manager for events stored in queue. Manager is also responsible for executing events automatically */
 class eventManager {
@@ -11,6 +11,7 @@ class eventManager {
     nextEvents: FrontendEvent[] = [];
     previousEvents: FrontendEvent[] = [];
     eventThread: number;
+    paused: boolean = true;
 
     // Executing the next event in the queue, adding it to 'previous'
     next() {
@@ -41,17 +42,20 @@ class eventManager {
 
     start() {
         let manager = this; // Anonymous functions cannot access this...
+        this.paused = false;
         this.eventThread = setInterval(function () {
             manager.next();
         }, manager.delayTime);
     }
 
     pause() {
+        this.paused = true;
         clearInterval(this.eventThread);
     }
 
     unpause() {
         let manager = this;
+        this.paused = false;
         this.eventThread = setInterval(function () {
             manager.next();
         }, manager.delayTime);
@@ -62,6 +66,34 @@ class eventManager {
         this.nextEvents = [];
         this.previousEvents = [];
     }
+
+    slow() {
+
+        this.delayTime = 1500;
+        this.helpSetInterval();
+    }
+
+    medium() {
+        this.delayTime = 1000;
+        this.helpSetInterval();
+    }
+
+    fast(){
+        this.delayTime = 500;
+        this.helpSetInterval();
+    }
+
+    helpSetInterval() {
+        if(!this.paused) {
+            this.pause();
+            this.start();
+        }
+    }
+
+    getDelayTime() {
+        return this.delayTime;
+    }
+
 }
 
 class FrontendEvent {
