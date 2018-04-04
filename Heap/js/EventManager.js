@@ -23,10 +23,13 @@ var EventManager = /** @class */ (function () {
     };
     // Executing the previous event
     EventManager.prototype.previous = function () {
+        this.pause();
         if (this.previousEvents.length == 0)
             return;
         var event = this.previousEvents.pop();
         //this.delayTime = 0; //TODO: Should there be a delay when stepping backwards?
+        console.log(event);
+        console.log(this.previousEvents);
         event.previous();
         this.nextEvents.unshift(event);
     };

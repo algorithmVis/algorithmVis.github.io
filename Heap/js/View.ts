@@ -120,7 +120,13 @@ class View implements IView {
             }
         }(index, color);
 
-        manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
+        let backward = function (index: number) {
+            return function () {
+                removeHighlight(index);
+            }
+        }(index);
+
+        manager.addEvent(new FrontendEvent(forward, backward, this.animSpeed));
     }
 
     highlightThisSortElem(index: number, color: string) {
@@ -135,11 +141,26 @@ class View implements IView {
 
 
     removeThisHighlight(index: number) {
+        // Find the current color
+        let color: string = "";
+        var classList = document.getElementById('arrayElem' + index).className.split(/\s+/);
+        for (var i = 0; i < classList.length; i++) {
+            if (classList[i] === 'orange' || classList[i] === 'green') {
+                color = classList[i];
+            }
+        }
+
         let forward = function (index: number) {
             return function () {
                 removeHighlight(index);
             }
         }(index);
+
+        let backward = function (index: number, color: string) {
+            return function () {
+                highlightNode(index, color);
+            }
+        }(index, color);
 
         manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
     }
@@ -153,7 +174,10 @@ class View implements IView {
     }
 
     stepForward(twoDimRelationshipsJSON: string, backendArray: string) {
-        this.step("forward", twoDimRelationshipsJSON, backendArray);
+        //this.step("forward", twoDimRelationshipsJSON, backendArray);
+        manager.next();
+        if (manager.nextEvents.length <= 0)
+            manager.start();
     }
 
     step(dir: string, twoDimRelationshipsJSON: string, backendArray: string) {
@@ -196,7 +220,12 @@ class View implements IView {
             }
         }(locked);
 
-        manager.addEvent(new FrontendEvent(lck, lck, this.animSpeed));
+        let notLck = function (lock: boolean) {
+            return function () {
+                screenLock(!lock);
+            }
+        }(locked);
+        manager.addEvent(new FrontendEvent(lck, notLck, this.animSpeed));
     }
 
     setSlow() {
@@ -345,15 +374,22 @@ class View implements IView {
     insertNewElemThis(child: number, value: number, parent: number) {
         let forward = function (index, value, parent) {
             return function () {
-                insertNewElem(index, value);
+                setValueAtIndex(index, value);
+                insertNewNode(index, value);
                 insertNewElemConnect(index, parent);
+
+                // If first node -> Position with a nice animation
+                if (control.getAlgorithm().getArrayLength() == 1)
+                    positioningNodes(1500);
             }
         }(child, value, parent);
 
         let backward = function (index, parent) {
             return function () {
                 allNodes[parent].removeChild(allNodes[index]);
-                removeElem(index, true);
+                //removeElem(index, true);
+                setValueAtIndex(index, "");
+                removeNode(index);
             }
         }(child, parent);
 

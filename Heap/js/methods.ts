@@ -114,12 +114,12 @@ function setArrow(index: number) {
     var $arrow = $("#arrow");
     if (index == -1) {
         $arrow.addClass("hidden");
-        $arrow.animate({left: ($("#sortArrayElem0").position().left + 9) + "px"}, 0);
+        $arrow.animate({ left: ($("#sortArrayElem0").position().left + 9) + "px" }, 0);
         return;
     }
     var left: number = $("#sortArrayElem" + index).position().left + 9;
     $arrow.removeClass("hidden");
-    $arrow.animate({left: left + "px"}, 200);
+    $arrow.animate({ left: left + "px" }, 200);
 }
 
 // New value in arrayElem
@@ -141,7 +141,7 @@ function setValueAtSortIndex(i: number, value) {
 function insertNewElem(i: number, val: number): void {
     $("#arrayUL").append("<li id='arrayElem" + i + "'><div class='index'>" + i + "</div><div class='content' id='arrayContent" + i + "'>" + val + "</div></li>");
     var left = (i * 70) + "px";
-    $("#arrayElem" + i).animate({left: left}, 0);
+    $("#arrayElem" + i).animate({ left: left }, 0);
 
     insertNewNode(i, val);
 }
@@ -182,15 +182,18 @@ function removeElem(i: number, delArray: boolean) {
         if (delArray)
             $("#arrayElem" + i).remove();
 
-        //allNodes[i].reset();
-        $("#node" + i).fadeOut(2000, function () {
-            $(this).remove();
-        });
-
-        allNodes[i].parent.removeChild(allNodes[i]);
-        //allNodes[i].reset();
-        allNodes.pop();
+        removeNode(i);
     }, 1000);
+}
+
+function removeNode(i: number) {
+    $("#node" + i).fadeOut(2000, function () {
+        $(this).remove();
+    });
+
+    allNodes[i].parent.removeChild(allNodes[i]);
+    //allNodes[i].reset();
+    allNodes.pop();
 }
 
 // Swap position of two graphNodes
@@ -212,7 +215,7 @@ function swapNodes(child: number, parent: number) {
     }, 1000, function () {
         allNodes[parent].changeValue(allNodes[child].value);
         // Reset node position
-        $("#node" + parent).css({'left': pLeft + 'px', 'top': pTop + 'px'});
+        $("#node" + parent).css({ 'left': pLeft + 'px', 'top': pTop + 'px' });
     });
     $("#node" + child).animate({
         left: allNodes[parent].left + 'px',
@@ -222,7 +225,7 @@ function swapNodes(child: number, parent: number) {
             return;
         allNodes[child].changeValue(tmp);
         // Reset node position
-        $("#node" + child).css({'left': cLeft + 'px', 'top': cTop + 'px'});
+        $("#node" + child).css({ 'left': cLeft + 'px', 'top': cTop + 'px' });
 
     });
 }
@@ -372,8 +375,8 @@ function setState(backendArrayJSON: string, twoDimRelationshipArrayJSON: string)
 function screenLock(lock: boolean) {
     locked = lock;
     if (lock) {
-        $("#addElem").attr({"disabled": "true"});
-        $("#removeElem").attr({"disabled": "true"});
+        $("#addElem").attr({ "disabled": "true" });
+        $("#removeElem").attr({ "disabled": "true" });
 
     } else {
         $("#addElem").removeAttr("disabled");
@@ -383,7 +386,7 @@ function screenLock(lock: boolean) {
 
 function lockPlay(lock: boolean) {
     if (lock) {
-        $("#play").attr({"disabled": "true"});
+        $("#play").attr({ "disabled": "true" });
     } else {
         $("#play").removeAttr("disabled");
     }
@@ -394,7 +397,8 @@ function stepBack() {
         selectIndex(firstSelected, false);
         firstSelected = -1;
     } else {
-        viewer.stepBack(getGraphState(), getArrayState());
+        //viewer.stepBack(getGraphState(), getArrayState());
+        manager.previous();
     }
 }
 

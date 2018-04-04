@@ -97,7 +97,12 @@ var View = /** @class */ (function () {
                 highlightNode(index, color);
             };
         }(index, color);
-        manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
+        var backward = function (index) {
+            return function () {
+                removeHighlight(index);
+            };
+        }(index);
+        manager.addEvent(new FrontendEvent(forward, backward, this.animSpeed));
     };
     View.prototype.highlightThisSortElem = function (index, color) {
         var forward = function (index, color) {
@@ -108,11 +113,24 @@ var View = /** @class */ (function () {
         manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
     };
     View.prototype.removeThisHighlight = function (index) {
+        // Find the current color
+        var color = "";
+        var classList = document.getElementById('arrayElem' + index).className.split(/\s+/);
+        for (var i = 0; i < classList.length; i++) {
+            if (classList[i] === 'orange' || classList[i] === 'green') {
+                color = classList[i];
+            }
+        }
         var forward = function (index) {
             return function () {
                 removeHighlight(index);
             };
         }(index);
+        var backward = function (index, color) {
+            return function () {
+                highlightNode(index, color);
+            };
+        }(index, color);
         manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
     };
     View.prototype.setThisState = function (relationships, backendArray) {
@@ -122,7 +140,10 @@ var View = /** @class */ (function () {
         this.step("backward", twoDimRelationshipsJSON, backendArray);
     };
     View.prototype.stepForward = function (twoDimRelationshipsJSON, backendArray) {
-        this.step("forward", twoDimRelationshipsJSON, backendArray);
+        //this.step("forward", twoDimRelationshipsJSON, backendArray);
+        manager.next();
+        if (manager.nextEvents.length <= 0)
+            manager.start();
     };
     View.prototype.step = function (dir, twoDimRelationshipsJSON, backendArray) {
         var relationships = JSON.parse(twoDimRelationshipsJSON);
@@ -161,7 +182,12 @@ var View = /** @class */ (function () {
                 screenLock(lock);
             };
         }(locked);
-        manager.addEvent(new FrontendEvent(lck, lck, this.animSpeed));
+        var notLck = function (lock) {
+            return function () {
+                screenLock(!lock);
+            };
+        }(locked);
+        manager.addEvent(new FrontendEvent(lck, notLck, this.animSpeed));
     };
     View.prototype.setSlow = function () {
         this.animSpeed = 250;
@@ -294,14 +320,20 @@ var View = /** @class */ (function () {
     View.prototype.insertNewElemThis = function (child, value, parent) {
         var forward = function (index, value, parent) {
             return function () {
-                insertNewElem(index, value);
+                setValueAtIndex(index, value);
+                insertNewNode(index, value);
                 insertNewElemConnect(index, parent);
+                // If first node -> Position with a nice animation
+                if (control.getAlgorithm().getArrayLength() == 1)
+                    positioningNodes(1500);
             };
         }(child, value, parent);
         var backward = function (index, parent) {
             return function () {
                 allNodes[parent].removeChild(allNodes[index]);
-                removeElem(index, true);
+                //removeElem(index, true);
+                setValueAtIndex(index, "");
+                removeNode(index);
             };
         }(child, parent);
         manager.addEvent(new FrontendEvent(forward, backward, manager.delayTime));

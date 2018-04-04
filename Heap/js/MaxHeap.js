@@ -111,17 +111,9 @@ var MaxHeap = /** @class */ (function () {
         else {
             control.lockScreen(true);
             this.array[this.currIndex] = a;
-            setValueAtIndex(this.currIndex, a);
-            insertNewNode(this.currIndex++, a);
+            control.insertNewElem(this.currIndex++, a, Math.floor((this.currIndex - 2) / 2));
         }
-        // Swim to te correct index and start frontendevents
-        if (this.currIndex == 1) {
-            positioningNodes(1000);
-        }
-        else {
-            insertNewElemConnect(this.currIndex - 1, Math.floor((this.currIndex - 2) / 2));
-            this.swim(this.currIndex - 1);
-        }
+        this.swim(this.currIndex - 1);
         control.lockScreen(false);
     };
     MaxHeap.prototype.remove = function () {

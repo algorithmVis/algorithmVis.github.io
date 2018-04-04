@@ -27,10 +27,14 @@ class EventManager {
 
     // Executing the previous event
     previous() {
+        this.pause();
         if (this.previousEvents.length == 0)
             return;
         var event: FrontendEvent = (<FrontendEvent>this.previousEvents.pop());
         //this.delayTime = 0; //TODO: Should there be a delay when stepping backwards?
+        console.log(event);
+        console.log(this.previousEvents);
+        
         event.previous();
         this.nextEvents.unshift(event);
     }
