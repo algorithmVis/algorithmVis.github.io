@@ -22,32 +22,32 @@ class kValue {
         var textWidth = $text.width();
 
         $({x1: $horizontal.attr('x1')}).animate({x1: left - 3}, {
-            duration: animationTime, step: function (now) {
+            duration: animationTime, step: function (now: any) {
                 $horizontal.attr('x1', now);
             }
         });
         $({x2: $horizontal.attr('x2')}).animate({x2: right + 3}, {
-            duration: animationTime, step: function (now) {
+            duration: animationTime, step: function (now: any) {
                 $horizontal.attr('x2', now);
             }
         });
         $({x1: $leftLine.attr('x1')}).animate({x1: left}, {
-            duration: animationTime, step: function (now) {
+            duration: animationTime, step: function (now: any) {
                 $leftLine.attr('x1', now);
             }
         });
         $({x2: $leftLine.attr('x2')}).animate({x2: left}, {
-            duration: animationTime, step: function (now) {
+            duration: animationTime, step: function (now: any) {
                 $leftLine.attr('x2', now);
             }
         });
         $({x1: $rightLine.attr('x1')}).animate({x1: right}, {
-            duration: animationTime, step: function (now) {
+            duration: animationTime, step: function (now: any) {
                 $rightLine.attr('x1', now);
             }
         });
         $({x2: $rightLine.attr('x2')}).animate({x2: right}, {
-            duration: animationTime, step: function (now) {
+            duration: animationTime, step: function (now: any) {
                 $rightLine.attr('x2', now);
             }
         });

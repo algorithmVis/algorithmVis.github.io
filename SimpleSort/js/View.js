@@ -1,10 +1,10 @@
-"use strict";
 /**
  * File created by Øyvind Skeie Liland 01.02.18
  */
-///<reference path="controller.ts"/>
-///<reference path="kValue.ts"/>
-///<reference path="insertionSort.ts"/>
+///<reference path="Controller.ts"/>
+///<reference path="KValue.ts"/>
+///<reference path="InsertionSort.ts"/>
+///<reference path="ViewFunctions.ts"/>
 var view = /** @class */ (function () {
     function view() {
         this.colors = ["#7FFF00", "not used", "#FFB366"];
@@ -37,7 +37,7 @@ var view = /** @class */ (function () {
                 swapId(indexA, indexB);
             };
         }(indexA, indexB);
-        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
     view.prototype.moveArrayElementToIndex = function (fromIndex, toIndex) {
         var forwardSteps = function (fromIndex, toIndex) {
@@ -136,14 +136,6 @@ var view = /** @class */ (function () {
         }(index, color, colorOn);
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
-    /*
-        setRandomArray() {
-            manager.clear();
-            manager.start();
-            controller.setRandomArray();
-            arrayIsReset = true;
-        }
-    */
     view.prototype.setHeadText = function (str) {
         setHeaderText(str);
     };
@@ -177,19 +169,39 @@ var view = /** @class */ (function () {
         if (!this.paused) {
             this.paused = true;
             manager.pause();
-            $("#togglePause").html("resume");
+            $('#backward').removeAttr('disabled');
+            $('#forward').removeAttr('disabled');
+            $("#togglePause").html("Resume");
         }
         else {
             this.paused = false;
             manager.unpause();
-            $("#togglePause").html("pause");
+            $('#backward').attr('disabled', 'disabled');
+            $('#forward').attr('disabled', 'disabled');
+            $("#togglePause").html("Pause");
         }
+    };
+    view.prototype.setPause = function () {
+        this.paused = true;
+        manager.pause();
+        $("#togglePause").html("Start");
+        $('#backward').removeAttr('disabled');
+        $('#forward').removeAttr('disabled');
     };
     view.prototype.forward = function () {
         manager.next();
     };
     view.prototype.backward = function () {
         manager.previous();
+    };
+    view.prototype.slow = function () {
+        manager.slow();
+    };
+    view.prototype.medium = function () {
+        manager.medium();
+    };
+    view.prototype.fast = function () {
+        manager.fast();
     };
     return view;
 }());

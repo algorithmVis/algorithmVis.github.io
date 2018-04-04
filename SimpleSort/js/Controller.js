@@ -1,8 +1,7 @@
-"use strict";
 /**
  * File created by Øyvind Skeie Liland 01.02.18.
  */
-///<reference path="view.ts"/>
+///<reference path="View.ts"/>
 var iColor = 2;
 var jColor = 0;
 var controller = /** @class */ (function () {

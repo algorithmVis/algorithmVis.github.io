@@ -1,4 +1,3 @@
-"use strict";
 /**
  * Created by knutandersstokke on 16.10.2016.
  *
@@ -6,9 +5,10 @@
 /** Manager for events stored in queue. Manager is also responsible for executing events automatically */
 var eventManager = /** @class */ (function () {
     function eventManager() {
-        this.delayTime = 500; // Original value
+        this.delayTime = 1000; // Original value
         this.nextEvents = [];
         this.previousEvents = [];
+        this.paused = true;
     }
     // Executing the next event in the queue, adding it to 'previous'
     eventManager.prototype.next = function () {
@@ -16,7 +16,6 @@ var eventManager = /** @class */ (function () {
             return;
         }
         var event = this.nextEvents.shift();
-        console.log(this.nextEvents);
         event.next();
         this.previousEvents.push(event);
         if (event.duration == 0)
@@ -24,6 +23,7 @@ var eventManager = /** @class */ (function () {
     };
     // Executing the previous event
     eventManager.prototype.previous = function () {
+        this.pause();
         if (this.previousEvents.length == 0)
             return;
         var event = this.previousEvents.pop();
@@ -36,15 +36,18 @@ var eventManager = /** @class */ (function () {
     };
     eventManager.prototype.start = function () {
         var manager = this; // Anonymous functions cannot access this...
+        this.paused = false;
         this.eventThread = setInterval(function () {
             manager.next();
         }, manager.delayTime);
     };
     eventManager.prototype.pause = function () {
+        this.paused = true;
         clearInterval(this.eventThread);
     };
     eventManager.prototype.unpause = function () {
         var manager = this;
+        this.paused = false;
         this.eventThread = setInterval(function () {
             manager.next();
         }, manager.delayTime);
@@ -53,6 +56,24 @@ var eventManager = /** @class */ (function () {
         clearInterval(this.eventThread);
         this.nextEvents = [];
         this.previousEvents = [];
+    };
+    eventManager.prototype.slow = function () {
+        this.delayTime = 1500;
+        this.helpSetInterval();
+    };
+    eventManager.prototype.medium = function () {
+        this.delayTime = 1000;
+        this.helpSetInterval();
+    };
+    eventManager.prototype.fast = function () {
+        this.delayTime = 500;
+        this.helpSetInterval();
+    };
+    eventManager.prototype.helpSetInterval = function () {
+        if (!this.paused) {
+            this.pause();
+            this.start();
+        }
     };
     return eventManager;
 }());

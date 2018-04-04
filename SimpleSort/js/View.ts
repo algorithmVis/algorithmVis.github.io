@@ -2,9 +2,10 @@
  * File created by Øyvind Skeie Liland 01.02.18
  */
 
-///<reference path="controller.ts"/>
-///<reference path="kValue.ts"/>
-///<reference path="insertionSort.ts"/>
+///<reference path="Controller.ts"/>
+///<reference path="KValue.ts"/>
+///<reference path="InsertionSort.ts"/>
+///<reference path="ViewFunctions.ts"/>
 declare var $;
 
 class view {
@@ -41,7 +42,7 @@ class view {
             }
         }(indexA, indexB);
 
-        manager.addEvent(new FrontendEvent(forwardSteps, forwardSteps, this.animSpeed));
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
 
     moveArrayElementToIndex(fromIndex: number, toIndex: number) {
@@ -156,14 +157,6 @@ class view {
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
 
-    /*
-        setRandomArray() {
-            manager.clear();
-            manager.start();
-            controller.setRandomArray();
-            arrayIsReset = true;
-        }
-    */
     setHeadText(str: string) {
         setHeaderText(str);
     }
@@ -202,13 +195,24 @@ class view {
         if (!this.paused) {
             this.paused = true;
             manager.pause();
-            $("#togglePause").html("resume");
+            $('#backward').removeAttr('disabled');
+            $('#forward').removeAttr('disabled');
+            $("#togglePause").html("Resume");
         } else {
             this.paused = false;
             manager.unpause();
-            $("#togglePause").html("pause");
+            $('#backward').attr('disabled','disabled');
+            $('#forward').attr('disabled','disabled');
+            $("#togglePause").html("Pause");
         }
+    }
 
+    setPause() {
+        this.paused = true;
+        manager.pause();
+        $("#togglePause").html("Start");
+        $('#backward').removeAttr('disabled');
+        $('#forward').removeAttr('disabled');
     }
 
     forward() {
@@ -217,6 +221,16 @@ class view {
 
     backward() {
         manager.previous();
+    }
+
+    slow() {
+        manager.slow();
+    }
+    medium() {
+        manager.medium();
+    }
+    fast() {
+        manager.fast();
     }
 
 }
