@@ -21,7 +21,6 @@ function liftElements(elements) {
     }
 }
 function selectPivotElement(index) {
-    console.log(index);
     $("#insElemNr" + index).addClass("middle");
 }
 function setColor(index, color, colorOn) {

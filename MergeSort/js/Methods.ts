@@ -26,7 +26,6 @@ function liftElements(elements: number[]) {
 }
 
 function selectPivotElement(index: number) {
-    console.log(index);
     $("#insElemNr" + index).addClass("middle");
 }
 

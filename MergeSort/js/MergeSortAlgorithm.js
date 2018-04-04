@@ -3,7 +3,7 @@
  * File designed and written by Kenneth Apeland
  */
 ///<reference path="EventManager.ts"/>
-///<reference path="View.ts"/>
+// /<reference path="View.ts"/>
 ///<reference path="InitArray.ts"/>
 var n = 10;
 var sortArray = [];
@@ -11,18 +11,18 @@ var copyArray = [];
 var running = true;
 function checkIfAlreadyRunning() {
     manager.clear();
-    viewer.setPause();
+    control.setPause();
 }
 function startMergeSort() {
     checkIfAlreadyRunning();
     copyArray = returnArray();
     mergesort(copyArray);
-    viewer.setColorInArrayElements(copyArray, 3, true);
+    control.setColorInArrayElements(copyArray, 3, true);
 }
 function mergesort(array) {
     if (array.length < 2) {
         //denne er ekkel
-        viewer.deselectPivotElement(array[0]);
+        control.deselectPivotElement(array[0]);
         return array;
     }
     else {
@@ -33,12 +33,12 @@ function mergesort(array) {
         left = array.slice(0, mid);
         right = array.slice(mid);
         //denne og er ekkel
-        viewer.setPivotElement(right[0]);
-        viewer.setColorInArrayElements(left, 1, true);
-        viewer.setColorInArrayElements(right, 2, true);
-        viewer.lowerElements(left);
-        viewer.lowerElements(right);
-        viewer.setColorInArrayElements(array, 1, false);
+        control.setPivotElement(right[0]);
+        control.setColorInArrayElements(left, 1, true);
+        control.setColorInArrayElements(right, 2, true);
+        control.lowerElements(left);
+        control.lowerElements(right);
+        control.setColorInArrayElements(array, 1, false);
         //Split until there is only 1 element left
         return merge(mergesort(left), mergesort(right));
     }
@@ -51,19 +51,19 @@ function merge(left, right) {
     var counter = copyArray.indexOf(left[0]);
     while (tempLeftIndex < left.length && tempRightIndex < right.length) {
         //Compare the elements from each array
-        viewer.setColorInArrayElement(left[tempLeftIndex], 0, true);
-        viewer.setColorInArrayElement(right[tempRightIndex], 0, true);
+        control.setColorInArrayElement(left[tempLeftIndex], 0, true);
+        control.setColorInArrayElement(right[tempRightIndex], 0, true);
         if (left[tempLeftIndex] < right[tempRightIndex]) {
-            viewer.setColorInArrayElement(left[tempLeftIndex], 3, true);
-            viewer.moveElementToPlace(left[tempLeftIndex], counter, copyArray.indexOf(left[tempLeftIndex]));
+            control.setColorInArrayElement(left[tempLeftIndex], 3, true);
+            control.moveElementToPlace(left[tempLeftIndex], counter, copyArray.indexOf(left[tempLeftIndex]));
             result.push(left[tempLeftIndex]);
             testing[counter] = left[tempLeftIndex];
             counter++;
             tempLeftIndex++;
         }
         else {
-            viewer.setColorInArrayElement(right[tempRightIndex], 3, true);
-            viewer.moveElementToPlace(right[tempRightIndex], counter, copyArray.indexOf(right[tempRightIndex]));
+            control.setColorInArrayElement(right[tempRightIndex], 3, true);
+            control.moveElementToPlace(right[tempRightIndex], counter, copyArray.indexOf(right[tempRightIndex]));
             result.push(right[tempRightIndex]);
             testing[counter] = right[tempRightIndex];
             counter++;
@@ -72,25 +72,24 @@ function merge(left, right) {
     }
     if (right.slice(tempRightIndex).length > 0) {
         var moreRight = right.slice(tempRightIndex);
-        viewer.setColorInArrayElements(moreRight, 3, true);
+        control.setColorInArrayElements(moreRight, 3, true);
         for (var i = 0; i < moreRight.length; i++) {
-            viewer.moveElementToPlace(moreRight[i], counter, copyArray.indexOf(moreRight[i]));
+            control.moveElementToPlace(moreRight[i], counter, copyArray.indexOf(moreRight[i]));
             testing[counter] = moreRight[i];
             counter++;
         }
     }
     if (left.slice(tempLeftIndex).length > 0) {
         var moreLeft = left.slice(tempLeftIndex);
-        viewer.setColorInArrayElements(moreLeft, 3, true);
+        control.setColorInArrayElements(moreLeft, 3, true);
         for (var i = 0; i < moreLeft.length; i++) {
-            viewer.moveElementToPlace(moreLeft[i], counter, copyArray.indexOf(moreLeft[i]));
+            control.moveElementToPlace(moreLeft[i], counter, copyArray.indexOf(moreLeft[i]));
             testing[counter] = moreLeft[i];
             counter++;
         }
     }
-    if (!isSorted(testing))
-        viewer.setColorInArrayElements(testing, 3, false);
     copyArray = testing.slice(0);
+    control.setColorInArrayElements(testing, 3, false);
     return result.concat(left.slice(tempLeftIndex)).concat(right.slice(tempRightIndex));
 }
 function setRandomMyArray() {
