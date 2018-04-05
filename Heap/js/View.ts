@@ -352,24 +352,44 @@ class View implements IView {
             this.paused = true;
             this.playing = true;
             $("#play").text("Pause");
+            lockBackForward(true);
         } else if (algo === "HeapSort" && !this.paused && !this.playing) {
             (<HeapSort>control.getAlgorithm()).sort();
             this.paused = true;
             this.playing = true;
             $("#play").text("Pause");
+            lockBackForward(true);
         } else {
             if (this.playing) {
                 manager.pause();
                 $("#play").text("Resume");
                 this.playing = false;
+                lockBackForward(false);
             } else {
                 this.playing = true;
                 manager.start();
                 $("#play").text("Pause");
+                lockBackForward(true);
             }
         }
     }
 
+    // Used in eventmanager for freemode and predefined
+    playButtonState() {
+        let algo = control.getAlgorithm().getName();
+        if (!(algo === "MaxHeap" || algo === "MaxHeapFree"))
+            return;
+
+        if (manager.nextEvents.length > 0) {
+            this.playing = true;
+            lockPlay(false);
+            lockBackForward(true);
+            $("#play").text("Pause");
+        } else {
+            lockPlay(true);
+            lockBackForward(false);
+        }
+    }
 
     insertNewElemThis(child: number, value: number, parent: number) {
         let forward = function (index, value, parent) {

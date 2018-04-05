@@ -392,6 +392,16 @@ function lockPlay(lock: boolean) {
     }
 }
 
+function lockBackForward(lock: boolean) {
+    if (lock) {
+        $("#backward").attr({ "disabled": "true" });
+        $("#forward").attr({ "disabled": "true" });
+    } else {
+        $("#backward").removeAttr("disabled");
+        $("#forward").removeAttr("disabled");
+    }
+}
+
 function stepBack() {
     if (firstSelected != -1) {
         selectIndex(firstSelected, false);

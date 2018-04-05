@@ -297,24 +297,44 @@ var View = /** @class */ (function () {
             this.paused = true;
             this.playing = true;
             $("#play").text("Pause");
+            lockBackForward(true);
         }
         else if (algo === "HeapSort" && !this.paused && !this.playing) {
             control.getAlgorithm().sort();
             this.paused = true;
             this.playing = true;
             $("#play").text("Pause");
+            lockBackForward(true);
         }
         else {
             if (this.playing) {
                 manager.pause();
                 $("#play").text("Resume");
                 this.playing = false;
+                lockBackForward(false);
             }
             else {
                 this.playing = true;
                 manager.start();
                 $("#play").text("Pause");
+                lockBackForward(true);
             }
+        }
+    };
+    // Used in eventmanager for freemode and predefined
+    View.prototype.playButtonState = function () {
+        var algo = control.getAlgorithm().getName();
+        if (!(algo === "MaxHeap" || algo === "MaxHeapFree"))
+            return;
+        if (manager.nextEvents.length > 0) {
+            this.playing = true;
+            lockPlay(false);
+            lockBackForward(true);
+            $("#play").text("Pause");
+        }
+        else {
+            lockPlay(true);
+            lockBackForward(false);
         }
     };
     View.prototype.insertNewElemThis = function (child, value, parent) {

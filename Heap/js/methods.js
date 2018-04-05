@@ -336,6 +336,16 @@ function lockPlay(lock) {
         $("#play").removeAttr("disabled");
     }
 }
+function lockBackForward(lock) {
+    if (lock) {
+        $("#backward").attr({ "disabled": "true" });
+        $("#forward").attr({ "disabled": "true" });
+    }
+    else {
+        $("#backward").removeAttr("disabled");
+        $("#forward").removeAttr("disabled");
+    }
+}
 function stepBack() {
     if (firstSelected != -1) {
         selectIndex(firstSelected, false);
