@@ -63,8 +63,7 @@ class View implements IView {
         manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
     }
 
-    setValueAtThisIndex(i: number, bValue) {
-        let val = $("#arrayElem" + i).text();
+    setValueAtThisIndex(i: number, bValue: any, oldVal: any) {
         let forwardSteps = function (i, bValue) {
             return function () {
                 setValueAtIndex(i, bValue);
@@ -75,7 +74,7 @@ class View implements IView {
             return function () {
                 setValueAtIndex(i, oldVal);
             }
-        }(i, val);
+        }(i, oldVal);
 
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
@@ -89,7 +88,7 @@ class View implements IView {
 
         let backwardSteps = function (i, bValue) {
             return function () {
-                setValueAtSortIndex(i, i);
+                setValueAtSortIndex(i, "");
             }
         }(i, bValue);
 
@@ -136,7 +135,13 @@ class View implements IView {
             }
         }(index, color);
 
-        manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
+        let backward = function (index: number) {
+            return function () {
+                removeSortHighlight(index);
+            }
+        }(index);
+
+        manager.addEvent(new FrontendEvent(forward, backward, this.animSpeed));
     }
 
 
@@ -335,11 +340,17 @@ class View implements IView {
             }
         }(i, removeArr);
 
-        let backward = function (index, val) {
+        let backward = function (index, value, parent) {
             return function () {
-                insertNewElem(index, val);
+                setValueAtIndex(index, value);
+                insertNewNode(index, value);
+                insertNewElemConnect(index, parent);
+
+                // If first node -> Position with a nice animation
+                if (control.getAlgorithm().getArrayLength() == 1)
+                    positioningNodes(1500);
             }
-        }(i, val);
+        }(i, val, Math.floor((i - 1) / 2));
 
 
         manager.addEvent(new FrontendEvent(forward, backward, manager.delayTime));
@@ -377,7 +388,7 @@ class View implements IView {
     // Used in eventmanager for freemode and predefined
     playButtonState() {
         let algo = control.getAlgorithm().getName();
-        if (!(algo === "MaxHeap" || algo === "MaxHeapFree"))
+        if (!(algo === "MaxHeap" || algo === "MaxHeapFree" || this.playing))
             return;
 
         if (manager.nextEvents.length > 0) {

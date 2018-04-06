@@ -12,7 +12,7 @@ interface IView {
 
     setThisArrow(index: number): void;
 
-    setValueAtThisIndex(i: number, bValue: number): void;
+    setValueAtThisIndex(i: number, bValue: any, oldVal:any): void;
 
     connectThisNodes(child: number, parent: number): void;
 

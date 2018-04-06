@@ -9,7 +9,6 @@
 ///<reference path="MaxHeapFree.ts"/>
 
 class Controller {
-
     private algorithm: IAlgorithm;
     private speed: number;
 
@@ -46,8 +45,8 @@ class Controller {
         viewer.selectThisIndex(index, select);
     }
 
-    setValueAtIndex(i: number, bValue) {
-        viewer.setValueAtThisIndex(i, bValue);
+    setValueAtIndex(i: number, bValue : any, oldVal : any) {
+        viewer.setValueAtThisIndex(i, bValue, oldVal);
     }
 
     setValueAtSortIndex(i: number, bValue) {

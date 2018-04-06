@@ -24,6 +24,7 @@ class HeapSort extends MaxHeap {
     remove(): void {
         // Remove root element, set last element to root and start frontendevents
         this.currIndex--
+        let oldVal = this.array[0];
         control.setSelectedIndex(0, true);
         control.highlightNode(0, "orange");
         control.highlightSortElem(this.sortIndex, "orange");
@@ -32,7 +33,7 @@ class HeapSort extends MaxHeap {
         this.exch(0, this.currIndex);
         control.swapNode(this.currIndex, 0);
         control.removeElem(this.currIndex, false);
-        control.setValueAtIndex(this.currIndex, " ");
+        control.setValueAtIndex(this.currIndex, " ", oldVal);
         this.sink(0, this.currIndex - 1);
         control.highlightSortElem(this.sortIndex--, "green");
         control.saveState(this.array);
