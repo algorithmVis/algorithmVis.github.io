@@ -3,6 +3,7 @@
 
 /**
  * File created by Philip Hoang 12.2.18
+ * File written by Kenneth Apeland
  */
 
 declare var $;
@@ -54,6 +55,7 @@ class view {
     }
 
     setPivotElement(index: number) {
+
         var forwardSteps = function (index) {
             return function () {
                 selectPivotElement(index);
@@ -101,6 +103,22 @@ class view {
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
 
+    moveElementsToPlace(element: number[], px: number[], back: number[]) {
+        var forwardSteps = function (element, px) {
+            return function () {
+                moveElementsToPlace(element, px);
+            }
+        }(element, px);
+
+        var backwardSteps = function (element, back) {
+            return function () {
+                moveElementsBackToPlace(element, back);
+            }
+        }(element, back);
+
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
+    }
+
     setColorInArrayElement(index: number, color: number, colorOn: boolean) {
         var forwardSteps = function (index, color, colorOn) {
             return function () {
@@ -128,7 +146,7 @@ class view {
             return function () {
                 setColors(index, color, !colorOn);
             }
-        }(index, color, colorOn);
+        }(index, color, !colorOn);
 
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }

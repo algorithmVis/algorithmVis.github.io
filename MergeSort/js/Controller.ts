@@ -21,6 +21,10 @@ class controller {
         viewer.moveElementToPlace(element, px, back);
     }
 
+    moveElementsToPlace(element: number[], px: number[], back: number[]) {
+        viewer.moveElementsToPlace(element, px, back);
+    }
+
     setColorInArrayElement(index: number, color: number, colorOn: boolean) {
         viewer.setColorInArrayElement(index, color, colorOn);
     }
