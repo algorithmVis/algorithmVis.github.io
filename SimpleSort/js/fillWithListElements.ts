@@ -8,6 +8,7 @@ function setArray(serializedArray: any) {
     $("#arrayUl li, #indices p").each(function () {
         $(this).remove();
     });
+    $("#arrayUl").remove();
     // Insert new elements
     array = serializedArray.split('|'); // Deserialize array
     $("#array").append("<ul id='arrayUl' class='insElements'></ul>"); // TODO: this adds arrayUl without deleting it

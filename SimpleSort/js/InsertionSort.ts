@@ -14,7 +14,7 @@ const n = 10;
  * Check if an algorithm is already running - if that is the case reset the view
  */
 function checkIfAlreadyRunning() {
-
+    k.hide();
     let arr = setRandomArray();
     setArray(viewer.serializeArray(arr));
     manager.clear();
@@ -26,7 +26,6 @@ function checkIfAlreadyRunning() {
  */
 function startInsertionSort() {
     checkIfAlreadyRunning();
-    viewer.setPause();
     control.hideK();
     control.setHeadText("Insertion Sort");
     let j: number; // Elements sorted, starting on second position
@@ -50,7 +49,6 @@ function startInsertionSort() {
         control.setJElement(i + 1, false);
         control.setElementBeingComparedTo(j - 1, false);
     }
-    manager.start();
 }
 
 function startShellSort() {
@@ -91,7 +89,6 @@ function startShellSort() {
         control.setKValue(k);
     }
     control.hideK();
-    manager.start()
 }
 
 /**
