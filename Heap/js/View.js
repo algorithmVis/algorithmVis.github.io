@@ -51,8 +51,7 @@ var View = /** @class */ (function () {
         }(index);
         manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
     };
-    View.prototype.setValueAtThisIndex = function (i, bValue) {
-        var val = $("#arrayElem" + i).text();
+    View.prototype.setValueAtThisIndex = function (i, bValue, oldVal) {
         var forwardSteps = function (i, bValue) {
             return function () {
                 setValueAtIndex(i, bValue);
@@ -62,7 +61,7 @@ var View = /** @class */ (function () {
             return function () {
                 setValueAtIndex(i, oldVal);
             };
-        }(i, val);
+        }(i, oldVal);
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
     View.prototype.setValueAtThisSortIndex = function (i, bValue) {
@@ -73,7 +72,7 @@ var View = /** @class */ (function () {
         }(i, bValue);
         var backwardSteps = function (i, bValue) {
             return function () {
-                setValueAtSortIndex(i, i);
+                setValueAtSortIndex(i, "");
             };
         }(i, bValue);
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
@@ -97,7 +96,12 @@ var View = /** @class */ (function () {
                 highlightNode(index, color);
             };
         }(index, color);
-        manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
+        var backward = function (index) {
+            return function () {
+                removeHighlight(index);
+            };
+        }(index);
+        manager.addEvent(new FrontendEvent(forward, backward, this.animSpeed));
     };
     View.prototype.highlightThisSortElem = function (index, color) {
         var forward = function (index, color) {
@@ -105,14 +109,32 @@ var View = /** @class */ (function () {
                 sortHighlightElem(index, color);
             };
         }(index, color);
-        manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
+        var backward = function (index) {
+            return function () {
+                removeSortHighlight(index);
+            };
+        }(index);
+        manager.addEvent(new FrontendEvent(forward, backward, this.animSpeed));
     };
     View.prototype.removeThisHighlight = function (index) {
+        // Find the current color
+        var color = "";
+        var classList = document.getElementById('arrayElem' + index).className.split(/\s+/);
+        for (var i = 0; i < classList.length; i++) {
+            if (classList[i] === 'orange' || classList[i] === 'green') {
+                color = classList[i];
+            }
+        }
         var forward = function (index) {
             return function () {
                 removeHighlight(index);
             };
         }(index);
+        var backward = function (index, color) {
+            return function () {
+                highlightNode(index, color);
+            };
+        }(index, color);
         manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
     };
     View.prototype.setThisState = function (relationships, backendArray) {
@@ -122,7 +144,10 @@ var View = /** @class */ (function () {
         this.step("backward", twoDimRelationshipsJSON, backendArray);
     };
     View.prototype.stepForward = function (twoDimRelationshipsJSON, backendArray) {
-        this.step("forward", twoDimRelationshipsJSON, backendArray);
+        //this.step("forward", twoDimRelationshipsJSON, backendArray);
+        manager.next();
+        if (manager.nextEvents.length <= 0)
+            manager.start();
     };
     View.prototype.step = function (dir, twoDimRelationshipsJSON, backendArray) {
         var relationships = JSON.parse(twoDimRelationshipsJSON);
@@ -161,7 +186,12 @@ var View = /** @class */ (function () {
                 screenLock(lock);
             };
         }(locked);
-        manager.addEvent(new FrontendEvent(lck, lck, this.animSpeed));
+        var notLck = function (lock) {
+            return function () {
+                screenLock(!lock);
+            };
+        }(locked);
+        manager.addEvent(new FrontendEvent(lck, notLck, this.animSpeed));
     };
     View.prototype.setSlow = function () {
         this.animSpeed = 250;
@@ -257,11 +287,16 @@ var View = /** @class */ (function () {
                 removeElem(index, removeArr);
             };
         }(i, removeArr);
-        var backward = function (index, val) {
+        var backward = function (index, value, parent) {
             return function () {
-                insertNewElem(index, val);
+                setValueAtIndex(index, value);
+                insertNewNode(index, value);
+                insertNewElemConnect(index, parent);
+                // If first node -> Position with a nice animation
+                if (control.getAlgorithm().getArrayLength() == 1)
+                    positioningNodes(1500);
             };
-        }(i, val);
+        }(i, val, Math.floor((i - 1) / 2));
         manager.addEvent(new FrontendEvent(forward, backward, manager.delayTime));
     };
     View.prototype.play = function () {
@@ -271,37 +306,63 @@ var View = /** @class */ (function () {
             this.paused = true;
             this.playing = true;
             $("#play").text("Pause");
+            lockBackForward(true);
         }
         else if (algo === "HeapSort" && !this.paused && !this.playing) {
             control.getAlgorithm().sort();
             this.paused = true;
             this.playing = true;
             $("#play").text("Pause");
+            lockBackForward(true);
         }
         else {
             if (this.playing) {
                 manager.pause();
                 $("#play").text("Resume");
                 this.playing = false;
+                lockBackForward(false);
             }
             else {
                 this.playing = true;
                 manager.start();
                 $("#play").text("Pause");
+                lockBackForward(true);
             }
+        }
+    };
+    // Used in eventmanager for freemode and predefined
+    View.prototype.playButtonState = function () {
+        var algo = control.getAlgorithm().getName();
+        if (!(algo === "MaxHeap" || algo === "MaxHeapFree" || this.playing))
+            return;
+        if (manager.nextEvents.length > 0) {
+            this.playing = true;
+            lockPlay(false);
+            lockBackForward(true);
+            $("#play").text("Pause");
+        }
+        else {
+            lockPlay(true);
+            lockBackForward(false);
         }
     };
     View.prototype.insertNewElemThis = function (child, value, parent) {
         var forward = function (index, value, parent) {
             return function () {
-                insertNewElem(index, value);
+                setValueAtIndex(index, value);
+                insertNewNode(index, value);
                 insertNewElemConnect(index, parent);
+                // If first node -> Position with a nice animation
+                if (control.getAlgorithm().getArrayLength() == 1)
+                    positioningNodes(1500);
             };
         }(child, value, parent);
         var backward = function (index, parent) {
             return function () {
                 allNodes[parent].removeChild(allNodes[index]);
-                removeElem(index, true);
+                //removeElem(index, true);
+                setValueAtIndex(index, "");
+                removeNode(index);
             };
         }(child, parent);
         manager.addEvent(new FrontendEvent(forward, backward, manager.delayTime));

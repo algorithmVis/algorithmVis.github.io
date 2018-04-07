@@ -63,8 +63,7 @@ class View implements IView {
         manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
     }
 
-    setValueAtThisIndex(i: number, bValue) {
-        let val = $("#arrayElem" + i).text();
+    setValueAtThisIndex(i: number, bValue: any, oldVal: any) {
         let forwardSteps = function (i, bValue) {
             return function () {
                 setValueAtIndex(i, bValue);
@@ -75,7 +74,7 @@ class View implements IView {
             return function () {
                 setValueAtIndex(i, oldVal);
             }
-        }(i, val);
+        }(i, oldVal);
 
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
@@ -89,7 +88,7 @@ class View implements IView {
 
         let backwardSteps = function (i, bValue) {
             return function () {
-                setValueAtSortIndex(i, i);
+                setValueAtSortIndex(i, "");
             }
         }(i, bValue);
 
@@ -120,7 +119,13 @@ class View implements IView {
             }
         }(index, color);
 
-        manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
+        let backward = function (index: number) {
+            return function () {
+                removeHighlight(index);
+            }
+        }(index);
+
+        manager.addEvent(new FrontendEvent(forward, backward, this.animSpeed));
     }
 
     highlightThisSortElem(index: number, color: string) {
@@ -130,16 +135,37 @@ class View implements IView {
             }
         }(index, color);
 
-        manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
+        let backward = function (index: number) {
+            return function () {
+                removeSortHighlight(index);
+            }
+        }(index);
+
+        manager.addEvent(new FrontendEvent(forward, backward, this.animSpeed));
     }
 
 
     removeThisHighlight(index: number) {
+        // Find the current color
+        let color: string = "";
+        var classList = document.getElementById('arrayElem' + index).className.split(/\s+/);
+        for (var i = 0; i < classList.length; i++) {
+            if (classList[i] === 'orange' || classList[i] === 'green') {
+                color = classList[i];
+            }
+        }
+
         let forward = function (index: number) {
             return function () {
                 removeHighlight(index);
             }
         }(index);
+
+        let backward = function (index: number, color: string) {
+            return function () {
+                highlightNode(index, color);
+            }
+        }(index, color);
 
         manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
     }
@@ -153,7 +179,10 @@ class View implements IView {
     }
 
     stepForward(twoDimRelationshipsJSON: string, backendArray: string) {
-        this.step("forward", twoDimRelationshipsJSON, backendArray);
+        //this.step("forward", twoDimRelationshipsJSON, backendArray);
+        manager.next();
+        if (manager.nextEvents.length <= 0)
+            manager.start();
     }
 
     step(dir: string, twoDimRelationshipsJSON: string, backendArray: string) {
@@ -196,7 +225,12 @@ class View implements IView {
             }
         }(locked);
 
-        manager.addEvent(new FrontendEvent(lck, lck, this.animSpeed));
+        let notLck = function (lock: boolean) {
+            return function () {
+                screenLock(!lock);
+            }
+        }(locked);
+        manager.addEvent(new FrontendEvent(lck, notLck, this.animSpeed));
     }
 
     setSlow() {
@@ -306,11 +340,17 @@ class View implements IView {
             }
         }(i, removeArr);
 
-        let backward = function (index, val) {
+        let backward = function (index, value, parent) {
             return function () {
-                insertNewElem(index, val);
+                setValueAtIndex(index, value);
+                insertNewNode(index, value);
+                insertNewElemConnect(index, parent);
+
+                // If first node -> Position with a nice animation
+                if (control.getAlgorithm().getArrayLength() == 1)
+                    positioningNodes(1500);
             }
-        }(i, val);
+        }(i, val, Math.floor((i - 1) / 2));
 
 
         manager.addEvent(new FrontendEvent(forward, backward, manager.delayTime));
@@ -323,37 +363,64 @@ class View implements IView {
             this.paused = true;
             this.playing = true;
             $("#play").text("Pause");
+            lockBackForward(true);
         } else if (algo === "HeapSort" && !this.paused && !this.playing) {
             (<HeapSort>control.getAlgorithm()).sort();
             this.paused = true;
             this.playing = true;
             $("#play").text("Pause");
+            lockBackForward(true);
         } else {
             if (this.playing) {
                 manager.pause();
                 $("#play").text("Resume");
                 this.playing = false;
+                lockBackForward(false);
             } else {
                 this.playing = true;
                 manager.start();
                 $("#play").text("Pause");
+                lockBackForward(true);
             }
         }
     }
 
+    // Used in eventmanager for freemode and predefined
+    playButtonState() {
+        let algo = control.getAlgorithm().getName();
+        if (!(algo === "MaxHeap" || algo === "MaxHeapFree" || this.playing))
+            return;
+
+        if (manager.nextEvents.length > 0) {
+            this.playing = true;
+            lockPlay(false);
+            lockBackForward(true);
+            $("#play").text("Pause");
+        } else {
+            lockPlay(true);
+            lockBackForward(false);
+        }
+    }
 
     insertNewElemThis(child: number, value: number, parent: number) {
         let forward = function (index, value, parent) {
             return function () {
-                insertNewElem(index, value);
+                setValueAtIndex(index, value);
+                insertNewNode(index, value);
                 insertNewElemConnect(index, parent);
+
+                // If first node -> Position with a nice animation
+                if (control.getAlgorithm().getArrayLength() == 1)
+                    positioningNodes(1500);
             }
         }(child, value, parent);
 
         let backward = function (index, parent) {
             return function () {
                 allNodes[parent].removeChild(allNodes[index]);
-                removeElem(index, true);
+                //removeElem(index, true);
+                setValueAtIndex(index, "");
+                removeNode(index);
             }
         }(child, parent);
 

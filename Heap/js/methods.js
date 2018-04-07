@@ -153,14 +153,16 @@ function removeElem(i, delArray) {
         });
         if (delArray)
             $("#arrayElem" + i).remove();
-        //allNodes[i].reset();
-        $("#node" + i).fadeOut(2000, function () {
-            $(this).remove();
-        });
-        allNodes[i].parent.removeChild(allNodes[i]);
-        //allNodes[i].reset();
-        allNodes.pop();
+        removeNode(i);
     }, 1000);
+}
+function removeNode(i) {
+    $("#node" + i).fadeOut(2000, function () {
+        $(this).remove();
+    });
+    allNodes[i].parent.removeChild(allNodes[i]);
+    //allNodes[i].reset();
+    allNodes.pop();
 }
 // Swap position of two graphNodes
 function swapNodes(child, parent) {
@@ -334,13 +336,24 @@ function lockPlay(lock) {
         $("#play").removeAttr("disabled");
     }
 }
+function lockBackForward(lock) {
+    if (lock) {
+        $("#backward").attr({ "disabled": "true" });
+        $("#forward").attr({ "disabled": "true" });
+    }
+    else {
+        $("#backward").removeAttr("disabled");
+        $("#forward").removeAttr("disabled");
+    }
+}
 function stepBack() {
     if (firstSelected != -1) {
         selectIndex(firstSelected, false);
         firstSelected = -1;
     }
     else {
-        viewer.stepBack(getGraphState(), getArrayState());
+        //viewer.stepBack(getGraphState(), getArrayState());
+        manager.previous();
     }
 }
 function setHeaderText(text) {

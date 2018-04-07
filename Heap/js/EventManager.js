@@ -1,6 +1,6 @@
 /**
  * Created by knutandersstokke on 16.10.2016.
- *
+ * Modified by Øyvind Skeie Liland
  */
 /** Manager for events stored in queue. Manager is also responsible for executing events automatically */
 var EventManager = /** @class */ (function () {
@@ -11,6 +11,7 @@ var EventManager = /** @class */ (function () {
     }
     // Executing the next event in the queue, adding it to 'previous'
     EventManager.prototype.next = function () {
+        viewer.playButtonState();
         if (this.nextEvents.length == 0) {
             return;
         }

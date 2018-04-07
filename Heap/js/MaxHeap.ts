@@ -119,9 +119,12 @@ class MaxHeap implements IAlgorithm {
 
         let tmp = this.array[number];
         this.array[number] = this.array[number2];
-        control.setValueAtIndex(number, this.array[number]);
+        control.setValueAtIndex(number, this.array[number], tmp);
         this.array[number2] = tmp;
-        control.setValueAtIndex(number2, this.array[number2]);
+        control.setValueAtIndex(number2, this.array[number2], this.array[number]);
+        //console.log("fst: " + this.array[number] + ", second: " + this.array[number2]);
+
+        //control.swapArrayElems(number, this.array[number], number2, this.array[number2]);
     }
 
     add(a: number): void {
@@ -133,17 +136,9 @@ class MaxHeap implements IAlgorithm {
         } else {
             control.lockScreen(true);
             this.array[this.currIndex] = a;
-            setValueAtIndex(this.currIndex, a);
-            insertNewNode(this.currIndex++, a);
+            control.insertNewElem(this.currIndex++, a, Math.floor((this.currIndex - 2) / 2));
         }
-
-        // Swim to te correct index and start frontendevents
-        if (this.currIndex == 1) {
-            positioningNodes(1000);
-        } else {
-            insertNewElemConnect(this.currIndex - 1, Math.floor((this.currIndex - 2) / 2));
-            this.swim(this.currIndex - 1);
-        }
+        this.swim(this.currIndex - 1);
         control.lockScreen(false);
     }
 
@@ -153,10 +148,11 @@ class MaxHeap implements IAlgorithm {
         control.lockScreen(true);
         // Remove root element, set last element to root and start frontendevents
         this.currIndex--;
+        let oldVal = this.array[0];
         this.exch(0, this.currIndex);
         control.swapNode(this.currIndex, 0);
         control.removeElem(this.currIndex, false);
-        control.setValueAtIndex(this.currIndex, " ");
+        control.setValueAtIndex(this.currIndex, " ", oldVal);
         this.sink(0, this.currIndex - 1);
         control.saveState(this.array);
         control.lockScreen(false);
