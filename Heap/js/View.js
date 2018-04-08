@@ -13,9 +13,10 @@ var View = /** @class */ (function () {
     function View() {
         this.colors = ["#7FFF00", "not used", "#FFB366"];
         this.k = 0;
-        this.paused = false;
+        this.started = false;
         this.playing = false;
         this.animSpeed = 500;
+        this.clickedPlay = true;
     }
     View.prototype.displayThisArray = function (array) {
         displayArray(JSON.stringify(array));
@@ -145,9 +146,12 @@ var View = /** @class */ (function () {
     };
     View.prototype.stepForward = function (twoDimRelationshipsJSON, backendArray) {
         //this.step("forward", twoDimRelationshipsJSON, backendArray);
+        this.clickedPlay = false;
         manager.next();
-        if (manager.nextEvents.length <= 0)
+        if (manager.nextEvents.length <= 0) {
+            this.playing = true;
             manager.start();
+        }
     };
     View.prototype.step = function (dir, twoDimRelationshipsJSON, backendArray) {
         var relationships = JSON.parse(twoDimRelationshipsJSON);
@@ -158,7 +162,7 @@ var View = /** @class */ (function () {
             stepper.stepBack(relationships, backendArr);
     };
     View.prototype.resetAll = function () {
-        this.paused = false;
+        this.started = false;
         this.playing = false;
         $("#play").text("Play");
         manager.pause();
@@ -299,53 +303,6 @@ var View = /** @class */ (function () {
         }(i, val, Math.floor((i - 1) / 2));
         manager.addEvent(new FrontendEvent(forward, backward, manager.delayTime));
     };
-    View.prototype.play = function () {
-        var algo = control.getAlgorithm().getName();
-        if (algo === "BuildHeap" && !this.paused && !this.playing) {
-            control.getAlgorithm().build();
-            this.paused = true;
-            this.playing = true;
-            $("#play").text("Pause");
-            lockBackForward(true);
-        }
-        else if (algo === "HeapSort" && !this.paused && !this.playing) {
-            control.getAlgorithm().sort();
-            this.paused = true;
-            this.playing = true;
-            $("#play").text("Pause");
-            lockBackForward(true);
-        }
-        else {
-            if (this.playing) {
-                manager.pause();
-                $("#play").text("Resume");
-                this.playing = false;
-                lockBackForward(false);
-            }
-            else {
-                this.playing = true;
-                manager.start();
-                $("#play").text("Pause");
-                lockBackForward(true);
-            }
-        }
-    };
-    // Used in eventmanager for freemode and predefined
-    View.prototype.playButtonState = function () {
-        var algo = control.getAlgorithm().getName();
-        if (!(algo === "MaxHeap" || algo === "MaxHeapFree" || this.playing))
-            return;
-        if (manager.nextEvents.length > 0) {
-            this.playing = true;
-            lockPlay(false);
-            lockBackForward(true);
-            $("#play").text("Pause");
-        }
-        else {
-            lockPlay(true);
-            lockBackForward(false);
-        }
-    };
     View.prototype.insertNewElemThis = function (child, value, parent) {
         var forward = function (index, value, parent) {
             return function () {
@@ -366,6 +323,61 @@ var View = /** @class */ (function () {
             };
         }(child, parent);
         manager.addEvent(new FrontendEvent(forward, backward, manager.delayTime));
+    };
+    View.prototype.play = function () {
+        this.clickedPlay = true;
+        var algo = control.getAlgorithm().getName();
+        if (algo === "BuildHeap" && !this.started && !this.playing) {
+            control.getAlgorithm().build();
+            this.started = true;
+            this.setPause(false);
+        }
+        else if (algo === "HeapSort" && !this.started && !this.playing) {
+            control.getAlgorithm().sort();
+            this.started = true;
+            this.setPause(false);
+        }
+        else {
+            if (this.playing) {
+                this.setPause(true);
+            }
+            else {
+                this.setPause(false);
+            }
+        }
+    };
+    View.prototype.setPause = function (bool) {
+        if (bool) {
+            this.playing = false;
+            manager.pause();
+            $("#play").text("Resume");
+            lockBackForward(false);
+        }
+        else {
+            this.playing = true;
+            manager.start();
+            $("#play").text("Pause");
+            lockBackForward(true);
+        }
+    };
+    // Used in eventmanager for freemode and predefined
+    View.prototype.playButtonState = function () {
+        var algo = control.getAlgorithm().getName();
+        if (!(algo === "MaxHeap" || algo === "MaxHeapFree"))
+            return;
+        if (manager.nextEvents.length > 0 && this.clickedPlay) {
+            this.playing = true;
+            lockPlay(false);
+            lockBackForward(true);
+            $("#play").text("Pause");
+        }
+        else if (manager.nextEvents.length > 0) {
+            return;
+        }
+        else {
+            lockPlay(true);
+            lockBackForward(false);
+        }
     };
     return View;
 }());
