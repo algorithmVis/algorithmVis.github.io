@@ -95,6 +95,7 @@ setupRadio();
 // Methods for positioning arrow
 function setArrow(index) {
     var $arrow = $("#arrow");
+    console.log(index);
     if (index == -1) {
         $arrow.addClass("hidden");
         $arrow.animate({ left: ($("#sortArrayElem0").position().left + 9) + "px" }, 0);

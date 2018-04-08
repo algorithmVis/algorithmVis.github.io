@@ -10,12 +10,11 @@ class HeapSort extends MaxHeap {
     constructor(size: number) {
         super(size);
         this.insertElems(size);
-        this.currIndex++;
         this.sortIndex = this.currIndex - 1;
     }
 
     sort() {
-        for (let i = this.array.length; i >= 0; i--) {
+        for (let i = this.sortIndex; i >= 0; i--) {
             control.setArrow(this.sortIndex);
             this.remove();
         }

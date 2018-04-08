@@ -17,12 +17,11 @@ var HeapSort = /** @class */ (function (_super) {
     function HeapSort(size) {
         var _this = _super.call(this, size) || this;
         _this.insertElems(size);
-        _this.currIndex++;
         _this.sortIndex = _this.currIndex - 1;
         return _this;
     }
     HeapSort.prototype.sort = function () {
-        for (var i = this.array.length; i >= 0; i--) {
+        for (var i = this.sortIndex; i >= 0; i--) {
             control.setArrow(this.sortIndex);
             this.remove();
         }
