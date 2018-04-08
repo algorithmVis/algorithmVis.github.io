@@ -56,11 +56,11 @@ class View implements IView {
         }(index);
         let backward = function (index) {
             return function () {
-                setArrow(index)
+                setArrow(-1);
             }
         }(index);
 
-        manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
+        manager.addEvent(new FrontendEvent(forward, backward, this.animSpeed));
     }
 
     setValueAtThisIndex(i: number, bValue: any, oldVal: any) {
@@ -420,7 +420,7 @@ class View implements IView {
             lockBackForward(true);
         }
     }
-    
+
     // Used in eventmanager for freemode and predefined
     playButtonState() {
         let algo = control.getAlgorithm().getName();

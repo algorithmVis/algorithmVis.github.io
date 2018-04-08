@@ -47,10 +47,10 @@ var View = /** @class */ (function () {
         }(index);
         var backward = function (index) {
             return function () {
-                setArrow(index);
+                setArrow(-1);
             };
         }(index);
-        manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
+        manager.addEvent(new FrontendEvent(forward, backward, this.animSpeed));
     };
     View.prototype.setValueAtThisIndex = function (i, bValue, oldVal) {
         var forwardSteps = function (i, bValue) {
