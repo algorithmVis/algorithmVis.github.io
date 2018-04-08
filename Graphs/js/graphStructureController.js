@@ -5,9 +5,11 @@ var MAX_NODES = 8;
 var edges = 0;
 function graphUIClicked(x, y) {
     if (nodes < MAX_NODES) {
-        addNode(nodes, x, y);
-        addNewAdjList(nodes);
-        nodes++;
+        if (!checkOverlap(x, y)) {
+            addNode(nodes, x, y);
+            addNewAdjList(nodes);
+            nodes++;
+        }
     }
 }
 function twoNodesClicked(n1, n2) {
@@ -21,6 +23,22 @@ function resetAll() {
     nodes = 0;
     edges = 0;
     manager = new eventManager();
+}
+function checkOverlap(x, y) {
+    console.log("overlap check");
+    var overlap = false;
+    $("#graphUI").children().each(function () {
+        console.log(this);
+        if (this.id !== "edgeSvg") {
+            var pos = $("#" + this.id).position();
+            console.log(pos.left + " " + pos.top + " my: " + x + " " + y); // "this" is the current element in the loop
+            if (pos.left - 35 < x && pos.left + 115 > x && pos.top - 35 < y && pos.top + 115 > y) {
+                overlap = true;
+            }
+        }
+    });
+    console.log("overlap" + overlap);
+    return overlap;
 }
 /*************************************************************** */
 /*******************  Example Graphs  ****************************/

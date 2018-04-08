@@ -16,12 +16,11 @@ $("#graphUI").click(function (e) {
     else {
         clickedId = -1;
         deselectAllNodes();
-        var parent = $(this).offset();
-        var x = Math.round(e.pageX - parent.left);
-        var y = Math.round(e.pageY - parent.top);
+        var parent_1 = $(this).offset();
+        var x = Math.round(e.pageX - parent_1.left);
+        var y = Math.round(e.pageY - parent_1.top);
         graphUIClicked(x, y);
     }
-
     function nodeClicked(id) {
         if (clickedId == -1) {
             $("#node" + id).addClass("selected");
@@ -30,23 +29,21 @@ $("#graphUI").click(function (e) {
         else {
             twoNodesClicked(clickedId, id);
             $("#node" + id).addClass("selected");
-            var n1 = clickedId, n2 = id;
+            var n1_1 = clickedId, n2_1 = id;
             setTimeout(function () {
-                deselectTwoNodes(n1, n2);
+                deselectTwoNodes(n1_1, n2_1);
             }, 800);
             clickedId = -1;
         }
     }
 });
 /***************************************************************** */
-
 /*********************** Graph UI Functions ************************/
 /***************************************************************** */
 function addNode(id, x, y) {
     edgeIdList.push([]);
     $("#graphUI").append("<div id='node" + id + "' class='nodeUI' style='left:" + (x - 40) + "px; top:" + (y - 40) + "px;'><p>" + id + "</p></div>");
 }
-
 function addEdge(id, n1, n2) {
     edgeIdList[n1][n2] = id;
     edgeIdList[n2][n1] = id;
@@ -55,11 +52,9 @@ function addEdge(id, n1, n2) {
     var line = parseLine(id, p1.left + r, p1.top + r, p2.left + r, p2.top + r);
     document.getElementById('edgeSvg').appendChild(line);
 }
-
 function getEdgeId(v, w) {
     return edgeIdList[v][w];
 }
-
 function addWeightedEdge(id, n1, n2, weight) {
     addEdge(id, n1, n2);
     var edge = $("#edge" + id);
@@ -74,66 +69,56 @@ function addWeightedEdge(id, n1, n2, weight) {
         "style='top: " + (y + unitScale * unit.y) + "px; left: " + (x + unitScale * unit.x) + "px'>" +
         weight + "</p>");
 }
-
 function addQueueElement(id) {
-    var queueSize = $("#queueUI div").length;
+    var queueSize = $("#queueUI").find("div").length;
     var top = queueSize * 90 + 5;
     $("#queueUI").append("<div id='queueNode" + id + "' style='left:200px; top:" + top + "px;' class='nodeUI'><p>" + id + "</p></div>");
-    $("#queueNode" + id).animate({left: '15px'}, 700);
+    $("#queueNode" + id).animate({ left: '15px' }, 700);
 }
-
 function popQueueElement(id) {
-    $("#queueNode" + id).animate({left: "200px"}, 700, function () {
+    $("#queueNode" + id).animate({ left: "200px" }, 700, function () {
         $(this).remove();
     });
-    $("#queueUI div").each(function () {
+    $("#queueUI").find("div").each(function () {
         var top = $(this).position().top - 90;
-        $(this).animate({top: top + "px"}, 700);
+        $(this).animate({ top: top + "px" }, 700);
     });
 }
-
 function resetGraphUI() {
-    $("#graphUI div.nodeUI").each(function () {
+    $("#graphUI").find("div.nodeUI").each(function () {
         $(this).remove();
     });
-    $("#graphUI p.edgeWeight").each(function () {
+    $("#graphUI").find("p.edgeWeight").each(function () {
         $(this).remove();
     });
-    $("#edgeSvg line").each(function () {
+    $("#edgeSvg").find("line").each(function () {
         $(this).remove();
     });
-    $("#queueUI div").each(function () {
+    $("#queueUI").find("div").each(function () {
         $(this).remove();
     });
     edgeIdList = [[]];
 }
-
 /***************************************************************** */
-
 /********************* HELPER FUNCTIONS ****************************/
 /***************************************************************** */
 function getNormal(x1, y1, x2, y2) {
     var dx = x2 - x1, dy = y2 - y1;
-    return {x: -dy, y: dx};
+    return { x: -dy, y: dx };
 }
-
 function getUnit(x, y) {
     var length = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
-    return {x: x / length, y: y / length};
+    return { x: x / length, y: y / length };
 }
-
 function getIdFromDomId(domId) {
     return parseInt(domId.replace("node", ""));
 }
-
 function getNodeWidth(id) {
     return $("#node" + id).outerWidth();
 }
-
 function getNodePosition(id) {
     return $("#node" + id).position();
 }
-
 function parseLine(id, x1, y1, x2, y2) {
     var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
     line.setAttribute("id", "edge" + id);
@@ -143,20 +128,16 @@ function parseLine(id, x1, y1, x2, y2) {
     line.setAttribute("y2", y2 + "");
     return line;
 }
-
 function deselectAllNodes() {
     $("#graphUI").children().each(function () {
         $(this).removeClass("selected");
     });
 }
-
 function deselectTwoNodes(n1, n2) {
     $("#node" + n1).removeClass("selected");
     $("#node" + n2).removeClass("selected");
 }
-
 function openInfoWindow() {
     window.open("http://www.w3schools.com");
 }
-
-// <svg height="100%" width="100%"> <line x1="0" y1="0" x2="200" y2="200" style="stroke:rgb(255,0,0);stroke-width:2"></line></svg> 
+// <svg height="100%" width="100%"> <line x1="0" y1="0" x2="200" y2="200" style="stroke:rgb(255,0,0);stroke-width:2"></line></svg>

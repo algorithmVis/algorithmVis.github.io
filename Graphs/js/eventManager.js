@@ -5,9 +5,10 @@
 /** Manager for events stored in queue. Manager is also responsible for executing events automatically */
 var eventManager = /** @class */ (function () {
     function eventManager() {
-        this.delayTime = 1000;
+        this.delayTime = 1000; // Original value
         this.nextEvents = [];
         this.previousEvents = [];
+        this.paused = true;
     }
     // Executing the next event in the queue, adding it to 'previous'
     eventManager.prototype.next = function () {
@@ -15,19 +16,18 @@ var eventManager = /** @class */ (function () {
             return;
         }
         var event = this.nextEvents.shift();
-        console.log(this.nextEvents);
         event.next();
-        console.log(event.next());
         this.previousEvents.push(event);
         if (event.duration == 0)
             this.next();
     };
     // Executing the previous event
     eventManager.prototype.previous = function () {
+        this.pause();
         if (this.previousEvents.length == 0)
             return;
         var event = this.previousEvents.pop();
-        this.delayTime = 0; //TODO: Should there be a delay when stepping backwards?
+        //this.delayTime = 500; //this line set to 0 caused: when resuming all animations are played out. Intention Delay when stepping backwards.
         event.previous();
         this.nextEvents.unshift(event);
     };
@@ -35,13 +35,14 @@ var eventManager = /** @class */ (function () {
         this.nextEvents.push(event);
     };
     eventManager.prototype.start = function () {
-        clearInterval(this.eventThread);
         var manager = this; // Anonymous functions cannot access this...
+        this.paused = false;
         this.eventThread = setInterval(function () {
             manager.next();
         }, manager.delayTime);
     };
     eventManager.prototype.pause = function () {
+        this.paused = true;
         clearInterval(this.eventThread);
     };
     return eventManager;
