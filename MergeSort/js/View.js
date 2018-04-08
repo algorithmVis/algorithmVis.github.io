@@ -80,6 +80,19 @@ var view = /** @class */ (function () {
         }(element, back);
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
+    view.prototype.moveElementsToPlace = function (element, px, back) {
+        var forwardSteps = function (element, px) {
+            return function () {
+                moveElementsToPlace(element, px);
+            };
+        }(element, px);
+        var backwardSteps = function (element, back) {
+            return function () {
+                moveElementsBackToPlace(element, back);
+            };
+        }(element, back);
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
+    };
     view.prototype.setColorInArrayElement = function (index, color, colorOn) {
         var forwardSteps = function (index, color, colorOn) {
             return function () {
@@ -103,7 +116,7 @@ var view = /** @class */ (function () {
             return function () {
                 setColors(index, color, !colorOn);
             };
-        }(index, color, colorOn);
+        }(index, color, !colorOn);
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
     view.prototype.pause = function () {

@@ -10,6 +10,8 @@ let n: number = 10;
 
 let sortArray: number[] = [];
 let copyArray: number[] = [];
+let pivotElements: number[] = [];
+let pivCount: number = 0;
 let running = true;
 
 function checkIfAlreadyRunning() {
@@ -27,8 +29,10 @@ function startMergeSort() {
 
 function mergesort(array: number[]): any {
     if (array.length < 2) {
-        //denne er ekkel
-        control.deselectPivotElement(array[0]);
+        pivotHelper(array[0]);
+
+        //control.deselectPivotElement(array[0]);
+
         return array;
 
     } else {
@@ -43,6 +47,8 @@ function mergesort(array: number[]): any {
 
         //denne og er ekkel
         control.setPivotElement(right[0]);
+        pivotElements[pivCount] = right[0];
+        pivCount++;
 
         control.setColorInArrayElements(left, 1, true);
         control.setColorInArrayElements(right, 2, true);
@@ -60,6 +66,9 @@ function mergesort(array: number[]): any {
 function merge(left: number[], right: number[]) {
     let result: number[] = [];
     let testing: number[] = copyArray.slice(0);
+    control.setPivotElement(right[0]);
+    pivotElements[pivCount] = right[0];
+    pivCount++;
 
     let tempLeftIndex: number = 0;
     let tempRightIndex: number = 0;
@@ -81,6 +90,7 @@ function merge(left: number[], right: number[]) {
             tempLeftIndex++;
 
         } else {
+            pivotHelper(right[0]);
             control.setColorInArrayElement(right[tempRightIndex], 3, true);
             control.moveElementToPlace(right[tempRightIndex], counter, copyArray.indexOf(right[tempRightIndex]));
 
@@ -93,28 +103,58 @@ function merge(left: number[], right: number[]) {
     }
 
     if (right.slice(tempRightIndex).length > 0) {
+        pivotHelper(right[0]);
         let moreRight = right.slice(tempRightIndex);
         control.setColorInArrayElements(moreRight, 3, true);
+        let elems: number[] = [];
+        let count: number[] = [];
+        let back: number[] = [];
+
         for (let i = 0; i < moreRight.length; i++) {
-            control.moveElementToPlace(moreRight[i], counter, copyArray.indexOf(moreRight[i]));
+            elems[i] = moreRight[i];
+            count[i] = counter;
+            back[i] = copyArray.indexOf(moreRight[i]);
 
             testing[counter] = moreRight[i];
             counter++;
         }
+        control.moveElementsToPlace(elems, count, back);
     }
     if (left.slice(tempLeftIndex).length > 0) {
         let moreLeft = left.slice(tempLeftIndex);
         control.setColorInArrayElements(moreLeft, 3, true);
+        let elems: number[] = [];
+        let count: number[] = [];
+        let back: number[] = [];
+
         for (let i = 0; i < moreLeft.length; i++) {
-            control.moveElementToPlace(moreLeft[i], counter, copyArray.indexOf(moreLeft[i]));
+            elems[i] = moreLeft[i];
+            count[i] = counter;
+            back[i] = copyArray.indexOf(moreLeft[i]);
 
             testing[counter] = moreLeft[i];
             counter++;
         }
+        control.moveElementsToPlace(elems, count, back);
     }
+
+    pivotHelper(right[0]);
+
     copyArray = testing.slice(0);
     control.setColorInArrayElements(testing, 3, false);
     return result.concat(left.slice(tempLeftIndex)).concat(right.slice(tempRightIndex));
+}
+
+function pivotHelper(number: number) {
+    for (let i = 0; i < pivotElements.length; i++) {
+        if (pivotElements[i] == number) {
+            pivotElements = pivotElements.filter(function (item) {
+                return item !== number;
+            })
+            pivCount--;
+            control.deselectPivotElement(number);
+        }
+    }
 }
 
 function setRandomMyArray() {

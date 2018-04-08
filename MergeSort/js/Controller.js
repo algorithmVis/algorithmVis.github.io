@@ -17,6 +17,9 @@ var controller = /** @class */ (function () {
     controller.prototype.moveElementToPlace = function (element, px, back) {
         viewer.moveElementToPlace(element, px, back);
     };
+    controller.prototype.moveElementsToPlace = function (element, px, back) {
+        viewer.moveElementsToPlace(element, px, back);
+    };
     controller.prototype.setColorInArrayElement = function (index, color, colorOn) {
         viewer.setColorInArrayElement(index, color, colorOn);
     };

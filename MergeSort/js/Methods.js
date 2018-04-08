@@ -65,7 +65,6 @@ function moveElementToPlace(element, px) {
     }
 }
 function moveElementBackToPlace(element, px) {
-    console.log(px + " " + element);
     var $elem = $("#" + insElemNr + element);
     var moveLeft = $elem.css("left");
     var pos = (Number)(moveLeft.substring(0, moveLeft.length - 2));
@@ -82,6 +81,50 @@ function moveElementBackToPlace(element, px) {
         if ($elem.offset().top > 170) {
             var newTop = parseInt($elem.css('top'), 10) + LEVEL_HEIGHT;
             $elem.animate({ top: newTop + "px" }, 500);
+        }
+    }
+}
+function moveElementsToPlace(element, px) {
+    for (var i = 0; i < element.length; i++) {
+        var $elem = $("#" + insElemNr + element[i]);
+        var moveLeft = $elem.css("left");
+        var pos = (Number)(moveLeft.substring(0, moveLeft.length - 2));
+        var pixel = px[i] * 85;
+        if (pos > pixel) {
+            if ($elem.offset().top > 170) {
+                var newTop = parseInt($elem.css('top'), 10) - LEVEL_HEIGHT;
+                $elem.animate({ top: newTop + "px" }, 500);
+            }
+            $elem.animate({ left: pixel + "px" }, 1000);
+        }
+        else {
+            $elem.animate({ left: pixel + "px" }, 1000);
+            if ($elem.offset().top > 170) {
+                var newTop = parseInt($elem.css('top'), 10) - LEVEL_HEIGHT;
+                $elem.animate({ top: newTop + "px" }, 500);
+            }
+        }
+    }
+}
+function moveElementsBackToPlace(element, back) {
+    for (var i = 0; i < element.length; i++) {
+        var $elem = $("#" + insElemNr + element[i]);
+        var moveLeft = $elem.css("left");
+        var pos = (Number)(moveLeft.substring(0, moveLeft.length - 2));
+        var pixel = back[i] * 85;
+        if (pos > pixel) {
+            if ($elem.offset().top > 170) {
+                var newTop = parseInt($elem.css('top'), 10) + LEVEL_HEIGHT;
+                $elem.animate({ top: newTop + "px" }, 500);
+            }
+            $elem.animate({ left: pixel + "px" }, 1000);
+        }
+        else {
+            $elem.animate({ left: pixel + "px" }, 1000);
+            if ($elem.offset().top > 170) {
+                var newTop = parseInt($elem.css('top'), 10) + LEVEL_HEIGHT;
+                $elem.animate({ top: newTop + "px" }, 500);
+            }
         }
     }
 }

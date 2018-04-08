@@ -62,7 +62,7 @@ function returnArray() {
     return array;
 }
 
-function getArray(ran:string) {
+function getArray(ran:string):any {
 // Setting Random array
     if (ran === "random") {
         array = setRandomMyArray();
