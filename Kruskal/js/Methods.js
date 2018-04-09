@@ -7,6 +7,7 @@ var randomWeight = 0;
 var nodes = 0;
 var MAX_NODES = 10;
 var edges = 0;
+var totalWeight = 0;
 function highlightThisEdge(index) {
     $("#edge" + index).css({ "stroke": "rgb(16, 130, 219)", "stroke-width": "6" });
 }
@@ -21,7 +22,7 @@ function transparentEdge(index) {
     $("#edge" + index).css({ "opacity": 0.15 });
     $("#edgeWeight" + index).css({ "opacity": 0.15 });
 }
-function detransparentEdge(index) {
+function deTransparentEdge(index) {
     $("#edge" + index).css({ "opacity": 1 });
     $("#edgeWeight" + index).css({ "opacity": 1 });
 }
@@ -30,6 +31,9 @@ function addThisNode(x, y) {
         addNode(nodes, x, y);
         nodes++;
     }
+}
+function removeThisNode() {
+    removeNode(--nodes);
 }
 function selectNodes(n1, n2, select) {
     if (select == true) {
@@ -44,6 +48,9 @@ function selectNodes(n1, n2, select) {
 function connectNodes(node1, node2) {
     randomWeight = Math.floor(Math.random() * 10) + 1;
     addWeightedEdge(edges++, node1, node2, randomWeight);
+}
+function removeConnectedNodes() {
+    removeWeightedEdge(--edges);
 }
 function disableButton() {
     $("#start").attr({ disabled: "true" });
@@ -100,8 +107,9 @@ function writeEdge(i, node1, node2, weight) {
     }
 }
 function writeTotalWeight(weight) {
+    totalWeight += weight;
     $("#totalWeight").empty();
-    $("#totalWeight").append("<p> Total weight: " + weight + " </p>");
+    $("#totalWeight").append("<p> Total weight: " + totalWeight + " </p>");
 }
 function clearTotalWeight() {
     $("#totalWeight").empty();
@@ -111,6 +119,13 @@ function excludeEdgeText(i) {
     $("#edgeContent" + i).css({ "opacity": 0.2 });
     $("#edgeContent" + i).css({ "color": "black" });
 }
+function includeEdgeText(i) {
+    $("#edgeContent" + i).css({ "opacity": 1 });
+    $("#edgeContent" + i).css({ "color": "black" });
+}
 function higlightEdgeText(i) {
     $("#edgeContent" + i).css({ "color": "blue" });
+}
+function deHighlightEdgeText(i) {
+    $("#edgeContent" + i).css({ "color": "black" });
 }

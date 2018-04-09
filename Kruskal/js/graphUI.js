@@ -9,6 +9,9 @@ function addNode(id, xPos, yPos) {
     edgeIdList.push([]);
     $("#graphUI").append("<div id='node" + id + "' class='nodeUI' style='left:" + (xPos - 40) + "px; top:" + (yPos - 40) + "px;'><p>" + id + "</p></div>");
 }
+function removeNode(id) {
+    $("#node" + id).remove();
+}
 function addEdge(id, node1, node2) {
     edgeIdList[node1][node2] = id;
     edgeIdList[node2][node1] = id;
@@ -32,8 +35,15 @@ function addWeightedEdge(id, n1, n2, weight) {
         "style='top: " + (y + unitScale * unit.y) + "px; left: " + (x + unitScale * unit.x) + "px'>" +
         weight + "</p>");
 }
+function removeWeightedEdge(id) {
+    $("#edge" + id).remove();
+    $("#edgeWeight" + id).remove();
+}
 function addNodeAndEdge(id, node1, node2, weight) {
     triplets[id] = [node1, node2, weight];
+}
+function getEdgeInfo(id) {
+    return triplets[id];
 }
 function resetGraphUI() {
     $("#graphUI div.nodeUI").each(function () {

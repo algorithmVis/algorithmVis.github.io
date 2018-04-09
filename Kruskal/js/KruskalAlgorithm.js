@@ -18,7 +18,6 @@ function startKruskal() {
         currentEdge = getEdgeId(node1, node2);
         writeEdge(currentEdge, node1, node2, weight);
     }
-    var sum = 0;
     var j = 0;
     while (edgeList.length > 0) {
         // Optimization -> Stop algorithm after n-1 edges are in the MST
@@ -33,8 +32,7 @@ function startKruskal() {
             controller.highlightEdgeText(currentEdge);
             controller.highlightMyEdge(currentEdge);
             union(node1, node2);
-            sum = sum + weight;
-            controller.addWeightToSum(sum);
+            controller.addWeightToSum(weight);
             j++;
         }
         else {

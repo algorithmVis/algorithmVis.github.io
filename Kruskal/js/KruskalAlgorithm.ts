@@ -24,7 +24,6 @@ function startKruskal() {
         writeEdge(currentEdge, node1, node2, weight);
     }
 
-    let sum = 0;
     let j: number = 0;
 
     while (edgeList.length > 0) {
@@ -43,8 +42,7 @@ function startKruskal() {
             controller.highlightMyEdge(currentEdge);
 
             union(node1, node2);
-            sum = sum + weight;
-            controller.addWeightToSum(sum);
+            controller.addWeightToSum(weight);
 
             j++;
         } else {
@@ -57,7 +55,7 @@ function startKruskal() {
     arr = [];
     queue = [];
     currentEdge = 0;
-    
+
     controller.enableStartButtion();
 }
 

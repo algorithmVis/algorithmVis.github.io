@@ -14,6 +14,10 @@ function addNode(id: number, xPos: number, yPos: number) {
     $("#graphUI").append("<div id='node" + id + "' class='nodeUI' style='left:" + (xPos - 40) + "px; top:" + (yPos - 40) + "px;'><p>" + id + "</p></div>");
 }
 
+function removeNode(id: number) {
+    $("#node" + id).remove();
+}
+
 function addEdge(id: number, node1: number, node2: number) {
     edgeIdList[node1][node2] = id;
     edgeIdList[node2][node1] = id;
@@ -39,8 +43,17 @@ function addWeightedEdge(id: number, n1: number, n2: number, weight: number) {
         weight + "</p>");
 }
 
+function removeWeightedEdge(id: number) {
+    $("#edge" + id).remove();
+    $("#edgeWeight" + id).remove();
+}
+
 function addNodeAndEdge(id: number, node1: number, node2: number, weight: number) {
     triplets[id] = [node1, node2, weight];
+}
+
+function getEdgeInfo(id: number) {
+    return triplets[id];
 }
 
 
@@ -84,12 +97,12 @@ function getNodePosition(id: number) {
 
 function getNormal(x1: number, y1: number, x2: number, y2: number) {
     var dx = x2 - x1, dy = y2 - y1;
-    return {x: -dy, y: dx};
+    return { x: -dy, y: dx };
 }
 
 function getUnit(x, y) {
     var length = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
-    return {x: x / length, y: y / length};
+    return { x: x / length, y: y / length };
 }
 
 function deselectTwoNodes(n1: number, n2: number) {

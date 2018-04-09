@@ -38,6 +38,7 @@ var View = /** @class */ (function () {
         manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
     };
     View.prototype.removeEdge = function (edgeId) {
+        var _a = getEdgeInfo(edgeId), node1 = _a[0], node2 = _a[1], weight = _a[2];
         var forward = function (edgeId) {
             return function () {
                 removeEdge(edgeId);
@@ -45,7 +46,7 @@ var View = /** @class */ (function () {
         }(edgeId);
         var backward = function (edgeId) {
             return function () {
-                removeEdge(edgeId);
+                addWeightedEdge(edgeId, node1, node2, weight);
             };
         }(edgeId);
         manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
@@ -58,15 +59,15 @@ var View = /** @class */ (function () {
         }(edgeId);
         var backward = function (edgeId) {
             return function () {
-                detransparentEdge(edgeId);
+                deTransparentEdge(edgeId);
             };
         }(edgeId);
         manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
     };
-    View.prototype.detransparentEdge = function (edgeId) {
+    View.prototype.deTransparentEdge = function (edgeId) {
         var forward = function (edgeId) {
             return function () {
-                detransparentEdge(edgeId);
+                deTransparentEdge(edgeId);
             };
         }(edgeId);
         var backward = function (edgeId) {
@@ -82,12 +83,11 @@ var View = /** @class */ (function () {
                 addThisNode(x, y);
             };
         }(x, y);
-        var backward = function (x, y) {
+        var backward = function () {
             return function () {
-                //Skal være rmeove her
-                addThisNode(x, y);
+                removeThisNode();
             };
-        }(x, y);
+        }();
         manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
     };
     View.prototype.connectTheseNodes = function (node1, node2) {
@@ -98,8 +98,7 @@ var View = /** @class */ (function () {
         }(node1, node2);
         var backward = function (node1, node2) {
             return function () {
-                //Skal være remove her
-                addThisNode(node1, node2);
+                removeConnectedNodes();
             };
         }(node1, node2);
         manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
@@ -162,7 +161,12 @@ var View = /** @class */ (function () {
                 excludeEdgeText(i);
             };
         }(i);
-        manager.addEvent(new FrontendEvent(forward, forward, this.highlightEventDuration));
+        var backward = function (i) {
+            return function () {
+                includeEdgeText(i);
+            };
+        }(i);
+        manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
     };
     View.prototype.highlighText = function (i) {
         var forward = function (i) {
@@ -170,7 +174,12 @@ var View = /** @class */ (function () {
                 higlightEdgeText(i);
             };
         }(i);
-        manager.addEvent(new FrontendEvent(forward, forward, this.highlightEventDuration));
+        var backward = function (i) {
+            return function () {
+                deHighlightEdgeText(i);
+            };
+        }(i);
+        manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
     };
     View.prototype.addWeightToSum = function (weight) {
         var forward = function (weight) {
@@ -178,7 +187,12 @@ var View = /** @class */ (function () {
                 writeTotalWeight(weight);
             };
         }(weight);
-        manager.addEvent(new FrontendEvent(forward, forward, this.highlightEventDuration));
+        var backward = function (weight) {
+            return function () {
+                writeTotalWeight(-weight);
+            };
+        }(weight);
+        manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
     };
     View.prototype.resetAll = function () {
         resetGraphUI();
@@ -221,7 +235,17 @@ var View = /** @class */ (function () {
                 }
             };
         }(edgeList);
-        manager.addEvent(new FrontendEvent(forward, forward, this.highlightEventDuration));
+        var backward = function (edgeList) {
+            return function () {
+                for (var index in edgeList) {
+                    var _a = edgeList[index], node1 = _a[0], node2 = _a[1], weight = _a[2];
+                    var currentEdge_2 = getEdgeId(node1, node2);
+                    includeEdgeText(currentEdge_2);
+                    deTransparentEdge(currentEdge_2);
+                }
+            };
+        }(edgeList);
+        manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
     };
     return View;
 }());

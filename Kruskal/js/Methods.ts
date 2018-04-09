@@ -9,6 +9,7 @@ let randomWeight = 0;
 let nodes: number = 0;
 let MAX_NODES: number = 10;
 let edges: number = 0;
+let totalWeight: number = 0;
 
 function highlightThisEdge(index: number) {
     $("#edge" + index).css({ "stroke": "rgb(16, 130, 219)", "stroke-width": "6" });
@@ -28,7 +29,7 @@ function transparentEdge(index: number) {
     $("#edgeWeight" + index).css({ "opacity": 0.15 });
 }
 
-function detransparentEdge(index: number) {
+function deTransparentEdge(index: number) {
     $("#edge" + index).css({ "opacity": 1 });
     $("#edgeWeight" + index).css({ "opacity": 1 });
 }
@@ -38,6 +39,10 @@ function addThisNode(x: number, y: number) {
         addNode(nodes, x, y);
         nodes++;
     }
+}
+
+function removeThisNode() {
+    removeNode(--nodes);
 }
 
 function selectNodes(n1: number, n2: number, select: boolean) {
@@ -54,6 +59,10 @@ function selectNodes(n1: number, n2: number, select: boolean) {
 function connectNodes(node1: number, node2: number) {
     randomWeight = Math.floor(Math.random() * 10) + 1;
     addWeightedEdge(edges++, node1, node2, randomWeight);
+}
+
+function removeConnectedNodes() {
+    removeWeightedEdge(--edges);
 }
 
 function disableButton() {
@@ -104,7 +113,6 @@ function drawGraph(n: number) {
             graph3();
             break;
     }
-
 }
 
 function writeEdge(i: number, node1: number, node2: number, weight: number) {
@@ -118,8 +126,9 @@ function writeEdge(i: number, node1: number, node2: number, weight: number) {
 }
 
 function writeTotalWeight(weight: number) {
+    totalWeight += weight;
     $("#totalWeight").empty();
-    $("#totalWeight").append("<p> Total weight: " + weight + " </p>");
+    $("#totalWeight").append("<p> Total weight: " + totalWeight + " </p>");
 }
 
 function clearTotalWeight() {
@@ -133,6 +142,15 @@ function excludeEdgeText(i: number) {
     $("#edgeContent" + i).css({ "color": "black" });
 }
 
+function includeEdgeText(i: number) {
+    $("#edgeContent" + i).css({ "opacity": 1 });
+    $("#edgeContent" + i).css({ "color": "black" });
+}
+
 function higlightEdgeText(i: number) {
     $("#edgeContent" + i).css({ "color": "blue" });
+}
+
+function deHighlightEdgeText(i: number) {
+    $("#edgeContent" + i).css({ "color": "black" });
 }

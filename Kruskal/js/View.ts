@@ -48,6 +48,8 @@ class View {
 
 
     removeEdge(edgeId: number) {
+        let [node1, node2, weight] = getEdgeInfo(edgeId);
+
         var forward = function (edgeId) {
             return function () {
                 removeEdge(edgeId);
@@ -56,7 +58,7 @@ class View {
 
         var backward = function (edgeId) {
             return function () {
-                removeEdge(edgeId);
+                addWeightedEdge(edgeId, node1, node2, weight);
             }
         }(edgeId);
 
@@ -72,17 +74,17 @@ class View {
 
         var backward = function (edgeId) {
             return function () {
-                detransparentEdge(edgeId);
+                deTransparentEdge(edgeId);
             }
         }(edgeId);
 
         manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
     }
 
-    detransparentEdge(edgeId: number) {
+    deTransparentEdge(edgeId: number) {
         var forward = function (edgeId) {
             return function () {
-                detransparentEdge(edgeId);
+                deTransparentEdge(edgeId);
             }
         }(edgeId);
 
@@ -103,16 +105,14 @@ class View {
             }
         }(x, y);
 
-        var backward = function (x, y) {
+        var backward = function () {
             return function () {
-                //Skal være rmeove her
-                addThisNode(x, y);
+                removeThisNode();
             }
-        }(x, y);
+        }();
 
         manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
     }
-
 
     connectTheseNodes(node1: number, node2: number) {
         var forward = function (node1, node2) {
@@ -123,8 +123,7 @@ class View {
 
         var backward = function (node1, node2) {
             return function () {
-                //Skal være remove her
-                addThisNode(node1, node2);
+                removeConnectedNodes();
             }
         }(node1, node2);
 
@@ -203,7 +202,13 @@ class View {
             }
         }(i);
 
-        manager.addEvent(new FrontendEvent(forward, forward, this.highlightEventDuration));
+        var backward = function (i) {
+            return function () {
+                includeEdgeText(i);
+            }
+        }(i);
+
+        manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
     }
 
     highlighText(i: number) {
@@ -213,7 +218,13 @@ class View {
             }
         }(i);
 
-        manager.addEvent(new FrontendEvent(forward, forward, this.highlightEventDuration));
+        var backward = function (i) {
+            return function () {
+                deHighlightEdgeText(i);
+            }
+        }(i);
+
+        manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
     }
 
     addWeightToSum(weight: number) {
@@ -223,7 +234,13 @@ class View {
             }
         }(weight);
 
-        manager.addEvent(new FrontendEvent(forward, forward, this.highlightEventDuration));
+        var backward = function (weight) {
+            return function () {
+                writeTotalWeight(-weight);
+            }
+        }(weight);
+
+        manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
     }
 
     resetAll() {
@@ -271,7 +288,18 @@ class View {
             }
         }(edgeList);
 
-        manager.addEvent(new FrontendEvent(forward, forward, this.highlightEventDuration));
+        var backward = function (edgeList) {
+            return function () {
+                for (let index in edgeList) {
+                    let [node1, node2, weight] = edgeList[index];
+                    let currentEdge = getEdgeId(node1, node2);
+                    includeEdgeText(currentEdge);
+                    deTransparentEdge(currentEdge);
+                }
+            }
+        }(edgeList);
+
+        manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
     }
 }
 
