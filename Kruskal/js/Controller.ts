@@ -58,6 +58,18 @@ class Controller {
     enableStartButtion() {
         viewer.enableThisButton();
     }
+
+    excludeEdgeText(index: number) {
+        viewer.excludeText(index);
+    }
+
+    highlightEdgeText(index :number) {
+        viewer.highlighText(index);
+    }
+
+    addWeightToSum(weight: number) {
+        viewer.addWeightToSum(weight);
+    }
 }
 
 var controller: Controller = new Controller();

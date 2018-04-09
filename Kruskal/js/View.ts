@@ -198,12 +198,43 @@ class View {
         manager.addEvent(new FrontendEvent(forward, backward, 10));
     }
 
+    excludeText(i: number) {
+        var forward = function(i) {
+            return function() {
+                excludeEdgeText(i);
+            }
+        }(i);
+
+        manager.addEvent(new FrontendEvent(forward, forward, this.highlightEventDuration));
+    }
+
+    highlighText(i: number) {
+        var forward = function(i) {
+            return function() {
+                higlightEdgeText(i);
+            }
+        }(i);
+
+        manager.addEvent(new FrontendEvent(forward, forward, this.highlightEventDuration));
+    }
+
+    addWeightToSum(weight: number) {
+        var forward = function(weight) {
+            return function() {
+                writeTotalWeight(weight);
+            }
+        } (weight);
+
+        manager.addEvent(new FrontendEvent(forward, forward, this.highlightEventDuration));
+    }
+
     resetAll() {
         resetGraphUI();
         manager = new EventManager();
         manager.pause();
         manager.nextEvents = new Array;
         manager.previousEvents = new Array;
+        clearTotalWeight();
         arr = [];
         nodes = 0;
         edges = 0;

@@ -88,14 +88,14 @@ function numberOfNodes(value: number) {
 
 function drawGraph(n: number) {
     console.log("number" + n);
+    $("#edgeTable").empty();
+    viewer.resetAll(); //Not working, button must reset
 
     switch (+n) {
         case 3:
-            console.log("hello");
             graph3();
             break;
         case 4:
-            console.log(n);
             graph4();
             break;
         case 5:
@@ -117,7 +117,48 @@ function drawGraph(n: number) {
             graph10();
             break;
         default:
-            console.log("wassup");
+            graph3();
+            break;
     }
+
+}
+
+function writeEdge(i: number, node1: number, node2: number, weight: number) {
+    if (i != undefined && node1 != undefined && node2 != undefined && weight != undefined) {
+        $("#edgeTable").append("<li id='edgeElem" + i + "'>" +
+            "<div class='content' id='edgeContent" + i + "'>" +
+            "Node [" + node1 + "]  " +
+            "Node [" + node2 + "]  " +
+            "      Weight: " + weight + "</div></li>");
+    }
+}
+
+function writeTotalWeight(weight: number) {
+    $("#totalWeight").empty();
+    $("#totalWeight").append("<p> Total weight: " + weight + " </p>");
+}
+
+function clearTotalWeight() {
+    $("#totalWeight").empty();
+    $("#totalWeight").append("<p> Total weight: 0 </p>");
+}
+
+
+function excludeEdgeText(i: number) {
+    $("#edgeContent" + i).css({"opacity": 0.2});
+    $("#edgeContent" + i).css({"color": "black"});
+
+
+}
+
+function higlightEdgeText(i: number) {
+    $("#edgeContent" + i).css({"color": "blue"});
+}
+
+function swapTwoElements(i: number, j: number) {
+    var a = document.getElementById("edgeContent" + i);
+    var b = document.getElementById("edgeContent" + j);
+    a.parentNode.insertBefore(b, a);
+
 
 }

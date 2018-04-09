@@ -156,12 +156,37 @@ var View = /** @class */ (function () {
         }();
         manager.addEvent(new FrontendEvent(forward, backward, 10));
     };
+    View.prototype.excludeText = function (i) {
+        var forward = function (i) {
+            return function () {
+                excludeEdgeText(i);
+            };
+        }(i);
+        manager.addEvent(new FrontendEvent(forward, forward, this.highlightEventDuration));
+    };
+    View.prototype.highlighText = function (i) {
+        var forward = function (i) {
+            return function () {
+                higlightEdgeText(i);
+            };
+        }(i);
+        manager.addEvent(new FrontendEvent(forward, forward, this.highlightEventDuration));
+    };
+    View.prototype.addWeightToSum = function (weight) {
+        var forward = function (weight) {
+            return function () {
+                writeTotalWeight(weight);
+            };
+        }(weight);
+        manager.addEvent(new FrontendEvent(forward, forward, this.highlightEventDuration));
+    };
     View.prototype.resetAll = function () {
         resetGraphUI();
         manager = new EventManager();
         manager.pause();
         manager.nextEvents = new Array;
         manager.previousEvents = new Array;
+        clearTotalWeight();
         arr = [];
         nodes = 0;
         edges = 0;

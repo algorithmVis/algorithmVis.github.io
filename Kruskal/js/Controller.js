@@ -46,6 +46,15 @@ var Controller = /** @class */ (function () {
     Controller.prototype.enableStartButtion = function () {
         viewer.enableThisButton();
     };
+    Controller.prototype.excludeEdgeText = function (index) {
+        viewer.excludeText(index);
+    };
+    Controller.prototype.highlightEdgeText = function (index) {
+        viewer.highlighText(index);
+    };
+    Controller.prototype.addWeightToSum = function (weight) {
+        viewer.addWeightToSum(weight);
+    };
     return Controller;
 }());
 var controller = new Controller();

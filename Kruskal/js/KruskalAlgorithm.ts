@@ -22,20 +22,38 @@ function startKruskal() {
         arr[i] = i;
     }
 
+    let sum = 0;
+    let j: number = 0;
+
     while (edgeList.length > 0) {
         let [node1, node2, weight] = edgeList.pop();
+
         currentEdge = getEdgeId(node1, node2);
+        writeEdge(currentEdge, node1, node2, weight);
+
         controller.selectTwoNodes(node1, node2);
+        controller.highlightEdgeText(currentEdge);
         controller.highlightMyEdge(currentEdge);
+        console.log("Edge: " + currentEdge);
+
         if (connected(node1, node2) == false) {
             union(node1, node2);
+            sum = sum + weight;
+            controller.addWeightToSum(sum);
         }
         else {
             controller.dehighlightMyEdge(currentEdge);
             controller.transparentMyEdge(currentEdge);
+            controller.excludeEdgeText(currentEdge);
         }
         controller.deselectTwoNodes(node1, node2);
+        j++;
     }
+    /*
+    swapTwoElements(0, 1);
+    swapTwoElements(1,2);
+*/
+
 
     arr = [];
     queue = [];
