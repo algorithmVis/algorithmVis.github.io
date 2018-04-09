@@ -23,9 +23,8 @@ function startMergeSort() {
 }
 function mergesort(array) {
     if (array.length < 2) {
-        if (pivotHelper(array[0])) {
-            control.deselectPivotElement(array[0]);
-        }
+        pivotHelper(array[0]);
+        //control.deselectPivotElement(array[0]);
         return array;
     }
     else {

@@ -25,6 +25,7 @@ function startMergeSort() {
     copyArray = returnArray();
     mergesort(copyArray);
     control.setColorInArrayElements(copyArray, 3, true);
+
 }
 
 function mergesort(array: number[]): any {
@@ -150,7 +151,7 @@ function pivotHelper(number: number) {
         if (pivotElements[i] == number) {
             pivotElements = pivotElements.filter(function (item) {
                 return item !== number;
-            })
+            });
             pivCount--;
             control.deselectPivotElement(number);
         }

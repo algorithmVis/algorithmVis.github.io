@@ -54,6 +54,7 @@ function deselectPivotElement(index: number) {
 }
 
 function moveElementToPlace(element: number, px: number) {
+
     let $elem = $("#" + insElemNr + element);
     let moveLeft: string = $elem.css("left");
     let pos: number = (Number)(moveLeft.substring(0, moveLeft.length - 2));
@@ -81,17 +82,15 @@ function moveElementBackToPlace(element: number, px: number) {
     px = px * 85;
 
     if (pos > px) {
-        if ($elem.offset().top > 170) {
-            var newTop: number = parseInt($elem.css('top'), 10) + LEVEL_HEIGHT;
-            $elem.animate({top: newTop + "px"}, 500);
-        }
+        var newTop: number = parseInt($elem.css('top'), 10) + LEVEL_HEIGHT;
+        $elem.animate({top: newTop + "px"}, 500);
+
         $elem.animate({left: px + "px"}, 1000);
     } else {
         $elem.animate({left: px + "px"}, 1000);
-        if ($elem.offset().top > 170) {
-            var newTop: number = parseInt($elem.css('top'), 10) + LEVEL_HEIGHT;
-            $elem.animate({top: newTop + "px"}, 500);
-        }
+        var newTop: number = parseInt($elem.css('top'), 10) + LEVEL_HEIGHT;
+        $elem.animate({top: newTop + "px"}, 500);
+
     }
 }
 
@@ -126,17 +125,15 @@ function moveElementsBackToPlace(element: number[], back: number[]) {
         let pixel: number = back[i] * 85;
 
         if (pos > pixel) {
-            if ($elem.offset().top > 170) {
-                var newTop: number = parseInt($elem.css('top'), 10) + LEVEL_HEIGHT;
-                $elem.animate({top: newTop + "px"}, 500);
-            }
+            var newTop: number = parseInt($elem.css('top'), 10) + LEVEL_HEIGHT;
+            $elem.animate({top: newTop + "px"}, 500);
             $elem.animate({left: pixel + "px"}, 1000);
         } else {
+            var newTop: number = parseInt($elem.css('top'), 10) + LEVEL_HEIGHT;
+            $elem.animate({top: newTop + "px"}, 500);
             $elem.animate({left: pixel + "px"}, 1000);
-            if ($elem.offset().top > 170) {
-                var newTop: number = parseInt($elem.css('top'), 10) + LEVEL_HEIGHT;
-                $elem.animate({top: newTop + "px"}, 500);
-            }
+
+
         }
     }
 }
