@@ -2,8 +2,7 @@
 ///<reference path="graphUI.ts"/>
 ///<reference path="graphStructureController.ts"/>
 ///<reference path="eventManager.ts"/>
-var $;
-var arrayElements = new Array;
+var arrayElements = [];
 var array;
 var ArrayElement = /** @class */ (function () {
     function ArrayElement(id) {
@@ -37,7 +36,9 @@ function getArrayElement(id) {
         console.log("Illegal argument for getArrayElement: " + id);
         return;
     }
-    return arrayElements.filter(function (elem) { return elem.id == id; })[0];
+    return arrayElements.filter(function (elem) {
+        return elem.id == id;
+    })[0];
 }
 function removeVisitedArray() {
     // Remove elements

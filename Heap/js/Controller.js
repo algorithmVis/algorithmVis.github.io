@@ -39,8 +39,8 @@ var Controller = /** @class */ (function () {
     Controller.prototype.setSelectedIndex = function (index, select) {
         viewer.selectThisIndex(index, select);
     };
-    Controller.prototype.setValueAtIndex = function (i, bValue) {
-        viewer.setValueAtThisIndex(i, bValue);
+    Controller.prototype.setValueAtIndex = function (i, bValue, oldVal) {
+        viewer.setValueAtThisIndex(i, bValue, oldVal);
     };
     Controller.prototype.setValueAtSortIndex = function (i, bValue) {
         viewer.setValueAtThisSortIndex(i, bValue);

@@ -17,12 +17,11 @@ var HeapSort = /** @class */ (function (_super) {
     function HeapSort(size) {
         var _this = _super.call(this, size) || this;
         _this.insertElems(size);
-        _this.currIndex++;
         _this.sortIndex = _this.currIndex - 1;
         return _this;
     }
     HeapSort.prototype.sort = function () {
-        for (var i = this.array.length; i >= 0; i--) {
+        for (var i = this.sortIndex; i >= 0; i--) {
             control.setArrow(this.sortIndex);
             this.remove();
         }
@@ -30,6 +29,7 @@ var HeapSort = /** @class */ (function (_super) {
     HeapSort.prototype.remove = function () {
         // Remove root element, set last element to root and start frontendevents
         this.currIndex--;
+        var oldVal = this.array[0];
         control.setSelectedIndex(0, true);
         control.highlightNode(0, "orange");
         control.highlightSortElem(this.sortIndex, "orange");
@@ -38,7 +38,7 @@ var HeapSort = /** @class */ (function (_super) {
         this.exch(0, this.currIndex);
         control.swapNode(this.currIndex, 0);
         control.removeElem(this.currIndex, false);
-        control.setValueAtIndex(this.currIndex, " ");
+        control.setValueAtIndex(this.currIndex, " ", oldVal);
         this.sink(0, this.currIndex - 1);
         control.highlightSortElem(this.sortIndex--, "green");
         control.saveState(this.array);

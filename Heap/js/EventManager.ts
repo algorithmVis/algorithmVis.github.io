@@ -1,6 +1,6 @@
 /**
  * Created by knutandersstokke on 16.10.2016.
- *
+ * Modified by Øyvind Skeie Liland
  */
 
 declare var $: any;
@@ -14,6 +14,7 @@ class EventManager {
 
     // Executing the next event in the queue, adding it to 'previous'
     next() {
+        viewer.playButtonState();
         if (this.nextEvents.length == 0) {
             return;
         }
@@ -27,13 +28,10 @@ class EventManager {
 
     // Executing the previous event
     previous() {
-        this.pause();
         if (this.previousEvents.length == 0)
             return;
         var event: FrontendEvent = (<FrontendEvent>this.previousEvents.pop());
         //this.delayTime = 0; //TODO: Should there be a delay when stepping backwards?
-        console.log(event);
-        console.log(this.previousEvents);
         
         event.previous();
         this.nextEvents.unshift(event);

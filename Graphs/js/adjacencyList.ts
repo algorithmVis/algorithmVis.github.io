@@ -2,7 +2,7 @@
 ///<reference path="dfsBfsController.ts"/>
 declare var $;
 
-var adjacencyList: number[][] = [];
+let adjacencyList: number[][] = [];
 
 function addNewAdjList(nodeId: number) {
     adjacencyList.push([]);

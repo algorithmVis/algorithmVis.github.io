@@ -1,18 +1,20 @@
 ///<reference path="adjacencyList.ts"/>
 ///<reference path="graphUI.ts"/>
 
-declare var algorithm;
-declare var collapse;
+declare let algorithm: string;
+declare let collapse: string;
 
-var nodes: number = 0;
-var MAX_NODES: number = 8;
-var edges: number = 0;
+let nodes: number = 0;
+let MAX_NODES: number = 8;
+let edges: number = 0;
 
 function graphUIClicked(x: number, y: number) {
     if (nodes < MAX_NODES) {
-        addNode(nodes, x, y);
-        addNewAdjList(nodes);
-        nodes++;
+        if (!checkOverlap(x, y)) {
+            addNode(nodes, x, y);
+            addNewAdjList(nodes);
+            nodes++;
+        }
     }
 }
 
@@ -29,6 +31,21 @@ function resetAll() {
     nodes = 0;
     edges = 0;
     manager = new eventManager();
+}
+
+function checkOverlap(x: number, y: number) {
+    console.log("overlap check");
+    let overlap = false;
+    $("#graphUI").children().each(function () {
+        console.log(this);
+        if (this.id !== "edgeSvg") {
+            let pos = $("#" + this.id).position();
+            if (pos.left - 35 < x && pos.left + 115 > x && pos.top - 35 < y && pos.top + 115 > y) {
+                overlap = true;
+            }
+        }
+    });
+    return overlap;
 }
 
 

@@ -4,30 +4,30 @@
 ///<reference path="eventManager.ts"/>
 ///<reference path="visitedArray.ts"/>
 
-var visited: boolean [];
-var bfsQueue: number [];
-var currentNode;
-var highlightEventDuration = 0;
-var visitEventDuration = 2000;
+let visited: boolean [];
+let bfsQueue: number [];
+let currentNode: number;
+let highlightEventDuration = 0;
+let visitEventDuration = 2000;
 
 function startBfs(startIndex: number) {
-    resetVisited(nodes)
-    bfsQueue = []
+    resetVisited(nodes);
+    bfsQueue = [];
     currentNode = startIndex;
 
     bfsQueue.push(startIndex);
 
     while (bfsQueue.length != 0) {
-        var v = bfsQueue.shift();
+        let v: number = bfsQueue.shift();
         popFromBfsQueue(v);
         visit(v);
 
-        var adjacent = adjacencyList[v];
-        for (var i = 0; i < adjacent.length; i++) {
-            var w: number = adjacent[i];
+        let adjacent = adjacencyList[v];
+        for (let i = 0; i < adjacent.length; i++) {
+            let w: number = adjacent[i];
             if (!visited[w] && $.inArray(w, bfsQueue)) {
-                addToBfsQueue(w)
-                bfsQueue.push(w)
+                addToBfsQueue(w);
+                bfsQueue.push(w);
             }
         }
     }
@@ -36,33 +36,33 @@ function startBfs(startIndex: number) {
 }
 
 function addToBfsQueue(v: number) {
-    var forward = function (id) {
+    let forward = function (id) {
         return function () {
             addQueueElement(id);
         };
-    }(v)
+    }(v);
 
-    var backwards = function (id) {
+    let backwards = function (id) {
         return function () {
             popQueueElement(id);
         };
-    }(v)
+    }(v);
 
     manager.addEvent(new FrontendEvent(forward, backwards, visitEventDuration))
 }
 
 function popFromBfsQueue(v: number) {
-    var forward = function (id) {
+    let forward = function (id) {
         return function () {
             popQueueElement(id);
         };
-    }(v)
+    }(v);
 
-    var backwards = function (id) {
+    let backwards = function (id) {
         return function () {
             addQueueElement(id);
         };
-    }(v)
+    }(v);
 
     manager.addEvent(new FrontendEvent(forward, backwards, visitEventDuration))
 }
@@ -78,8 +78,8 @@ function startDfs(startIndex: number) {
 function dfs(v: number) {
     visit(v);
 
-    var adjacent = adjacencyList[v];
-    for (var i = 0; i < adjacent.length; i++) {
+    let adjacent = adjacencyList[v];
+    for (let i = 0; i < adjacent.length; i++) {
         if (visited[adjacent[i]]) continue;
         setHighlightEdge(getEdgeId(v, adjacent[i]), true);
         dfs(adjacent[i]);
@@ -89,7 +89,7 @@ function dfs(v: number) {
 }
 
 function setHighlightEdge(edgeId: number, highlight: boolean) {
-    var forward = function (id, h) {
+    let forward = function (id, h) {
         return function () {
             if (h) {
                 $("#edge" + id).css({"stroke": "rgb(16, 130, 219)", "stroke-width": "6"});
@@ -98,9 +98,9 @@ function setHighlightEdge(edgeId: number, highlight: boolean) {
                 $("#edge" + id).css({"stroke": "rgb(0, 0, 0)", "stroke-width": "4"});
             } //remove highlight
         };
-    }(edgeId, highlight)
+    }(edgeId, highlight);
 
-    var backwards = function (id, h) {
+    let backwards = function (id, h) {
         return function () {
             if (h) {
                 $("#edge" + id).css({"stroke": "rgb(0, 0, 0)", "stroke-width": "4"});
@@ -109,14 +109,14 @@ function setHighlightEdge(edgeId: number, highlight: boolean) {
                 $("#edge" + id).css({"stroke": "rgb(16, 130, 219)", "stroke-width": "6"});
             } // add highlight
         };
-    }(edgeId, highlight)
+    }(edgeId, highlight);
 
     manager.addEvent(new FrontendEvent(forward, backwards, highlightEventDuration))
 }
 
 function visit(id: number) {
     visited[id] = true;
-    var forward = function (v, curr) {
+    let forward = function (v, curr) {
         return function () {
             $("#node" + curr).css("border", "6px solid black");
             $("#node" + v).css("background-color", "rgb(80, 250, 80)");
@@ -124,9 +124,9 @@ function visit(id: number) {
             $("#insElemNr" + v).html("<p>" + v + "</p><div> T </div>");
             $("#insElemNr" + v).addClass("marked");
         };
-    }(id, currentNode)
+    }(id, currentNode);
 
-    var backwards = function (v, curr) {
+    let backwards = function (v, curr) {
         return function () {
             $("#node" + v).css("background-color", "white")
             $("#node" + v).css("border", "6px solid black")
@@ -134,59 +134,59 @@ function visit(id: number) {
             $("#insElemNr" + v).html("<p>" + v + "</p><div> F </div>");
             $("#insElemNr" + v).removeClass("marked");
         };
-    }(id, currentNode)
+    }(id, currentNode);
 
     manager.addEvent(new FrontendEvent(forward, backwards, visitEventDuration));
     currentNode = id;
 }
 
 function resetAfterSearch() {
-    var forward = function (curr) {
+    let forward = function (curr) {
         return function () {
             $("#node" + curr).css("border", "6px solid black");
-            for (var i = 0; i < nodes; i++) {
+            for (let i = 0; i < nodes; i++) {
                 $("#node" + i).css("background-color", "white");
             }
         };
-    }(currentNode)
+    }(currentNode);
 
-    var backwards = function (curr) {
+    let backwards = function (curr) {
         return function () {
-            $("#node" + curr).css("border", "6px solid rgb(16, 130, 219)")
-            for (var i = 0; i < nodes; i++) {
+            $("#node" + curr).css("border", "6px solid rgb(16, 130, 219)");
+            for (let i = 0; i < nodes; i++) {
                 $("#node" + i).css("background-color", "rgb(80, 250, 80)");
             }
         };
-    }(currentNode)
+    }(currentNode);
 
     manager.addEvent(new FrontendEvent(forward, backwards, visitEventDuration));
 }
 
 function resetVisited(numNodes: number) {
     visited = [];
-    for (var i = 0; i < numNodes; i++) visited.push(false);
+    for (let i = 0; i < numNodes; i++) visited.push(false);
     setInitialArray();
 }
 
 function instantCollapseAll() {
-    for (var i = 0; i < nodes; i++) {
-        var width: number = $("#adjList" + i).width();
+    for (let i = 0; i < nodes; i++) {
+        let width: number = $("#adjList" + i).width();
         $("#adjList" + i).css({left: -width});
     }
 }
 
 function collapseAdjacencyList(index: number) {
-    for (var i = 0; i < nodes; i++) {
+    for (let i = 0; i < nodes; i++) {
         $("#adjList" + i).finish();
     }
 
-    var width: number = $("#adjList" + index).width();
+    let width: number = $("#adjList" + index).width();
     $("#adjList" + index).animate({left: -width});
 
 }
 
 function expandAdjacencyList(index: number) {
-    for (var i = 0; i < nodes; i++) {
+    for (let i = 0; i < nodes; i++) {
         $("#adjList" + i).finish();
         collapseAdjacencyList(i)
     }
