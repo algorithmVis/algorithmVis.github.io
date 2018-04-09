@@ -17,7 +17,7 @@ class ArrayElement {
     }
 }
 
-var arrayElements = new Array;
+let arrayElements = new Array;
 
 function setMyArray(jsonArray: string) {
     array = JSON.parse(jsonArray);
@@ -28,7 +28,7 @@ function setMyArray(jsonArray: string) {
         $(this).remove();
     });
 
-    for (var i = 0; i < array.length; i++) {
+    for (let i = 0; i < array.length; i++) {
         $("#indices").append("<p id='ind" + i + "' >" + i + "</p>");
         $("#arrayUl").append("<li id='insElemNr" + array[i] + "'><div>" + array[i] + "</div></li>");
         arrayElements.push(new ArrayElement(array[i]));
@@ -36,10 +36,10 @@ function setMyArray(jsonArray: string) {
 
     // Spreading elements horizontally
     $(document).ready(function () {
-        for (var i = 0; i < array.length; i++) {
-            var left = (i * 85);
-            var indLeft = (left + 7) - (i > 9 ? 7 : 0);
-            $("#ind" + i).animate({left: indLeft + "px"}, 1000)
+        for (let i = 0; i < array.length; i++) {
+            let left = (i * 85);
+            let indLeft = (left + 7) - (i > 9 ? 7 : 0);
+            $("#ind" + i).animate({left: indLeft + "px"}, 1000);
             arrayElements[i].animateLeft(left, 1000, "insElemNr");
         }
     });
@@ -50,8 +50,8 @@ function setMyArray(jsonArray: string) {
 }
 
 function centerElements() {
-    var arrayWidth = ((array.length - 1) * 85) + 50;
-    var left = -arrayWidth / 2 + 20;
+    let arrayWidth = ((array.length - 1) * 85) + 50;
+    let left = -arrayWidth / 2 + 20;
     $("#indices").animate({left: (left) + "px"}, 500);
     $("#arrayUl").animate({left: left + "px"}, 500); // +20? Ul is default 40px -> 40/2 = 20. Don't touch.
     $("svg#k-svg").animate({left: (left - 7) + "px"}, 500);
@@ -62,7 +62,7 @@ function returnArray() {
     return array;
 }
 
-function getArray(ran:string):any {
+function getArray(ran: string): any {
 // Setting Random array
     if (ran === "random") {
         array = setRandomMyArray();

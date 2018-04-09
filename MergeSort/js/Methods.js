@@ -1,8 +1,7 @@
 ///<reference path="InitArray.ts"/>
 var insElemNr = "insElemNr";
 var LEVEL_HEIGHT = 85;
-var defaultColor = "#fff";
-var colors = ["#f1f500", "#f4a742", "#f49050", "#3adb04"];
+var colors = ["#f1f500", "#f4a742", "#f49050", "#3adb04", "#ffffff"];
 function lowerElements(elements) {
     for (var i = 0; i < elements.length; i++) {
         var newTop = void 0;
@@ -23,22 +22,12 @@ function liftElements(elements) {
 function selectPivotElement(index) {
     $("#insElemNr" + index).addClass("middle");
 }
-function setColor(index, color, colorOn) {
-    if (colorOn) {
-        $("#insElemNr" + index).css('backgroundColor', colors[color]);
-    }
-    else {
-        $("#insElemNr" + index).css('backgroundColor', defaultColor); // Default color here
-    }
+function setColor(index, color) {
+    $("#insElemNr" + index).css('backgroundColor', colors[color]);
 }
-function setColors(index, color, colorOn) {
+function setColors(index, color) {
     for (var i = 0; i < index.length; i++) {
-        if (colorOn) {
-            $("#insElemNr" + index[i]).css('backgroundColor', colors[color]);
-        }
-        else {
-            $("#insElemNr" + index[i]).css('backgroundColor', defaultColor); // Default color here
-        }
+        $("#insElemNr" + index[i]).css('backgroundColor', colors[color[i]]);
     }
 }
 function deselectPivotElement(index) {

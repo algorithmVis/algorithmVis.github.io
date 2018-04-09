@@ -3,8 +3,7 @@
 declare var $;
 let insElemNr: string = "insElemNr";
 let LEVEL_HEIGHT: number = 85;
-let defaultColor: string = "#fff";
-let colors: string[] = ["#f1f500", "#f4a742", "#f49050", "#3adb04"];
+let colors: string[] = ["#f1f500", "#f4a742", "#f49050", "#3adb04", "#ffffff"];
 
 function lowerElements(elements: number[]) {
     for (let i = 0; i < elements.length; i++) {
@@ -29,24 +28,14 @@ function selectPivotElement(index: number) {
     $("#insElemNr" + index).addClass("middle");
 }
 
-function setColor(index: number, color: number, colorOn: boolean) {
-    if (colorOn) {
-        $("#insElemNr" + index).css('backgroundColor', colors[color]);
-    } else {
-        $("#insElemNr" + index).css('backgroundColor', defaultColor); // Default color here
-    }
+function setColor(index: number, color: number) {
+    $("#insElemNr" + index).css('backgroundColor', colors[color]);
 }
 
-function setColors(index: number[], color: number, colorOn: boolean) {
-
+function setColors(index: number[], color: number[]) {
     for (let i = 0; i < index.length; i++) {
-        if (colorOn) {
-            $("#insElemNr" + index[i]).css('backgroundColor', colors[color]);
-        } else {
-            $("#insElemNr" + index[i]).css('backgroundColor', defaultColor); // Default color here
-        }
+        $("#insElemNr" + index[i]).css('backgroundColor', colors[color[i]]);
     }
-
 }
 
 function deselectPivotElement(index: number) {
@@ -54,7 +43,6 @@ function deselectPivotElement(index: number) {
 }
 
 function moveElementToPlace(element: number, px: number) {
-
     let $elem = $("#" + insElemNr + element);
     let moveLeft: string = $elem.css("left");
     let pos: number = (Number)(moveLeft.substring(0, moveLeft.length - 2));
@@ -62,14 +50,14 @@ function moveElementToPlace(element: number, px: number) {
 
     if (pos > px) {
         if ($elem.offset().top > 170) {
-            var newTop: number = parseInt($elem.css('top'), 10) - LEVEL_HEIGHT;
+            let newTop: number = parseInt($elem.css('top'), 10) - LEVEL_HEIGHT;
             $elem.animate({top: newTop + "px"}, 500);
         }
         $elem.animate({left: px + "px"}, 1000);
     } else {
         $elem.animate({left: px + "px"}, 1000);
         if ($elem.offset().top > 170) {
-            var newTop: number = parseInt($elem.css('top'), 10) - LEVEL_HEIGHT;
+            let newTop: number = parseInt($elem.css('top'), 10) - LEVEL_HEIGHT;
             $elem.animate({top: newTop + "px"}, 500);
         }
     }
@@ -82,15 +70,13 @@ function moveElementBackToPlace(element: number, px: number) {
     px = px * 85;
 
     if (pos > px) {
-        var newTop: number = parseInt($elem.css('top'), 10) + LEVEL_HEIGHT;
+        let newTop: number = parseInt($elem.css('top'), 10) + LEVEL_HEIGHT;
         $elem.animate({top: newTop + "px"}, 500);
-
         $elem.animate({left: px + "px"}, 1000);
     } else {
         $elem.animate({left: px + "px"}, 1000);
-        var newTop: number = parseInt($elem.css('top'), 10) + LEVEL_HEIGHT;
+        let newTop: number = parseInt($elem.css('top'), 10) + LEVEL_HEIGHT;
         $elem.animate({top: newTop + "px"}, 500);
-
     }
 }
 
@@ -103,14 +89,14 @@ function moveElementsToPlace(element: number[], px: number[]) {
 
         if (pos > pixel) {
             if ($elem.offset().top > 170) {
-                var newTop: number = parseInt($elem.css('top'), 10) - LEVEL_HEIGHT;
+                let newTop: number = parseInt($elem.css('top'), 10) - LEVEL_HEIGHT;
                 $elem.animate({top: newTop + "px"}, 500);
             }
             $elem.animate({left: pixel + "px"}, 1000);
         } else {
             $elem.animate({left: pixel + "px"}, 1000);
             if ($elem.offset().top > 170) {
-                var newTop: number = parseInt($elem.css('top'), 10) - LEVEL_HEIGHT;
+                let newTop: number = parseInt($elem.css('top'), 10) - LEVEL_HEIGHT;
                 $elem.animate({top: newTop + "px"}, 500);
             }
         }
@@ -125,15 +111,13 @@ function moveElementsBackToPlace(element: number[], back: number[]) {
         let pixel: number = back[i] * 85;
 
         if (pos > pixel) {
-            var newTop: number = parseInt($elem.css('top'), 10) + LEVEL_HEIGHT;
+            let newTop: number = parseInt($elem.css('top'), 10) + LEVEL_HEIGHT;
             $elem.animate({top: newTop + "px"}, 500);
             $elem.animate({left: pixel + "px"}, 1000);
         } else {
-            var newTop: number = parseInt($elem.css('top'), 10) + LEVEL_HEIGHT;
+            let newTop: number = parseInt($elem.css('top'), 10) + LEVEL_HEIGHT;
             $elem.animate({top: newTop + "px"}, 500);
             $elem.animate({left: pixel + "px"}, 1000);
-
-
         }
     }
 }

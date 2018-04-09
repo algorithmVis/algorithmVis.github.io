@@ -1,17 +1,18 @@
 ///<reference path="MergeSortAlgorithm.ts"/>
 ///<reference path="Methods.ts"/>
+var colorInArray = [];
+var myArray;
 var view = /** @class */ (function () {
     function view() {
         this.paused = false;
-        this.lastArrowIndex = 0;
-        this.lastArrowNr = 0;
         this.animSpeed = 500;
     }
     view.prototype.serializeArray = function (array) {
         var returnString = "";
-        for (var _i = 0, array_1 = array; _i < array_1.length; _i++) {
-            var i = array_1[_i];
-            returnString = returnString.concat(i + "|");
+        myArray = array;
+        for (var i = 0; i < array.length; i++) {
+            colorInArray[i] = 4;
+            returnString = returnString.concat(array[i] + "|");
         }
         return returnString.substring(0, returnString.length - 1);
     };
@@ -24,19 +25,6 @@ var view = /** @class */ (function () {
         var backwardSteps = function (elems) {
             return function () {
                 liftElements(elems);
-            };
-        }(elems);
-        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
-    };
-    view.prototype.liftElements = function (elems) {
-        var forwardSteps = function (elems) {
-            return function () {
-                liftElements(elems);
-            };
-        }(elems);
-        var backwardSteps = function (elems) {
-            return function () {
-                lowerElements(elems);
             };
         }(elems);
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
@@ -93,30 +81,45 @@ var view = /** @class */ (function () {
         }(element, back);
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
-    view.prototype.setColorInArrayElement = function (index, color, colorOn) {
-        var forwardSteps = function (index, color, colorOn) {
+    view.prototype.setColorInArrayElement = function (index, color) {
+        var forwardSteps = function (index, color) {
             return function () {
-                setColor(index, color, colorOn);
+                setColor(index, color);
             };
-        }(index, color, colorOn);
-        var backwardSteps = function (index, color, colorOn) {
+        }(index, color);
+        var oldColor = colorInArray[myArray.indexOf(index)];
+        var backwardSteps = function (index, oldColor) {
             return function () {
-                setColor(index, color, !colorOn);
+                setColor(index, oldColor);
             };
-        }(index, color, colorOn);
+        }(index, oldColor);
+        colorInArray[myArray.indexOf(index)] = color;
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
-    view.prototype.setColorInArrayElements = function (index, color, colorOn) {
-        var forwardSteps = function (index, color, colorOn) {
+    view.prototype.setColorInArrayElements = function (index, color) {
+        var colorList = [];
+        for (var i = 0; i < index.length; i++) {
+            colorList[i] = color;
+        }
+        console.log("colorlist" + colorList);
+        var forwardSteps = function (index, colorList) {
             return function () {
-                setColors(index, color, colorOn);
+                setColors(index, colorList);
             };
-        }(index, color, colorOn);
-        var backwardSteps = function (index, color, colorOn) {
+        }(index, colorList);
+        var oldColor = [];
+        for (var i = 0; i < index.length; i++) {
+            oldColor[i] = colorInArray[myArray.indexOf(index[i])];
+        }
+        console.log(oldColor + " " + index);
+        var backwardSteps = function (index, oldColor) {
             return function () {
-                setColors(index, color, !colorOn);
+                setColors(index, oldColor);
             };
-        }(index, color, !colorOn);
+        }(index, oldColor);
+        for (var i = 0; i < index.length; i++) {
+            colorInArray[myArray.indexOf(index[i])] = color;
+        }
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
     view.prototype.pause = function () {

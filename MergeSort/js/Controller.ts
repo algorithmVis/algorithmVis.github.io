@@ -25,12 +25,12 @@ class controller {
         viewer.moveElementsToPlace(element, px, back);
     }
 
-    setColorInArrayElement(index: number, color: number, colorOn: boolean) {
-        viewer.setColorInArrayElement(index, color, colorOn);
+    setColorInArrayElement(index: number, color: number) {
+        viewer.setColorInArrayElement(index, color);
     }
 
-    setColorInArrayElements(index: number[], color: number, colorOn: boolean) {
-        viewer.setColorInArrayElements(index, color, colorOn);
+    setColorInArrayElements(index: number[], color: number) {
+        viewer.setColorInArrayElements(index, color);
     }
 
     setPause() {
@@ -38,4 +38,4 @@ class controller {
     }
 }
 
-var control: controller = new controller();
+let control: controller = new controller();

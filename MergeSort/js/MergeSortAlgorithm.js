@@ -19,12 +19,10 @@ function startMergeSort() {
     checkIfAlreadyRunning();
     copyArray = returnArray();
     mergesort(copyArray);
-    control.setColorInArrayElements(copyArray, 3, true);
 }
 function mergesort(array) {
     if (array.length < 2) {
         pivotHelper(array[0]);
-        //control.deselectPivotElement(array[0]);
         return array;
     }
     else {
@@ -38,11 +36,12 @@ function mergesort(array) {
         control.setPivotElement(right[0]);
         pivotElements[pivCount] = right[0];
         pivCount++;
-        control.setColorInArrayElements(left, 1, true);
-        control.setColorInArrayElements(right, 2, true);
+        control.setColorInArrayElements(left, 1);
+        control.setColorInArrayElements(right, 2);
         control.lowerElements(left);
         control.lowerElements(right);
-        control.setColorInArrayElements(array, 1, false);
+        control.setColorInArrayElements(left, 4);
+        control.setColorInArrayElements(right, 4);
         //Split until there is only 1 element left
         return merge(mergesort(left), mergesort(right));
     }
@@ -50,18 +49,24 @@ function mergesort(array) {
 function merge(left, right) {
     var result = [];
     var testing = copyArray.slice(0);
+    var workingNumbers = left.concat(right);
     control.setPivotElement(right[0]);
     pivotElements[pivCount] = right[0];
     pivCount++;
     var tempLeftIndex = 0;
     var tempRightIndex = 0;
     var counter = copyArray.indexOf(left[0]);
+    var leftAlreadyColored = false;
     while (tempLeftIndex < left.length && tempRightIndex < right.length) {
         //Compare the elements from each array
-        control.setColorInArrayElement(left[tempLeftIndex], 0, true);
-        control.setColorInArrayElement(right[tempRightIndex], 0, true);
+        if (!leftAlreadyColored) {
+            control.setColorInArrayElement(left[tempLeftIndex], 0);
+            leftAlreadyColored = true;
+        }
+        control.setColorInArrayElement(right[tempRightIndex], 0);
         if (left[tempLeftIndex] < right[tempRightIndex]) {
-            control.setColorInArrayElement(left[tempLeftIndex], 3, true);
+            leftAlreadyColored = false;
+            control.setColorInArrayElement(left[tempLeftIndex], 3);
             control.moveElementToPlace(left[tempLeftIndex], counter, copyArray.indexOf(left[tempLeftIndex]));
             result.push(left[tempLeftIndex]);
             testing[counter] = left[tempLeftIndex];
@@ -70,7 +75,7 @@ function merge(left, right) {
         }
         else {
             pivotHelper(right[0]);
-            control.setColorInArrayElement(right[tempRightIndex], 3, true);
+            control.setColorInArrayElement(right[tempRightIndex], 3);
             control.moveElementToPlace(right[tempRightIndex], counter, copyArray.indexOf(right[tempRightIndex]));
             result.push(right[tempRightIndex]);
             testing[counter] = right[tempRightIndex];
@@ -78,25 +83,9 @@ function merge(left, right) {
             tempRightIndex++;
         }
     }
-    if (right.slice(tempRightIndex).length > 0) {
-        pivotHelper(right[0]);
-        var moreRight = right.slice(tempRightIndex);
-        control.setColorInArrayElements(moreRight, 3, true);
-        var elems = [];
-        var count = [];
-        var back = [];
-        for (var i = 0; i < moreRight.length; i++) {
-            elems[i] = moreRight[i];
-            count[i] = counter;
-            back[i] = copyArray.indexOf(moreRight[i]);
-            testing[counter] = moreRight[i];
-            counter++;
-        }
-        control.moveElementsToPlace(elems, count, back);
-    }
     if (left.slice(tempLeftIndex).length > 0) {
         var moreLeft = left.slice(tempLeftIndex);
-        control.setColorInArrayElements(moreLeft, 3, true);
+        control.setColorInArrayElements(moreLeft, 3);
         var elems = [];
         var count = [];
         var back = [];
@@ -109,9 +98,24 @@ function merge(left, right) {
         }
         control.moveElementsToPlace(elems, count, back);
     }
-    pivotHelper(right[0]);
+    if (right.slice(tempRightIndex).length > 0) {
+        pivotHelper(right[0]);
+        var moreRight = right.slice(tempRightIndex);
+        control.setColorInArrayElements(moreRight, 3);
+        var elems = [];
+        var count = [];
+        var back = [];
+        for (var i = 0; i < moreRight.length; i++) {
+            elems[i] = moreRight[i];
+            count[i] = counter;
+            back[i] = copyArray.indexOf(moreRight[i]);
+            testing[counter] = moreRight[i];
+            counter++;
+        }
+        control.moveElementsToPlace(elems, count, back);
+    }
     copyArray = testing.slice(0);
-    control.setColorInArrayElements(testing, 3, false);
+    control.setColorInArrayElements(workingNumbers, 4);
     return result.concat(left.slice(tempLeftIndex)).concat(right.slice(tempRightIndex));
 }
 function pivotHelper(number) {

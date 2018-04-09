@@ -24,20 +24,14 @@ function startMergeSort() {
 
     copyArray = returnArray();
     mergesort(copyArray);
-    control.setColorInArrayElements(copyArray, 3, true);
-
 }
 
 function mergesort(array: number[]): any {
     if (array.length < 2) {
         pivotHelper(array[0]);
-
-        //control.deselectPivotElement(array[0]);
-
         return array;
 
     } else {
-
         let mid: number;
         let left: number[];
         let right: number[];
@@ -51,13 +45,14 @@ function mergesort(array: number[]): any {
         pivotElements[pivCount] = right[0];
         pivCount++;
 
-        control.setColorInArrayElements(left, 1, true);
-        control.setColorInArrayElements(right, 2, true);
+        control.setColorInArrayElements(left, 1);
+        control.setColorInArrayElements(right, 2);
 
         control.lowerElements(left);
         control.lowerElements(right);
 
-        control.setColorInArrayElements(array, 1, false);
+        control.setColorInArrayElements(left, 4);
+        control.setColorInArrayElements(right, 4);
 
         //Split until there is only 1 element left
         return merge(mergesort(left), mergesort(right));
@@ -67,6 +62,8 @@ function mergesort(array: number[]): any {
 function merge(left: number[], right: number[]) {
     let result: number[] = [];
     let testing: number[] = copyArray.slice(0);
+    let workingNumbers: number[] = left.concat(right);
+
     control.setPivotElement(right[0]);
     pivotElements[pivCount] = right[0];
     pivCount++;
@@ -74,14 +71,19 @@ function merge(left: number[], right: number[]) {
     let tempLeftIndex: number = 0;
     let tempRightIndex: number = 0;
     let counter: number = copyArray.indexOf(left[0]);
+    let leftAlreadyColored: boolean = false;
 
     while (tempLeftIndex < left.length && tempRightIndex < right.length) {
         //Compare the elements from each array
-        control.setColorInArrayElement(left[tempLeftIndex], 0, true);
-        control.setColorInArrayElement(right[tempRightIndex], 0, true);
+        if (!leftAlreadyColored) {
+            control.setColorInArrayElement(left[tempLeftIndex], 0);
+            leftAlreadyColored = true;
+        }
+        control.setColorInArrayElement(right[tempRightIndex], 0);
 
         if (left[tempLeftIndex] < right[tempRightIndex]) {
-            control.setColorInArrayElement(left[tempLeftIndex], 3, true);
+            leftAlreadyColored = false;
+            control.setColorInArrayElement(left[tempLeftIndex], 3);
             control.moveElementToPlace(left[tempLeftIndex], counter, copyArray.indexOf(left[tempLeftIndex]));
 
             result.push(left[tempLeftIndex]);
@@ -92,7 +94,7 @@ function merge(left: number[], right: number[]) {
 
         } else {
             pivotHelper(right[0]);
-            control.setColorInArrayElement(right[tempRightIndex], 3, true);
+            control.setColorInArrayElement(right[tempRightIndex], 3);
             control.moveElementToPlace(right[tempRightIndex], counter, copyArray.indexOf(right[tempRightIndex]));
 
             result.push(right[tempRightIndex]);
@@ -103,27 +105,9 @@ function merge(left: number[], right: number[]) {
         }
     }
 
-    if (right.slice(tempRightIndex).length > 0) {
-        pivotHelper(right[0]);
-        let moreRight = right.slice(tempRightIndex);
-        control.setColorInArrayElements(moreRight, 3, true);
-        let elems: number[] = [];
-        let count: number[] = [];
-        let back: number[] = [];
-
-        for (let i = 0; i < moreRight.length; i++) {
-            elems[i] = moreRight[i];
-            count[i] = counter;
-            back[i] = copyArray.indexOf(moreRight[i]);
-
-            testing[counter] = moreRight[i];
-            counter++;
-        }
-        control.moveElementsToPlace(elems, count, back);
-    }
     if (left.slice(tempLeftIndex).length > 0) {
         let moreLeft = left.slice(tempLeftIndex);
-        control.setColorInArrayElements(moreLeft, 3, true);
+        control.setColorInArrayElements(moreLeft, 3);
         let elems: number[] = [];
         let count: number[] = [];
         let back: number[] = [];
@@ -138,11 +122,27 @@ function merge(left: number[], right: number[]) {
         }
         control.moveElementsToPlace(elems, count, back);
     }
+    if (right.slice(tempRightIndex).length > 0) {
+        pivotHelper(right[0]);
+        let moreRight = right.slice(tempRightIndex);
+        control.setColorInArrayElements(moreRight, 3);
+        let elems: number[] = [];
+        let count: number[] = [];
+        let back: number[] = [];
 
-    pivotHelper(right[0]);
+        for (let i = 0; i < moreRight.length; i++) {
+            elems[i] = moreRight[i];
+            count[i] = counter;
+            back[i] = copyArray.indexOf(moreRight[i]);
+
+            testing[counter] = moreRight[i];
+            counter++;
+        }
+        control.moveElementsToPlace(elems, count, back);
+    }
 
     copyArray = testing.slice(0);
-    control.setColorInArrayElements(testing, 3, false);
+    control.setColorInArrayElements(workingNumbers, 4);
     return result.concat(left.slice(tempLeftIndex)).concat(right.slice(tempRightIndex));
 }
 
@@ -199,7 +199,6 @@ function setAlmostSortedArray(): number[] {
     }
     return arr;
 }
-
 
 function randomInt(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1)) + min;

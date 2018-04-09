@@ -27,7 +27,6 @@ var eventManager = /** @class */ (function () {
         if (this.previousEvents.length == 0)
             return;
         var event = this.previousEvents.pop();
-        //this.delayTime = 500; //this line set to 0 caused: when resuming all animations are played out. Intention Delay when stepping backwards.
         event.previous();
         this.nextEvents.unshift(event);
     };
@@ -86,15 +85,3 @@ var FrontendEvent = /** @class */ (function () {
     return FrontendEvent;
 }());
 var manager = new eventManager();
-/*
-/** How to add FrontendEvents to manager
-for(var i=0; i<10; i++) {
-    var f = function(k) {
-        return function() {console.log("Going forward, step " + k);};
-    }(i);
-    var b = function(k) {
-        return function() {console.log("Going backward, step " + k);}
-    }(i);
-    manager.addEvent(new FrontendEvent(f,b));
-}
-*/

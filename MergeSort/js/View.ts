@@ -7,47 +7,34 @@
  */
 
 declare var $;
+let colorInArray: number[] = [];
+let myArray: number[];
 
 class view {
 
     paused: boolean = false;
-    lastArrowIndex: number = 0;
-    lastArrowNr: number = 0;
     animSpeed: number = 500;
 
     serializeArray(array: number[]) {
         let returnString: string = "";
-        for (let i of array)
-            returnString = returnString.concat(i + "|");
+        myArray = array;
+        for (let i = 0; i < array.length; i++) {
+            colorInArray[i] = 4;
+            returnString = returnString.concat(array[i] + "|");
+        }
         return returnString.substring(0, returnString.length - 1);
     }
 
     lowerElements(elems: number[]) {
-        var forwardSteps = function (elems) {
+        let forwardSteps = function (elems) {
             return function () {
                 lowerElements(elems);
             }
         }(elems);
 
-        var backwardSteps = function (elems) {
+        let backwardSteps = function (elems) {
             return function () {
                 liftElements(elems);
-            }
-        }(elems);
-
-        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
-    }
-
-    liftElements(elems: number[]) {
-        var forwardSteps = function (elems) {
-            return function () {
-                liftElements(elems);
-            }
-        }(elems);
-
-        var backwardSteps = function (elems) {
-            return function () {
-                lowerElements(elems);
             }
         }(elems);
 
@@ -55,14 +42,13 @@ class view {
     }
 
     setPivotElement(index: number) {
-
-        var forwardSteps = function (index) {
+        let forwardSteps = function (index) {
             return function () {
                 selectPivotElement(index);
             }
         }(index);
 
-        var backwardSteps = function (index) {
+        let backwardSteps = function (index) {
             return function () {
                 deselectPivotElement(index);
             }
@@ -72,13 +58,13 @@ class view {
     }
 
     deselectPivotElement(index: number) {
-        var forwardSteps = function (index) {
+        let forwardSteps = function (index) {
             return function () {
                 deselectPivotElement(index);
             }
         }(index);
 
-        var backwardSteps = function (index) {
+        let backwardSteps = function (index) {
             return function () {
                 selectPivotElement(index);
             }
@@ -88,13 +74,13 @@ class view {
     }
 
     moveElementToPlace(element: number, px: number, back: number) {
-        var forwardSteps = function (element, px) {
+        let forwardSteps = function (element, px) {
             return function () {
                 moveElementToPlace(element, px);
             }
         }(element, px);
 
-        var backwardSteps = function (element, back) {
+        let backwardSteps = function (element, back) {
             return function () {
                 moveElementBackToPlace(element, back);
             }
@@ -104,13 +90,13 @@ class view {
     }
 
     moveElementsToPlace(element: number[], px: number[], back: number[]) {
-        var forwardSteps = function (element, px) {
+        let forwardSteps = function (element, px) {
             return function () {
                 moveElementsToPlace(element, px);
             }
         }(element, px);
 
-        var backwardSteps = function (element, back) {
+        let backwardSteps = function (element, back) {
             return function () {
                 moveElementsBackToPlace(element, back);
             }
@@ -119,35 +105,50 @@ class view {
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
 
-    setColorInArrayElement(index: number, color: number, colorOn: boolean) {
-        var forwardSteps = function (index, color, colorOn) {
+    setColorInArrayElement(index: number, color: number) {
+        let forwardSteps = function (index, color) {
             return function () {
-                setColor(index, color, colorOn);
+                setColor(index, color);
             }
-        }(index, color, colorOn);
+        }(index, color);
 
-        var backwardSteps = function (index, color, colorOn) {
+        let oldColor = colorInArray[myArray.indexOf(index)];
+        let backwardSteps = function (index, oldColor) {
             return function () {
-                setColor(index, color, !colorOn);
+                setColor(index, oldColor);
             }
-        }(index, color, colorOn);
+        }(index, oldColor);
 
+        colorInArray[myArray.indexOf(index)] = color;
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
 
-    setColorInArrayElements(index: number[], color: number, colorOn: boolean) {
-        var forwardSteps = function (index, color, colorOn) {
-            return function () {
-                setColors(index, color, colorOn);
-            }
-        }(index, color, colorOn);
+    setColorInArrayElements(index: number[], color: number) {
+        let colorList: number[] = [];
+        for (let i = 0; i < index.length; i++) {
+            colorList[i] = color;
+        }
 
-        var backwardSteps = function (index, color, colorOn) {
+        let forwardSteps = function (index, colorList) {
             return function () {
-                setColors(index, color, !colorOn);
+                setColors(index, colorList);
             }
-        }(index, color, !colorOn);
+        }(index, colorList);
 
+        let oldColor: number[] = [];
+        for (let i = 0; i < index.length; i++) {
+            oldColor[i] = colorInArray[myArray.indexOf(index[i])];
+        }
+
+        let backwardSteps = function (index, oldColor) {
+            return function () {
+                setColors(index, oldColor);
+            }
+        }(index, oldColor);
+
+        for (let i = 0; i < index.length; i++) {
+            colorInArray[myArray.indexOf(index[i])] = color;
+        }
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
 
@@ -161,8 +162,8 @@ class view {
         } else {
             this.paused = false;
             manager.unpause();
-            $('#backward').attr('disabled','disabled');
-            $('#forward').attr('disabled','disabled');
+            $('#backward').attr('disabled', 'disabled');
+            $('#forward').attr('disabled', 'disabled');
             $("#togglePause").html("Pause");
         }
     }
@@ -186,14 +187,15 @@ class view {
     slow() {
         manager.slow();
     }
+
     medium() {
         manager.medium();
     }
+
     fast() {
         manager.fast();
     }
-
 }
 
 //Craete a global variable
-var viewer: view = new view();
+let viewer: view = new view();
