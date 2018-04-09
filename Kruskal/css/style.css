@@ -4,7 +4,7 @@ body {
 
 .main-container {
     height: 560px;
-    width: 40%;
+    width: 30%;
     float: left;
     /* border: 2px solid black;  Remove this line */
     margin-left: 10px;
@@ -13,9 +13,10 @@ body {
 }
 
 div#graphUI.kruskal {
-    width: 80%;
+    width: 50%;
     border: solid 3px #b6b6b6;
     border-radius: 10px;
+    margin-right: 100px;
 }
 
 div#queueUI {
@@ -23,6 +24,41 @@ div#queueUI {
     width: 8%;
     height: 560px;
     position: relative;
+}
+
+div#edgeTitle {
+    position: relative;
+    box-sizing: border-box;
+    border: 10px;
+}
+
+div#edgeTable {
+    white-space: pre;
+    list-style-type: none;
+    position: relative;
+    height: 10%;
+
+}
+
+.edgeText-container {
+    width: 250px;
+    height: 50%;
+    line-height: 175%;
+    padding-left: 5px;
+    top: 10%;
+    border: solid 3px #b6b6b6;
+    border-radius: 10px;
+}
+
+.totalWeight-container {
+    width: 250px;
+    position: relative;
+    height: 25px;
+    padding-left: 5px;
+    padding-bottom: 20px;
+    margin-top: 3px;
+    border: solid 3px #b6b6b6;
+    border-radius: 10px;
 }
 
 .bottom-container {
@@ -41,12 +77,25 @@ div#queueUI {
     width: 50%;
 }
 
+.right-container {
+    /* height: 40px; */
+    float: right;
+    padding-top: 10px;
+    margin-left: 100px;
+    margin-right: 10px;
+    margin-top: 100px;
+    width: 30%;
+    height: 560px;
+    position: relative;
+    overflow: hidden; /* is this needed? */
+}
+
 .right-bottom {
     position: relative;
     width: 68%;
     padding-top: 30px;
     height: 150px;
-    float: left;
+    float: right;
     /* background-color: #1e62d0; */
 }
 

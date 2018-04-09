@@ -20,10 +20,17 @@
     <h1 id="headerText">Kruskal's Algorithm</h1>
     <script src="js/graphUI.js"></script>
 
+
     <div id="graphUI" class="main-container kruskal">
         <svg id="edgeSvg" height="100%" width="100%"></svg>
     </div>
+    <div id="edgeTitle"><h3>Nodes:</h3></div>
+    <div id="edgeTable" class="main-container edgeText-container"></div>
+    <div id="totalWeight" class="main-container totalWeight-container">
+        <p>Total weight: 0</p>
+    </div>
     <script>graph3();</script>
+
     <div id="buttonDiv" class="bottom-container left-bottom">
         <!-- Testing: Creating a already defined graph -->
         <button id="start" class="my-button"
@@ -42,6 +49,7 @@
             <option value="10">10</option>
         </select>
     </div>
+
 
 </body>
 </html>
