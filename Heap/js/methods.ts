@@ -62,12 +62,12 @@ function setKeyListener() {
 
         // left arrow (step back)
         else if (key == 37) {
-            stepBack();
+            viewer.stepBack();
         }
 
         // right arrow (step forward)
         else if (key == 39) {
-            viewer.stepForward(getGraphState(), getArrayState());
+            viewer.stepForward();
         }
     });
 }
@@ -331,47 +331,6 @@ function deselectArrayElemSelections() {
     }
 }
 
-function saveState(backendArray: string) {
-    viewer.saveState(getGraphState(), backendArray);
-}
-
-function setState(backendArrayJSON: string, twoDimRelationshipArrayJSON: string) {
-    let twoDimRelationshipArray = JSON.parse(twoDimRelationshipArrayJSON);
-    let backendArray = JSON.parse(backendArrayJSON);
-    superNode.children = new Array;
-    $("#graphUL svg#lines line").each(function () {
-        $(this).remove();
-    });
-    idCounter = 0;
-
-    // Reset all nodes and remove all lines
-    for (var node of allNodes) {
-        node.reset();
-        node.parent = superNode;
-        superNode.children.push(node);
-    }
-
-    // Connect nodes
-    for (var j: number = 0; j < twoDimRelationshipArray.length; j++) {
-        for (var i: number = 0; i < twoDimRelationshipArray[j].length; i++) {
-            allNodes[j].addChild(allNodes[twoDimRelationshipArray[j][i]]);
-        }
-    }
-
-    // Set the frontend array based on the given param (using setValueAtIndex())
-    for (var i: number = 0; i < backendArray.length; i++) {
-        setValueAtIndex(i, backendArray[i]);
-    }
-
-    for (var node of allNodes) {
-        $("#node" + node.id).finish();
-    }
-
-    //Animation time = 0
-    positioningNodes(0);
-}
-
-
 function screenLock(lock: boolean) {
     locked = lock;
     if (lock) {
@@ -399,16 +358,6 @@ function lockBackForward(lock: boolean) {
     } else {
         $("#backward").removeAttr("disabled");
         $("#forward").removeAttr("disabled");
-    }
-}
-
-function stepBack() {
-    if (firstSelected != -1) {
-        selectIndex(firstSelected, false);
-        firstSelected = -1;
-    } else {
-        //viewer.stepBack(getGraphState(), getArrayState());
-        manager.previous();
     }
 }
 

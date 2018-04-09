@@ -54,10 +54,10 @@ function setKeyListener() {
             viewer.changeToCurrentAlgorithm();
         }
         else if (key == 37) {
-            stepBack();
+            viewer.stepBack();
         }
         else if (key == 39) {
-            viewer.stepForward(getGraphState(), getArrayState());
+            viewer.stepForward();
         }
     });
 }
@@ -95,7 +95,6 @@ setupRadio();
 // Methods for positioning arrow
 function setArrow(index) {
     var $arrow = $("#arrow");
-    console.log(index);
     if (index == -1) {
         $arrow.addClass("hidden");
         $arrow.animate({ left: ($("#sortArrayElem0").position().left + 9) + "px" }, 0);
@@ -283,41 +282,6 @@ function deselectArrayElemSelections() {
         deselectArrayElement(i);
     }
 }
-function saveState(backendArray) {
-    viewer.saveState(getGraphState(), backendArray);
-}
-function setState(backendArrayJSON, twoDimRelationshipArrayJSON) {
-    var twoDimRelationshipArray = JSON.parse(twoDimRelationshipArrayJSON);
-    var backendArray = JSON.parse(backendArrayJSON);
-    superNode.children = new Array;
-    $("#graphUL svg#lines line").each(function () {
-        $(this).remove();
-    });
-    idCounter = 0;
-    // Reset all nodes and remove all lines
-    for (var _i = 0, allNodes_1 = allNodes; _i < allNodes_1.length; _i++) {
-        var node = allNodes_1[_i];
-        node.reset();
-        node.parent = superNode;
-        superNode.children.push(node);
-    }
-    // Connect nodes
-    for (var j = 0; j < twoDimRelationshipArray.length; j++) {
-        for (var i = 0; i < twoDimRelationshipArray[j].length; i++) {
-            allNodes[j].addChild(allNodes[twoDimRelationshipArray[j][i]]);
-        }
-    }
-    // Set the frontend array based on the given param (using setValueAtIndex())
-    for (var i = 0; i < backendArray.length; i++) {
-        setValueAtIndex(i, backendArray[i]);
-    }
-    for (var _a = 0, allNodes_2 = allNodes; _a < allNodes_2.length; _a++) {
-        var node = allNodes_2[_a];
-        $("#node" + node.id).finish();
-    }
-    //Animation time = 0
-    positioningNodes(0);
-}
 function screenLock(lock) {
     locked = lock;
     if (lock) {
@@ -345,16 +309,6 @@ function lockBackForward(lock) {
     else {
         $("#backward").removeAttr("disabled");
         $("#forward").removeAttr("disabled");
-    }
-}
-function stepBack() {
-    if (firstSelected != -1) {
-        selectIndex(firstSelected, false);
-        firstSelected = -1;
-    }
-    else {
-        //viewer.stepBack(getGraphState(), getArrayState());
-        manager.previous();
     }
 }
 function setHeaderText(text) {

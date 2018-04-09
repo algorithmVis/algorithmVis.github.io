@@ -4,7 +4,6 @@
 
 ///<reference path="Controller.ts"/>
 ///<reference path="EventManager.ts"/>
-///<reference path="StateController.ts"/>
 ///<reference path="methods.ts"/>
 ///<reference path="MaxHeap.ts"/>
 ///<reference path="MaxHeapFree.ts"/>
@@ -40,12 +39,6 @@ class View implements IView {
         }(index, b);
 
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
-    }
-
-    saveState(twoDimRelationships: string, backendArray: string) {
-        let twoDimRelationshipsJSON = JSON.parse(twoDimRelationships);
-        let arrJSON = JSON.parse(backendArray);
-        stepper.saveState(twoDimRelationshipsJSON, arrJSON);
     }
 
     setThisArrow(index: number) {
@@ -170,31 +163,19 @@ class View implements IView {
         manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
     }
 
-    setThisState(relationships: JSON, backendArray: JSON) {
-        setState(JSON.stringify(backendArray).toString(), JSON.stringify(relationships).toString());
-    }
-
-    stepBack(twoDimRelationshipsJSON: string, backendArray: string) {
-        this.step("backward", twoDimRelationshipsJSON, backendArray);
-    }
-
-    stepForward(twoDimRelationshipsJSON: string, backendArray: string) {
-        //this.step("forward", twoDimRelationshipsJSON, backendArray);
+    stepForward() {
         this.clickedPlay = false;
         manager.next();
-        if (manager.nextEvents.length <= 0) {
-            this.playing = true;
-            manager.start();
-        }
     }
 
-    step(dir: string, twoDimRelationshipsJSON: string, backendArray: string) {
-        let relationships: JSON = JSON.parse(twoDimRelationshipsJSON);
-        let backendArr: JSON = JSON.parse(backendArray);
-        if (dir === "forward")
-            stepper.stepForward(relationships, backendArr);
-        else if (dir === "backward")
-            stepper.stepBack(relationships, backendArr);
+    stepBack() {
+        this.setPause(true);
+        if (firstSelected != -1) {
+            selectIndex(firstSelected, false);
+            firstSelected = -1;
+        } else {
+            manager.previous();
+        }
     }
 
     resetAll() {
@@ -206,7 +187,6 @@ class View implements IView {
         manager.previousEvents = new Array;
         screenLock(false);
         let arr: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-        stepper = new StateController(control, this);
         this.resetArray(arr);
         this.displayThisArray(arr);
     }
@@ -298,15 +278,6 @@ class View implements IView {
 
     displayNodeSize(root: number, size: number) {
 
-    }
-
-    /**
-     * Må implementeres for å få backward/forward til å fungere
-     * @param clone
-     */
-    executeSaveMethodInJavaScript(clone: number[]) {
-        let arr: string = JSON.stringify(clone).toString();
-        saveState(arr);
     }
 
     addNode(val: number) {
@@ -433,6 +404,7 @@ class View implements IView {
             lockBackForward(true);
             $("#play").text("Pause");
         } else if (manager.nextEvents.length > 0) {
+            console.log("hello woorld");
             return;
         } else {
             lockPlay(true);

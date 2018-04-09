@@ -35,7 +35,6 @@ class HeapSort extends MaxHeap {
         control.setValueAtIndex(this.currIndex, " ", oldVal);
         this.sink(0, this.currIndex - 1);
         control.highlightSortElem(this.sortIndex--, "green");
-        control.saveState(this.array);
     }
 
 
@@ -48,10 +47,10 @@ class HeapSort extends MaxHeap {
         $("document").ready(function () {
             for (var i = 0; i < size; i++) {
                 var left = (i * 70) + "px";
-                $("#sortArrayElem" + i).animate({left: left}, 1000);
+                $("#sortArrayElem" + i).animate({ left: left }, 1000);
             }
             var arrayWidth = ((size - 1) * 70) + 50;
-            $("#sortArrayUL").animate({left: (-arrayWidth / 2 + 20) + "px"}, 500); // +20? Ul is default 40px -> 40/2 = 20. Dont touch.
+            $("#sortArrayUL").animate({ left: (-arrayWidth / 2 + 20) + "px" }, 500); // +20? Ul is default 40px -> 40/2 = 20. Dont touch.
         });
     }
 

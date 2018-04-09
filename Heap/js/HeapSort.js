@@ -41,7 +41,6 @@ var HeapSort = /** @class */ (function (_super) {
         control.setValueAtIndex(this.currIndex, " ", oldVal);
         this.sink(0, this.currIndex - 1);
         control.highlightSortElem(this.sortIndex--, "green");
-        control.saveState(this.array);
     };
     HeapSort.prototype.insertElems = function (size) {
         for (var i = 0; i < size; i++) {

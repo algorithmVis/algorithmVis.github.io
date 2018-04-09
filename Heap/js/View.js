@@ -3,7 +3,6 @@
  */
 ///<reference path="Controller.ts"/>
 ///<reference path="EventManager.ts"/>
-///<reference path="StateController.ts"/>
 ///<reference path="methods.ts"/>
 ///<reference path="MaxHeap.ts"/>
 ///<reference path="MaxHeapFree.ts"/>
@@ -33,11 +32,6 @@ var View = /** @class */ (function () {
             };
         }(index, b);
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
-    };
-    View.prototype.saveState = function (twoDimRelationships, backendArray) {
-        var twoDimRelationshipsJSON = JSON.parse(twoDimRelationships);
-        var arrJSON = JSON.parse(backendArray);
-        stepper.saveState(twoDimRelationshipsJSON, arrJSON);
     };
     View.prototype.setThisArrow = function (index) {
         var forward = function (index) {
@@ -138,28 +132,19 @@ var View = /** @class */ (function () {
         }(index, color);
         manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
     };
-    View.prototype.setThisState = function (relationships, backendArray) {
-        setState(JSON.stringify(backendArray).toString(), JSON.stringify(relationships).toString());
-    };
-    View.prototype.stepBack = function (twoDimRelationshipsJSON, backendArray) {
-        this.step("backward", twoDimRelationshipsJSON, backendArray);
-    };
-    View.prototype.stepForward = function (twoDimRelationshipsJSON, backendArray) {
-        //this.step("forward", twoDimRelationshipsJSON, backendArray);
+    View.prototype.stepForward = function () {
         this.clickedPlay = false;
         manager.next();
-        if (manager.nextEvents.length <= 0) {
-            this.playing = true;
-            manager.start();
-        }
     };
-    View.prototype.step = function (dir, twoDimRelationshipsJSON, backendArray) {
-        var relationships = JSON.parse(twoDimRelationshipsJSON);
-        var backendArr = JSON.parse(backendArray);
-        if (dir === "forward")
-            stepper.stepForward(relationships, backendArr);
-        else if (dir === "backward")
-            stepper.stepBack(relationships, backendArr);
+    View.prototype.stepBack = function () {
+        this.setPause(true);
+        if (firstSelected != -1) {
+            selectIndex(firstSelected, false);
+            firstSelected = -1;
+        }
+        else {
+            manager.previous();
+        }
     };
     View.prototype.resetAll = function () {
         this.started = false;
@@ -170,7 +155,6 @@ var View = /** @class */ (function () {
         manager.previousEvents = new Array;
         screenLock(false);
         var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-        stepper = new StateController(control, this);
         this.resetArray(arr);
         this.displayThisArray(arr);
     };
@@ -253,14 +237,6 @@ var View = /** @class */ (function () {
         }
     };
     View.prototype.displayNodeSize = function (root, size) {
-    };
-    /**
-     * Må implementeres for å få backward/forward til å fungere
-     * @param clone
-     */
-    View.prototype.executeSaveMethodInJavaScript = function (clone) {
-        var arr = JSON.stringify(clone).toString();
-        saveState(arr);
     };
     View.prototype.addNode = function (val) {
         control.addNode(val);
@@ -372,6 +348,7 @@ var View = /** @class */ (function () {
             $("#play").text("Pause");
         }
         else if (manager.nextEvents.length > 0) {
+            console.log("hello woorld");
             return;
         }
         else {

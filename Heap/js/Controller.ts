@@ -85,10 +85,6 @@ class Controller {
         viewer.displayNodeSize(root, size);
     }
 
-    saveState(arr: number[]) {
-        viewer.executeSaveMethodInJavaScript(arr);
-    }
-
     addNode(i: number) {
         this.algorithm.add(i);
     }

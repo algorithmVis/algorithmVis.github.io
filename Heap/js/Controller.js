@@ -69,9 +69,6 @@ var Controller = /** @class */ (function () {
     Controller.prototype.displaySize = function (root, size) {
         viewer.displayNodeSize(root, size);
     };
-    Controller.prototype.saveState = function (arr) {
-        viewer.executeSaveMethodInJavaScript(arr);
-    };
     Controller.prototype.addNode = function (i) {
         this.algorithm.add(i);
     };
