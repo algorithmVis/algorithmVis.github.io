@@ -209,6 +209,20 @@ var View = /** @class */ (function () {
     View.prototype.backward = function () {
         manager.previous();
     };
+    View.prototype.excludeEdges = function (edgeList) {
+        var forward = function (edgeList) {
+            return function () {
+                for (var index in edgeList) {
+                    var _a = edgeList[index], node1 = _a[0], node2 = _a[1], weight = _a[2];
+                    var currentEdge_1 = getEdgeId(node1, node2);
+                    dehighlightThisEdge(currentEdge_1);
+                    transparentEdge(currentEdge_1);
+                    excludeEdgeText(currentEdge_1);
+                }
+            };
+        }(edgeList);
+        manager.addEvent(new FrontendEvent(forward, forward, this.highlightEventDuration));
+    };
     return View;
 }());
 var viewer = new View();

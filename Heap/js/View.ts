@@ -217,19 +217,16 @@ class View implements IView {
     }
 
     setSlow() {
-        this.animSpeed = 250;
         manager.delayTime = 900;
         this.restartManager();
     }
 
     setMedium() {
-        this.animSpeed = 600;
         manager.delayTime = 600;
         this.restartManager();
     }
 
     setFast() {
-        this.animSpeed = 300;
         manager.delayTime = 300;
         this.restartManager();
     }

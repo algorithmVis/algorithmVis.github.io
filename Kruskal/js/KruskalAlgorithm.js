@@ -5,6 +5,7 @@
 ///<reference path="Controller.ts"/>
 ///<reference path="EventManager.ts"/>
 ///<reference path="View.ts"/>
+///<reference path="methods.ts"/>
 var arr = [];
 var queue = [];
 var currentEdge = 0;
@@ -13,21 +14,28 @@ function startKruskal() {
     var edgeList = sortEdges();
     for (var i = 0; i < edgeList.length; i++) {
         arr[i] = i;
+        var _a = edgeList[edgeList.length - 1 - i], node1 = _a[0], node2 = _a[1], weight = _a[2];
+        currentEdge = getEdgeId(node1, node2);
+        writeEdge(currentEdge, node1, node2, weight);
     }
     var sum = 0;
     var j = 0;
     while (edgeList.length > 0) {
-        var _a = edgeList.pop(), node1 = _a[0], node2 = _a[1], weight = _a[2];
+        // Optimization -> Stop algorithm after n-1 edges are in the MST
+        if (j >= nodes - 1) {
+            controller.excludeEdges(edgeList);
+            break;
+        }
+        var _b = edgeList.pop(), node1 = _b[0], node2 = _b[1], weight = _b[2];
         currentEdge = getEdgeId(node1, node2);
-        writeEdge(currentEdge, node1, node2, weight);
-        controller.selectTwoNodes(node1, node2);
-        controller.highlightEdgeText(currentEdge);
-        controller.highlightMyEdge(currentEdge);
-        console.log("Edge: " + currentEdge);
         if (connected(node1, node2) == false) {
+            controller.selectTwoNodes(node1, node2);
+            controller.highlightEdgeText(currentEdge);
+            controller.highlightMyEdge(currentEdge);
             union(node1, node2);
             sum = sum + weight;
             controller.addWeightToSum(sum);
+            j++;
         }
         else {
             controller.dehighlightMyEdge(currentEdge);
@@ -35,12 +43,7 @@ function startKruskal() {
             controller.excludeEdgeText(currentEdge);
         }
         controller.deselectTwoNodes(node1, node2);
-        j++;
     }
-    /*
-    swapTwoElements(0, 1);
-    swapTwoElements(1,2);
-*/
     arr = [];
     queue = [];
     currentEdge = 0;
@@ -69,8 +72,6 @@ function union(aIndex, bIndex) {
 function sortEdges() {
     var temp = 0;
     var sorted = triplets;
-    console.log(triplets);
-    console.log(sorted);
     if (sorted.length > 0) {
         for (var i = 0; i < sorted.length; i++) {
             for (var j = 0; j < sorted.length; j++) {

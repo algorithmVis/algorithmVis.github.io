@@ -7,18 +7,6 @@ var randomWeight = 0;
 var nodes = 0;
 var MAX_NODES = 10;
 var edges = 0;
-/*
-function setOnClickListener () {
-    $('#my_button').on('click', function(){
-        console.log('Button clicked. Disabling...');
-        $('#my_button').attr("disabled", true);
-    });
-
-    console.log("assip");
-}
-
-setOnClickListener();
-*/
 function highlightThisEdge(index) {
     $("#edge" + index).css({ "stroke": "rgb(16, 130, 219)", "stroke-width": "6" });
 }
@@ -66,12 +54,10 @@ function enableButton() {
     $("#start").css({ "opacity": 1 });
 }
 function numberOfNodes(value) {
-    console.log("Value: " + value);
     viewer.resetAll();
     drawGraph(value);
 }
 function drawGraph(n) {
-    console.log("number" + n);
     $("#edgeTable").empty();
     viewer.resetAll(); //Not working, button must reset
     switch (+n) {
@@ -127,9 +113,4 @@ function excludeEdgeText(i) {
 }
 function higlightEdgeText(i) {
     $("#edgeContent" + i).css({ "color": "blue" });
-}
-function swapTwoElements(i, j) {
-    var a = document.getElementById("edgeContent" + i);
-    var b = document.getElementById("edgeContent" + j);
-    a.parentNode.insertBefore(b, a);
 }

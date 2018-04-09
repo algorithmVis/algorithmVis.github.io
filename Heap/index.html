@@ -13,8 +13,6 @@
     <script src="js/Controller.js"></script>
     <script src="js/View.js"></script>
     <script src="js/EventManager.js"></script>
-    <script src="js/State.js"></script>
-    <script src="js/StateController.js"></script>
     <script src="js/MaxHeap.js"></script>
     <script src="js/MaxHeapFree.js"></script>
     <script src="js/BuildHeap.js"></script>
@@ -73,9 +71,9 @@
                 <button id="reset" class="btn btn-primary"
                         onclick="viewer.switchAlgorithm(control.getAlgorithm().getName());">Reset
                 </button>
-                <button id="backward" class="btn btn-primary" onclick="stepBack();">Backward</button>
+                <button id="backward" class="btn btn-primary" onclick="viewer.stepBack();">Backward</button>
                 <button id="forward" class="btn btn-primary"
-                        onclick="viewer.stepForward(getGraphState(), getArrayState());">Forward
+                        onclick="viewer.stepForward();">Forward
                 </button>
                 <button id="play" class="btn btn-primary" onclick="viewer.play()">Play</button>
             </div>

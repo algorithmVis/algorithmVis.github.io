@@ -11,10 +11,8 @@
 declare var $;
 
 class View {
-
     highlightEventDuration = 1000;
     paused: boolean = false;
-
 
     setHighlightEdge(edgeId: number) {
         var forward = function (edgeId) {
@@ -167,7 +165,7 @@ class View {
 
 
     disableThisButton() {
-        var forward = function() {
+        var forward = function () {
             return function () {
                 disableButton();
             }
@@ -183,7 +181,7 @@ class View {
     }
 
     enableThisButton() {
-        var forward = function() {
+        var forward = function () {
             return function () {
                 enableButton();
             }
@@ -199,8 +197,8 @@ class View {
     }
 
     excludeText(i: number) {
-        var forward = function(i) {
-            return function() {
+        var forward = function (i) {
+            return function () {
                 excludeEdgeText(i);
             }
         }(i);
@@ -209,8 +207,8 @@ class View {
     }
 
     highlighText(i: number) {
-        var forward = function(i) {
-            return function() {
+        var forward = function (i) {
+            return function () {
                 higlightEdgeText(i);
             }
         }(i);
@@ -219,11 +217,11 @@ class View {
     }
 
     addWeightToSum(weight: number) {
-        var forward = function(weight) {
-            return function() {
+        var forward = function (weight) {
+            return function () {
                 writeTotalWeight(weight);
             }
-        } (weight);
+        }(weight);
 
         manager.addEvent(new FrontendEvent(forward, forward, this.highlightEventDuration));
     }
@@ -258,6 +256,22 @@ class View {
 
     backward() {
         manager.previous();
+    }
+
+    excludeEdges(edgeList: any): void {
+        var forward = function (edgeList) {
+            return function () {
+                for (let index in edgeList) {
+                    let [node1, node2, weight] = edgeList[index];
+                    let currentEdge = getEdgeId(node1, node2);
+                    dehighlightThisEdge(currentEdge);
+                    transparentEdge(currentEdge);
+                    excludeEdgeText(currentEdge);
+                }
+            }
+        }(edgeList);
+
+        manager.addEvent(new FrontendEvent(forward, forward, this.highlightEventDuration));
     }
 }
 

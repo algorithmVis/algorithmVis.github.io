@@ -6,59 +6,58 @@
 ///<reference path="Controller.ts"/>
 ///<reference path="EventManager.ts"/>
 ///<reference path="View.ts"/>
+///<reference path="methods.ts"/>
 
 let arr: number[] = [];
-let queue: number [] = [];
+let queue: number[] = [];
 let currentEdge: number = 0;
-
-
 
 function startKruskal() {
     controller.disableStartButton();
-
     let edgeList = sortEdges();
 
     for (let i = 0; i < edgeList.length; i++) {
         arr[i] = i;
+
+        let [node1, node2, weight] = edgeList[edgeList.length - 1 - i];
+        currentEdge = getEdgeId(node1, node2);
+        writeEdge(currentEdge, node1, node2, weight);
     }
 
     let sum = 0;
     let j: number = 0;
 
     while (edgeList.length > 0) {
+        // Optimization -> Stop algorithm after n-1 edges are in the MST
+        if (j >= nodes - 1) {
+            controller.excludeEdges(edgeList);
+            break;
+        }
+
         let [node1, node2, weight] = edgeList.pop();
-
         currentEdge = getEdgeId(node1, node2);
-        writeEdge(currentEdge, node1, node2, weight);
-
-        controller.selectTwoNodes(node1, node2);
-        controller.highlightEdgeText(currentEdge);
-        controller.highlightMyEdge(currentEdge);
-        console.log("Edge: " + currentEdge);
 
         if (connected(node1, node2) == false) {
+            controller.selectTwoNodes(node1, node2);
+            controller.highlightEdgeText(currentEdge);
+            controller.highlightMyEdge(currentEdge);
+
             union(node1, node2);
             sum = sum + weight;
             controller.addWeightToSum(sum);
-        }
-        else {
+
+            j++;
+        } else {
             controller.dehighlightMyEdge(currentEdge);
             controller.transparentMyEdge(currentEdge);
             controller.excludeEdgeText(currentEdge);
         }
         controller.deselectTwoNodes(node1, node2);
-        j++;
     }
-    /*
-    swapTwoElements(0, 1);
-    swapTwoElements(1,2);
-*/
-
-
     arr = [];
     queue = [];
     currentEdge = 0;
-
+    
     controller.enableStartButtion();
 }
 
@@ -72,7 +71,7 @@ function find(index: number) {
     return root;
 }
 
-function connected(aIndex: number, bIndex: number){
+function connected(aIndex: number, bIndex: number) {
     let aRoot = find(aIndex);
     let bRoot = find(bIndex);
     let connected: boolean = (aRoot == bRoot);
@@ -92,8 +91,6 @@ function union(aIndex: number, bIndex: number) {
 function sortEdges() {
     let temp = 0;
     let sorted = triplets;
-    console.log(triplets);
-    console.log(sorted);
     if (sorted.length > 0) {
         for (var i = 0; i < sorted.length; i++) {
             for (var j = 0; j < sorted.length; j++) {

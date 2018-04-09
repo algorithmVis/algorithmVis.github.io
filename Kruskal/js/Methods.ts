@@ -10,25 +10,12 @@ let nodes: number = 0;
 let MAX_NODES: number = 10;
 let edges: number = 0;
 
-/*
-function setOnClickListener () {
-    $('#my_button').on('click', function(){
-        console.log('Button clicked. Disabling...');
-        $('#my_button').attr("disabled", true);
-    });
-
-    console.log("assip");
-}
-
-setOnClickListener();
-*/
-
 function highlightThisEdge(index: number) {
-    $("#edge" + index).css({"stroke": "rgb(16, 130, 219)", "stroke-width": "6"});
+    $("#edge" + index).css({ "stroke": "rgb(16, 130, 219)", "stroke-width": "6" });
 }
 
 function dehighlightThisEdge(index: number) {
-    $("#edge" + index).css({"stroke": "rgb(0, 0, 0)", "stroke-width": "2"});
+    $("#edge" + index).css({ "stroke": "rgb(0, 0, 0)", "stroke-width": "2" });
 }
 
 function removeEdge(index: number) {
@@ -37,13 +24,13 @@ function removeEdge(index: number) {
 }
 
 function transparentEdge(index: number) {
-    $("#edge" + index).css({"opacity": 0.15});
-    $("#edgeWeight" + index).css({"opacity": 0.15});
+    $("#edge" + index).css({ "opacity": 0.15 });
+    $("#edgeWeight" + index).css({ "opacity": 0.15 });
 }
 
 function detransparentEdge(index: number) {
-    $("#edge" + index).css({"opacity": 1});
-    $("#edgeWeight" + index).css({"opacity": 1});
+    $("#edge" + index).css({ "opacity": 1 });
+    $("#edgeWeight" + index).css({ "opacity": 1 });
 }
 
 function addThisNode(x: number, y: number) {
@@ -69,25 +56,22 @@ function connectNodes(node1: number, node2: number) {
     addWeightedEdge(edges++, node1, node2, randomWeight);
 }
 
-
 function disableButton() {
-    $("#start").attr({disabled: "true"});
-    $("#start").css({"opacity": 0.15});
+    $("#start").attr({ disabled: "true" });
+    $("#start").css({ "opacity": 0.15 });
 }
 
 function enableButton() {
     $("#start").removeAttr('disabled');
-    $("#start").css({"opacity": 1});
+    $("#start").css({ "opacity": 1 });
 }
 
 function numberOfNodes(value: number) {
-    console.log("Value: " + value);
     viewer.resetAll();
     drawGraph(value);
 }
 
 function drawGraph(n: number) {
-    console.log("number" + n);
     $("#edgeTable").empty();
     viewer.resetAll(); //Not working, button must reset
 
@@ -145,20 +129,10 @@ function clearTotalWeight() {
 
 
 function excludeEdgeText(i: number) {
-    $("#edgeContent" + i).css({"opacity": 0.2});
-    $("#edgeContent" + i).css({"color": "black"});
-
-
+    $("#edgeContent" + i).css({ "opacity": 0.2 });
+    $("#edgeContent" + i).css({ "color": "black" });
 }
 
 function higlightEdgeText(i: number) {
-    $("#edgeContent" + i).css({"color": "blue"});
-}
-
-function swapTwoElements(i: number, j: number) {
-    var a = document.getElementById("edgeContent" + i);
-    var b = document.getElementById("edgeContent" + j);
-    a.parentNode.insertBefore(b, a);
-
-
+    $("#edgeContent" + i).css({ "color": "blue" });
 }

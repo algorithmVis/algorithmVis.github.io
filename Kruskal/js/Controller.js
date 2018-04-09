@@ -55,6 +55,9 @@ var Controller = /** @class */ (function () {
     Controller.prototype.addWeightToSum = function (weight) {
         viewer.addWeightToSum(weight);
     };
+    Controller.prototype.excludeEdges = function (edgeList) {
+        viewer.excludeEdges(edgeList);
+    };
     return Controller;
 }());
 var controller = new Controller();

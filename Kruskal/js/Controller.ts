@@ -48,7 +48,6 @@ class Controller {
 
     deselectTwoNodes(node1: number, node2: number){
         viewer.deselectTheseNodes(node1, node2);
-
     }
 
     disableStartButton() {
@@ -69,6 +68,10 @@ class Controller {
 
     addWeightToSum(weight: number) {
         viewer.addWeightToSum(weight);
+    }
+
+    excludeEdges(edgeList : any) {
+        viewer.excludeEdges(edgeList);
     }
 }
 

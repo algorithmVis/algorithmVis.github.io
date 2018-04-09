@@ -15,7 +15,6 @@ var EventManager = /** @class */ (function () {
             return;
         }
         var event = this.nextEvents.shift();
-        console.log(this.nextEvents);
         event.next();
         this.previousEvents.push(event);
         if (event.duration == 0)
@@ -26,7 +25,6 @@ var EventManager = /** @class */ (function () {
         if (this.previousEvents.length == 0)
             return;
         var event = this.previousEvents.pop();
-        //this.delayTime = 0; //TODO: Should there be a delay when stepping backwards?
         event.previous();
         this.nextEvents.unshift(event);
     };
@@ -54,15 +52,3 @@ var FrontendEvent = /** @class */ (function () {
     return FrontendEvent;
 }());
 var manager = new EventManager();
-/*
-/** How to add FrontendEvents to manager
-for(var i=0; i<10; i++) {
-    var f = function(k) {
-        return function() {console.log("Going forward, step " + k);};
-    }(i);
-    var b = function(k) {
-        return function() {console.log("Going backward, step " + k);}
-    }(i);
-    manager.addEvent(new FrontendEvent(f,b));
-}
-*/
