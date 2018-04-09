@@ -101,7 +101,6 @@ var view = /** @class */ (function () {
         for (var i = 0; i < index.length; i++) {
             colorList[i] = color;
         }
-        console.log("colorlist" + colorList);
         var forwardSteps = function (index, colorList) {
             return function () {
                 setColors(index, colorList);
@@ -111,7 +110,6 @@ var view = /** @class */ (function () {
         for (var i = 0; i < index.length; i++) {
             oldColor[i] = colorInArray[myArray.indexOf(index[i])];
         }
-        console.log(oldColor + " " + index);
         var backwardSteps = function (index, oldColor) {
             return function () {
                 setColors(index, oldColor);

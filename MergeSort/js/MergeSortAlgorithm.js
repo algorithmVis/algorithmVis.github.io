@@ -32,7 +32,6 @@ function mergesort(array) {
         mid = Math.floor(array.length * 0.5);
         left = array.slice(0, mid);
         right = array.slice(mid);
-        //denne og er ekkel
         control.setPivotElement(right[0]);
         pivotElements[pivCount] = right[0];
         pivCount++;
@@ -65,11 +64,11 @@ function merge(left, right) {
         }
         control.setColorInArrayElement(right[tempRightIndex], 0);
         if (left[tempLeftIndex] < right[tempRightIndex]) {
-            leftAlreadyColored = false;
             control.setColorInArrayElement(left[tempLeftIndex], 3);
             control.moveElementToPlace(left[tempLeftIndex], counter, copyArray.indexOf(left[tempLeftIndex]));
             result.push(left[tempLeftIndex]);
             testing[counter] = left[tempLeftIndex];
+            leftAlreadyColored = false;
             counter++;
             tempLeftIndex++;
         }
