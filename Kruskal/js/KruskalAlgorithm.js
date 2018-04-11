@@ -10,7 +10,6 @@ var arr = [];
 var queue = [];
 var currentEdge = 0;
 function startKruskal() {
-    controller.disableStartButton();
     var edgeList = sortEdges();
     for (var i = 0; i < edgeList.length; i++) {
         arr[i] = i;
@@ -45,7 +44,6 @@ function startKruskal() {
     arr = [];
     queue = [];
     currentEdge = 0;
-    controller.enableStartButtion();
 }
 function find(index) {
     var root = index;

@@ -17,39 +17,43 @@
 </head>
 
 <body>
-    <h1 id="headerText">Kruskal's Algorithm</h1>
-    <script src="js/graphUI.js"></script>
+<h1 id="headerText">Kruskal's Algorithm</h1>
+<script src="js/graphUI.js"></script>
 
 
-    <div id="graphUI" class="main-container kruskal">
-        <svg id="edgeSvg" height="100%" width="100%"></svg>
-    </div>
-    <div id="edgeTitle"><h3>Nodes:</h3></div>
-    <div id="edgeTable" class="main-container edgeText-container"></div>
-    <div id="totalWeight" class="main-container totalWeight-container">
-        <p>Total weight: 0</p>
-    </div>
-    <script>graph3();</script>
+<div id="graphUI" class="main-container kruskal">
+    <svg id="edgeSvg" height="100%" width="100%"></svg>
+</div>
 
-    <div id="buttonDiv" class="bottom-container left-bottom">
-        <!-- Testing: Creating a already defined graph -->
-        <button id="start" class="my-button"
-                onclick="startKruskal(); manager.start();">Start</button>
-        <button id="togglePause" class="my-button" onclick="viewer.pause()">Pause</button>
-        <button id="prev" class="my-button" onclick="viewer.backward();">Previous</button>
-        <button id="next" class="my-button" onclick="viewer.forward();">Next</button>
-        <select id="nodes" onchange="numberOfNodes(value)">
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-        </select>
-    </div>
+<div id="edgeTitle"><h3>Nodes:</h3></div>
+<div id="edgeTable" class="main-container edgeText-container"></div>
+<div id="totalWeight" class="main-container totalWeight-container">
+    <p>Total weight: 0</p>
+</div>
 
+
+<div id="buttonDiv" class="bottom-container left-bottom">
+    <button id="togglePause" class="my-button" onclick="viewer.pause()">Play</button>
+    <button id="backward" class="my-button" onclick="viewer.backward()">Previous</button>
+    <button id="forward" class="my-button" onclick="viewer.forward()">Forward</button>
+    <select id="nodes" onchange="numberOfNodes(value)">
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+    </select>
+    <br>
+    <br>
+    <button id="slow" class="my-button" onclick="viewer.slow();">Slow</button>
+    <button id="medium" class="my-button" onclick="viewer.medium();">Medium</button>
+    <button id="fast" class="my-button" onclick="viewer.fast();">Fast</button>
+
+</div>
+<script>numberOfNodes(3);</script>
 
 </body>
 </html>

@@ -15,13 +15,13 @@ class View {
     paused: boolean = false;
 
     setHighlightEdge(edgeId: number) {
-        var forward = function (edgeId) {
+        let forward = function (edgeId) {
             return function () {
                 highlightThisEdge(edgeId);
             };
         }(edgeId);
 
-        var backward = function (edgeId) {
+        let backward = function (edgeId) {
             return function () {
                 dehighlightThisEdge(edgeId);
             };
@@ -31,13 +31,13 @@ class View {
     }
 
     setDehighlightEdge(edgeId: number) {
-        var forward = function (edgeId) {
+        let forward = function (edgeId) {
             return function () {
                 dehighlightThisEdge(edgeId);
             };
         }(edgeId);
 
-        var backward = function (edgeId) {
+        let backward = function (edgeId) {
             return function () {
                 highlightThisEdge(edgeId);
             };
@@ -50,13 +50,13 @@ class View {
     removeEdge(edgeId: number) {
         let [node1, node2, weight] = getEdgeInfo(edgeId);
 
-        var forward = function (edgeId) {
+        let forward = function (edgeId) {
             return function () {
                 removeEdge(edgeId);
             }
         }(edgeId);
 
-        var backward = function (edgeId) {
+        let backward = function (edgeId) {
             return function () {
                 addWeightedEdge(edgeId, node1, node2, weight);
             }
@@ -66,13 +66,13 @@ class View {
     }
 
     transparentEdge(edgeId: number) {
-        var forward = function (edgeId) {
+        let forward = function (edgeId) {
             return function () {
                 transparentEdge(edgeId);
             }
         }(edgeId);
 
-        var backward = function (edgeId) {
+        let backward = function (edgeId) {
             return function () {
                 deTransparentEdge(edgeId);
             }
@@ -82,13 +82,13 @@ class View {
     }
 
     deTransparentEdge(edgeId: number) {
-        var forward = function (edgeId) {
+        let forward = function (edgeId) {
             return function () {
                 deTransparentEdge(edgeId);
             }
         }(edgeId);
 
-        var backward = function (edgeId) {
+        let backward = function (edgeId) {
             return function () {
                 transparentEdge(edgeId);
             }
@@ -99,13 +99,13 @@ class View {
 
 
     addNodeToGraph(x: number, y: number) {
-        var forward = function (x, y) {
+        let forward = function (x, y) {
             return function () {
                 addThisNode(x, y);
             }
         }(x, y);
 
-        var backward = function () {
+        let backward = function () {
             return function () {
                 removeThisNode();
             }
@@ -115,13 +115,13 @@ class View {
     }
 
     connectTheseNodes(node1: number, node2: number) {
-        var forward = function (node1, node2) {
+        let forward = function (node1, node2) {
             return function () {
                 connectNodes(node1, node2);
             }
         }(node1, node2);
 
-        var backward = function (node1, node2) {
+        let backward = function (node1, node2) {
             return function () {
                 removeConnectedNodes();
             }
@@ -131,13 +131,13 @@ class View {
     }
 
     selectTheseNodes(node1: number, node2: number) {
-        var forward = function (node1, node2) {
+        let forward = function (node1, node2) {
             return function () {
                 selectNodes(node1, node2, true);
             }
         }(node1, node2);
 
-        var backward = function (node1, node2) {
+        let backward = function (node1, node2) {
             return function () {
                 selectNodes(node1, node2, false);
             }
@@ -147,13 +147,13 @@ class View {
     }
 
     deselectTheseNodes(node1: number, node2: number) {
-        var forward = function (node1, node2) {
+        let forward = function (node1, node2) {
             return function () {
                 selectNodes(node1, node2, false);
             }
         }(node1, node2);
 
-        var backward = function (node1, node2) {
+        let backward = function (node1, node2) {
             return function () {
                 selectNodes(node1, node2, true);
             }
@@ -164,13 +164,13 @@ class View {
 
 
     disableThisButton() {
-        var forward = function () {
+        let forward = function () {
             return function () {
                 disableButton();
             }
         }();
 
-        var backward = function () {
+        let backward = function () {
             return function () {
                 enableButton();
             }
@@ -180,13 +180,13 @@ class View {
     }
 
     enableThisButton() {
-        var forward = function () {
+        let forward = function () {
             return function () {
                 enableButton();
             }
         }();
 
-        var backward = function () {
+        let backward = function () {
             return function () {
                 disableButton();
             }
@@ -196,13 +196,13 @@ class View {
     }
 
     excludeText(i: number) {
-        var forward = function (i) {
+        let forward = function (i) {
             return function () {
                 excludeEdgeText(i);
             }
         }(i);
 
-        var backward = function (i) {
+        let backward = function (i) {
             return function () {
                 includeEdgeText(i);
             }
@@ -212,13 +212,13 @@ class View {
     }
 
     highlighText(i: number) {
-        var forward = function (i) {
+        let forward = function (i) {
             return function () {
                 higlightEdgeText(i);
             }
         }(i);
 
-        var backward = function (i) {
+        let backward = function (i) {
             return function () {
                 deHighlightEdgeText(i);
             }
@@ -228,13 +228,13 @@ class View {
     }
 
     addWeightToSum(weight: number) {
-        var forward = function (weight) {
+        let forward = function (weight) {
             return function () {
                 writeTotalWeight(weight);
             }
         }(weight);
 
-        var backward = function (weight) {
+        let backward = function (weight) {
             return function () {
                 writeTotalWeight(-weight);
             }
@@ -243,13 +243,11 @@ class View {
         manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
     }
 
-    resetAll() {
+    resetMyAll() {
         resetGraphUI();
-        manager = new EventManager();
-        manager.pause();
-        manager.nextEvents = new Array;
-        manager.previousEvents = new Array;
+        manager.clear();
         clearTotalWeight();
+        this.setPause();
         arr = [];
         nodes = 0;
         edges = 0;
@@ -267,6 +265,14 @@ class View {
         }
     }
 
+    setPause() {
+        this.paused = true;
+        manager.pause();
+        $("#togglePause").html("Start");
+        $('#backward').removeAttr('disabled');
+        $('#forward').removeAttr('disabled');
+    }
+
     forward() {
         manager.next();
     }
@@ -275,8 +281,20 @@ class View {
         manager.previous();
     }
 
+    slow() {
+        manager.slow();
+    }
+
+    medium() {
+        manager.medium();
+    }
+
+    fast() {
+        manager.fast();
+    }
+
     excludeEdges(edgeList: any): void {
-        var forward = function (edgeList) {
+        let forward = function (edgeList) {
             return function () {
                 for (let index in edgeList) {
                     let [node1, node2, weight] = edgeList[index];
@@ -288,7 +306,7 @@ class View {
             }
         }(edgeList);
 
-        var backward = function (edgeList) {
+        let backward = function (edgeList) {
             return function () {
                 for (let index in edgeList) {
                     let [node1, node2, weight] = edgeList[index];
@@ -303,4 +321,4 @@ class View {
     }
 }
 
-var viewer: View = new View();
+let viewer: View = new View();

@@ -194,13 +194,11 @@ var View = /** @class */ (function () {
         }(weight);
         manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
     };
-    View.prototype.resetAll = function () {
+    View.prototype.resetMyAll = function () {
         resetGraphUI();
-        manager = new EventManager();
-        manager.pause();
-        manager.nextEvents = new Array;
-        manager.previousEvents = new Array;
+        manager.clear();
         clearTotalWeight();
+        this.setPause();
         arr = [];
         nodes = 0;
         edges = 0;
@@ -217,11 +215,27 @@ var View = /** @class */ (function () {
             $("#togglePause").html("Pause");
         }
     };
+    View.prototype.setPause = function () {
+        this.paused = true;
+        manager.pause();
+        $("#togglePause").html("Start");
+        $('#backward').removeAttr('disabled');
+        $('#forward').removeAttr('disabled');
+    };
     View.prototype.forward = function () {
         manager.next();
     };
     View.prototype.backward = function () {
         manager.previous();
+    };
+    View.prototype.slow = function () {
+        manager.slow();
+    };
+    View.prototype.medium = function () {
+        manager.medium();
+    };
+    View.prototype.fast = function () {
+        manager.fast();
     };
     View.prototype.excludeEdges = function (edgeList) {
         var forward = function (edgeList) {

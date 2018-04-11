@@ -12,6 +12,10 @@ body {
     overflow: hidden;
 }
 
+h1#headerText {
+    display: table;
+}
+
 div#graphUI.kruskal {
     width: 50%;
     border: solid 3px #b6b6b6;
@@ -27,16 +31,17 @@ div#queueUI {
 }
 
 div#edgeTitle {
-    position: relative;
-    box-sizing: border-box;
-    border: 10px;
+    text-align: center;
+    margin-top: -30px;
+    margin-left: 320px;
 }
 
 div#edgeTable {
     white-space: pre;
     list-style-type: none;
     position: relative;
-    height: 10%;
+    height: 100%;
+    margin-top: -11px;
 
 }
 

@@ -17,7 +17,7 @@ var Controller = /** @class */ (function () {
         viewer.connectTheseNodes(node1, node2);
     };
     Controller.prototype.resetGraph = function () {
-        viewer.resetAll();
+        viewer.resetMyAll();
     };
     Controller.prototype.highlightMyEdge = function (edgeId) {
         viewer.setHighlightEdge(edgeId);

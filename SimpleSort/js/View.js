@@ -191,7 +191,7 @@ var view = /** @class */ (function () {
     view.prototype.forward = function () {
         manager.next();
     };
-    view.prototype.backward = function () {
+    view.backward = function () {
         manager.previous();
     };
     view.prototype.slow = function () {

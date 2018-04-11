@@ -19,7 +19,7 @@ class Controller {
     }
 
     resetGraph() {
-        viewer.resetAll();
+        viewer.resetMyAll();
     }
 
     highlightMyEdge(edgeId: number) {
@@ -75,5 +75,5 @@ class Controller {
     }
 }
 
-var controller: Controller = new Controller();
+let controller: Controller = new Controller();
 

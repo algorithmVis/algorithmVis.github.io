@@ -61,12 +61,12 @@ function enableButton() {
     $("#start").css({ "opacity": 1 });
 }
 function numberOfNodes(value) {
-    viewer.resetAll();
+    viewer.resetMyAll();
     drawGraph(value);
+    startKruskal();
 }
 function drawGraph(n) {
     $("#edgeTable").empty();
-    viewer.resetAll(); //Not working, button must reset
     switch (+n) {
         case 3:
             graph3();
