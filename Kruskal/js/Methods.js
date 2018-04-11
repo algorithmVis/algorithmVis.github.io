@@ -54,6 +54,7 @@ function removeConnectedNodes() {
 }
 function numberOfNodes(value) {
     viewer.resetMyAll();
+    totalWeight = 0;
     drawGraph(value);
     startKruskal();
 }
