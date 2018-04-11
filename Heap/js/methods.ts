@@ -183,6 +183,7 @@ function removeElem(i: number, delArray: boolean) {
             $("#arrayElem" + i).remove();
 
         removeNode(i);
+        positioningNodes(500)
     }, 1000);
 }
 

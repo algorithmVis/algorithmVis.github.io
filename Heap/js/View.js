@@ -182,18 +182,15 @@ var View = /** @class */ (function () {
         manager.addEvent(new FrontendEvent(lck, notLck, this.animSpeed));
     };
     View.prototype.setSlow = function () {
-        this.animSpeed = 250;
-        manager.delayTime = 900;
+        manager.delayTime = 1500;
         this.restartManager();
     };
     View.prototype.setMedium = function () {
-        this.animSpeed = 600;
-        manager.delayTime = 600;
+        manager.delayTime = 1000;
         this.restartManager();
     };
     View.prototype.setFast = function () {
-        this.animSpeed = 300;
-        manager.delayTime = 300;
+        manager.delayTime = 600;
         this.restartManager();
     };
     View.prototype.restartManager = function () {
@@ -265,6 +262,7 @@ var View = /** @class */ (function () {
         var forward = function (index, removeArr) {
             return function () {
                 removeElem(index, removeArr);
+                setValueAtIndex(index, " ");
             };
         }(i, removeArr);
         var backward = function (index, value, parent) {
@@ -299,6 +297,85 @@ var View = /** @class */ (function () {
             };
         }(child, parent);
         manager.addEvent(new FrontendEvent(forward, backward, manager.delayTime));
+    };
+    View.prototype.highlightTwoNodes = function (index1, index2, color) {
+        var forward = function (index1, index2, color) {
+            return function () {
+                highlightNode(index1, color);
+                highlightNode(index2, color);
+            };
+        }(index1, index2, color);
+        var backward = function (index1, index2) {
+            return function () {
+                removeHighlight(index2);
+                removeHighlight(index1);
+            };
+        }(index1, index2);
+        manager.addEvent(new FrontendEvent(forward, backward, 1500));
+    };
+    View.prototype.removeHighlightTwoNodes = function (index1, index2, color) {
+        var forward = function (index1, index2) {
+            return function () {
+                removeHighlight(index1);
+                removeHighlight(index2);
+            };
+        }(index1, index2);
+        var backward = function (index1, index2, color) {
+            return function () {
+                highlightNode(index1, color);
+                highlightNode(index2, color);
+            };
+        }(index1, index2, color);
+        manager.addEvent(new FrontendEvent(forward, backward, 1500));
+    };
+    View.prototype.sortHighlightTwoNodes = function (arrIndex, sortIndex, color) {
+        var forward = function (arrIndex, sortIndex, color) {
+            return function () {
+                selectIndex(0, true);
+                highlightNode(0, "orange");
+                sortHighlightElem(this.sortIndex, "orange");
+            };
+        }(arrIndex, sortIndex, color);
+        var backward = function (index1, index2, color) {
+            return function () {
+                removeSortHighlight(this.sortIndex);
+                removeHighlight(0);
+                selectIndex(0, false);
+            };
+        }(arrIndex, sortIndex, color);
+        manager.addEvent(new FrontendEvent(forward, backward, 1500));
+    };
+    View.prototype.exchangeElemAndNodes = function (index1, value1, index2, value2) {
+        var forward = function (index1, value1, index2, value2) {
+            return function () {
+                swapNodes(index1, index2);
+                setValueAtIndex(index1, value2);
+                setValueAtIndex(index2, value1);
+            };
+        }(index1, value1, index2, value2);
+        var backward = function (index1, value1, index2, value2) {
+            return function () {
+                setValueAtIndex(index1, value1);
+                setValueAtIndex(index2, value2);
+                swapNodes(index1, index2);
+            };
+        }(index1, value1, index2, value2);
+        manager.addEvent(new FrontendEvent(forward, backward, 1500));
+    };
+    View.prototype.setSortValAndDeselect = function (sortIndex, val) {
+        var forward = function (sortIndex, val) {
+            return function () {
+                setValueAtSortIndex(sortIndex, val);
+                selectIndex(0, false);
+            };
+        }(sortIndex, val);
+        var backward = function (sortIndex, val) {
+            return function () {
+                selectIndex(0, true);
+                setValueAtSortIndex(sortIndex, " ");
+            };
+        }(sortIndex, val);
+        manager.addEvent(new FrontendEvent(forward, backward, 1500));
     };
     View.prototype.play = function () {
         this.clickedPlay = true;

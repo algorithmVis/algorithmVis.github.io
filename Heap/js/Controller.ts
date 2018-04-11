@@ -17,8 +17,8 @@ class Controller {
         this.speed = 50;
         viewer.changeToCurrentAlgorithm();
         if (algo.getName() == "FreeMode") {
-            (<MaxHeapFree> this.algorithm).clearArrayValues();
-            (<MaxHeapFree> this.algorithm).maxHeapFreeInit();
+            (<MaxHeapFree>this.algorithm).clearArrayValues();
+            (<MaxHeapFree>this.algorithm).maxHeapFreeInit();
             manager.start();
         } else {
             this.algorithm.setIndex();
@@ -45,7 +45,7 @@ class Controller {
         viewer.selectThisIndex(index, select);
     }
 
-    setValueAtIndex(i: number, bValue : any, oldVal : any) {
+    setValueAtIndex(i: number, bValue: any, oldVal: any) {
         viewer.setValueAtThisIndex(i, bValue, oldVal);
     }
 
@@ -110,6 +110,25 @@ class Controller {
 
     getArrayLength() {
         return this.algorithm.getArrayLength();
+    }
+
+    exchangeElemAndNodes(index1: number, value1: number, index2: number, value2: number) {
+        viewer.exchangeElemAndNodes(index1, value1, index2, value2);
+    }
+
+    highlightTwoNodes(index1: number, index2: number, color: string) {
+        viewer.highlightTwoNodes(index1, index2, color);
+    }
+
+    removeHighlightTwoNodes(index1: number, index2: number, color: string) {
+        viewer.removeHighlightTwoNodes(index1, index2, color);
+    }
+
+    sortHighlightTwoNodes(arrIndex: number, sortIndex: number, color: string) {
+        viewer.sortHighlightTwoNodes(0, sortIndex, "orange");
+    }
+    setSortValAndDeselect(sortIndex: number, val: any) {
+        viewer.setSortValAndDeselect(sortIndex, val);
     }
 }
 

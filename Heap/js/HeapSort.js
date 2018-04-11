@@ -28,18 +28,10 @@ var HeapSort = /** @class */ (function (_super) {
     };
     HeapSort.prototype.remove = function () {
         // Remove root element, set last element to root and start frontendevents
-        this.currIndex--;
         var oldVal = this.array[0];
-        control.setSelectedIndex(0, true);
-        control.highlightNode(0, "orange");
-        control.highlightSortElem(this.sortIndex, "orange");
-        control.setValueAtSortIndex(this.sortIndex, this.array[0]);
-        control.setSelectedIndex(0, false);
-        this.exch(0, this.currIndex);
-        control.swapNode(this.currIndex, 0);
-        control.removeElem(this.currIndex, false);
-        control.setValueAtIndex(this.currIndex, " ", oldVal);
-        this.sink(0, this.currIndex - 1);
+        control.sortHighlightTwoNodes(0, this.sortIndex, "orange");
+        control.setSortValAndDeselect(this.sortIndex, this.array[0]);
+        _super.prototype.remove.call(this);
         control.highlightSortElem(this.sortIndex--, "green");
     };
     HeapSort.prototype.insertElems = function (size) {

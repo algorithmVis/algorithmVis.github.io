@@ -90,6 +90,21 @@ var Controller = /** @class */ (function () {
     Controller.prototype.getArrayLength = function () {
         return this.algorithm.getArrayLength();
     };
+    Controller.prototype.exchangeElemAndNodes = function (index1, value1, index2, value2) {
+        viewer.exchangeElemAndNodes(index1, value1, index2, value2);
+    };
+    Controller.prototype.highlightTwoNodes = function (index1, index2, color) {
+        viewer.highlightTwoNodes(index1, index2, color);
+    };
+    Controller.prototype.removeHighlightTwoNodes = function (index1, index2, color) {
+        viewer.removeHighlightTwoNodes(index1, index2, color);
+    };
+    Controller.prototype.sortHighlightTwoNodes = function (arrIndex, sortIndex, color) {
+        viewer.sortHighlightTwoNodes(0, sortIndex, "orange");
+    };
+    Controller.prototype.setSortValAndDeselect = function (sortIndex, val) {
+        viewer.setSortValAndDeselect(sortIndex, val);
+    };
     return Controller;
 }());
 var control = new Controller();

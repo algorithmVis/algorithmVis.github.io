@@ -154,6 +154,7 @@ function removeElem(i, delArray) {
         if (delArray)
             $("#arrayElem" + i).remove();
         removeNode(i);
+        positioningNodes(500);
     }, 1000);
 }
 function removeNode(i) {

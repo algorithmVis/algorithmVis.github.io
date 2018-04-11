@@ -217,17 +217,17 @@ class View implements IView {
     }
 
     setSlow() {
-        manager.delayTime = 900;
+        manager.delayTime = 1500;
         this.restartManager();
     }
 
     setMedium() {
-        manager.delayTime = 600;
+        manager.delayTime = 1000;
         this.restartManager();
     }
 
     setFast() {
-        manager.delayTime = 300;
+        manager.delayTime = 600;
         this.restartManager();
     }
 
@@ -308,6 +308,7 @@ class View implements IView {
         let forward = function (index, removeArr) {
             return function () {
                 removeElem(index, removeArr);
+                setValueAtIndex(index, " ");
             }
         }(i, removeArr);
 
@@ -352,6 +353,100 @@ class View implements IView {
 
         manager.addEvent(new FrontendEvent(forward, backward, manager.delayTime));
 
+    }
+
+    highlightTwoNodes(index1: number, index2: number, color: string) {
+        let forward = function (index1, index2, color) {
+            return function () {
+                highlightNode(index1, color);
+                highlightNode(index2, color);
+            }
+        }(index1, index2, color);
+
+        let backward = function (index1, index2) {
+            return function () {
+                removeHighlight(index2);
+                removeHighlight(index1);
+            }
+        }(index1, index2);
+
+        manager.addEvent(new FrontendEvent(forward, backward, 1500));
+    }
+
+    removeHighlightTwoNodes(index1: number, index2: number, color: string) {
+        let forward = function (index1, index2) {
+            return function () {
+                removeHighlight(index1);
+                removeHighlight(index2);
+            }
+        }(index1, index2);
+
+        let backward = function (index1, index2, color) {
+            return function () {
+                highlightNode(index1, color);
+                highlightNode(index2, color);
+            }
+        }(index1, index2, color);
+
+        manager.addEvent(new FrontendEvent(forward, backward, 1500));
+    }
+
+    sortHighlightTwoNodes(arrIndex: number, sortIndex: number, color: string) {
+        let forward = function (arrIndex, sortIndex, color) {
+            return function () {
+                selectIndex(0, true);
+                highlightNode(0, "orange");
+                sortHighlightElem(this.sortIndex, "orange");
+            }
+        }(arrIndex, sortIndex, color);
+
+        let backward = function (index1, index2, color) {
+            return function () {
+                removeSortHighlight(this.sortIndex);
+                removeHighlight(0);
+                selectIndex(0, false);
+            }
+        }(arrIndex, sortIndex, color);
+
+        manager.addEvent(new FrontendEvent(forward, backward, 1500));
+    }
+
+    exchangeElemAndNodes(index1: number, value1: any, index2: number, value2: any) {
+        let forward = function (index1, value1, index2, value2) {
+            return function () {
+                swapNodes(index1, index2);
+                setValueAtIndex(index1, value2);
+                setValueAtIndex(index2, value1);
+            }
+        }(index1, value1, index2, value2);
+
+        let backward = function (index1, value1, index2, value2) {
+            return function () {
+                setValueAtIndex(index1, value1);
+                setValueAtIndex(index2, value2);
+                swapNodes(index1, index2);
+            }
+        }(index1, value1, index2, value2);
+
+        manager.addEvent(new FrontendEvent(forward, backward, 1500));
+    }
+
+    setSortValAndDeselect(sortIndex: number, val: any) {
+        let forward = function (sortIndex, val) {
+            return function () {
+                setValueAtSortIndex(sortIndex, val);
+                selectIndex(0, false);
+            }
+        }(sortIndex, val);
+
+        let backward = function (sortIndex, val) {
+            return function () {
+                selectIndex(0, true);
+                setValueAtSortIndex(sortIndex, " ");
+            }
+        }(sortIndex, val);
+
+        manager.addEvent(new FrontendEvent(forward, backward, 1500));
     }
 
     clickedPlay = true;

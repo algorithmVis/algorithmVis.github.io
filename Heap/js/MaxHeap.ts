@@ -110,14 +110,13 @@ class MaxHeap implements IAlgorithm {
     }
 
     protected exch(number: number, number2: number) {
-        if (this.array[number] === undefined || this.array[number2] === undefined || number > this.currIndex || number > this.currIndex)
+        if (this.array[number] === undefined || this.array[number2] === undefined)
             return;
 
-        let tmp = this.array[number];
-        this.array[number] = this.array[number2];
-        control.setValueAtIndex(number, this.array[number], tmp);
-        this.array[number2] = tmp;
-        control.setValueAtIndex(number2, this.array[number2], this.array[number]);
+        control.highlightTwoNodes(number, number2, "orange");
+        control.removeHighlightTwoNodes(number, number2, "orange");
+        control.exchangeElemAndNodes(number, this.array[number], number2, this.array[number2]);
+        this.backEndExch(number, number2);
     }
 
     add(a: number): void {
@@ -133,63 +132,54 @@ class MaxHeap implements IAlgorithm {
 
     remove(): void {
         // Remove root element, set last element to root and start frontendevents
-        this.currIndex--;
-        let oldVal = this.array[0];
-        this.exch(0, this.currIndex);
-        control.swapNode(this.currIndex, 0);
+        this.exch(0, --this.currIndex);
         control.removeElem(this.currIndex, false);
-        control.setValueAtIndex(this.currIndex, " ", oldVal);
-        this.sink(0, this.currIndex - 1);
+        this.sink(0, this.currIndex);
     }
 
     protected sink(index: number, length: number): void {
         let left: number = index * 2 + 1;
         let right: number = index * 2 + 2;
 
-        if (right > length)
+        if (left >= length)
             return;
         if (this.array[index] >= this.array[left] && this.array[index] >= this.array[right])
             return;
 
         // Sink
         let other;
-        if (this.array[right] > this.array[left]) {
+        if (right >= length)
+            other = left;
+        else if (this.array[right] > this.array[left]) {
             other = right;
         } else {
             other = left;
         }
 
-        control.highlightNode(index, "orange");
-        control.highlightNode(other, "orange");
-        control.swapNode(index, other);
+        // Check once more before exchange
+        if (this.array[index] >= this.array[other]) {
+            control.highlightTwoNodes(index, other, "green");
+            control.removeHighlightTwoNodes(index, other, "green");
+            return;
+        }
+
         this.exch(index, other);
-        control.highlightNode(index, "green");
-        control.highlightNode(other, "green");
-        control.removeHighlight(index);
-        control.removeHighlight(other);
+        control.highlightTwoNodes(index, other, "green");
+        control.removeHighlightTwoNodes(index, other, "green");
         this.sink(other, length);
     }
 
     protected swim(index: number): void {
         let other: number = Math.floor((index - 1) / 2);
         while (other >= 0 && this.array[index] > this.array[other]) {
-            control.highlightNode(index, "orange");
-            control.highlightNode(other, "orange");
-            control.swapNode(index, other);
             this.exch(index, other);
-            control.highlightNode(index, "green");
-            control.highlightNode(other, "green");
-            control.removeHighlight(index);
-            control.removeHighlight(other);
             index = Math.floor((index - 1) / 2);
             other = Math.floor((index - 1) / 2);
         }
 
         if (index !== 0) {
-            control.highlightNode(index, "green");
-            control.highlightNode(other, "green");
-            control.removeHighlight(index);
-            control.removeHighlight(other);
+            control.highlightTwoNodes(index, other, "green");
+            control.removeHighlightTwoNodes(index, other, "green");
         }
     }
 
