@@ -37,16 +37,12 @@ function startKruskal() {
 
         if (connected(node1, node2) == false) {
             controller.selectTwoNodes(node1, node2);
-            controller.highlightEdgeText(currentEdge);
-            controller.highlightMyEdge(currentEdge);
+            controller.highlightMyEdge(currentEdge, weight);
 
             union(node1, node2);
-            controller.addWeightToSum(weight);
-
             j++;
         } else {
             controller.dehighlightMyEdge(currentEdge);
-            controller.transparentMyEdge(currentEdge);
             controller.excludeEdgeText(currentEdge);
         }
         controller.deselectTwoNodes(node1, node2);
@@ -87,8 +83,8 @@ function sortEdges() {
     let temp = 0;
     let sorted = triplets;
     if (sorted.length > 0) {
-        for (var i = 0; i < sorted.length; i++) {
-            for (var j = 0; j < sorted.length; j++) {
+        for (let i = 0; i < sorted.length; i++) {
+            for (let j = 0; j < sorted.length; j++) {
                 let [a, b, c] = sorted[i];
                 let [d, e, f] = sorted[j];
                 if (c > f) {

@@ -28,15 +28,12 @@ function startKruskal() {
         currentEdge = getEdgeId(node1, node2);
         if (connected(node1, node2) == false) {
             controller.selectTwoNodes(node1, node2);
-            controller.highlightEdgeText(currentEdge);
-            controller.highlightMyEdge(currentEdge);
+            controller.highlightMyEdge(currentEdge, weight);
             union(node1, node2);
-            controller.addWeightToSum(weight);
             j++;
         }
         else {
             controller.dehighlightMyEdge(currentEdge);
-            controller.transparentMyEdge(currentEdge);
             controller.excludeEdgeText(currentEdge);
         }
         controller.deselectTwoNodes(node1, node2);

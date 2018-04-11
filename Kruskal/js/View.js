@@ -11,27 +11,33 @@ var View = /** @class */ (function () {
         this.highlightEventDuration = 1000;
         this.paused = false;
     }
-    View.prototype.setHighlightEdge = function (edgeId) {
-        var forward = function (edgeId) {
+    View.prototype.setHighlightEdge = function (edgeId, weight) {
+        var forward = function (edgeId, weight) {
             return function () {
+                higlightEdgeText(edgeId);
                 highlightThisEdge(edgeId);
+                writeTotalWeight(weight);
             };
-        }(edgeId);
-        var backward = function (edgeId) {
+        }(edgeId, weight);
+        var backward = function (edgeId, weight) {
             return function () {
                 dehighlightThisEdge(edgeId);
+                deHighlightEdgeText(edgeId);
+                writeTotalWeight(-weight);
             };
-        }(edgeId);
+        }(edgeId, weight);
         manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
     };
     View.prototype.setDehighlightEdge = function (edgeId) {
         var forward = function (edgeId) {
             return function () {
+                transparentEdge(edgeId);
                 dehighlightThisEdge(edgeId);
             };
         }(edgeId);
         var backward = function (edgeId) {
             return function () {
+                transparentEdge(edgeId);
                 highlightThisEdge(edgeId);
             };
         }(edgeId);
@@ -47,32 +53,6 @@ var View = /** @class */ (function () {
         var backward = function (edgeId) {
             return function () {
                 addWeightedEdge(edgeId, node1, node2, weight);
-            };
-        }(edgeId);
-        manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
-    };
-    View.prototype.transparentEdge = function (edgeId) {
-        var forward = function (edgeId) {
-            return function () {
-                transparentEdge(edgeId);
-            };
-        }(edgeId);
-        var backward = function (edgeId) {
-            return function () {
-                deTransparentEdge(edgeId);
-            };
-        }(edgeId);
-        manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
-    };
-    View.prototype.deTransparentEdge = function (edgeId) {
-        var forward = function (edgeId) {
-            return function () {
-                deTransparentEdge(edgeId);
-            };
-        }(edgeId);
-        var backward = function (edgeId) {
-            return function () {
-                transparentEdge(edgeId);
             };
         }(edgeId);
         manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
@@ -129,32 +109,6 @@ var View = /** @class */ (function () {
         }(node1, node2);
         manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
     };
-    View.prototype.disableThisButton = function () {
-        var forward = function () {
-            return function () {
-                disableButton();
-            };
-        }();
-        var backward = function () {
-            return function () {
-                enableButton();
-            };
-        }();
-        manager.addEvent(new FrontendEvent(forward, backward, 10));
-    };
-    View.prototype.enableThisButton = function () {
-        var forward = function () {
-            return function () {
-                enableButton();
-            };
-        }();
-        var backward = function () {
-            return function () {
-                disableButton();
-            };
-        }();
-        manager.addEvent(new FrontendEvent(forward, backward, 10));
-    };
     View.prototype.excludeText = function (i) {
         var forward = function (i) {
             return function () {
@@ -166,32 +120,6 @@ var View = /** @class */ (function () {
                 includeEdgeText(i);
             };
         }(i);
-        manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
-    };
-    View.prototype.highlighText = function (i) {
-        var forward = function (i) {
-            return function () {
-                higlightEdgeText(i);
-            };
-        }(i);
-        var backward = function (i) {
-            return function () {
-                deHighlightEdgeText(i);
-            };
-        }(i);
-        manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
-    };
-    View.prototype.addWeightToSum = function (weight) {
-        var forward = function (weight) {
-            return function () {
-                writeTotalWeight(weight);
-            };
-        }(weight);
-        var backward = function (weight) {
-            return function () {
-                writeTotalWeight(-weight);
-            };
-        }(weight);
         manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
     };
     View.prototype.resetMyAll = function () {
@@ -223,9 +151,13 @@ var View = /** @class */ (function () {
         $('#forward').removeAttr('disabled');
     };
     View.prototype.forward = function () {
+        this.paused = false;
+        this.pause();
         manager.next();
     };
     View.prototype.backward = function () {
+        this.paused = false;
+        this.pause();
         manager.previous();
     };
     View.prototype.slow = function () {

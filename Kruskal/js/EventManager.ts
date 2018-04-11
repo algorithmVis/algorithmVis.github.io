@@ -3,8 +3,6 @@
  *
  */
 
-declare var $: any;
-
 /** Manager for events stored in queue. Manager is also responsible for executing events automatically */
 class EventManager {
     delayTime: number = 1000; // Original value
@@ -100,4 +98,4 @@ class FrontendEvent {
     }
 }
 
-var manager: EventManager = new EventManager();
+let manager: EventManager = new EventManager();

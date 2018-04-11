@@ -65,16 +65,6 @@ function removeConnectedNodes() {
     removeWeightedEdge(--edges);
 }
 
-function disableButton() {
-    $("#start").attr({ disabled: "true" });
-    $("#start").css({ "opacity": 0.15 });
-}
-
-function enableButton() {
-    $("#start").removeAttr('disabled');
-    $("#start").css({ "opacity": 1 });
-}
-
 function numberOfNodes(value: number) {
     viewer.resetMyAll();
     drawGraph(value);

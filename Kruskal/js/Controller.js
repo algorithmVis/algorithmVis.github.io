@@ -19,8 +19,8 @@ var Controller = /** @class */ (function () {
     Controller.prototype.resetGraph = function () {
         viewer.resetMyAll();
     };
-    Controller.prototype.highlightMyEdge = function (edgeId) {
-        viewer.setHighlightEdge(edgeId);
+    Controller.prototype.highlightMyEdge = function (edgeId, weight) {
+        viewer.setHighlightEdge(edgeId, weight);
     };
     Controller.prototype.dehighlightMyEdge = function (edgeId) {
         viewer.setDehighlightEdge(edgeId);
@@ -28,32 +28,14 @@ var Controller = /** @class */ (function () {
     Controller.prototype.removeMyEdge = function (edgeId) {
         viewer.removeEdge(edgeId);
     };
-    Controller.prototype.transparentMyEdge = function (edgeId) {
-        viewer.transparentEdge(edgeId);
-    };
-    Controller.prototype.detransparentMyEdge = function (edgeId) {
-        viewer.transparentEdge(edgeId);
-    };
     Controller.prototype.selectTwoNodes = function (node1, node2) {
         viewer.selectTheseNodes(node1, node2);
     };
     Controller.prototype.deselectTwoNodes = function (node1, node2) {
         viewer.deselectTheseNodes(node1, node2);
     };
-    Controller.prototype.disableStartButton = function () {
-        viewer.disableThisButton();
-    };
-    Controller.prototype.enableStartButtion = function () {
-        viewer.enableThisButton();
-    };
     Controller.prototype.excludeEdgeText = function (index) {
         viewer.excludeText(index);
-    };
-    Controller.prototype.highlightEdgeText = function (index) {
-        viewer.highlighText(index);
-    };
-    Controller.prototype.addWeightToSum = function (weight) {
-        viewer.addWeightToSum(weight);
     };
     Controller.prototype.excludeEdges = function (edgeList) {
         viewer.excludeEdges(edgeList);

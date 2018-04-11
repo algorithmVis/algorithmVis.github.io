@@ -22,8 +22,8 @@ class Controller {
         viewer.resetMyAll();
     }
 
-    highlightMyEdge(edgeId: number) {
-        viewer.setHighlightEdge(edgeId);
+    highlightMyEdge(edgeId: number, weight: number) {
+        viewer.setHighlightEdge(edgeId, weight);
     }
 
     dehighlightMyEdge(edgeId: number) {
@@ -34,14 +34,6 @@ class Controller {
         viewer.removeEdge(edgeId);
     }
 
-    transparentMyEdge(edgeId: number) {
-        viewer.transparentEdge(edgeId);
-    }
-
-    detransparentMyEdge(edgeId: number) {
-        viewer.transparentEdge(edgeId);
-    }
-
     selectTwoNodes(node1: number, node2: number) {
         viewer.selectTheseNodes(node1, node2);
     }
@@ -50,24 +42,8 @@ class Controller {
         viewer.deselectTheseNodes(node1, node2);
     }
 
-    disableStartButton() {
-        viewer.disableThisButton();
-    }
-
-    enableStartButtion() {
-        viewer.enableThisButton();
-    }
-
     excludeEdgeText(index: number) {
         viewer.excludeText(index);
-    }
-
-    highlightEdgeText(index :number) {
-        viewer.highlighText(index);
-    }
-
-    addWeightToSum(weight: number) {
-        viewer.addWeightToSum(weight);
     }
 
     excludeEdges(edgeList : any) {
