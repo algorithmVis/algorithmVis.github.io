@@ -17,10 +17,10 @@ h1#headerText {
 }
 
 div#graphUI.kruskal {
-    width: 50%;
+    width: 70%;
     border: solid 3px #b6b6b6;
     border-radius: 10px;
-    margin-right: 100px;
+    margin-right: 25px;
 }
 
 div#queueUI {
@@ -33,7 +33,7 @@ div#queueUI {
 div#edgeTitle {
     text-align: center;
     margin-top: -30px;
-    margin-left: 320px;
+    margin-left: 60%;
 }
 
 div#edgeTable {
@@ -56,12 +56,13 @@ div#edgeTable {
 }
 
 .totalWeight-container {
+    text-align: center;
     width: 250px;
-    position: relative;
+    position: center;
     height: 25px;
     padding-left: 5px;
-    padding-bottom: 20px;
-    margin-top: 3px;
+    padding-bottom: 25px;
+    margin-top: 5px;
     border: solid 3px #b6b6b6;
     border-radius: 10px;
 }
