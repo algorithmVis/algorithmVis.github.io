@@ -18,7 +18,7 @@ function startBfs(startIndex: number) {
     bfsQueue.push(startIndex);
 
     while (bfsQueue.length != 0) {
-        let v: number = bfsQueue.shift();
+        let v = bfsQueue.shift();
         popFromBfsQueue(v);
         visit(v);
 
@@ -128,9 +128,9 @@ function visit(id: number) {
 
     let backwards = function (v, curr) {
         return function () {
-            $("#node" + v).css("background-color", "white")
-            $("#node" + v).css("border", "6px solid black")
-            $("#node" + curr).css("border", "6px solid rgb(16, 130, 219)")
+            $("#node" + v).css("background-color", "white");
+            $("#node" + v).css("border", "6px solid black");
+            $("#node" + curr).css("border", "6px solid rgb(16, 130, 219)");
             $("#insElemNr" + v).html("<p>" + v + "</p><div> F </div>");
             $("#insElemNr" + v).removeClass("marked");
         };

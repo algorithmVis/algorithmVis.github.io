@@ -48,18 +48,14 @@ function setInitialArray() {
     var arr = [];
     // Remove elements
     removeVisitedArray();
-    $("#visitedUL").append("<p id='visitedText' class='visited-text'>visited</p>");
-    $("#visitedUL").append("<img id='leftBracket' class='bracket' src='assets/square_left.png'/>");
+    $("#visitedUL").append("<p id='visitedText' class='visited-text'>Visited:</p>");
+    //$("#visitedUL").append("<img id='leftBracket' class='bracket' src='../assets/square_left.png'/>");
     for (var i = 0; i < nodes; i++) {
         $("#visitedUL").append("<li id='insElemNr" + i + "'><div>" + "F</div></li>");
         arr.push('F');
         $("#insElemNr" + i).prepend("<p id='ind" + i + "'>" + i + "</p>");
     }
-    // place right bracket
-    //<img id="rightBracket" class="bracket" src="assets/square_right.png"/>
-    var posLeft = nodes * (20);
-    //style='left="+ posLeft + "px'
-    $("#visitedUL").append("<img id='rightBracket' class='bracket' src='assets/square_right.png'/>");
+    //$("#visitedUL").append("<img id='rightBracket' class='bracket' src='../assets/square_right.png'/>");
 }
 function centerElements() {
     var arrayWidth = ((array.length - 1) * 85) + 50;

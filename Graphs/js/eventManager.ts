@@ -52,6 +52,12 @@ class eventManager {
         this.paused = true;
         clearInterval(this.eventThread);
     }
+
+    clear() {
+        clearInterval(this.eventThread);
+        this.nextEvents = [];
+        this.previousEvents = [];
+    }
 }
 
 class FrontendEvent {
@@ -67,16 +73,3 @@ class FrontendEvent {
 }
 
 let manager: eventManager = new eventManager();
-
-/*
-/** How to add FrontendEvents to manager
-for(var i=0; i<10; i++) {
-    var f = function(k) {
-        return function() {console.log("Going forward, step " + k);};
-    }(i);
-    var b = function(k) {
-        return function() {console.log("Going backward, step " + k);}
-    }(i);
-    manager.addEvent(new FrontendEvent(f,b));
-}
-*/

@@ -28,16 +28,15 @@ function resetAll() {
     resetGraphUI();
     resetAdjList();
     removeVisitedArray();
+    manager.clear();
     nodes = 0;
     edges = 0;
     manager = new eventManager();
 }
 
 function checkOverlap(x: number, y: number) {
-    console.log("overlap check");
     let overlap = false;
     $("#graphUI").children().each(function () {
-        console.log(this);
         if (this.id !== "edgeSvg") {
             let pos = $("#" + this.id).position();
             if (pos.left - 35 < x && pos.left + 115 > x && pos.top - 35 < y && pos.top + 115 > y) {
@@ -50,11 +49,11 @@ function checkOverlap(x: number, y: number) {
 
 
 /*************************************************************** */
-
 /*******************  Example Graphs  ****************************/
 /*************************************************************** */
 
 function exampleGraphStar() {
+    resetAll();
     graphUIClicked(287, 230);
     graphUIClicked(73, 98);
     graphUIClicked(266, 49);
@@ -75,15 +74,16 @@ function exampleGraphStar() {
 }
 
 function exampleGraphAllConnected() {
+    resetAll();
     graphUIClicked(66, 71);
     graphUIClicked(337, 158);
     graphUIClicked(571, 64);
-    graphUIClicked(77, 278)
-    graphUIClicked(233, 306)
-    graphUIClicked(420, 303)
-    graphUIClicked(437, 454)
-    graphUIClicked(134, 437)
-    graphUIClicked(577, 184)
+    graphUIClicked(77, 278);
+    graphUIClicked(233, 306);
+    graphUIClicked(420, 303);
+    graphUIClicked(437, 454);
+    graphUIClicked(134, 437);
+    graphUIClicked(577, 184);
     twoNodesClicked(0, 1);
     twoNodesClicked(2, 1);
     twoNodesClicked(2, 0);

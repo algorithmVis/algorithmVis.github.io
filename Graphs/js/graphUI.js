@@ -4,7 +4,6 @@ var edgeIdList = [[]];
 /*********************** Click Handler *****************************/
 /***************************************************************** */
 var clickedId = -1; // If -1, no element has been clicked yet
-// TODO: Noder havner noen ganger over hverandre når man skal koble sammen noder
 $("#graphUI").click(function (e) {
     /** If <node> was clicked */
     if (e.target.className == "nodeUI") {
@@ -137,7 +136,3 @@ function deselectTwoNodes(n1, n2) {
     $("#node" + n1).removeClass("selected");
     $("#node" + n2).removeClass("selected");
 }
-function openInfoWindow() {
-    window.open("http://www.w3schools.com");
-}
-// <svg height="100%" width="100%"> <line x1="0" y1="0" x2="200" y2="200" style="stroke:rgb(255,0,0);stroke-width:2"></line></svg>

@@ -52,15 +52,15 @@ function addEdgeToAdjList(from: number, to: number) {
 }
 
 function getAdjListAsText(node: number): string {
-    var returnString = "[ ";
-    for (var i = 0; i < adjacencyList[node].length; i++) {
+    let returnString = "[ ";
+    for (let i = 0; i < adjacencyList[node].length; i++) {
         returnString += adjacencyList[node][i] + (i == adjacencyList[node].length - 1 ? " ]" : ", ");
     }
     return returnString;
 }
 
 function resetAdjList() {
-    adjacencyList = []
+    adjacencyList = [];
     $("#adjacencyList div").each(function () {
         $(this).remove();
     });

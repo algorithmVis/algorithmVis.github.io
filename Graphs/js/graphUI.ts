@@ -7,7 +7,6 @@ let edgeIdList: number[][] = [[]];
 /*********************** Click Handler *****************************/
 /***************************************************************** */
 let clickedId: number = -1; // If -1, no element has been clicked yet
-// TODO: Noder havner noen ganger over hverandre når man skal koble sammen noder
 $("#graphUI").click(function (e: any) {
     /** If <node> was clicked */
     if (e.target.className == "nodeUI") {
@@ -43,7 +42,6 @@ $("#graphUI").click(function (e: any) {
         }
     }
 });
-
 
 /***************************************************************** */
 
@@ -115,9 +113,7 @@ function resetGraphUI() {
     edgeIdList = [[]];
 }
 
-
 /***************************************************************** */
-
 /********************* HELPER FUNCTIONS ****************************/
 /***************************************************************** */
 
@@ -126,7 +122,7 @@ function getNormal(x1: number, y1: number, x2: number, y2: number) {
     return {x: -dy, y: dx};
 }
 
-function getUnit(x, y) {
+function getUnit(x: number, y: number) {
     let length = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
     return {x: x / length, y: y / length};
 }
@@ -163,9 +159,3 @@ function deselectTwoNodes(n1: number, n2: number) {
     $("#node" + n1).removeClass("selected");
     $("#node" + n2).removeClass("selected");
 }
-
-function openInfoWindow() {
-    window.open("http://www.w3schools.com");
-}
-
-// <svg height="100%" width="100%"> <line x1="0" y1="0" x2="200" y2="200" style="stroke:rgb(255,0,0);stroke-width:2"></line></svg>

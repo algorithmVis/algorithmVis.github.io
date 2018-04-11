@@ -20,30 +20,28 @@ function resetAll() {
     resetGraphUI();
     resetAdjList();
     removeVisitedArray();
+    manager.clear();
     nodes = 0;
     edges = 0;
     manager = new eventManager();
 }
 function checkOverlap(x, y) {
-    console.log("overlap check");
     var overlap = false;
     $("#graphUI").children().each(function () {
-        console.log(this);
         if (this.id !== "edgeSvg") {
             var pos = $("#" + this.id).position();
-            console.log(pos.left + " " + pos.top + " my: " + x + " " + y); // "this" is the current element in the loop
             if (pos.left - 35 < x && pos.left + 115 > x && pos.top - 35 < y && pos.top + 115 > y) {
                 overlap = true;
             }
         }
     });
-    console.log("overlap" + overlap);
     return overlap;
 }
 /*************************************************************** */
 /*******************  Example Graphs  ****************************/
 /*************************************************************** */
 function exampleGraphStar() {
+    resetAll();
     graphUIClicked(287, 230);
     graphUIClicked(73, 98);
     graphUIClicked(266, 49);
@@ -63,6 +61,7 @@ function exampleGraphStar() {
     twoNodesClicked(7, 0);
 }
 function exampleGraphAllConnected() {
+    resetAll();
     graphUIClicked(66, 71);
     graphUIClicked(337, 158);
     graphUIClicked(571, 64);
