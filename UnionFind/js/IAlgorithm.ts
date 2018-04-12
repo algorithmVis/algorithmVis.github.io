@@ -27,18 +27,6 @@ interface IAlgorithm {
     getArray(): number[];
 
     /**
-     *  Called when the pause-button (SPACE) is hit
-     *  Sets the pause variable to !pause
-     */
-    invertPause(): void;
-
-    /**
-     *  Set the Controller for this algorithm
-     * @param Controller
-     */
-    setController(control: Controller): void;
-
-    /**
      *  Set the current state of the algorithm to the given array
      * @param array
      */

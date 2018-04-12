@@ -21,7 +21,6 @@ class QuickUnionPathCompression extends QuickUnion {
 
         while (root != this.getArray()[root]) {
             this.highlightSingleNode(root, "orange");
-            this.delay((this.getDelayTime() * 0.75));
             root = this.getArray()[root];
         }
 
@@ -33,7 +32,6 @@ class QuickUnionPathCompression extends QuickUnion {
             this.highlightSingleNode(pIndex, "orange");
             control.connectNodes(pIndex, root);
             control.setValueAtIndex(pIndex, root);
-            this.delay((this.getDelayTime() * 1.0));
             nodeStack.push(pIndex);
 
             let newP: number = this.getArray()[pIndex];

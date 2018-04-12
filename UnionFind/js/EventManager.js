@@ -43,6 +43,12 @@ var EventManager = /** @class */ (function () {
     EventManager.prototype.pause = function () {
         clearInterval(this.eventThread);
     };
+    EventManager.prototype.clear = function () {
+        this.pause();
+        this.nextEvents = [];
+        this.previousEvents = [];
+        this.start();
+    };
     return EventManager;
 }());
 var FrontendEvent = /** @class */ (function () {
@@ -54,15 +60,3 @@ var FrontendEvent = /** @class */ (function () {
     return FrontendEvent;
 }());
 var manager = new EventManager();
-/*
-/** How to add FrontendEvents to manager
-for(var i=0; i<10; i++) {
-    var f = function(k) {
-        return function() {console.log("Going forward, step " + k);};
-    }(i);
-    var b = function(k) {
-        return function() {console.log("Going backward, step " + k);}
-    }(i);
-    manager.addEvent(new FrontendEvent(f,b));
-}
-*/

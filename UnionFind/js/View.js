@@ -13,17 +13,9 @@
 var View = /** @class */ (function () {
     function View() {
         this.colors = ["#7FFF00", "not used", "#FFB366"];
-        this.arrayIsReset = false;
-        this.k = 0;
-        this.kLeft = 0;
-        this.kRight = 0;
-        this.currentAlgorithmName = "Union Find";
         this.paused = false;
         this.animSpeed = 500;
-        this.listOfAlgorithms = ["QuickFind", "QuickUnion", "WeightedUnion", "QuickUnionPathCompression", "WeightedUnionPathCompression"];
-        this.currentAlgorithm = 0;
     }
-    //ok??? - Tror det ja.
     View.prototype.displayThisArray = function (array) {
         displayArray(JSON.stringify(array));
     };
@@ -133,17 +125,21 @@ var View = /** @class */ (function () {
         else if (dir === "backward")
             stepper.stepBack(relationships, backendArr);
     };
-    //executeScripts()
-    //javascriptReady()
     View.prototype.nextAlgorithm = function () {
-        this.incrementAlgorithmIndex();
         this.changeToCurrentAlgorithm();
     };
     View.prototype.resetAll = function () {
         var arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
         stepper = new StateController(control, this);
+        $("#arrow").addClass("hidden").animate({ left: ($("#arrayElem0").position().left + 9) + "px" }, 0);
+        this.resetArrayColors();
+        screenLock(false);
+        manager.clear();
         this.resetArray(arr);
         this.displayThisArray(arr);
+    };
+    View.prototype.resetArrayColors = function () {
+        $("#arrayUL li").removeClass("selected");
     };
     View.prototype.changeToCurrentAlgorithm = function () {
         this.resetAll();
@@ -154,8 +150,6 @@ var View = /** @class */ (function () {
             var i = arr_1[_i];
             setValueAtIndex(i, i);
         }
-    };
-    View.prototype.incrementAlgorithmIndex = function () {
     };
     View.prototype.screenLockThis = function (locked) {
         var lck = function (lock) {
@@ -175,13 +169,20 @@ var View = /** @class */ (function () {
         control.find(index);
     };
     View.prototype.setSlow = function () {
-        this.animSpeed = 250;
+        manager.delayTime = 1500;
+        this.restartManager();
     };
     View.prototype.setMedium = function () {
-        this.animSpeed = 500;
+        manager.delayTime = 1000;
+        this.restartManager();
     };
     View.prototype.setFast = function () {
-        this.animSpeed = 750;
+        manager.delayTime = 500;
+        this.restartManager();
+    };
+    View.prototype.restartManager = function () {
+        manager.pause();
+        manager.start();
     };
     View.prototype.switchAlgorithm = function (algo) {
         switch (algo) {
@@ -213,10 +214,6 @@ var View = /** @class */ (function () {
     };
     View.prototype.displayNodeSize = function (root, size) {
     };
-    /**
-     * Må implementeres for å få backward/forward til å fungere
-     * @param clone
-     */
     View.prototype.executeSaveMethodInJavaScript = function (clone) {
         var arr = JSON.stringify(clone).toString();
         saveState(arr);

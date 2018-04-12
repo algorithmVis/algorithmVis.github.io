@@ -42,7 +42,6 @@ class WeightedUnion extends QuickUnion {
                 this.treeSize[bRoot] += this.treeSize[aRoot];
             }
         }
-        super.delay(super.getDelayTime() * 2);
 
         super.removeHighlighting(aRoot);
         super.removeHighlighting(bRoot);
@@ -54,15 +53,10 @@ class WeightedUnion extends QuickUnion {
         this.paused = !this.paused;
     }
 
-    public setController(c: Controller): void {
-        super.setController(c);
-    }
-
     public simpleFind(pIndex: number, color: string): number {
         let root: number = pIndex;
         while (root != super.getArray()[root]) {
             super.highlightSingleNode(root, "orange");
-            super.delay(super.getDelayTime());
             super.removeHighlighting(root);
             root = super.getArray()[root];
         }

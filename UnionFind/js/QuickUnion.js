@@ -35,7 +35,6 @@ var QuickUnion = /** @class */ (function () {
             control.setValueAtIndex(aRoot, bRoot);
             this.arr[aRoot] = bRoot;
         }
-        this.delay(this.getDelayTime() * 2);
         this.removeHighlighting(aRoot);
         this.removeHighlighting(bRoot);
         control.setSelectedIndex(aIndex, false);
@@ -72,7 +71,6 @@ var QuickUnion = /** @class */ (function () {
      */
     QuickUnion.prototype.find = function (pIndex) {
         var root = this.simpleFind(pIndex, "green");
-        this.delay(this.getDelayTime());
         this.removeHighlighting(root);
         control.setSelectedIndex(pIndex, false);
         return root;
@@ -82,7 +80,6 @@ var QuickUnion = /** @class */ (function () {
         this.removeHighlighting(root);
         while (root != this.arr[root]) {
             this.highlightSingleNode(root, "orange");
-            this.delay(this.getDelayTime());
             this.removeHighlighting(root);
             root = this.arr[root];
         }
@@ -105,9 +102,6 @@ var QuickUnion = /** @class */ (function () {
     QuickUnion.prototype.getName = function () {
         return this.name;
     };
-    QuickUnion.prototype.invertPause = function () {
-        this.pause = !this.pause;
-    };
     QuickUnion.prototype.setArray = function (array) {
         this.arr = array;
     };
@@ -121,20 +115,6 @@ var QuickUnion = /** @class */ (function () {
      */
     QuickUnion.prototype.highlightSingleNode = function (node, color) {
         control.highlightNode(node, color);
-    };
-    /**
-     *  Sleep the current thread for delayTime milliseconds
-     * @param delayTime
-     */
-    QuickUnion.prototype.delay = function (delayTime) {
-        /*let start = new Date().getTime();
-        for (let i = 0; i < 1e7; i++) {
-            if ((new Date().getTime() - start) > delayTime) {
-                break;
-            }
-        }*/
-    };
-    QuickUnion.prototype.setController = function (control) {
     };
     QuickUnion.prototype.getDelayTime = function () {
         return this.DELAY_TIME + control.getSpeed();

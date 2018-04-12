@@ -27,7 +27,6 @@ var QuickUnionPathCompression = /** @class */ (function (_super) {
         var savedIndex = pIndex;
         while (root != this.getArray()[root]) {
             this.highlightSingleNode(root, "orange");
-            this.delay((this.getDelayTime() * 0.75));
             root = this.getArray()[root];
         }
         this.highlightSingleNode(root, color);
@@ -36,7 +35,6 @@ var QuickUnionPathCompression = /** @class */ (function (_super) {
             this.highlightSingleNode(pIndex, "orange");
             control.connectNodes(pIndex, root);
             control.setValueAtIndex(pIndex, root);
-            this.delay((this.getDelayTime() * 1.0));
             nodeStack.push(pIndex);
             var newP = this.getArray()[pIndex];
             this.getArray()[pIndex] = root;

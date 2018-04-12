@@ -26,19 +26,16 @@ var Controller = /** @class */ (function () {
     };
     Controller.prototype.connected = function (firstIndex, secondIndex) {
         viewer.screenLockThis(true);
-        //Kossen gjør eg detta?? - fixed tror jeg
         this.algorithm.connected(firstIndex, secondIndex);
         viewer.screenLockThis(false);
     };
     Controller.prototype.union = function (firstIndex, secondIndex) {
         viewer.screenLockThis(true);
-        //samme som over - fixed tror jeg
         this.algorithm.union(firstIndex, secondIndex);
         viewer.screenLockThis(false);
     };
     Controller.prototype.find = function (index) {
         viewer.screenLockThis(true);
-        //SEND HELP PLEASE
         this.algorithm.find(index);
         viewer.screenLockThis(false);
     };
@@ -56,9 +53,6 @@ var Controller = /** @class */ (function () {
     };
     Controller.prototype.highlightNode = function (index, color) {
         viewer.highlightThisNode(index, color);
-    };
-    Controller.prototype.invertPauseState = function () {
-        this.algorithm.invertPause();
     };
     Controller.prototype.setAlgorithm = function (algo) {
         this.algorithm = algo;
