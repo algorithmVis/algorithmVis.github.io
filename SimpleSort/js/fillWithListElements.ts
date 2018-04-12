@@ -10,16 +10,16 @@ function setArray(serializedArray: any) {
     });
     $("#arrayUl").remove();
     // Insert new elements
-    array = serializedArray.split('|'); // Deserialize array
+    savedArray = serializedArray.split('|'); // Deserialize array
     $("#array").append("<ul id='arrayUl' class='insElements'></ul>"); // TODO: this adds arrayUl without deleting it
-    for (var i = 0; i < array.length; i++) {
+    for (var i = 0; i < savedArray.length; i++) {
         $("#indices").append("<p id='ind" + i + "' >" + i + "</p>");
-        $("#arrayUl").append("<li id='insElemNr" + i + "'><div>" + array[i] + "</div></li>");
+        $("#arrayUl").append("<li id='insElemNr" + i + "'><div>" + savedArray[i] + "</div></li>");
     }
 
     // Spreading elements horizontally
     $("document").ready(function () {
-        for (var i = 0; i < array.length; i++) {
+        for (var i = 0; i < savedArray.length; i++) {
             var left = (i * 70) + "px";
             $("#ind" + i).animate({left: left}, 1000)
             $("#insElemNr" + i).animate({left: left}, 1000);
@@ -32,7 +32,7 @@ function setArray(serializedArray: any) {
 }
 
 function centerElements() {
-    var arrayWidth = ((array.length - 1) * 70) + 50;
+    var arrayWidth = ((savedArray.length - 1) * 70) + 50;
     var left = -arrayWidth / 2 + 20;
     $("#indices").animate({left: left + "px"}, 500);
     $("#arrayUl").animate({left: left + "px"}, 500); // +20? Ul is default 40px -> 40/2 = 20. Dont touch.
@@ -40,15 +40,25 @@ function centerElements() {
 }
 
 function getArray(ran: string) {
-// Setting Random array
-    if (ran === "random")
-        setArray(viewer.serializeArray(setRandomArray()));
-    else if (ran === "sorted")
-        setArray(viewer.serializeArray(setSortedArray()));
-    else if (ran === "inverted")
-        setArray(viewer.serializeArray(setInvSortedArray()));
-    else if (ran === "almostSorted")
-        setArray(viewer.serializeArray(setAlmostSortedArray()));
-    else // If page is tested in another browser
-        setArray('14|17|19|18|7|17|15|5');
+    if (ran === "random") {
+        savedArray = setRandomArray();
+    }
+    else if (ran === "sorted") {
+        savedArray = setSortedArray();
+    }
+    else if (ran === "inverted") {
+        savedArray = setInvSortedArray();
+    }
+    else if (ran === "almostSorted") {
+        savedArray = setAlmostSortedArray();
+    }
+    else { // If all else fails
+        savedArray = [14, 11, 19, 18, 7, 17, 15, 5];
+    }
+    setArray(viewer.serializeArray(savedArray));
+    if (algoIns) {
+        startInsertionSort();
+    } else
+        startShellSort();
 }
+

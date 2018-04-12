@@ -6,14 +6,16 @@
 ///<reference path="fillWithListElements.ts"/>
 //private IntArrayGenerator gen = new IntArrayGenerator();
 var array = [];
+var savedArray;
 var n = 10;
+var algoIns = true;
 /**
  * Check if an algorithm is already running - if that is the case reset the view
  */
 function checkIfAlreadyRunning() {
+    array = savedArray.slice();
     k.hide();
-    var arr = setRandomArray();
-    setArray(viewer.serializeArray(arr));
+    $("#arrayUl li").css('background-color', '#FFFFFF');
     manager.clear();
     viewer.setPause();
 }
@@ -24,6 +26,7 @@ function startInsertionSort() {
     checkIfAlreadyRunning();
     control.hideK();
     control.setHeadText("Insertion Sort");
+    setArray(viewer.serializeArray(array));
     var j; // Elements sorted, starting on second position
     var key; // Current element
     var i; // Index moving backwards with key
@@ -49,6 +52,7 @@ function startInsertionSort() {
 function startShellSort() {
     checkIfAlreadyRunning();
     control.setHeadText("Shell Sort");
+    setArray(viewer.serializeArray(array));
     // Setup K
     var k = (Math.floor(array.length / 2)); // Gap
     control.setKValue(k);
