@@ -17,21 +17,12 @@ declare var $;
 
 class View implements IView {
     colors: string[] = ["#7FFF00", "not used", "#FFB366"];
-    arrayIsReset: boolean = false;
-    k: number = 0
-    kLeft: number = 0
-    kRight: number = 0;
-    currentAlgorithmName: string = "Union Find";
     paused: boolean = false;
     animSpeed: number = 500;
-    listOfAlgorithms: string[] = ["QuickFind", "QuickUnion", "WeightedUnion", "QuickUnionPathCompression", "WeightedUnionPathCompression"];
-    currentAlgorithm: number = 0;
 
-    //ok??? - Tror det ja.
     displayThisArray(array: number[]) {
         displayArray(JSON.stringify(array));
     }
-
 
     selectThisIndex(index: number, b: boolean) {
         let forwardSteps = function (index, b) {
@@ -164,20 +155,23 @@ class View implements IView {
             stepper.stepBack(relationships, backendArr);
     }
 
-    //executeScripts()
-    //javascriptReady()
-
     nextAlgorithm() {
-        this.incrementAlgorithmIndex();
         this.changeToCurrentAlgorithm();
     }
 
     resetAll() {
         let arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
         stepper = new StateController(control, this);
-
+        $("#arrow").addClass("hidden").animate({ left: ($("#arrayElem0").position().left + 9) + "px" }, 0);
+        this.resetArrayColors();
+        screenLock(false);
+        manager.clear()
         this.resetArray(arr);
         this.displayThisArray(arr);
+    }
+
+    resetArrayColors() {
+        $("#arrayUL li").removeClass("selected");
     }
 
     changeToCurrentAlgorithm() {
@@ -188,10 +182,6 @@ class View implements IView {
     resetArray(arr: number[]) {
         for (let i of arr)
             setValueAtIndex(i, i);
-    }
-
-    incrementAlgorithmIndex() {
-
     }
 
     screenLockThis(locked: boolean) {
@@ -217,15 +207,23 @@ class View implements IView {
     }
 
     setSlow() {
-        this.animSpeed = 250;
+        manager.delayTime = 1500
+        this.restartManager();
     }
 
     setMedium() {
-        this.animSpeed = 500;
+        manager.delayTime = 1000;
+        this.restartManager();
     }
 
     setFast() {
-        this.animSpeed = 750;
+        manager.delayTime = 500;
+        this.restartManager();
+    }
+
+    restartManager() {
+        manager.pause();
+        manager.start()
     }
 
     switchAlgorithm(algo: string) {
@@ -261,10 +259,6 @@ class View implements IView {
 
     }
 
-    /**
-     * Må implementeres for å få backward/forward til å fungere
-     * @param clone
-     */
     executeSaveMethodInJavaScript(clone: number[]) {
         let arr: string = JSON.stringify(clone).toString();
         saveState(arr);

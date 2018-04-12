@@ -11,12 +11,10 @@ let jColor = 0;
 
 class Controller {
 
-    //algorithm og methodToUse skal ikke være string, men dei e det for nå
-    //programmet vil ikje fungere
     private algorithm: IAlgorithm;
     private methodToUse: string = "Union";
     private speed: number;
-    private GUI: IView; // Mulig forskjellig View for ulike algoritmer?
+    private GUI: IView;
 
     initController(algo: IAlgorithm) {
         manager.start();
@@ -36,21 +34,18 @@ class Controller {
 
     connected(firstIndex: number, secondIndex: number) {
         viewer.screenLockThis(true);
-        //Kossen gjør eg detta?? - fixed tror jeg
         this.algorithm.connected(firstIndex, secondIndex);
         viewer.screenLockThis(false);
     }
 
     union(firstIndex: number, secondIndex: number) {
         viewer.screenLockThis(true);
-        //samme som over - fixed tror jeg
         this.algorithm.union(firstIndex, secondIndex);
         viewer.screenLockThis(false);
     }
 
     find(index: number) {
         viewer.screenLockThis(true);
-        //SEND HELP PLEASE
         this.algorithm.find(index);
         viewer.screenLockThis(false);
     }
@@ -73,10 +68,6 @@ class Controller {
 
     highlightNode(index: number, color: string) {
         viewer.highlightThisNode(index, color);
-    }
-
-    invertPauseState() {
-        this.algorithm.invertPause();
     }
 
     setAlgorithm(algo: IAlgorithm) {

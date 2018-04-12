@@ -7,12 +7,6 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="css/union_style.css" rel="stylesheet">
 
-    <!-- Insert this line above script imports  -->
-    <script>if (typeof module === 'object') {
-        window.module = module;
-        module = undefined;
-    }</script>
-
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery-ui-1.12.0/jquery-ui.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -26,11 +20,6 @@
     <script src="js/StateController.js"></script>
     <script src="js/QuickUnionPathCompression.js"></script>
     <script src="js/WeightedUnionPathCompression.js"></script>
-    <!-- For debugging -->
-    <!-- <script type='text/js' src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script> -->
-
-    <!-- Insert this line after script imports -->
-    <script>if (window.module) module = window.module;</script>
 </head>
 
 
@@ -65,7 +54,6 @@
                        onclick="viewer.switchAlgorithm('QuickFind')"> Quick Find<br>
                 <input id="Quick Union" type="radio" name="algorithm" value="quickUnion"
                        onclick="viewer.switchAlgorithm('QuickUnion')"> Quick Union<br>
-                <!--javaBinder.switchAlgorithm('QuickUnion')-->
                 <input id="Weighted Union" type="radio" name="algorithm" value="weightedUnion"
                        onclick="viewer.switchAlgorithm('WeightedUnion')"> Weighted Union<br>
                 <input id="QuickUnionPathCompression" type="radio" name="algorithm" value="quickComp"

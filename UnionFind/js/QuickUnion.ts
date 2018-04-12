@@ -7,7 +7,6 @@
 class QuickUnion implements IAlgorithm {
     DELAY_TIME: number = 100;
     arr: number[];
-    pause: boolean;
     name: string = "Quick Union";
 
     // noinspection JSAnnotator
@@ -42,7 +41,6 @@ class QuickUnion implements IAlgorithm {
             control.setValueAtIndex(aRoot, bRoot);
             this.arr[aRoot] = bRoot;
         }
-        this.delay(this.getDelayTime() * 2);
 
         this.removeHighlighting(aRoot);
         this.removeHighlighting(bRoot);
@@ -84,7 +82,6 @@ class QuickUnion implements IAlgorithm {
      */
     find(pIndex: number) {
         let root: number = this.simpleFind(pIndex, "green");
-        this.delay(this.getDelayTime());
         this.removeHighlighting(root);
         control.setSelectedIndex(pIndex, false);
 
@@ -98,7 +95,6 @@ class QuickUnion implements IAlgorithm {
 
         while (root != this.arr[root]) {
             this.highlightSingleNode(root, "orange");
-            this.delay(this.getDelayTime());
             this.removeHighlighting(root);
             root = this.arr[root];
         }
@@ -132,11 +128,6 @@ class QuickUnion implements IAlgorithm {
     }
 
 
-    invertPause() {
-        this.pause = !this.pause;
-    }
-
-
     setArray(array: number[]) {
         this.arr = array;
     }
@@ -153,22 +144,6 @@ class QuickUnion implements IAlgorithm {
      */
     highlightSingleNode(node: number, color: string) {
         control.highlightNode(node, color);
-    }
-
-    /**
-     *  Sleep the current thread for delayTime milliseconds
-     * @param delayTime
-     */
-    delay(delayTime: number) {
-        /*let start = new Date().getTime();
-        for (let i = 0; i < 1e7; i++) {
-            if ((new Date().getTime() - start) > delayTime) {
-                break;
-            }
-        }*/
-    }
-
-    setController(control: Controller): void {
     }
 
     getDelayTime() {

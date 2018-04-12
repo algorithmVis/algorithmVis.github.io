@@ -45,7 +45,6 @@ var WeightedUnion = /** @class */ (function (_super) {
                 this.treeSize[bRoot] += this.treeSize[aRoot];
             }
         }
-        _super.prototype.delay.call(this, _super.prototype.getDelayTime.call(this) * 2);
         _super.prototype.removeHighlighting.call(this, aRoot);
         _super.prototype.removeHighlighting.call(this, bRoot);
         control.setSelectedIndex(aIndex, false);
@@ -54,14 +53,10 @@ var WeightedUnion = /** @class */ (function (_super) {
     WeightedUnion.prototype.invertPause = function () {
         this.paused = !this.paused;
     };
-    WeightedUnion.prototype.setController = function (c) {
-        _super.prototype.setController.call(this, c);
-    };
     WeightedUnion.prototype.simpleFind = function (pIndex, color) {
         var root = pIndex;
         while (root != _super.prototype.getArray.call(this)[root]) {
             _super.prototype.highlightSingleNode.call(this, root, "orange");
-            _super.prototype.delay.call(this, _super.prototype.getDelayTime.call(this));
             _super.prototype.removeHighlighting.call(this, root);
             root = _super.prototype.getArray.call(this)[root];
         }

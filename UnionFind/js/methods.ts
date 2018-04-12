@@ -33,38 +33,6 @@ function setOnClickListener() {
 
 setOnClickListener();
 
-function setKeyListener() {
-    this.addEventListener("keyup", function (e) {
-        if (locked) {
-            return;
-        }
-        var key = e.which || e.keyCode;
-
-        // Enter (reset algorithm)
-        if (key == 13) {
-            resetElementSelections();
-            viewer.changeToCurrentAlgorithm();
-        }
-
-        // h (hide)
-        else if (key == 72) {
-            hideArrayValues();
-        }
-
-        // left arrow (step back)
-        else if (key == 37) {
-            stepBack();
-        }
-
-        // right arrow (step forward)
-        else if (key == 39) {
-            viewer.stepForward(getGraphState(), getArrayState());
-        }
-    });
-}
-
-setKeyListener();
-
 function hideArrayValues() {
     for (var i: number = 0; i < 10; i++) {
         $("#arrayContent" + i).css('color', contentHidden ? "#000000" : "#FFFFFF");
@@ -119,14 +87,14 @@ function setArrow(index: number) {
     var $arrow = $("#arrow");
     if (index == -1) {
         $arrow.addClass("hidden");
-        $arrow.animate({left: ($("#arrayElem0").position().left + 9) + "px"}, 0);
+        $arrow.animate({ left: ($("#arrayElem0").position().left + 9) + "px" }, 0);
         return;
     }
     var left: number = $("#arrayElem" + index).position().left + 9;
     if ($arrow.hasClass("hidden")) {
         $arrow.removeClass("hidden");
     } else {
-        $arrow.animate({left: left + "px"}, 200);
+        $arrow.animate({ left: left + "px" }, 200);
     }
 }
 
@@ -162,6 +130,8 @@ function connectNodes(child: number, parent: number) {
 
 function selectIndex(index: number, select: boolean) {
     $("#arrayElem" + index + ", #node" + index).each(function () {
+        console.log("hello : " + select);
+
         if (select) {
             $(this).addClass("selected");
         } else {
@@ -247,8 +217,8 @@ function setCheckMark(check: boolean, indexA: number, indexB: number) {
     if (check) {
         var $A = allNodes[indexA];
         var $B = allNodes[indexB];
-        $("#correctImgA").css({left: $A.left, top: $A.top}).removeClass("hidden");
-        $("#correctImgB").css({left: $B.left, top: $B.top}).removeClass("hidden");
+        $("#correctImgA").css({ left: $A.left, top: $A.top }).removeClass("hidden");
+        $("#correctImgB").css({ left: $B.left, top: $B.top }).removeClass("hidden");
     } else {
         $("#correctImgA").addClass("hidden");
         $("#correctImgB").addClass("hidden");
@@ -259,8 +229,8 @@ function setWrongMark(check: boolean, indexA: number, indexB: number) {
     if (check) {
         var $A = allNodes[indexA];
         var $B = allNodes[indexB];
-        $("#wrongImgA").css({left: $A.left, top: $A.top}).removeClass("hidden");
-        $("#wrongImgB").css({left: $B.left, top: $B.top}).removeClass("hidden");
+        $("#wrongImgA").css({ left: $A.left, top: $A.top }).removeClass("hidden");
+        $("#wrongImgB").css({ left: $B.left, top: $B.top }).removeClass("hidden");
     } else {
         $("#wrongImgA").addClass("hidden");
         $("#wrongImgB").addClass("hidden");
@@ -271,7 +241,7 @@ function screenLock(lock: boolean) {
     locked = lock;
     if (lock) {
         $("#algorithm input:radio , #method input:radio").each(function () {
-            $(this).attr({disabled: "true"})
+            $(this).attr({ disabled: "true" })
         });
     } else {
         $("#algorithm input , #method input:radio").each(function () {
@@ -294,17 +264,17 @@ function setHeaderText(text: string) {
 }
 
 function setSlow() {
-    animationTime = 6000;
+    animationTime = 1500;
     viewer.setSlow();
 }
 
 function setMedium() {
-    animationTime = 2500;
+    animationTime = 1000;
     viewer.setMedium();
 }
 
 function setFast() {
-    animationTime = 1000;
+    animationTime = 500;
     viewer.setFast();
 }
 

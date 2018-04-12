@@ -28,29 +28,6 @@ function setOnClickListener() {
     });
 }
 setOnClickListener();
-function setKeyListener() {
-    this.addEventListener("keyup", function (e) {
-        if (locked) {
-            return;
-        }
-        var key = e.which || e.keyCode;
-        // Enter (reset algorithm)
-        if (key == 13) {
-            resetElementSelections();
-            viewer.changeToCurrentAlgorithm();
-        }
-        else if (key == 72) {
-            hideArrayValues();
-        }
-        else if (key == 37) {
-            stepBack();
-        }
-        else if (key == 39) {
-            viewer.stepForward(getGraphState(), getArrayState());
-        }
-    });
-}
-setKeyListener();
 function hideArrayValues() {
     for (var i = 0; i < 10; i++) {
         $("#arrayContent" + i).css('color', contentHidden ? "#000000" : "#FFFFFF");
@@ -135,6 +112,7 @@ function connectNodes(child, parent) {
 }
 function selectIndex(index, select) {
     $("#arrayElem" + index + ", #node" + index).each(function () {
+        console.log("hello : " + select);
         if (select) {
             $(this).addClass("selected");
         }
@@ -258,15 +236,15 @@ function setHeaderText(text) {
     $("#headerText").html(text);
 }
 function setSlow() {
-    animationTime = 6000;
+    animationTime = 1500;
     viewer.setSlow();
 }
 function setMedium() {
-    animationTime = 2500;
+    animationTime = 1000;
     viewer.setMedium();
 }
 function setFast() {
-    animationTime = 1000;
+    animationTime = 500;
     viewer.setFast();
 }
 function setupSpeedButtons() {

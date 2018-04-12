@@ -1,6 +1,6 @@
 /**
  * File created by Philip Hoang 06.2.
- * written by Øyvind ;););)
+ * written by Øyvind
  * based on QuickFind.Java
  */
 ///<reference path="Controller.ts"/>
@@ -8,7 +8,6 @@
 class QuickFind implements IAlgorithm {
     DELAY: number = 100;
     arr: number[];
-    pause: boolean;
     name: string = "Quick Find";
 
     // noninspection JSAnnotator
@@ -18,7 +17,6 @@ class QuickFind implements IAlgorithm {
         for (let i = 0; i < size; i++) {
             this.arr[i] = i;
         }
-        this.pause = false;
     }
 
 
@@ -27,7 +25,6 @@ class QuickFind implements IAlgorithm {
         let bRoot: number = this.arr[bIndex];
 
         if (aRoot == bRoot) {
-            this.delay(this.getDelayTime() * 2);
             control.setSelectedIndex(aIndex, false);
             control.setSelectedIndex(bIndex, false);
             return;
@@ -36,18 +33,11 @@ class QuickFind implements IAlgorithm {
         control.saveState(this.arr);
 
         for (let i = 0; i < this.arr.length; i++) {
-
-            while (this.pause) {
-                this.delay(this.getDelayTime());
-            }
-
             control.setArrow(i);
-            this.delay(this.getDelayTime())
             if (this.arr[i] == aRoot) {
                 control.setValueAtIndex(i, bRoot);
                 control.connectNodes(i, bRoot);
                 this.arr[i] = bRoot;
-                this.delay(this.getDelayTime())
             }
         }
 
@@ -67,9 +57,10 @@ class QuickFind implements IAlgorithm {
         } else
             control.redCross(aIndex, bIndex, true);
 
-        this.delay(this.getDelayTime());
-        this.removeHighlighFromRoot(aIndex);
-        this.removeHighlighFromRoot(bIndex);
+        control.setSelectedIndex(bIndex, false);
+        control.removeHighlight(this.arr[bIndex]);
+        control.setSelectedIndex(aIndex, false);
+        control.removeHighlight(this.arr[aIndex]);        
         control.checkMark(aIndex, bIndex, false);
         control.redCross(aIndex, bIndex, false);
 
@@ -81,26 +72,9 @@ class QuickFind implements IAlgorithm {
         return this.name;
     }
 
-
-    removeHighlighFromRoot(pIndex: number) {
-        control.removeHighlight(this.arr[pIndex]);
-    }
-
-
-    delay(delayTime: number) {
-        /*
-        let start = new Date().getTime();
-        for (let i = 0; i < 1e7; i++) {
-            if ((new Date().getTime() - start) > delayTime)
-                break;
-        }*/
-    }
-
-
     find(pIndex: number) {
         let root = this.simpleFind(pIndex, "green");
 
-        this.delay(this.getDelayTime());
         control.removeHighlight(root);
         control.setSelectedIndex(pIndex, false);
 
@@ -113,7 +87,6 @@ class QuickFind implements IAlgorithm {
 
         if (pIndex != root) {
             control.highlightNode(pIndex, "orange");
-            this.delay(this.getDelayTime());
             control.removeHighlight(pIndex);
         }
 
@@ -132,17 +105,6 @@ class QuickFind implements IAlgorithm {
         this.arr = array;
     }
 
-
-    isPause() {
-        return this.pause;
-    }
-
-
-    invertPause() {
-        this.pause = !this.pause;
-    }
-
-
     connectedNoGUIUpdate(a: number, b: number) {
         return this.arr[a] == this.arr[b];
     }
@@ -150,9 +112,5 @@ class QuickFind implements IAlgorithm {
 
     getDelayTime() {
         return this.DELAY + control.getSpeed();
-    }
-
-    setController(control: Controller): void {
-        //
     }
 }
