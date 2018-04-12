@@ -20,19 +20,6 @@ var View = /** @class */ (function () {
     View.prototype.displayThisArray = function (array) {
         displayArray(JSON.stringify(array));
     };
-    View.prototype.selectThisIndex = function (index, b) {
-        var forwardSteps = function (index, b) {
-            return function () {
-                selectIndex(index, b);
-            };
-        }(index, b);
-        var backwardSteps = function (index, b) {
-            return function () {
-                selectIndex(index, !b);
-            };
-        }(index, b);
-        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
-    };
     View.prototype.setThisArrow = function (index) {
         var forward = function (index) {
             return function () {
@@ -45,32 +32,6 @@ var View = /** @class */ (function () {
             };
         }(index);
         manager.addEvent(new FrontendEvent(forward, backward, this.animSpeed));
-    };
-    View.prototype.setValueAtThisIndex = function (i, bValue, oldVal) {
-        var forwardSteps = function (i, bValue) {
-            return function () {
-                setValueAtIndex(i, bValue);
-            };
-        }(i, bValue);
-        var backwardSteps = function (i, oldVal) {
-            return function () {
-                setValueAtIndex(i, oldVal);
-            };
-        }(i, oldVal);
-        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
-    };
-    View.prototype.setValueAtThisSortIndex = function (i, bValue) {
-        var forwardSteps = function (i, bValue) {
-            return function () {
-                setValueAtSortIndex(i, bValue);
-            };
-        }(i, bValue);
-        var backwardSteps = function (i, bValue) {
-            return function () {
-                setValueAtSortIndex(i, "");
-            };
-        }(i, bValue);
-        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
     View.prototype.connectThisNodes = function (child, parent) {
         var forwardSteps = function (child, parent) {
@@ -85,19 +46,6 @@ var View = /** @class */ (function () {
         }(child, parent);
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
-    View.prototype.highlightThisNode = function (index, color) {
-        var forward = function (index, color) {
-            return function () {
-                highlightNode(index, color);
-            };
-        }(index, color);
-        var backward = function (index) {
-            return function () {
-                removeHighlight(index);
-            };
-        }(index);
-        manager.addEvent(new FrontendEvent(forward, backward, this.animSpeed));
-    };
     View.prototype.highlightThisSortElem = function (index, color) {
         var forward = function (index, color) {
             return function () {
@@ -110,27 +58,6 @@ var View = /** @class */ (function () {
             };
         }(index);
         manager.addEvent(new FrontendEvent(forward, backward, this.animSpeed));
-    };
-    View.prototype.removeThisHighlight = function (index) {
-        // Find the current color
-        var color = "";
-        var classList = document.getElementById('arrayElem' + index).className.split(/\s+/);
-        for (var i = 0; i < classList.length; i++) {
-            if (classList[i] === 'orange' || classList[i] === 'green') {
-                color = classList[i];
-            }
-        }
-        var forward = function (index) {
-            return function () {
-                removeHighlight(index);
-            };
-        }(index);
-        var backward = function (index, color) {
-            return function () {
-                highlightNode(index, color);
-            };
-        }(index, color);
-        manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
     };
     View.prototype.stepForward = function () {
         this.clickedPlay = false;
@@ -167,19 +94,6 @@ var View = /** @class */ (function () {
             var i = arr_1[_i];
             setValueAtIndex(i, i);
         }
-    };
-    View.prototype.screenLockThis = function (locked) {
-        var lck = function (lock) {
-            return function () {
-                screenLock(lock);
-            };
-        }(locked);
-        var notLck = function (lock) {
-            return function () {
-                screenLock(!lock);
-            };
-        }(locked);
-        manager.addEvent(new FrontendEvent(lck, notLck, this.animSpeed));
     };
     View.prototype.setSlow = function () {
         manager.delayTime = 1500;
@@ -333,12 +247,12 @@ var View = /** @class */ (function () {
             return function () {
                 selectIndex(0, true);
                 highlightNode(0, "orange");
-                sortHighlightElem(this.sortIndex, "orange");
+                sortHighlightElem(sortIndex, "orange");
             };
         }(arrIndex, sortIndex, color);
         var backward = function (index1, index2, color) {
             return function () {
-                removeSortHighlight(this.sortIndex);
+                removeSortHighlight(sortIndex);
                 removeHighlight(0);
                 selectIndex(0, false);
             };

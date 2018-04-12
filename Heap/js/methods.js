@@ -250,7 +250,7 @@ function highlightNode(index, color) {
     }
 }
 function sortHighlightElem(index, color) {
-    if (color.toLowerCase() == "green" || color.toLowerCase() == "orange") {
+    if (color.toLowerCase() === "green" || color.toLowerCase() === "orange") {
         removeSortHighlight(index);
         $("#sortArrayElem" + index).addClass(color);
     }

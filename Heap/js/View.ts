@@ -13,7 +13,7 @@
 
 declare var $;
 
-class View implements IView {
+class View {
 
     colors: string[] = ["#7FFF00", "not used", "#FFB366"];
     k: number = 0;
@@ -23,22 +23,6 @@ class View implements IView {
 
     displayThisArray(array: number[]) {
         displayArray(JSON.stringify(array));
-    }
-
-    selectThisIndex(index: number, b: boolean) {
-        let forwardSteps = function (index, b) {
-            return function () {
-                selectIndex(index, b);
-            }
-        }(index, b);
-
-        let backwardSteps = function (index, b) {
-            return function () {
-                selectIndex(index, !b);
-            }
-        }(index, b);
-
-        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
 
     setThisArrow(index: number) {
@@ -54,39 +38,6 @@ class View implements IView {
         }(index);
 
         manager.addEvent(new FrontendEvent(forward, backward, this.animSpeed));
-    }
-
-    setValueAtThisIndex(i: number, bValue: any, oldVal: any) {
-        let forwardSteps = function (i, bValue) {
-            return function () {
-                setValueAtIndex(i, bValue);
-            }
-        }(i, bValue);
-
-        let backwardSteps = function (i, oldVal) {
-            return function () {
-                setValueAtIndex(i, oldVal);
-            }
-        }(i, oldVal);
-
-        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
-    }
-
-    setValueAtThisSortIndex(i: number, bValue) {
-        let forwardSteps = function (i, bValue) {
-            return function () {
-                setValueAtSortIndex(i, bValue);
-            }
-        }(i, bValue);
-
-        let backwardSteps = function (i, bValue) {
-            return function () {
-                setValueAtSortIndex(i, "");
-            }
-        }(i, bValue);
-
-        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
-
     }
 
     connectThisNodes(child: number, parent: number) {
@@ -105,22 +56,6 @@ class View implements IView {
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
 
-    highlightThisNode(index: number, color: string) {
-        let forward = function (index: number, color: string) {
-            return function () {
-                highlightNode(index, color);
-            }
-        }(index, color);
-
-        let backward = function (index: number) {
-            return function () {
-                removeHighlight(index);
-            }
-        }(index);
-
-        manager.addEvent(new FrontendEvent(forward, backward, this.animSpeed));
-    }
-
     highlightThisSortElem(index: number, color: string) {
         let forward = function (index: number, color: string) {
             return function () {
@@ -135,32 +70,6 @@ class View implements IView {
         }(index);
 
         manager.addEvent(new FrontendEvent(forward, backward, this.animSpeed));
-    }
-
-
-    removeThisHighlight(index: number) {
-        // Find the current color
-        let color: string = "";
-        var classList = document.getElementById('arrayElem' + index).className.split(/\s+/);
-        for (var i = 0; i < classList.length; i++) {
-            if (classList[i] === 'orange' || classList[i] === 'green') {
-                color = classList[i];
-            }
-        }
-
-        let forward = function (index: number) {
-            return function () {
-                removeHighlight(index);
-            }
-        }(index);
-
-        let backward = function (index: number, color: string) {
-            return function () {
-                highlightNode(index, color);
-            }
-        }(index, color);
-
-        manager.addEvent(new FrontendEvent(forward, forward, this.animSpeed));
     }
 
     stepForward() {
@@ -201,20 +110,6 @@ class View implements IView {
             setValueAtIndex(i, i);
     }
 
-    screenLockThis(locked: boolean) {
-        let lck = function (lock: boolean) {
-            return function () {
-                screenLock(lock);
-            }
-        }(locked);
-
-        let notLck = function (lock: boolean) {
-            return function () {
-                screenLock(!lock);
-            }
-        }(locked);
-        manager.addEvent(new FrontendEvent(lck, notLck, this.animSpeed));
-    }
 
     setSlow() {
         manager.delayTime = 1500;
@@ -396,13 +291,13 @@ class View implements IView {
             return function () {
                 selectIndex(0, true);
                 highlightNode(0, "orange");
-                sortHighlightElem(this.sortIndex, "orange");
+                sortHighlightElem(sortIndex, "orange");
             }
         }(arrIndex, sortIndex, color);
 
         let backward = function (index1, index2, color) {
             return function () {
-                removeSortHighlight(this.sortIndex);
+                removeSortHighlight(sortIndex);
                 removeHighlight(0);
                 selectIndex(0, false);
             }

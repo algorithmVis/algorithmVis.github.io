@@ -294,7 +294,7 @@ function highlightNode(index: number, color: String) {
 }
 
 function sortHighlightElem(index: number, color: String) {
-    if (color.toLowerCase() == "green" || color.toLowerCase() == "orange") {
+    if (color.toLowerCase() === "green" || color.toLowerCase() === "orange") {
         removeSortHighlight(index);
         $("#sortArrayElem" + index).addClass(color);
     } else {

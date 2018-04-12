@@ -4,7 +4,7 @@
 ///<reference path="View.ts"/>
 ///<reference path="IAlgorithm.ts"/>
 ///<reference path="EventManager.ts"/>
-///<reference path="IView.ts"/>
+///<reference path="View.ts"/>
 ///<reference path="methods.ts"/>
 ///<reference path="MaxHeapFree.ts"/>
 var Controller = /** @class */ (function () {
@@ -30,32 +30,14 @@ var Controller = /** @class */ (function () {
     Controller.prototype.getAlgorithm = function () {
         return this.algorithm;
     };
-    Controller.prototype.lockScreen = function (b) {
-        viewer.screenLockThis(b);
-    };
     Controller.prototype.setArrow = function (index) {
         viewer.setThisArrow(index);
-    };
-    Controller.prototype.setSelectedIndex = function (index, select) {
-        viewer.selectThisIndex(index, select);
-    };
-    Controller.prototype.setValueAtIndex = function (i, bValue, oldVal) {
-        viewer.setValueAtThisIndex(i, bValue, oldVal);
-    };
-    Controller.prototype.setValueAtSortIndex = function (i, bValue) {
-        viewer.setValueAtThisSortIndex(i, bValue);
     };
     Controller.prototype.connectNodes = function (child, parent) {
         viewer.connectThisNodes(child, parent);
     };
-    Controller.prototype.highlightNode = function (index, color) {
-        viewer.highlightThisNode(index, color);
-    };
     Controller.prototype.highlightSortElem = function (index, color) {
         viewer.highlightThisSortElem(index, color);
-    };
-    Controller.prototype.removeHighlight = function (node) {
-        viewer.removeThisHighlight(node);
     };
     Controller.prototype.getNameOfCurrentAlgorithm = function () {
         return this.algorithm.getName();
@@ -63,21 +45,12 @@ var Controller = /** @class */ (function () {
     Controller.prototype.getArrayClone = function () {
         return this.algorithm.getArray().slice(0, this.algorithm.getArray().length);
     };
-    Controller.prototype.setArray = function (array) {
-        this.algorithm.setArray(array);
-    };
     Controller.prototype.displaySize = function (root, size) {
         viewer.displayNodeSize(root, size);
     };
     Controller.prototype.addNode = function (i) {
         this.algorithm.add(i);
     };
-    Controller.prototype.swapNode = function (child, parent) {
-        viewer.swapNode(child, parent);
-    };
-    /**
-     * Remove the maximum/minimum element
-     */
     Controller.prototype.removeNode = function () {
         this.algorithm.remove();
     };

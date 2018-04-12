@@ -4,7 +4,7 @@
 ///<reference path="View.ts"/>
 ///<reference path="IAlgorithm.ts"/>
 ///<reference path="EventManager.ts"/>
-///<reference path="IView.ts"/>
+///<reference path="View.ts"/>
 ///<reference path="methods.ts"/>
 ///<reference path="MaxHeapFree.ts"/>
 
@@ -33,40 +33,16 @@ class Controller {
         return this.algorithm;
     }
 
-    lockScreen(b: boolean) {
-        viewer.screenLockThis(b);
-    }
-
     setArrow(index: number) {
         viewer.setThisArrow(index);
-    }
-
-    setSelectedIndex(index: number, select: boolean) {
-        viewer.selectThisIndex(index, select);
-    }
-
-    setValueAtIndex(i: number, bValue: any, oldVal: any) {
-        viewer.setValueAtThisIndex(i, bValue, oldVal);
-    }
-
-    setValueAtSortIndex(i: number, bValue) {
-        viewer.setValueAtThisSortIndex(i, bValue);
     }
 
     connectNodes(child: number, parent: number) {
         viewer.connectThisNodes(child, parent);
     }
 
-    highlightNode(index: number, color: string) {
-        viewer.highlightThisNode(index, color);
-    }
-
     highlightSortElem(index: number, color: string) {
         viewer.highlightThisSortElem(index, color);
-    }
-
-    removeHighlight(node: number) {
-        viewer.removeThisHighlight(node);
     }
 
     getNameOfCurrentAlgorithm() {
@@ -77,10 +53,6 @@ class Controller {
         return this.algorithm.getArray().slice(0, this.algorithm.getArray().length);
     }
 
-    setArray(array: number[]) {
-        this.algorithm.setArray(array);
-    }
-
     displaySize(root: number, size: number) {
         viewer.displayNodeSize(root, size);
     }
@@ -89,13 +61,6 @@ class Controller {
         this.algorithm.add(i);
     }
 
-    swapNode(child: number, parent: number) {
-        viewer.swapNode(child, parent);
-    }
-
-    /**
-     * Remove the maximum/minimum element
-     */
     removeNode() {
         this.algorithm.remove();
     }
