@@ -26,17 +26,15 @@ function startKruskal() {
         }
         var _b = edgeList.pop(), node1 = _b[0], node2 = _b[1], weight = _b[2];
         currentEdge = getEdgeId(node1, node2);
+        controller.selectTwoNodes(node1, node2);
         if (connected(node1, node2) == false) {
-            controller.selectTwoNodes(node1, node2);
-            controller.highlightMyEdge(currentEdge, weight);
+            controller.highlightEdge(node1, node2, currentEdge, weight);
             union(node1, node2);
             j++;
         }
         else {
-            controller.dehighlightMyEdge(currentEdge);
-            controller.excludeEdgeText(currentEdge);
+            controller.dehighlightEdge(node1, node2, currentEdge);
         }
-        controller.deselectTwoNodes(node1, node2);
     }
     arr = [];
     queue = [];

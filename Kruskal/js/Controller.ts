@@ -10,40 +10,16 @@
     ///<reference path="Methods.ts"/>
 
 class Controller {
-    addNode(x: number, y: number) {
-        viewer.addNodeToGraph(x, y);
+    highlightEdge(node1: number, node2: number, edgeId: number, weight: number) {
+        viewer.setHighlightEdge(node1, node2, edgeId, weight);
     }
 
-    connectTwoNodes(node1: number, node2: number) {
-        viewer.connectTheseNodes(node1, node2);
-    }
-
-    resetGraph() {
-        viewer.resetMyAll();
-    }
-
-    highlightMyEdge(edgeId: number, weight: number) {
-        viewer.setHighlightEdge(edgeId, weight);
-    }
-
-    dehighlightMyEdge(edgeId: number) {
-        viewer.setDehighlightEdge(edgeId);
-    }
-
-    removeMyEdge(edgeId: number) {
-        viewer.removeEdge(edgeId);
+    dehighlightEdge(node1: number, node2: number, edgeId: number) {
+        viewer.dehighlightEdge(node1, node2, edgeId);
     }
 
     selectTwoNodes(node1: number, node2: number) {
         viewer.selectTheseNodes(node1, node2);
-    }
-
-    deselectTwoNodes(node1: number, node2: number){
-        viewer.deselectTheseNodes(node1, node2);
-    }
-
-    excludeEdgeText(index: number) {
-        viewer.excludeText(index);
     }
 
     excludeEdges(edgeList : any) {

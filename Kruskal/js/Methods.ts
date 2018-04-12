@@ -4,7 +4,6 @@
 ///<reference path="KruskalAlgorithm".ts"/>
 ///<reference path="exampleGraphs".ts"/>
 
-
 let randomWeight = 0;
 let nodes: number = 0;
 let MAX_NODES: number = 10;
@@ -12,7 +11,13 @@ let edges: number = 0;
 let totalWeight: number = 0;
 
 function highlightThisEdge(index: number) {
+    //Blue
     $("#edge" + index).css({ "stroke": "rgb(16, 130, 219)", "stroke-width": "6" });
+}
+
+function selectThisEdge(index: number) {
+    //Orange
+    $("#edge" + index).css({ "stroke": "rgb(255, 165, 0)", "stroke-width": "6" });
 }
 
 function dehighlightThisEdge(index: number) {
@@ -29,7 +34,7 @@ function transparentEdge(index: number) {
     $("#edgeWeight" + index).css({ "opacity": 0.15 });
 }
 
-function deTransparentEdge(index: number) {
+function detransparentEdge(index: number) {
     $("#edge" + index).css({ "opacity": 1 });
     $("#edgeWeight" + index).css({ "opacity": 1 });
 }
@@ -46,7 +51,7 @@ function removeThisNode() {
 }
 
 function selectNodes(n1: number, n2: number, select: boolean) {
-    if (select == true) {
+    if (select) {
         $("#node" + n1).addClass("selected");
         $("#node" + n2).addClass("selected");
     }
@@ -135,13 +140,17 @@ function excludeEdgeText(i: number) {
 
 function includeEdgeText(i: number) {
     $("#edgeContent" + i).css({ "opacity": 1 });
-    $("#edgeContent" + i).css({ "color": "black" });
+    dehighlightEdgeText(i);
 }
 
 function higlightEdgeText(i: number) {
     $("#edgeContent" + i).css({ "color": "blue" });
 }
 
-function deHighlightEdgeText(i: number) {
+function dehighlightEdgeText(i: number) {
     $("#edgeContent" + i).css({ "color": "black" });
+}
+
+function selectEdgeText(i: number) {
+    $("#edgeContent" + i).css({ "color": "orange"});
 }

@@ -9,7 +9,12 @@ var MAX_NODES = 10;
 var edges = 0;
 var totalWeight = 0;
 function highlightThisEdge(index) {
+    //Blue
     $("#edge" + index).css({ "stroke": "rgb(16, 130, 219)", "stroke-width": "6" });
+}
+function selectThisEdge(index) {
+    //Orange
+    $("#edge" + index).css({ "stroke": "rgb(255, 165, 0)", "stroke-width": "6" });
 }
 function dehighlightThisEdge(index) {
     $("#edge" + index).css({ "stroke": "rgb(0, 0, 0)", "stroke-width": "2" });
@@ -22,7 +27,7 @@ function transparentEdge(index) {
     $("#edge" + index).css({ "opacity": 0.15 });
     $("#edgeWeight" + index).css({ "opacity": 0.15 });
 }
-function deTransparentEdge(index) {
+function detransparentEdge(index) {
     $("#edge" + index).css({ "opacity": 1 });
     $("#edgeWeight" + index).css({ "opacity": 1 });
 }
@@ -36,7 +41,7 @@ function removeThisNode() {
     removeNode(--nodes);
 }
 function selectNodes(n1, n2, select) {
-    if (select == true) {
+    if (select) {
         $("#node" + n1).addClass("selected");
         $("#node" + n2).addClass("selected");
     }
@@ -114,11 +119,14 @@ function excludeEdgeText(i) {
 }
 function includeEdgeText(i) {
     $("#edgeContent" + i).css({ "opacity": 1 });
-    $("#edgeContent" + i).css({ "color": "black" });
+    dehighlightEdgeText(i);
 }
 function higlightEdgeText(i) {
     $("#edgeContent" + i).css({ "color": "blue" });
 }
-function deHighlightEdgeText(i) {
+function dehighlightEdgeText(i) {
     $("#edgeContent" + i).css({ "color": "black" });
+}
+function selectEdgeText(i) {
+    $("#edgeContent" + i).css({ "color": "orange" });
 }
