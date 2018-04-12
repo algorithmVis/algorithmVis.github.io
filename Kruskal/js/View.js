@@ -11,36 +11,45 @@ var View = /** @class */ (function () {
         this.highlightEventDuration = 1000;
         this.paused = false;
     }
-    View.prototype.setHighlightEdge = function (edgeId, weight) {
-        var forward = function (edgeId, weight) {
+    View.prototype.setHighlightEdge = function (node1, node2, edgeId, weight) {
+        var forward = function (edgeId, weight, node1, node2) {
             return function () {
                 higlightEdgeText(edgeId);
                 highlightThisEdge(edgeId);
                 writeTotalWeight(weight);
+                selectNodes(node1, node2, false);
             };
-        }(edgeId, weight);
-        var backward = function (edgeId, weight) {
+        }(edgeId, weight, node1, node2);
+        var backward = function (edgeId, weight, node1, node2) {
             return function () {
-                dehighlightThisEdge(edgeId);
-                deHighlightEdgeText(edgeId);
+                selectThisEdge(edgeId);
+                dehighlightEdgeText(edgeId);
                 writeTotalWeight(-weight);
+                selectNodes(node1, node2, true);
+                selectEdgeText(edgeId);
             };
-        }(edgeId, weight);
+        }(edgeId, weight, node1, node2);
         manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
     };
-    View.prototype.setDehighlightEdge = function (edgeId) {
-        var forward = function (edgeId) {
+    View.prototype.dehighlightEdge = function (node1, node2, edgeId) {
+        var forward = function (edgeId, node1, node2) {
             return function () {
+                dehighlightThisEdge(edgeId);
                 transparentEdge(edgeId);
                 dehighlightThisEdge(edgeId);
+                excludeEdgeText(edgeId);
+                selectNodes(node1, node2, false);
             };
-        }(edgeId);
-        var backward = function (edgeId) {
+        }(edgeId, node1, node2);
+        var backward = function (edgeId, node1, node2) {
             return function () {
-                transparentEdge(edgeId);
-                highlightThisEdge(edgeId);
+                includeEdgeText(edgeId);
+                detransparentEdge(edgeId);
+                selectThisEdge(edgeId);
+                selectNodes(node1, node2, true);
+                selectEdgeText(edgeId);
             };
-        }(edgeId);
+        }(edgeId, node1, node2);
         manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
     };
     View.prototype.removeEdge = function (edgeId) {
@@ -76,50 +85,52 @@ var View = /** @class */ (function () {
                 connectNodes(node1, node2);
             };
         }(node1, node2);
-        var backward = function (node1, node2) {
+        var backward = function () {
             return function () {
                 removeConnectedNodes();
             };
-        }(node1, node2);
+        }();
         manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
     };
     View.prototype.selectTheseNodes = function (node1, node2) {
-        var forward = function (node1, node2) {
+        var edge = getEdgeId(node1, node2);
+        var forward = function (node1, node2, edge) {
             return function () {
                 selectNodes(node1, node2, true);
+                selectThisEdge(edge);
+                selectEdgeText(edge);
             };
-        }(node1, node2);
-        var backward = function (node1, node2) {
+        }(node1, node2, edge);
+        var backward = function (node1, node2, edge) {
             return function () {
                 selectNodes(node1, node2, false);
+                dehighlightThisEdge(edge);
+                dehighlightEdgeText(edge);
             };
-        }(node1, node2);
+        }(node1, node2, edge);
         manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
     };
-    View.prototype.deselectTheseNodes = function (node1, node2) {
-        var forward = function (node1, node2) {
+    View.prototype.excludeEdges = function (edgeList) {
+        var forward = function (edgeList) {
             return function () {
-                selectNodes(node1, node2, false);
+                for (var index in edgeList) {
+                    var _a = edgeList[index], node1 = _a[0], node2 = _a[1], weight = _a[2];
+                    var currentEdge_1 = getEdgeId(node1, node2);
+                    transparentEdge(currentEdge_1);
+                    excludeEdgeText(currentEdge_1);
+                }
             };
-        }(node1, node2);
-        var backward = function (node1, node2) {
+        }(edgeList);
+        var backward = function (edgeList) {
             return function () {
-                selectNodes(node1, node2, true);
+                for (var index in edgeList) {
+                    var _a = edgeList[index], node1 = _a[0], node2 = _a[1], weight = _a[2];
+                    var currentEdge_2 = getEdgeId(node1, node2);
+                    detransparentEdge(currentEdge_2);
+                    includeEdgeText(currentEdge_2);
+                }
             };
-        }(node1, node2);
-        manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
-    };
-    View.prototype.excludeText = function (i) {
-        var forward = function (i) {
-            return function () {
-                excludeEdgeText(i);
-            };
-        }(i);
-        var backward = function (i) {
-            return function () {
-                includeEdgeText(i);
-            };
-        }(i);
+        }(edgeList);
         manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
     };
     View.prototype.resetMyAll = function () {
@@ -168,30 +179,6 @@ var View = /** @class */ (function () {
     };
     View.prototype.fast = function () {
         manager.fast();
-    };
-    View.prototype.excludeEdges = function (edgeList) {
-        var forward = function (edgeList) {
-            return function () {
-                for (var index in edgeList) {
-                    var _a = edgeList[index], node1 = _a[0], node2 = _a[1], weight = _a[2];
-                    var currentEdge_1 = getEdgeId(node1, node2);
-                    dehighlightThisEdge(currentEdge_1);
-                    transparentEdge(currentEdge_1);
-                    excludeEdgeText(currentEdge_1);
-                }
-            };
-        }(edgeList);
-        var backward = function (edgeList) {
-            return function () {
-                for (var index in edgeList) {
-                    var _a = edgeList[index], node1 = _a[0], node2 = _a[1], weight = _a[2];
-                    var currentEdge_2 = getEdgeId(node1, node2);
-                    includeEdgeText(currentEdge_2);
-                    deTransparentEdge(currentEdge_2);
-                }
-            };
-        }(edgeList);
-        manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
     };
     return View;
 }());

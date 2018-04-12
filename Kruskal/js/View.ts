@@ -12,46 +12,54 @@ class View {
     highlightEventDuration = 1000;
     paused: boolean = false;
 
-    setHighlightEdge(edgeId: number, weight: number) {
+    setHighlightEdge(node1: number, node2: number, edgeId: number, weight: number) {
 
-        let forward = function (edgeId, weight) {
+        let forward = function (edgeId, weight, node1, node2) {
             return function () {
                 higlightEdgeText(edgeId);
                 highlightThisEdge(edgeId);
                 writeTotalWeight(weight);
+                selectNodes(node1, node2, false);
             };
-        }(edgeId, weight);
+        }(edgeId, weight, node1, node2);
 
-        let backward = function (edgeId, weight) {
+        let backward = function (edgeId, weight, node1, node2) {
             return function () {
-                dehighlightThisEdge(edgeId);
-                deHighlightEdgeText(edgeId);
+                selectThisEdge(edgeId);
+                dehighlightEdgeText(edgeId);
                 writeTotalWeight(-weight);
+                selectNodes(node1, node2, true);
+                selectEdgeText(edgeId);
             };
-        }(edgeId, weight);
+        }(edgeId, weight, node1, node2);
 
         manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
     }
 
-    setDehighlightEdge(edgeId: number) {
-        let forward = function (edgeId) {
+    dehighlightEdge(node1: number, node2: number, edgeId: number) {
+        let forward = function (edgeId, node1, node2) {
             return function () {
+                dehighlightThisEdge(edgeId);
                 transparentEdge(edgeId);
                 dehighlightThisEdge(edgeId);
+                excludeEdgeText(edgeId);
+                selectNodes(node1, node2, false);
 
             };
-        }(edgeId);
+        }(edgeId, node1, node2);
 
-        let backward = function (edgeId) {
+        let backward = function (edgeId, node1, node2) {
             return function () {
-                transparentEdge(edgeId);
-                highlightThisEdge(edgeId);
+                includeEdgeText(edgeId);
+                detransparentEdge(edgeId);
+                selectThisEdge(edgeId);
+                selectNodes(node1, node2, true);
+                selectEdgeText(edgeId);
             };
-        }(edgeId);
+        }(edgeId, node1, node2);
 
         manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
     }
-
 
     removeEdge(edgeId: number) {
         let [node1, node2, weight] = getEdgeInfo(edgeId);
@@ -94,59 +102,58 @@ class View {
             }
         }(node1, node2);
 
-        let backward = function (node1, node2) {
+        let backward = function () {
             return function () {
                 removeConnectedNodes();
             }
-        }(node1, node2);
+        }();
 
         manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
     }
 
     selectTheseNodes(node1: number, node2: number) {
-        let forward = function (node1, node2) {
+        let edge = getEdgeId(node1, node2);
+        let forward = function (node1, node2, edge) {
             return function () {
                 selectNodes(node1, node2, true);
+                selectThisEdge(edge);
+                selectEdgeText(edge);
             }
-        }(node1, node2);
+        }(node1, node2, edge);
 
-        let backward = function (node1, node2) {
+        let backward = function (node1, node2, edge) {
             return function () {
                 selectNodes(node1, node2, false);
+                dehighlightThisEdge(edge);
+                dehighlightEdgeText(edge);
             }
-        }(node1, node2);
+        }(node1, node2, edge);
 
         manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
     }
 
-    deselectTheseNodes(node1: number, node2: number) {
-        let forward = function (node1, node2) {
+    excludeEdges(edgeList: any): void {
+        let forward = function (edgeList) {
             return function () {
-                selectNodes(node1, node2, false);
+                for (let index in edgeList) {
+                    let [node1, node2, weight] = edgeList[index];
+                    let currentEdge = getEdgeId(node1, node2);
+                    transparentEdge(currentEdge);
+                    excludeEdgeText(currentEdge);
+                }
             }
-        }(node1, node2);
+        }(edgeList);
 
-        let backward = function (node1, node2) {
+        let backward = function (edgeList) {
             return function () {
-                selectNodes(node1, node2, true);
+                for (let index in edgeList) {
+                    let [node1, node2, weight] = edgeList[index];
+                    let currentEdge = getEdgeId(node1, node2);
+                    detransparentEdge(currentEdge);
+                    includeEdgeText(currentEdge);
+                }
             }
-        }(node1, node2);
-
-        manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
-    }
-
-    excludeText(i: number) {
-        let forward = function (i) {
-            return function () {
-                excludeEdgeText(i);
-            }
-        }(i);
-
-        let backward = function (i) {
-            return function () {
-                includeEdgeText(i);
-            }
-        }(i);
+        }(edgeList);
 
         manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
     }
@@ -203,33 +210,6 @@ class View {
 
     fast() {
         manager.fast();
-    }
-
-    excludeEdges(edgeList: any): void {
-        let forward = function (edgeList) {
-            return function () {
-                for (let index in edgeList) {
-                    let [node1, node2, weight] = edgeList[index];
-                    let currentEdge = getEdgeId(node1, node2);
-                    dehighlightThisEdge(currentEdge);
-                    transparentEdge(currentEdge);
-                    excludeEdgeText(currentEdge);
-                }
-            }
-        }(edgeList);
-
-        let backward = function (edgeList) {
-            return function () {
-                for (let index in edgeList) {
-                    let [node1, node2, weight] = edgeList[index];
-                    let currentEdge = getEdgeId(node1, node2);
-                    includeEdgeText(currentEdge);
-                    deTransparentEdge(currentEdge);
-                }
-            }
-        }(edgeList);
-
-        manager.addEvent(new FrontendEvent(forward, backward, this.highlightEventDuration));
     }
 }
 
