@@ -104,7 +104,7 @@ class GraphNode {
 
     moveSideways(newLeftValue: number, time: number) {
         this.left = newLeftValue;
-        $("#node" + this.id).clearQueue().animate({left: newLeftValue + "px"}, time);
+        $("#node" + this.id).clearQueue().animate({ left: newLeftValue + "px" }, time);
         for (var i: number = 0; i < this.connectedLines.length; i++) {
             this.connectedLines[i].animateLinePoint(this, time);
         }
@@ -113,7 +113,7 @@ class GraphNode {
     moveBothDirections(newLeftValue: number, newTopValue: number, time: number) {
         this.left = newLeftValue;
         this.top = newTopValue;
-        $("#node" + this.id).clearQueue().animate({left: newLeftValue + "px", top: newTopValue + "px"}, time);
+        $("#node" + this.id).clearQueue().animate({ left: newLeftValue + "px", top: newTopValue + "px" }, time);
         for (var i: number = 0; i < this.connectedLines.length; i++) {
             this.connectedLines[i].animateLinePoint(this, time);
         }
@@ -160,27 +160,27 @@ class Line {
         var $line = $("#line" + this.id);
         var parentPoint: boolean = (this.parent.id == node.id);
         if (parentPoint) {
-            $({x1: $line.attr('x1')})
-                .animate({x1: this.parent.left + width / 2}, {
+            $({ x1: $line.attr('x1') })
+                .animate({ x1: this.parent.left + width / 2 }, {
                     duration: animationTime, step: function (now) {
                         $line.attr('x1', now);
                     }
                 });
-            $({y1: $line.attr('y1')})
-                .animate({y1: this.parent.top + width / 2}, {
+            $({ y1: $line.attr('y1') })
+                .animate({ y1: this.parent.top + width / 2 }, {
                     duration: animationTime, step: function (now) {
                         $line.attr('y1', now);
                     }
                 });
         } else {
-            $({x2: $line.attr('x2')})
-                .animate({x2: this.child.left + width / 2}, {
+            $({ x2: $line.attr('x2') })
+                .animate({ x2: this.child.left + width / 2 }, {
                     duration: animationTime, step: function (now) {
                         $line.attr('x2', now);
                     }
                 });
-            $({y2: $line.attr('y2')})
-                .animate({y2: this.child.top + width / 2}, {
+            $({ y2: $line.attr('y2') })
+                .animate({ y2: this.child.top + width / 2 }, {
                     duration: animationTime, step: function (now) {
                         $line.attr('y2', now);
                     }
@@ -257,30 +257,9 @@ function getSpaceBetweenDivAndLeftNode() {
 
 function centerDivWidthNodes(time: number): void {
     $("#graphUL").finish(); // if already animating, finish animation
-    $("#graphUL").animate({left: getSpaceBetweenDivAndLeftNode()}, time);
+    $("#graphUL").animate({ left: getSpaceBetweenDivAndLeftNode() }, time);
 }
 
 window.addEventListener('resize', function () {
     centerDivWidthNodes(animationTime)
 });
-
-function getGraphState(): string {
-    var state: Array<Array<number>> = [];
-    for (var nodeIndex: number = 0; nodeIndex < allNodes.length; nodeIndex++) {
-        state.push(new Array);
-        for (var childIndex: number = 0; childIndex < allNodes[nodeIndex].children.length; childIndex++) {
-            state[nodeIndex].push(allNodes[nodeIndex].children[childIndex].id);
-        }
-    }
-    return JSON.stringify(state).toString();
-}
-
-function getArrayState(): string {
-    var state: Array<number> = [];
-
-    for (var i = 0; i < allNodes.length; i++) {
-        state.push(parseInt($("#arrayElem" + i + " div.content").text()));
-    }
-
-    return JSON.stringify(state).toString();
-}

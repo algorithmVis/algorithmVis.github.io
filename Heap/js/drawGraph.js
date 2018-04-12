@@ -206,20 +206,3 @@ function centerDivWidthNodes(time) {
 window.addEventListener('resize', function () {
     centerDivWidthNodes(animationTime);
 });
-function getGraphState() {
-    var state = [];
-    for (var nodeIndex = 0; nodeIndex < allNodes.length; nodeIndex++) {
-        state.push(new Array);
-        for (var childIndex = 0; childIndex < allNodes[nodeIndex].children.length; childIndex++) {
-            state[nodeIndex].push(allNodes[nodeIndex].children[childIndex].id);
-        }
-    }
-    return JSON.stringify(state).toString();
-}
-function getArrayState() {
-    var state = [];
-    for (var i = 0; i < allNodes.length; i++) {
-        state.push(parseInt($("#arrayElem" + i + " div.content").text()));
-    }
-    return JSON.stringify(state).toString();
-}

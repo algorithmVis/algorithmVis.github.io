@@ -175,7 +175,6 @@ class View {
     addNode(val: number) {
         control.addNode(val);
         setOnClickListener();
-        setKeyListener();
         setupRadio();
     }
 
@@ -391,7 +390,6 @@ class View {
             lockBackForward(true);
             $("#play").text("Pause");
         } else if (manager.nextEvents.length > 0) {
-            console.log("hello woorld");
             return;
         } else {
             lockPlay(true);

@@ -152,7 +152,6 @@ var View = /** @class */ (function () {
     View.prototype.addNode = function (val) {
         control.addNode(val);
         setOnClickListener();
-        setKeyListener();
         setupRadio();
     };
     View.prototype.removeNode = function () {
@@ -339,7 +338,6 @@ var View = /** @class */ (function () {
             $("#play").text("Pause");
         }
         else if (manager.nextEvents.length > 0) {
-            console.log("hello woorld");
             return;
         }
         else {

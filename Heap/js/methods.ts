@@ -6,16 +6,23 @@
  * @author Øyvind
  *
  */
-//declare var javaBinder; // Used to communicate with java
-var firstSelected: number = -1;
-var locked: boolean = false;
-var contentHidden: boolean = false;
+let firstSelected: number = -1;
+let locked: boolean = false;
+let contentHidden: boolean = false;
 
 // Displays new array
 function displayArray(jsonString: string): void {
     var $array = $.parseJSON(jsonString);
     createAndDrawNodes($array);
 }
+
+$(window).click(function (e) {
+    if ($(e.target).closest("#arrayUL li").length > 0) {
+        return false;
+    }
+    deselectArrayElemSelections();
+    deselectNodeSelections();
+});
 
 // Setup nodes and array elements to activate algorithm when clicked
 function setOnClickListener() {
@@ -39,40 +46,13 @@ function setOnClickListener() {
     });
 }
 
+setOnClickListener();
+
 function isHighlighted(id: number): boolean {
     if ($("#arrayElem" + id).hasClass("selected"))
         return true;
     return false;
 }
-
-setOnClickListener();
-
-function setKeyListener() {
-    this.addEventListener("keyup", function (e) {
-        if (locked) {
-            return;
-        }
-        var key = e.which || e.keyCode;
-
-        // Enter (reset algorithm)
-        if (key == 13) {
-            resetElementSelections();
-            viewer.changeToCurrentAlgorithm();
-        }
-
-        // left arrow (step back)
-        else if (key == 37) {
-            viewer.stepBack();
-        }
-
-        // right arrow (step forward)
-        else if (key == 39) {
-            viewer.stepForward();
-        }
-    });
-}
-
-setKeyListener();
 
 // Selects an element. If method==find call method, else wait for second element before union or connected
 function selectElement(index: number) {
@@ -136,7 +116,6 @@ function setValueAtSortIndex(i: number, value) {
     $elem.append("" + value);
 }
 
-
 // Add a new element to the array
 function insertNewElem(i: number, val: number): void {
     $("#arrayUL").append("<li id='arrayElem" + i + "'><div class='index'>" + i + "</div><div class='content' id='arrayContent" + i + "'>" + val + "</div></li>");
@@ -193,7 +172,6 @@ function removeNode(i: number) {
     });
 
     allNodes[i].parent.removeChild(allNodes[i]);
-    //allNodes[i].reset();
     allNodes.pop();
 }
 

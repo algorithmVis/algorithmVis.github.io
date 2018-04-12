@@ -6,7 +6,6 @@
  * @author Øyvind
  *
  */
-//declare var javaBinder; // Used to communicate with java
 var firstSelected = -1;
 var locked = false;
 var contentHidden = false;
@@ -15,6 +14,13 @@ function displayArray(jsonString) {
     var $array = $.parseJSON(jsonString);
     createAndDrawNodes($array);
 }
+$(window).click(function (e) {
+    if ($(e.target).closest("#arrayUL li").length > 0) {
+        return false;
+    }
+    deselectArrayElemSelections();
+    deselectNodeSelections();
+});
 // Setup nodes and array elements to activate algorithm when clicked
 function setOnClickListener() {
     $("#arrayUL li").each(function () {
@@ -36,32 +42,12 @@ function setOnClickListener() {
         });
     });
 }
+setOnClickListener();
 function isHighlighted(id) {
     if ($("#arrayElem" + id).hasClass("selected"))
         return true;
     return false;
 }
-setOnClickListener();
-function setKeyListener() {
-    this.addEventListener("keyup", function (e) {
-        if (locked) {
-            return;
-        }
-        var key = e.which || e.keyCode;
-        // Enter (reset algorithm)
-        if (key == 13) {
-            resetElementSelections();
-            viewer.changeToCurrentAlgorithm();
-        }
-        else if (key == 37) {
-            viewer.stepBack();
-        }
-        else if (key == 39) {
-            viewer.stepForward();
-        }
-    });
-}
-setKeyListener();
 // Selects an element. If method==find call method, else wait for second element before union or connected
 function selectElement(index) {
     // Set new class for selected index
