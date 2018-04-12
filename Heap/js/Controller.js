@@ -12,9 +12,10 @@ var Controller = /** @class */ (function () {
     }
     Controller.prototype.initController = function (algo) {
         this.algorithm = algo;
+        this.algoName = this.algorithm.getName();
         this.speed = 50;
         viewer.changeToCurrentAlgorithm();
-        if (algo.getName() == "FreeMode") {
+        if (algo.getName() == "FreeMode" || algo.getName() == "MaxHeapFree") {
             this.algorithm.clearArrayValues();
             this.algorithm.maxHeapFreeInit();
             manager.start();
@@ -77,6 +78,9 @@ var Controller = /** @class */ (function () {
     };
     Controller.prototype.setSortValAndDeselect = function (sortIndex, val) {
         viewer.setSortValAndDeselect(sortIndex, val);
+    };
+    Controller.prototype.getAlgoName = function () {
+        return this.algoName;
     };
     return Controller;
 }());

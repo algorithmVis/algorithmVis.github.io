@@ -60,11 +60,14 @@ var View = /** @class */ (function () {
         manager.addEvent(new FrontendEvent(forward, backward, this.animSpeed));
     };
     View.prototype.stepForward = function () {
+        if (control.getAlgoName() === "MaxHeapFree" || control.getAlgoName() === "MaxHeap")
+            this.setPause(true);
         this.clickedPlay = false;
         manager.next();
     };
     View.prototype.stepBack = function () {
-        this.setPause(true);
+        if (control.getAlgoName() === "MaxHeapFree" || control.getAlgoName() === "MaxHeap")
+            this.setPause(true);
         if (firstSelected != -1) {
             selectIndex(firstSelected, false);
             firstSelected = -1;
@@ -77,6 +80,7 @@ var View = /** @class */ (function () {
         this.started = false;
         this.playing = false;
         $("#play").text("Play");
+        $("#arrow").addClass("hidden").animate({ left: ($("#arrayElem0").position().left + 9) + "px" }, 0);
         manager.pause();
         manager.nextEvents = new Array;
         manager.previousEvents = new Array;
@@ -131,6 +135,9 @@ var View = /** @class */ (function () {
                 lockPlay(false);
                 control.initController(new BuildHeap(10));
                 screenLock(true);
+                control.getAlgorithm().build();
+                this.setPause(true);
+                $("#play").text("Play");
                 break;
             }
             case "HeapSort": {
@@ -139,6 +146,9 @@ var View = /** @class */ (function () {
                 $("#sortArray").show();
                 control.initController(new HeapSort(10));
                 screenLock(true);
+                control.getAlgorithm().sort();
+                this.setPause(true);
+                $("#play").text("Play");
                 break;
             }
             default: {
@@ -299,7 +309,6 @@ var View = /** @class */ (function () {
             this.setPause(false);
         }
         else if (algo === "HeapSort" && !this.started && !this.playing) {
-            control.getAlgorithm().sort();
             this.started = true;
             this.setPause(false);
         }
@@ -316,7 +325,8 @@ var View = /** @class */ (function () {
         if (bool) {
             this.playing = false;
             manager.pause();
-            $("#play").text("Resume");
+            if (!(control.getAlgoName() === "MaxHeapFree" || control.getAlgoName() === "MaxHeap"))
+                $("#play").text("Resume");
             lockBackForward(false);
         }
         else {

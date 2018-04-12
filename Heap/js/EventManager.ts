@@ -16,8 +16,10 @@ class EventManager {
     next() {
         viewer.playButtonState();
         if (this.nextEvents.length == 0) {
+            screenLock(false);
             return;
         }
+        screenLock(true);
         var event = (<FrontendEvent>this.nextEvents.shift());
         event.next();
         this.previousEvents.push(event);
@@ -27,8 +29,11 @@ class EventManager {
 
     // Executing the previous event
     previous() {
-        if (this.previousEvents.length == 0)
+        if (this.previousEvents.length == 0) {
+            screenLock(false);            
             return;
+        }
+        screenLock(true);        
         var event: FrontendEvent = (<FrontendEvent>this.previousEvents.pop());
         event.previous();
         this.nextEvents.unshift(event);

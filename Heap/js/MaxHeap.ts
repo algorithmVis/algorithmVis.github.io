@@ -17,9 +17,17 @@ class MaxHeap implements IAlgorithm {
         this.currIndex = size;
         this.array = new Array;
         for (let i = 0; i < 10; i++) {
-            this.array[i] = Math.floor((Math.random() * 10)) + 1;
+            let val = this.generateRandomNum();
+            while (this.array.filter(function (x) { return x === val }).length > 1)
+                val = this.generateRandomNum();
+
+            this.array[i] = val;
         }
         this.backEndBuild();
+    }
+
+    generateRandomNum() {
+        return Math.floor((Math.random() * 10)) + 1;
     }
 
     setIndex() {

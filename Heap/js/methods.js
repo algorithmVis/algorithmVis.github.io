@@ -148,7 +148,6 @@ function removeNode(i) {
         $(this).remove();
     });
     allNodes[i].parent.removeChild(allNodes[i]);
-    //allNodes[i].reset();
     allNodes.pop();
 }
 // Swap position of two graphNodes

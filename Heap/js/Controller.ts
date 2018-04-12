@@ -11,12 +11,14 @@
 class Controller {
     private algorithm: IAlgorithm;
     private speed: number;
+    private algoName: string;
 
     initController(algo: IAlgorithm) {
         this.algorithm = algo;
+        this.algoName = this.algorithm.getName();
         this.speed = 50;
         viewer.changeToCurrentAlgorithm();
-        if (algo.getName() == "FreeMode") {
+        if (algo.getName() == "FreeMode" || algo.getName() == "MaxHeapFree") {
             (<MaxHeapFree>this.algorithm).clearArrayValues();
             (<MaxHeapFree>this.algorithm).maxHeapFreeInit();
             manager.start();
@@ -94,6 +96,10 @@ class Controller {
     }
     setSortValAndDeselect(sortIndex: number, val: any) {
         viewer.setSortValAndDeselect(sortIndex, val);
+    }
+
+    getAlgoName() {
+        return this.algoName;
     }
 }
 

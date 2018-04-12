@@ -9,11 +9,21 @@ var MaxHeap = /** @class */ (function () {
         this.arraySize = size;
         this.currIndex = size;
         this.array = new Array;
+        var _loop_1 = function (i) {
+            var val = this_1.generateRandomNum();
+            while (this_1.array.filter(function (x) { return x === val; }).length > 1)
+                val = this_1.generateRandomNum();
+            this_1.array[i] = val;
+        };
+        var this_1 = this;
         for (var i = 0; i < 10; i++) {
-            this.array[i] = Math.floor((Math.random() * 10)) + 1;
+            _loop_1(i);
         }
         this.backEndBuild();
     }
+    MaxHeap.prototype.generateRandomNum = function () {
+        return Math.floor((Math.random() * 10)) + 1;
+    };
     MaxHeap.prototype.setIndex = function () {
         for (var i = 0; i < this.array.length; i++) {
             if (i >= this.currIndex)

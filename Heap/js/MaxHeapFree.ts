@@ -38,6 +38,6 @@ class MaxHeapFree extends MaxHeap {
     }
 
     getName() {
-        return "FreeMode";
+        return "MaxHeapFree";
     }
 }

@@ -43,7 +43,7 @@ var MaxHeapFree = /** @class */ (function (_super) {
         superNode.children = [];
     };
     MaxHeapFree.prototype.getName = function () {
-        return "FreeMode";
+        return "MaxHeapFree";
     };
     return MaxHeapFree;
 }(MaxHeap));

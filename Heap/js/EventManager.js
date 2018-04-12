@@ -13,8 +13,10 @@ var EventManager = /** @class */ (function () {
     EventManager.prototype.next = function () {
         viewer.playButtonState();
         if (this.nextEvents.length == 0) {
+            screenLock(false);
             return;
         }
+        screenLock(true);
         var event = this.nextEvents.shift();
         event.next();
         this.previousEvents.push(event);
@@ -23,8 +25,11 @@ var EventManager = /** @class */ (function () {
     };
     // Executing the previous event
     EventManager.prototype.previous = function () {
-        if (this.previousEvents.length == 0)
+        if (this.previousEvents.length == 0) {
+            screenLock(false);
             return;
+        }
+        screenLock(true);
         var event = this.previousEvents.pop();
         event.previous();
         this.nextEvents.unshift(event);
