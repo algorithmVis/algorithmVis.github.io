@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Kruskal's Algorithm</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/Methods.js"></script>
@@ -33,9 +34,9 @@
 
 
 <div id="buttonDiv" class="bottom-container left-bottom">
-    <button id="togglePause" class="my-button" onclick="viewer.pause()">Play</button>
-    <button id="backward" class="my-button" onclick="viewer.backward()">Previous</button>
-    <button id="forward" class="my-button" onclick="viewer.forward()">Forward</button>
+    <button id="togglePause" class="btn btn-primary" onclick="viewer.pause()">Play</button>
+    <button id="backward" class="btn btn-primary" onclick="viewer.backward()">Backward</button>
+    <button id="forward" class="btn btn-primary" onclick="viewer.forward()">Forward</button>
     <select id="nodes" onchange="numberOfNodes(value)">
         <option value="3">3</option>
         <option value="4">4</option>
@@ -48,9 +49,9 @@
     </select>
     <br>
     <br>
-    <button id="slow" class="my-button" onclick="viewer.slow();">Slow</button>
-    <button id="medium" class="my-button" onclick="viewer.medium();">Medium</button>
-    <button id="fast" class="my-button" onclick="viewer.fast();">Fast</button>
+    <button id="slow" class="btn btn-success" onclick="viewer.slow();">Slow</button>
+    <button id="medium" class="btn btn-success" onclick="viewer.medium();">Medium</button>
+    <button id="fast" class="btn btn-success" onclick="viewer.fast();">Fast</button>
 
 </div>
 <script>numberOfNodes(3);</script>

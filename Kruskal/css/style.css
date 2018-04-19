@@ -14,6 +14,7 @@ body {
 
 h1#headerText {
     display: table;
+    margin-left: 10px;
 }
 
 div#graphUI.kruskal {
@@ -31,9 +32,8 @@ div#queueUI {
 }
 
 div#edgeTitle {
-    text-align: center;
     margin-top: -30px;
-    margin-left: 60%;
+    margin-left: 73%;
 }
 
 div#edgeTable {
@@ -42,7 +42,7 @@ div#edgeTable {
     position: relative;
     height: 100%;
     margin-top: -11px;
-
+    font-size: 1.1em;
 }
 
 .edgeText-container {
@@ -65,6 +65,7 @@ div#edgeTable {
     margin-top: 5px;
     border: solid 3px #b6b6b6;
     border-radius: 10px;
+    font-size: 1.1em;
 }
 
 .bottom-container {
@@ -105,50 +106,6 @@ div#edgeTable {
     /* background-color: #1e62d0; */
 }
 
-.my-button {
-    -moz-box-shadow: inset 0px 1px 0px 0px #97c4fe;
-    -webkit-box-shadow: inset 0px 1px 0px 0px #97c4fe;
-    box-shadow: inset 0px 1px 0px 0px #97c4fe;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #3d94f6), color-stop(1, #1e62d0));
-    background: -moz-linear-gradient(top, #3d94f6 5%, #1e62d0 100%);
-    background: -webkit-linear-gradient(top, #3d94f6 5%, #1e62d0 100%);
-    background: -o-linear-gradient(top, #3d94f6 5%, #1e62d0 100%);
-    background: -ms-linear-gradient(top, #3d94f6 5%, #1e62d0 100%);
-    background: linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3d94f6', endColorstr='#1e62d0', GradientType=0);
-    background-color: #3d94f6;
-    -moz-border-radius: 6px;
-    -webkit-border-radius: 6px;
-    border-radius: 6px;
-    border: 1px solid #337fed;
-    display: inline-block;
-    cursor: pointer;
-    color: #ffffff;
-    font-family: Arial;
-    font-size: 15px;
-    font-weight: bold;
-    padding: 6px 24px;
-    text-decoration: none;
-    text-shadow: 0px 1px 0px #1570cd;
-    width: 100px;
-}
-
-.my-button:hover:not([disabled]) {
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #1e62d0), color-stop(1, #3d94f6));
-    background: -moz-linear-gradient(top, #1e62d0 5%, #3d94f6 100%);
-    background: -webkit-linear-gradient(top, #1e62d0 5%, #3d94f6 100%);
-    background: -o-linear-gradient(top, #1e62d0 5%, #3d94f6 100%);
-    background: -ms-linear-gradient(top, #1e62d0 5%, #3d94f6 100%);
-    background: linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e62d0', endColorstr='#3d94f6', GradientType=0);
-    background-color: #1e62d0;
-}
-
-.my-button:active {
-    position: relative;
-    top: 1px;
-}
-
 .visited-text {
     position: relative;
     margin: 0;
@@ -172,8 +129,8 @@ div#edgeTable {
 
 div.nodeUI {
     border: 3px solid black;
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
     position: absolute;
     border-radius: 10000px; /* Just to be sure.. */
     background-color: white;
