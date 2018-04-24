@@ -73,6 +73,9 @@ class View {
     }
 
     stepForward() {
+        if (manager.nextEvents.length <= 0)
+            return;
+
         if (control.getAlgoName() === "MaxHeapFree" || control.getAlgoName() === "MaxHeap")
             this.setPause(true);
 
@@ -81,6 +84,8 @@ class View {
     }
 
     stepBack() {
+        if (manager.nextEvents.length <= 0)
+            return;
         if (control.getAlgoName() === "MaxHeapFree" || control.getAlgoName() === "MaxHeap")
             this.setPause(true);
         if (firstSelected != -1) {
@@ -158,7 +163,7 @@ class View {
                 screenLock(true);
                 control.getAlgorithm().build();
                 this.setPause(true);
-                $("#play").text("Play");                                
+                $("#play").text("Play");
                 break;
             }
             case "HeapSort": {
@@ -169,7 +174,7 @@ class View {
                 screenLock(true);
                 (<HeapSort>control.getAlgorithm()).sort();
                 this.setPause(true);
-                $("#play").text("Play");                
+                $("#play").text("Play");
                 break;
             }
             default: {
@@ -378,8 +383,7 @@ class View {
         if (bool) {
             this.playing = false;
             manager.pause();
-            if (!(control.getAlgoName() === "MaxHeapFree" || control.getAlgoName() === "MaxHeap"))
-                $("#play").text("Resume");
+            $("#play").text("Resume");
             lockBackForward(false);
         } else {
             this.playing = true;
@@ -392,8 +396,9 @@ class View {
     // Used in eventmanager for freemode and predefined
     playButtonState() {
         let algo = control.getAlgorithm().getName();
-        if (!(algo === "MaxHeap" || algo === "MaxHeapFree"))
+        if (!(algo === "MaxHeap" || algo === "MaxHeapFree")) {
             return;
+        }
 
         if (manager.nextEvents.length > 0 && this.clickedPlay) {
             this.playing = true;
@@ -401,6 +406,8 @@ class View {
             lockBackForward(true);
             $("#play").text("Pause");
         } else if (manager.nextEvents.length > 0) {
+            lockPlay(false);
+            this.playing = false;
             return;
         } else {
             lockPlay(true);

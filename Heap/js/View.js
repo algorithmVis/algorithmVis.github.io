@@ -60,12 +60,16 @@ var View = /** @class */ (function () {
         manager.addEvent(new FrontendEvent(forward, backward, this.animSpeed));
     };
     View.prototype.stepForward = function () {
+        if (manager.nextEvents.length <= 0)
+            return;
         if (control.getAlgoName() === "MaxHeapFree" || control.getAlgoName() === "MaxHeap")
             this.setPause(true);
         this.clickedPlay = false;
         manager.next();
     };
     View.prototype.stepBack = function () {
+        if (manager.nextEvents.length <= 0)
+            return;
         if (control.getAlgoName() === "MaxHeapFree" || control.getAlgoName() === "MaxHeap")
             this.setPause(true);
         if (firstSelected != -1) {
@@ -325,8 +329,7 @@ var View = /** @class */ (function () {
         if (bool) {
             this.playing = false;
             manager.pause();
-            if (!(control.getAlgoName() === "MaxHeapFree" || control.getAlgoName() === "MaxHeap"))
-                $("#play").text("Resume");
+            $("#play").text("Resume");
             lockBackForward(false);
         }
         else {
@@ -339,8 +342,9 @@ var View = /** @class */ (function () {
     // Used in eventmanager for freemode and predefined
     View.prototype.playButtonState = function () {
         var algo = control.getAlgorithm().getName();
-        if (!(algo === "MaxHeap" || algo === "MaxHeapFree"))
+        if (!(algo === "MaxHeap" || algo === "MaxHeapFree")) {
             return;
+        }
         if (manager.nextEvents.length > 0 && this.clickedPlay) {
             this.playing = true;
             lockPlay(false);
@@ -348,6 +352,8 @@ var View = /** @class */ (function () {
             $("#play").text("Pause");
         }
         else if (manager.nextEvents.length > 0) {
+            lockPlay(false);
+            this.playing = false;
             return;
         }
         else {
