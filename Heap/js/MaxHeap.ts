@@ -181,6 +181,8 @@ class MaxHeap implements IAlgorithm {
         let other: number = Math.floor((index - 1) / 2);
         while (other >= 0 && this.array[index] > this.array[other]) {
             this.exch(index, other);
+            control.highlightTwoNodes(index, other, "green");
+            control.removeHighlightTwoNodes(index, other, "green");
             index = Math.floor((index - 1) / 2);
             other = Math.floor((index - 1) / 2);
         }

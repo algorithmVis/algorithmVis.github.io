@@ -103,11 +103,11 @@ ul#graphUL li.wrong {
 }
 
 /** WARNING: Do not change the name of "green" or "orange" class. Js uses strings sent from java to set class **/
-ul#graphUL li.green, ul#sortArrayUL li.green div.content, ul#arrayUL li.child div.content {
+ul#graphUL li.green, ul#sortArrayUL li.green div.content, ul#arrayUL li.child div.content, ul#arrayUL li.green div.content {
     border: 3px solid rgb(0, 204, 0);
 }
 
-ul#graphUL li.orange {
+ul#graphUL li.orange, ul#arrayUL li.orange div.content {
     border: 3px solid rgb(255, 117, 26);
 }
 

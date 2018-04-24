@@ -190,7 +190,6 @@ class View {
 
     addNode(val: number) {
         control.addNode(val);
-        setOnClickListener();
         setupRadio();
     }
 
@@ -244,6 +243,7 @@ class View {
                 setValueAtIndex(index, value);
                 insertNewNode(index, value);
                 insertNewElemConnect(index, parent);
+                setOnClickListener();
 
                 // If first node -> Position with a nice animation
                 if (control.getAlgorithm().getArrayLength() == 1)

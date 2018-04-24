@@ -165,7 +165,6 @@ var View = /** @class */ (function () {
     };
     View.prototype.addNode = function (val) {
         control.addNode(val);
-        setOnClickListener();
         setupRadio();
     };
     View.prototype.removeNode = function () {
@@ -210,6 +209,7 @@ var View = /** @class */ (function () {
                 setValueAtIndex(index, value);
                 insertNewNode(index, value);
                 insertNewElemConnect(index, parent);
+                setOnClickListener();
                 // If first node -> Position with a nice animation
                 if (control.getAlgorithm().getArrayLength() == 1)
                     positioningNodes(1500);

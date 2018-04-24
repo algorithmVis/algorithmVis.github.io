@@ -33,11 +33,6 @@ function setOnClickListener() {
             for (var i = 0; i < id.length; i++)
                 if (!isNaN(parseInt(id[i])))
                     idInt += id[i];
-            if (isHighlighted(parseInt(idInt))) {
-                deselectArrayElemSelections();
-                deselectNodeSelections();
-                return;
-            }
             selectElement(parseInt(idInt));
         });
     });
@@ -225,10 +220,11 @@ function deselectArrayElement(index) {
 }
 function highlightNode(index, color) {
     if (color.toLowerCase() == "green" || color.toLowerCase() == "orange") {
-        $("#arrayElem" + index + ", #node" + index).each(function () {
+        $("#node" + index).each(function () {
             removeHighlight(index);
             $(this).addClass(color);
         });
+        $("#arrayElem" + index).addClass(color);
     }
     else {
         console.log("*** WARNING: Unknown color, " + color + " *** ");
