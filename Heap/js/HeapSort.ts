@@ -9,7 +9,7 @@ class HeapSort extends MaxHeap {
 
     constructor(size: number) {
         super(size);
-        this.insertElems(size);
+        HeapSort.insertElems(size);
         this.sortIndex = this.currIndex - 1;
     }
 
@@ -21,16 +21,18 @@ class HeapSort extends MaxHeap {
     }
 
     remove(): void {
-        // Remove root element, set last element to root and start frontendevents
+        // Switch root and last element, remove root and start frontendevents
         let oldVal = this.array[0];
-        control.sortHighlightTwoNodes(0, this.sortIndex, "orange");
-        control.setSortValAndDeselect(this.sortIndex, this.array[0]);
-        super.remove();
+        this.exch(0, --this.currIndex);
+        control.sortHighlightTwoNodes(this.currIndex, this.sortIndex, "orange");
+        control.setSortValAndDeselect(this.sortIndex, oldVal);
+        control.removeElem(this.currIndex, false);
+        this.sink(0, this.currIndex);
         control.highlightSortElem(this.sortIndex--, "green");
     }
 
 
-    private insertElems(size: number) {
+    static insertElems(size: number) {
         for (var i = 0; i < size; i++) {
             $("#sortArrayUL").append("<li id='sortArrayElem" + i + "'><div class='index'>" + i + "</div><div class='content' id='sortArrayContent" + i + "'>" + " " + "</div></li>");
         }

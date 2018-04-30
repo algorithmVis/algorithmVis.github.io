@@ -201,7 +201,7 @@ function selectIndex(index, select) {
             $(this).addClass("selected");
         }
         else {
-            $(this).removeClass("selected");
+            $(this).removeClass("selected orange");
         }
     });
 }
@@ -312,3 +312,15 @@ function setUpRemoveButton() {
     });
 }
 setUpRemoveButton();
+function setUpBuildButton() {
+    $("#buildHeap").click(function () {
+        viewer.buildHeap();
+    });
+}
+setUpBuildButton();
+function setUpSortButton() {
+    $("#sortHeap").click(function () {
+        viewer.sortHeap();
+    });
+}
+setUpSortButton();

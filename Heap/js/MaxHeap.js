@@ -96,7 +96,7 @@ var MaxHeap = /** @class */ (function () {
      * Build a max heap
      */
     MaxHeap.prototype.build = function () {
-        var n = this.array.length;
+        var n = this.currIndex;
         for (var k = Math.floor((n - 1) / 2); k >= 0; k--)
             this.sink(k, n);
     };

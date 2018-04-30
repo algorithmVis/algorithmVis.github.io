@@ -16,6 +16,7 @@ var GraphNode = /** @class */ (function () {
             this.moveBothDirections(xLayer * 70, yLayer * 50, time);
             return xLayer + 1;
         }
+        // Recursive
         else {
             for (var _i = 0, _a = this.children; _i < _a.length; _i++) {
                 var child = _a[_i];

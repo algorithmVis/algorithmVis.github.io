@@ -122,6 +122,7 @@ var View = /** @class */ (function () {
     View.prototype.switchAlgorithm = function (algo) {
         $("#sortArray").hide();
         $("#sortArrayUL").children("li").remove();
+        $("#buildHeap, #sortHeap").hide();
         lockPlay(true);
         switch (algo) {
             case "MaxHeap": {
@@ -132,6 +133,14 @@ var View = /** @class */ (function () {
             case "MaxHeapFree": {
                 this.resetAll();
                 control.initController(new MaxHeapFree(10));
+                break;
+            }
+            case "MaxHeapCombined": {
+                this.resetAll();
+                lockPlay(false);
+                $("#sortArray").show();
+                $("#buildHeap, #sortHeap").show();
+                control.initController(new MaxHeapCombined(10));
                 break;
             }
             case "BuildHeap": {
@@ -169,6 +178,12 @@ var View = /** @class */ (function () {
     };
     View.prototype.removeNode = function () {
         control.removeNode();
+    };
+    View.prototype.sortHeap = function () {
+        control.sortHeap();
+    };
+    View.prototype.buildHeap = function () {
+        control.buildHeap();
     };
     View.prototype.swapNode = function (child, parent) {
         var forward = function (child, parent) {
@@ -258,16 +273,16 @@ var View = /** @class */ (function () {
     View.prototype.sortHighlightTwoNodes = function (arrIndex, sortIndex, color) {
         var forward = function (arrIndex, sortIndex, color) {
             return function () {
-                selectIndex(0, true);
-                highlightNode(0, "orange");
+                selectIndex(arrIndex, true);
+                highlightNode(arrIndex, "orange");
                 sortHighlightElem(sortIndex, "orange");
             };
         }(arrIndex, sortIndex, color);
         var backward = function (index1, index2, color) {
             return function () {
                 removeSortHighlight(sortIndex);
-                removeHighlight(0);
-                selectIndex(0, false);
+                removeHighlight(index1);
+                selectIndex(index1, false);
             };
         }(arrIndex, sortIndex, color);
         manager.addEvent(new FrontendEvent(forward, backward, 1500));
@@ -293,12 +308,12 @@ var View = /** @class */ (function () {
         var forward = function (sortIndex, val) {
             return function () {
                 setValueAtSortIndex(sortIndex, val);
-                selectIndex(0, false);
+                selectIndex(sortIndex, false);
             };
         }(sortIndex, val);
         var backward = function (sortIndex, val) {
             return function () {
-                selectIndex(0, true);
+                selectIndex(sortIndex, true);
                 setValueAtSortIndex(sortIndex, " ");
             };
         }(sortIndex, val);

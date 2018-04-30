@@ -7,6 +7,7 @@
 ///<reference path="View.ts"/>
 ///<reference path="methods.ts"/>
 ///<reference path="MaxHeapFree.ts"/>
+///<reference path="MaxHeapCombined.ts"/>
 var Controller = /** @class */ (function () {
     function Controller() {
     }
@@ -15,10 +16,12 @@ var Controller = /** @class */ (function () {
         this.algoName = this.algorithm.getName();
         this.speed = 50;
         viewer.changeToCurrentAlgorithm();
-        if (algo.getName() == "FreeMode" || algo.getName() == "MaxHeapFree") {
+        if (algo.getName() == "FreeMode" || algo.getName() == "MaxHeapFree" || algo.getName() == "MaxHeapCombined") {
             this.algorithm.clearArrayValues();
             this.algorithm.maxHeapFreeInit();
             manager.start();
+        }
+        else if (algo.getName() == "MaxHeapCombined") {
         }
         else {
             this.algorithm.setIndex();
@@ -30,6 +33,14 @@ var Controller = /** @class */ (function () {
     };
     Controller.prototype.getAlgorithm = function () {
         return this.algorithm;
+    };
+    Controller.prototype.sortHeap = function () {
+        if (this.algorithm.getName() === "MaxHeapCombined")
+            this.algorithm.sort();
+    };
+    Controller.prototype.buildHeap = function () {
+        if (this.algorithm.getName() === "MaxHeapCombined")
+            this.algorithm.build();
     };
     Controller.prototype.setArrow = function (index) {
         viewer.setThisArrow(index);
@@ -74,7 +85,7 @@ var Controller = /** @class */ (function () {
         viewer.removeHighlightTwoNodes(index1, index2, color);
     };
     Controller.prototype.sortHighlightTwoNodes = function (arrIndex, sortIndex, color) {
-        viewer.sortHighlightTwoNodes(0, sortIndex, "orange");
+        viewer.sortHighlightTwoNodes(arrIndex, sortIndex, "orange");
     };
     Controller.prototype.setSortValAndDeselect = function (sortIndex, val) {
         viewer.setSortValAndDeselect(sortIndex, val);

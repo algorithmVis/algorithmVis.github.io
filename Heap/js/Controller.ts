@@ -7,6 +7,8 @@
 ///<reference path="View.ts"/>
 ///<reference path="methods.ts"/>
 ///<reference path="MaxHeapFree.ts"/>
+///<reference path="MaxHeapCombined.ts"/>
+
 
 class Controller {
     private algorithm: IAlgorithm;
@@ -18,10 +20,12 @@ class Controller {
         this.algoName = this.algorithm.getName();
         this.speed = 50;
         viewer.changeToCurrentAlgorithm();
-        if (algo.getName() == "FreeMode" || algo.getName() == "MaxHeapFree") {
+        if (algo.getName() == "FreeMode" || algo.getName() == "MaxHeapFree" || algo.getName() == "MaxHeapCombined") {
             (<MaxHeapFree>this.algorithm).clearArrayValues();
             (<MaxHeapFree>this.algorithm).maxHeapFreeInit();
             manager.start();
+        } else if (algo.getName() == "MaxHeapCombined") {
+            
         } else {
             this.algorithm.setIndex();
             viewer.displayThisArray(this.algorithm.getArray());
@@ -33,6 +37,16 @@ class Controller {
 
     getAlgorithm() {
         return this.algorithm;
+    }
+
+    sortHeap() {
+        if(this.algorithm.getName() === "MaxHeapCombined")
+            (<MaxHeapCombined> this.algorithm).sort();
+    }
+
+    buildHeap() {
+        if(this.algorithm.getName() === "MaxHeapCombined")
+            (<MaxHeapCombined> this.algorithm).build();
     }
 
     setArrow(index: number) {
@@ -92,7 +106,7 @@ class Controller {
     }
 
     sortHighlightTwoNodes(arrIndex: number, sortIndex: number, color: string) {
-        viewer.sortHighlightTwoNodes(0, sortIndex, "orange");
+        viewer.sortHighlightTwoNodes(arrIndex, sortIndex, "orange");
     }
     setSortValAndDeselect(sortIndex: number, val: any) {
         viewer.setSortValAndDeselect(sortIndex, val);

@@ -143,6 +143,7 @@ class View {
     switchAlgorithm(algo: string) {
         $("#sortArray").hide();
         $("#sortArrayUL").children("li").remove();
+        $("#buildHeap, #sortHeap").hide();
         lockPlay(true);
 
         switch (algo) {
@@ -154,6 +155,14 @@ class View {
             case "MaxHeapFree": {
                 this.resetAll();
                 control.initController(new MaxHeapFree(10));
+                break;
+            }
+            case "MaxHeapCombined": {
+                this.resetAll();
+                lockPlay(false);
+                $("#sortArray").show();
+                $("#buildHeap, #sortHeap").show();
+                control.initController(new MaxHeapCombined(10));
                 break;
             }
             case "BuildHeap": {
@@ -195,6 +204,14 @@ class View {
 
     removeNode() {
         control.removeNode();
+    }
+
+    sortHeap() {
+        control.sortHeap();
+    }
+
+    buildHeap() {
+        control.buildHeap();
     }
 
     swapNode(child: number, parent: number) {
@@ -304,8 +321,8 @@ class View {
     sortHighlightTwoNodes(arrIndex: number, sortIndex: number, color: string) {
         let forward = function (arrIndex, sortIndex, color) {
             return function () {
-                selectIndex(0, true);
-                highlightNode(0, "orange");
+                selectIndex(arrIndex, true);
+                highlightNode(arrIndex, "orange");
                 sortHighlightElem(sortIndex, "orange");
             }
         }(arrIndex, sortIndex, color);
@@ -313,8 +330,8 @@ class View {
         let backward = function (index1, index2, color) {
             return function () {
                 removeSortHighlight(sortIndex);
-                removeHighlight(0);
-                selectIndex(0, false);
+                removeHighlight(index1);
+                selectIndex(index1, false);
             }
         }(arrIndex, sortIndex, color);
 
@@ -345,13 +362,13 @@ class View {
         let forward = function (sortIndex, val) {
             return function () {
                 setValueAtSortIndex(sortIndex, val);
-                selectIndex(0, false);
+                selectIndex(sortIndex, false);
             }
         }(sortIndex, val);
 
         let backward = function (sortIndex, val) {
             return function () {
-                selectIndex(0, true);
+                selectIndex(sortIndex, true);
                 setValueAtSortIndex(sortIndex, " ");
             }
         }(sortIndex, val);

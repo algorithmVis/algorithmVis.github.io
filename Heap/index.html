@@ -17,6 +17,7 @@
     <script src="js/MaxHeapFree.js"></script>
     <script src="js/BuildHeap.js"></script>
     <script src="js/HeapSort.js"></script>
+    <script src="js/MaxHeapCombined.js"></script>
 </head>
 
 
@@ -60,10 +61,12 @@
                        onclick="viewer.switchAlgorithm('MaxHeap')">Predefined<br>
                 <input id="MaxHeapFree" type="radio" name="algorithm" value="max"
                        onclick="viewer.switchAlgorithm('MaxHeapFree')">FreeMode<br>
-                <input id="HeapSort" type="radio" name="algorithm" value="max"
-                       onclick="viewer.switchAlgorithm('HeapSort')">HeapSort<br>
                 <input id="Heapify" type="radio" name="algorithm" value="max"
                        onclick="viewer.switchAlgorithm('BuildHeap')">Construct Heap<br>
+                <input id="HeapSort" type="radio" name="algorithm" value="max"
+                       onclick="viewer.switchAlgorithm('HeapSort')">HeapSort<br>
+                <input id="MaxHeapCombiend" type="radio" name="algorithm" value="max"
+                       onclick="viewer.switchAlgorithm('MaxHeapCombined')">All combined<br>
             </form>
         </div>
         <div class="settings">
@@ -92,6 +95,16 @@
             <button id="removeElem" class="btn btn-primary">
                 <!-- Click-Event handled in setUpRemoveButton in methods.ts-->
                 Remove max
+            </button>
+            <br/>
+            <button id="buildHeap" class="btn btn-primary" style="display: none">
+                <!-- Click-Event handled in setUpBuildButton in methods.ts-->
+                Convert to Heap
+            </button>
+            <br/>            
+            <button id="sortHeap" class="btn btn-primary" style="display: none">
+                <!-- Click-Event handled in setUpSortButton in methods.ts-->
+                Sort using HeapSort
             </button>
         </div>
     </div>

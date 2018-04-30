@@ -112,7 +112,7 @@ class MaxHeap implements IAlgorithm {
      * Build a max heap
      */
     build() {
-        let n: number = this.array.length;
+        let n: number = this.currIndex;
         for (let k: number = Math.floor((n - 1) / 2); k >= 0; k--)
             this.sink(k, n);
     }
