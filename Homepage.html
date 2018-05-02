@@ -1,19 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Homepage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="heap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="heap/css/bootstrap.min.css.map" rel="stylesheet" type="text/css">
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #buttons,
+        h1 {
+            text-align: center;
+            color: white;
+            text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+        }
+
+        #buttons {
+            margin-top: 25px;
+            width: 100%;
+        }
+
+        button {
+            margin: 0 auto;
+            width: 10%;
+        }
+
+        .btn-primary {
+            display: block;
+            margin-bottom: 5px;
+            padding: 1.1em;
+        }
+
+        .background {
+            background-color: #006dcc;
+            height: 100px;
+            width: 100%;
+        }
+
+        #footer {
+            position: absolute;
+            bottom: 0px;
+        }
+    </style>
 </head>
+
 <body>
 
-<h1 id="header">Visualisation of different algorithms</h1>
+    <div id="header" class="background">
+        <h1 id="header">Visualisation of different algorithms</h1>
+    </div>
+    <div id="buttons">
+        <button id="graphs" class="btn btn-primary" onclick="location.href='Graphs/index.html'">DFS/BFS</button>
+        <button id="heap" class="btn btn-primary" onclick="location.href='Heap/index.html'">Heap</button>
+        <button id="kruskal" class="btn btn-primary" onclick="location.href='Kruskal/index.html'">Kruskal</button>
+        <button id="mergesort" class="btn btn-primary" onclick="location.href='Mergesort/index.html'">MergeSort</button>
+        <button id="simplesort" class="btn btn-primary" onclick="location.href='SimpleSort/index.html'">SimpleSort</button>
+        <button id="unionfind" class="btn btn-primary" onclick="location.href='UnionFind/index.html'">Union Find</button>
+    </div>
 
-<button id="graphs" class="btn btn-primary" onclick="location.href='Graphs/index.html'">DFS/BFS</button>
-<button id="heap" class="btn btn-primary" onclick="location.href='Heap/index.html'">Heap</button>
-<button id="kruskal" class="btn btn-primary" onclick="location.href='Kruskal/index.html'">Kruskal</button>
-<button id="mergesort" class="btn btn-primary" onclick="location.href='Mergesort/index.html'">MergeSort</button>
-<button id="simplesort" class="btn btn-primary" onclick="location.href='SimpleSort/index.html'">SimpleSort</button>
-<button id="unionfind" class="btn btn-primary" onclick="location.href='UnionFind/index.html'">Union Find</button>
-
+    <div id="footer" class="background"></div>
 </body>
+
 </html>
