@@ -84,7 +84,7 @@ class View {
     }
 
     stepBack() {
-        if (manager.nextEvents.length <= 0)
+        if (manager.previousEvents.length <= 0)
             return;
         if (control.getAlgoName() === "MaxHeapFree" || control.getAlgoName() === "MaxHeap")
             this.setPause(true);
@@ -92,6 +92,7 @@ class View {
             selectIndex(firstSelected, false);
             firstSelected = -1;
         } else {
+            lockPlay(false);
             manager.previous();
         }
     }
@@ -159,30 +160,34 @@ class View {
             }
             case "MaxHeapCombined": {
                 this.resetAll();
-                lockPlay(false);
                 $("#sortArray").show();
                 $("#buildHeap, #sortHeap").show();
                 control.initController(new MaxHeapCombined(10));
+                this.play();
+                lockBackForward(true);
+                lockPlay(false);                
                 break;
             }
             case "BuildHeap": {
                 this.resetAll();
-                lockPlay(false);
                 control.initController(new BuildHeap(10));
                 screenLock(true);
                 control.getAlgorithm().build();
                 this.setPause(true);
+                lockPlay(false);     
+                lockBackForward(true);           
                 $("#play").text("Play");
                 break;
             }
             case "HeapSort": {
                 this.resetAll();
-                lockPlay(false);
                 $("#sortArray").show();
                 control.initController(new HeapSort(10));
                 screenLock(true);
                 (<HeapSort>control.getAlgorithm()).sort();
                 this.setPause(true);
+                lockPlay(false);    
+                lockBackForward(true);                                       
                 $("#play").text("Play");
                 break;
             }
@@ -398,11 +403,13 @@ class View {
             this.playing = false;
             manager.pause();
             $("#play").text("Resume");
+            lockPlay(true);
             lockBackForward(false);
         } else {
             this.playing = true;
             manager.start();
             $("#play").text("Pause");
+            lockPlay(false);
             lockBackForward(true);
         }
     }
