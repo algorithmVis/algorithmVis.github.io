@@ -23,7 +23,6 @@ function twoNodesClicked(n1: number, n2: number) {
     addEdge(edges++, n1, n2);
 }
 
-
 function resetAll() {
     resetGraphUI();
     resetAdjList();
@@ -31,7 +30,19 @@ function resetAll() {
     manager.clear();
     nodes = 0;
     edges = 0;
-    manager = new eventManager();
+}
+
+function resetForNewAlgo() {
+    manager.clear();
+    $("#queueUI").find("div.nodeUI").each(function () {
+        $(this).remove();
+    });
+    $("#edge").each(function () {
+        $(this).css({"stroke": "rgb(0, 0, 0)", "stroke-width": "4"});
+    });
+    deselectAllNodes();
+    removeVisitedArray();
+    resetAfterSearch();
 }
 
 function checkOverlap(x: number, y: number) {
@@ -71,6 +82,7 @@ function exampleGraphStar() {
     twoNodesClicked(0, 5);
     twoNodesClicked(6, 0);
     twoNodesClicked(7, 0);
+    instantCollapseAll();
 }
 
 function exampleGraphAllConnected() {
@@ -113,4 +125,5 @@ function exampleGraphAllConnected() {
     twoNodesClicked(2, 6);
     twoNodesClicked(7, 6);
     twoNodesClicked(2, 4);
+    instantCollapseAll();
 }

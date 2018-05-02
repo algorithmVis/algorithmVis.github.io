@@ -3,7 +3,7 @@
  *
  */
 
-declare var $;
+declare var $: any;
 
 /** Manager for events stored in queue. Manager is also responsible for executing events automatically */
 class eventManager {
@@ -31,7 +31,6 @@ class eventManager {
         if (this.previousEvents.length == 0)
             return;
         let event: FrontendEvent = (<FrontendEvent> this.previousEvents.pop());
-        //this.delayTime = 500; //this line set to 0 caused: when resuming all animations are played out. Intention Delay when stepping backwards.
         event.previous();
         this.nextEvents.unshift(event);
     }
@@ -57,6 +56,28 @@ class eventManager {
         clearInterval(this.eventThread);
         this.nextEvents = [];
         this.previousEvents = [];
+    }
+
+    slow() {
+        this.delayTime = 2000;
+        this.helpSetInterval();
+    }
+
+    medium() {
+        this.delayTime = 1000;
+        this.helpSetInterval();
+    }
+
+    fast() {
+        this.delayTime = 500;
+        this.helpSetInterval();
+    }
+
+    helpSetInterval() {
+        if (!this.paused) {
+            this.pause();
+            this.start();
+        }
     }
 }
 

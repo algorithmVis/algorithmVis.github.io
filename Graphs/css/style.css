@@ -16,6 +16,7 @@ div#graphUI.dfs {
     width: 42%;
     border: solid 3px #b6b6b6;
     border-radius: 10px;
+    margin-left: -15%;
 }
 
 div#queueUI {
@@ -123,6 +124,7 @@ div.nodeUI {
     position: absolute;
     border-radius: 10000px; /* Just to be sure.. */
     background-color: white;
+
 }
 
 div.nodeUI.selected {
@@ -132,8 +134,8 @@ div.nodeUI.selected {
 div.nodeUI p {
     font-size: 3em;
     font-weight: bold;
-    margin-left: 15px;
-    margin-top: 3px;
+    margin-left: 12px;
+    margin-top: -3px;
 }
 
 svg#edgeSvg line {
@@ -211,7 +213,7 @@ ul.insElements li {
 
 ul.insElements li div {
     position: relative;
-    width: 25px;
+    width: 50px;
     border: 2px solid black;
     border-radius: 4px;
     padding: 10px;

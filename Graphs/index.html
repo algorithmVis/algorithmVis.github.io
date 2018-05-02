@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8"/>
     <title>DFS / BFS</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 
     <script>var algorithm = "DFS/BFS";
     var collapse = "YES"; </script>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
     <script src="js/graphStructureController.js"></script>
     <script src="js/eventManager.js"></script>
     <script src="js/adjacencyList.js"></script>
@@ -22,16 +24,22 @@
     <svg id="edgeSvg" height="100%" width="100%"></svg>
 </div>
 <div id="queueUI"></div>
+<br>
 <div id="buttonDiv" class="bottom-container left-bottom">
-    <button id="dfs" class="my-button" onclick="startDfs(0);">DFS</button>
-    <button id="bfs" class="my-button" onclick="startBfs(0);">BFS</button>
-    <button id="reset" class="my-button" onclick="resetAll();">Reset</button>
+    <button id="dfs" class="btn btn-primary" onclick="helpStartDfs();">DFS</button>
+    <button id="bfs" class="btn btn-primary" onclick="helpStartBfs();">BFS</button>
+    <button id="reset" class="btn btn-primary" onclick="resetAll();">Reset</button>
     <br>
     <br>
-    <button id="prev" class="my-button" onclick="manager.previous();">Previous</button>
-    <button id="next" class="my-button" onclick="manager.next();">Next</button>
-    <button id="Test1" class="my-button" onclick="exampleGraphStar();">Example1</button>
-    <button id="Test2" class="my-button" onclick="exampleGraphAllConnected();">Example2</button>
+    <button id="backward" class="btn btn-primary" onclick="manager.previous();">Previous</button>
+    <button id="forward" class="btn btn-primary" onclick="manager.next();">Next</button>
+    <button id="Test1" class="btn btn-primary" onclick="exampleGraphStar();">Example1</button>
+    <button id="Test2" class="btn btn-primary" onclick="exampleGraphAllConnected();">Example2</button>
+    <br>
+    <br>
+    <button id="slow" class="btn btn-success" onclick="manager.slow()">Slow</button>
+    <button id="medium" class="btn btn-success" onclick="manager.medium()">Medium</button>
+    <button id="fast" class="btn btn-success" onclick="manager.fast()">Fast</button>
 
 </div>
 <div id="bottomRight" class="bottom-container right-bottom">

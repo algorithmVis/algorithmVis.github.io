@@ -27,7 +27,6 @@ var eventManager = /** @class */ (function () {
         if (this.previousEvents.length == 0)
             return;
         var event = this.previousEvents.pop();
-        //this.delayTime = 500; //this line set to 0 caused: when resuming all animations are played out. Intention Delay when stepping backwards.
         event.previous();
         this.nextEvents.unshift(event);
     };
@@ -49,6 +48,24 @@ var eventManager = /** @class */ (function () {
         clearInterval(this.eventThread);
         this.nextEvents = [];
         this.previousEvents = [];
+    };
+    eventManager.prototype.slow = function () {
+        this.delayTime = 2000;
+        this.helpSetInterval();
+    };
+    eventManager.prototype.medium = function () {
+        this.delayTime = 1000;
+        this.helpSetInterval();
+    };
+    eventManager.prototype.fast = function () {
+        this.delayTime = 500;
+        this.helpSetInterval();
+    };
+    eventManager.prototype.helpSetInterval = function () {
+        if (!this.paused) {
+            this.pause();
+            this.start();
+        }
     };
     return eventManager;
 }());

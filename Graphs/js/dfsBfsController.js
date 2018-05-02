@@ -8,6 +8,34 @@ var bfsQueue;
 var currentNode;
 var highlightEventDuration = 0;
 var visitEventDuration = 2000;
+var paused = true;
+var algoRunning = "";
+function helpStartBfs() {
+    if (algoRunning != "BFS") {
+        resetForNewAlgo();
+        algoRunning = "BFS";
+        startBfs(0);
+        $("#dfs").html("DFS");
+        paused = true;
+    }
+    togglePauseBfs();
+}
+function togglePauseBfs() {
+    if (paused) {
+        manager.start();
+        $('#backward').attr('disabled', 'disabled');
+        $('#forward').attr('disabled', 'disabled');
+        $("#bfs").html("Pause");
+        paused = false;
+    }
+    else {
+        $('#backward').removeAttr('disabled');
+        $('#forward').removeAttr('disabled');
+        $("#bfs").html("Resume");
+        manager.pause();
+        paused = true;
+    }
+}
 function startBfs(startIndex) {
     resetVisited(nodes);
     bfsQueue = [];
@@ -53,6 +81,32 @@ function popFromBfsQueue(v) {
         };
     }(v);
     manager.addEvent(new FrontendEvent(forward, backwards, visitEventDuration));
+}
+function helpStartDfs() {
+    if (algoRunning != "DFS") {
+        resetForNewAlgo();
+        algoRunning = "DFS";
+        startDfs(0);
+        $("#bfs").html("BFS");
+        paused = true;
+    }
+    togglePauseDfs();
+}
+function togglePauseDfs() {
+    if (paused) {
+        paused = false;
+        manager.start();
+        $('#backward').attr('disabled', 'disabled');
+        $('#forward').attr('disabled', 'disabled');
+        $("#dfs").html("Pause");
+    }
+    else {
+        paused = true;
+        manager.pause();
+        $('#backward').removeAttr('disabled');
+        $('#forward').removeAttr('disabled');
+        $("#dfs").html("Resume");
+    }
 }
 function startDfs(startIndex) {
     resetVisited(nodes);

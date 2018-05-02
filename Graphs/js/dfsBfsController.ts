@@ -9,6 +9,36 @@ let bfsQueue: number [];
 let currentNode: number;
 let highlightEventDuration = 0;
 let visitEventDuration = 2000;
+let paused = true;
+let algoRunning = "";
+
+function helpStartBfs() {
+    if (algoRunning != "BFS") {
+        resetForNewAlgo();
+        algoRunning = "BFS";
+        startBfs(0);
+        $("#dfs").html("DFS");
+        paused = true;
+    }
+    togglePauseBfs();
+}
+
+function togglePauseBfs() {
+    if (paused) {
+        manager.start();
+        $('#backward').attr('disabled', 'disabled');
+        $('#forward').attr('disabled', 'disabled');
+        $("#bfs").html("Pause");
+        paused = false;
+
+    } else {
+        $('#backward').removeAttr('disabled');
+        $('#forward').removeAttr('disabled');
+        $("#bfs").html("Resume");
+        manager.pause();
+        paused = true;
+    }
+}
 
 function startBfs(startIndex: number) {
     resetVisited(nodes);
@@ -67,6 +97,32 @@ function popFromBfsQueue(v: number) {
     manager.addEvent(new FrontendEvent(forward, backwards, visitEventDuration))
 }
 
+function helpStartDfs() {
+    if (algoRunning != "DFS") {
+        resetForNewAlgo();
+        algoRunning = "DFS";
+        startDfs(0);
+        $("#bfs").html("BFS");
+        paused = true;
+    }
+    togglePauseDfs();
+}
+
+function togglePauseDfs() {
+    if (paused) {
+        paused = false;
+        manager.start();
+        $('#backward').attr('disabled', 'disabled');
+        $('#forward').attr('disabled', 'disabled');
+        $("#dfs").html("Pause");
+    } else {
+        paused = true;
+        manager.pause();
+        $('#backward').removeAttr('disabled');
+        $('#forward').removeAttr('disabled');
+        $("#dfs").html("Resume");
+    }
+}
 
 function startDfs(startIndex: number) {
     resetVisited(nodes);
