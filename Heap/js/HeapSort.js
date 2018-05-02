@@ -25,9 +25,10 @@ var HeapSort = /** @class */ (function (_super) {
             control.setArrow(this.sortIndex);
             this.remove();
         }
+        control.setArrow(-1);
     };
     HeapSort.prototype.remove = function () {
-        // Remove root element, set last element to root and start frontendevents
+        // Switch root and last element, remove root and start frontendevents
         var oldVal = this.array[0];
         this.exch(0, --this.currIndex);
         control.sortHighlightTwoNodes(this.currIndex, this.sortIndex, "orange");

@@ -207,11 +207,8 @@ class View {
     }
 
     sortHeap() {
+        control.buildHeap();        
         control.sortHeap();
-    }
-
-    buildHeap() {
-        control.buildHeap();
     }
 
     swapNode(child: number, parent: number) {

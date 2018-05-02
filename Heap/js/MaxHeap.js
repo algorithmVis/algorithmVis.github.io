@@ -130,8 +130,17 @@ var MaxHeap = /** @class */ (function () {
         var right = index * 2 + 2;
         if (left >= length)
             return;
-        if (this.array[index] >= this.array[left] && this.array[index] >= this.array[right])
+        if (this.array[index] >= this.array[left] && this.array[index] >= this.array[right]) {
+            if (this.array[left] >= this.array[right] || right >= length) {
+                control.highlightTwoNodes(index, left, "green");
+                control.removeHighlightTwoNodes(index, left, "green");
+            }
+            else {
+                control.highlightTwoNodes(index, right, "green");
+                control.removeHighlightTwoNodes(index, right, "green");
+            }
             return;
+        }
         // Sink
         var other;
         if (right >= length)

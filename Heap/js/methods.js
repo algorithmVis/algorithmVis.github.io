@@ -312,12 +312,6 @@ function setUpRemoveButton() {
     });
 }
 setUpRemoveButton();
-function setUpBuildButton() {
-    $("#buildHeap").click(function () {
-        viewer.buildHeap();
-    });
-}
-setUpBuildButton();
 function setUpSortButton() {
     $("#sortHeap").click(function () {
         viewer.sortHeap();

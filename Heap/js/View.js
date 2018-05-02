@@ -180,10 +180,8 @@ var View = /** @class */ (function () {
         control.removeNode();
     };
     View.prototype.sortHeap = function () {
-        control.sortHeap();
-    };
-    View.prototype.buildHeap = function () {
         control.buildHeap();
+        control.sortHeap();
     };
     View.prototype.swapNode = function (child, parent) {
         var forward = function (child, parent) {

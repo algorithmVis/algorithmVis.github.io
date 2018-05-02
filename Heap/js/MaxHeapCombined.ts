@@ -29,6 +29,7 @@ class MaxHeapCombined extends MaxHeapFree {
             control.setArrow(this.sortIndex);
             this.remove();
         }
+        control.setArrow(-1);
     }
 
     remove(): void {

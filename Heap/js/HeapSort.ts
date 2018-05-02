@@ -18,6 +18,7 @@ class HeapSort extends MaxHeap {
             control.setArrow(this.sortIndex);
             this.remove();
         }
+        control.setArrow(-1);
     }
 
     remove(): void {
