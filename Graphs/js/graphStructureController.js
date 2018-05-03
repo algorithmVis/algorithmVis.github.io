@@ -23,18 +23,26 @@ function resetAll() {
     manager.clear();
     nodes = 0;
     edges = 0;
+    $("#dfs").html("DFS");
+    $("#bfs").html("BFS");
+    algoRunning = "";
 }
 function resetForNewAlgo() {
     manager.clear();
     $("#queueUI").find("div.nodeUI").each(function () {
         $(this).remove();
     });
-    $("#edge").each(function () {
-        $(this).css({ "stroke": "rgb(0, 0, 0)", "stroke-width": "4" });
-    });
+    for (var i = 0; i < nodes; i++) {
+        $("#edge" + i).css({ "stroke": "rgb(0, 0, 0)", "stroke-width": "4" });
+    }
+    for (var i = 0; i < nodes; i++) {
+        $("#node" + i).css({ "background-color": "white", "border-color": "black" });
+    }
     deselectAllNodes();
     removeVisitedArray();
-    resetAfterSearch();
+    for (var i = 0; i < nodes; i++) {
+        color.push(false);
+    }
 }
 function checkOverlap(x, y) {
     var overlap = false;

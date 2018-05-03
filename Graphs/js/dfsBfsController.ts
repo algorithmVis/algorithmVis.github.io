@@ -11,6 +11,7 @@ let highlightEventDuration = 0;
 let visitEventDuration = 2000;
 let paused = true;
 let algoRunning = "";
+let color: boolean[] = [];
 
 function helpStartBfs() {
     if (algoRunning != "BFS") {
@@ -44,13 +45,14 @@ function startBfs(startIndex: number) {
     resetVisited(nodes);
     bfsQueue = [];
     currentNode = startIndex;
-
+    let lastElemtent: number = 0;
     bfsQueue.push(startIndex);
 
     while (bfsQueue.length != 0) {
         let v = bfsQueue.shift();
         popFromBfsQueue(v);
         visit(v);
+        lastElemtent = v;
 
         let adjacent = adjacencyList[v];
         for (let i = 0; i < adjacent.length; i++) {
@@ -61,8 +63,7 @@ function startBfs(startIndex: number) {
             }
         }
     }
-
-    resetAfterSearch();
+    removeHighlighting(lastElemtent);
 }
 
 function addToBfsQueue(v: number) {
@@ -128,7 +129,7 @@ function startDfs(startIndex: number) {
     resetVisited(nodes);
     currentNode = startIndex;
     dfs(startIndex);
-    resetAfterSearch();
+    removeHighlighting(startIndex);
 }
 
 function dfs(v: number) {
@@ -137,14 +138,16 @@ function dfs(v: number) {
     let adjacent = adjacencyList[v];
     for (let i = 0; i < adjacent.length; i++) {
         if (visited[adjacent[i]]) continue;
-        setHighlightEdge(getEdgeId(v, adjacent[i]), true);
+        setHighlightEdge(getEdgeId(v, adjacent[i]), true, color[i]);
+        color[i] = true;
         dfs(adjacent[i]);
-        setHighlightEdge(getEdgeId(v, adjacent[i]), false);
+        setHighlightEdge(getEdgeId(v, adjacent[i]), false, color[i]);
+        color[i] = false;
         visit(v);
     }
 }
 
-function setHighlightEdge(edgeId: number, highlight: boolean) {
+function setHighlightEdge(edgeId: number, highlight: boolean, lastColor: boolean) {
     let forward = function (id, h) {
         return function () {
             if (h) {
@@ -156,16 +159,15 @@ function setHighlightEdge(edgeId: number, highlight: boolean) {
         };
     }(edgeId, highlight);
 
-    let backwards = function (id, h) {
+    let backwards = function (id, lastColor) {
         return function () {
-            if (h) {
+            if (lastColor == true) {
                 $("#edge" + id).css({"stroke": "rgb(0, 0, 0)", "stroke-width": "4"});
-            } //remove highlight
-            else {
+            } else {
                 $("#edge" + id).css({"stroke": "rgb(16, 130, 219)", "stroke-width": "6"});
-            } // add highlight
+            }
         };
-    }(edgeId, highlight);
+    }(edgeId, lastColor);
 
     manager.addEvent(new FrontendEvent(forward, backwards, highlightEventDuration))
 }
@@ -196,26 +198,20 @@ function visit(id: number) {
     currentNode = id;
 }
 
-function resetAfterSearch() {
-    let forward = function (curr) {
+function removeHighlighting(v: number) {
+    let forward = function (v) {
         return function () {
-            $("#node" + curr).css("border", "6px solid black");
-            for (let i = 0; i < nodes; i++) {
-                $("#node" + i).css("background-color", "white");
-            }
+            $("#node" + v).css({"border-color": "black"});
         };
-    }(currentNode);
+    }(v);
 
-    let backwards = function (curr) {
+    let backwards = function (v) {
         return function () {
-            $("#node" + curr).css("border", "6px solid rgb(16, 130, 219)");
-            for (let i = 0; i < nodes; i++) {
-                $("#node" + i).css("background-color", "rgb(80, 250, 80)");
-            }
+            $("#node" + v).css("border", "6px solid rgb(16, 130, 219)");
         };
-    }(currentNode);
+    }(v);
 
-    manager.addEvent(new FrontendEvent(forward, backwards, visitEventDuration));
+    manager.addEvent(new FrontendEvent(forward, backwards, visitEventDuration))
 }
 
 function resetVisited(numNodes: number) {

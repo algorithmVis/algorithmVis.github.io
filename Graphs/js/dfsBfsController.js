@@ -10,6 +10,7 @@ var highlightEventDuration = 0;
 var visitEventDuration = 2000;
 var paused = true;
 var algoRunning = "";
+var color = [];
 function helpStartBfs() {
     if (algoRunning != "BFS") {
         resetForNewAlgo();
@@ -40,11 +41,13 @@ function startBfs(startIndex) {
     resetVisited(nodes);
     bfsQueue = [];
     currentNode = startIndex;
+    var lastElemtent = 0;
     bfsQueue.push(startIndex);
     while (bfsQueue.length != 0) {
         var v = bfsQueue.shift();
         popFromBfsQueue(v);
         visit(v);
+        lastElemtent = v;
         var adjacent = adjacencyList[v];
         for (var i = 0; i < adjacent.length; i++) {
             var w = adjacent[i];
@@ -54,7 +57,7 @@ function startBfs(startIndex) {
             }
         }
     }
-    resetAfterSearch();
+    removeHighlighting(lastElemtent);
 }
 function addToBfsQueue(v) {
     var forward = function (id) {
@@ -112,7 +115,7 @@ function startDfs(startIndex) {
     resetVisited(nodes);
     currentNode = startIndex;
     dfs(startIndex);
-    resetAfterSearch();
+    removeHighlighting(startIndex);
 }
 function dfs(v) {
     visit(v);
@@ -120,13 +123,17 @@ function dfs(v) {
     for (var i = 0; i < adjacent.length; i++) {
         if (visited[adjacent[i]])
             continue;
-        setHighlightEdge(getEdgeId(v, adjacent[i]), true);
+        setHighlightEdge(getEdgeId(v, adjacent[i]), true, color[i]);
+        console.log(color);
+        color[i] = true;
         dfs(adjacent[i]);
-        setHighlightEdge(getEdgeId(v, adjacent[i]), false);
+        setHighlightEdge(getEdgeId(v, adjacent[i]), false, color[i]);
+        color[i] = false;
+        console.log(color);
         visit(v);
     }
 }
-function setHighlightEdge(edgeId, highlight) {
+function setHighlightEdge(edgeId, highlight, lastColor) {
     var forward = function (id, h) {
         return function () {
             if (h) {
@@ -137,16 +144,16 @@ function setHighlightEdge(edgeId, highlight) {
             } //remove highlight
         };
     }(edgeId, highlight);
-    var backwards = function (id, h) {
+    var backwards = function (id, lastColor) {
         return function () {
-            if (h) {
+            if (lastColor == true) {
                 $("#edge" + id).css({ "stroke": "rgb(0, 0, 0)", "stroke-width": "4" });
-            } //remove highlight
+            }
             else {
                 $("#edge" + id).css({ "stroke": "rgb(16, 130, 219)", "stroke-width": "6" });
-            } // add highlight
+            }
         };
-    }(edgeId, highlight);
+    }(edgeId, lastColor);
     manager.addEvent(new FrontendEvent(forward, backwards, highlightEventDuration));
 }
 function visit(id) {
@@ -172,23 +179,17 @@ function visit(id) {
     manager.addEvent(new FrontendEvent(forward, backwards, visitEventDuration));
     currentNode = id;
 }
-function resetAfterSearch() {
-    var forward = function (curr) {
+function removeHighlighting(v) {
+    var forward = function (v) {
         return function () {
-            $("#node" + curr).css("border", "6px solid black");
-            for (var i = 0; i < nodes; i++) {
-                $("#node" + i).css("background-color", "white");
-            }
+            $("#node" + v).css({ "border-color": "black" });
         };
-    }(currentNode);
-    var backwards = function (curr) {
+    }(v);
+    var backwards = function (v) {
         return function () {
-            $("#node" + curr).css("border", "6px solid rgb(16, 130, 219)");
-            for (var i = 0; i < nodes; i++) {
-                $("#node" + i).css("background-color", "rgb(80, 250, 80)");
-            }
+            $("#node" + v).css("border", "6px solid rgb(16, 130, 219)");
         };
-    }(currentNode);
+    }(v);
     manager.addEvent(new FrontendEvent(forward, backwards, visitEventDuration));
 }
 function resetVisited(numNodes) {
