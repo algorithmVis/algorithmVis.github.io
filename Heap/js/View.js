@@ -348,7 +348,7 @@ var View = /** @class */ (function () {
             this.playing = false;
             manager.pause();
             $("#play").text("Resume");
-            lockPlay(true);
+            lockPlay(false);
             lockBackForward(false);
         }
         else {
