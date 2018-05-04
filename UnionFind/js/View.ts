@@ -139,11 +139,20 @@ class View implements IView {
     }
 
     stepBack(twoDimRelationshipsJSON: string, backendArray: string) {
+        $('#backward').attr('disabled', 'disabled');
         this.step("backward", twoDimRelationshipsJSON, backendArray);
+        setTimeout(function () {
+            $('#backward').removeAttr('disabled');
+        }, 350);
     }
 
     stepForward(twoDimRelationshipsJSON: string, backendArray: string) {
+        $('#forward').attr('disabled', 'disabled');
         this.step("forward", twoDimRelationshipsJSON, backendArray);
+        setTimeout(function () {
+            $('#forward').removeAttr('disabled');
+        }, 350);
+
     }
 
     step(dir: string, twoDimRelationshipsJSON: string, backendArray: string) {

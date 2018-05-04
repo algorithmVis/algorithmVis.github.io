@@ -112,10 +112,18 @@ var View = /** @class */ (function () {
         setState(JSON.stringify(backendArray).toString(), JSON.stringify(relationships).toString());
     };
     View.prototype.stepBack = function (twoDimRelationshipsJSON, backendArray) {
+        $('#backward').attr('disabled', 'disabled');
         this.step("backward", twoDimRelationshipsJSON, backendArray);
+        setTimeout(function () {
+            $('#backward').removeAttr('disabled');
+        }, 350);
     };
     View.prototype.stepForward = function (twoDimRelationshipsJSON, backendArray) {
+        $('#forward').attr('disabled', 'disabled');
         this.step("forward", twoDimRelationshipsJSON, backendArray);
+        setTimeout(function () {
+            $('#forward').removeAttr('disabled');
+        }, 350);
     };
     View.prototype.step = function (dir, twoDimRelationshipsJSON, backendArray) {
         var relationships = JSON.parse(twoDimRelationshipsJSON);

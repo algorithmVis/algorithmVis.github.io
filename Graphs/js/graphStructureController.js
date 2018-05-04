@@ -26,13 +26,15 @@ function resetAll() {
     $("#dfs").html("DFS");
     $("#bfs").html("BFS");
     algoRunning = "";
+    $('#forward').attr('disabled', 'disabled');
+    $('#backward').attr('disabled', 'disabled');
 }
 function resetForNewAlgo() {
     manager.clear();
     $("#queueUI").find("div.nodeUI").each(function () {
         $(this).remove();
     });
-    for (var i = 0; i < nodes; i++) {
+    for (var i = 0; i < edges; i++) {
         $("#edge" + i).css({ "stroke": "rgb(0, 0, 0)", "stroke-width": "4" });
     }
     for (var i = 0; i < nodes; i++) {
