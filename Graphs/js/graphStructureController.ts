@@ -33,6 +33,8 @@ function resetAll() {
     $("#dfs").html("DFS");
     $("#bfs").html("BFS");
     algoRunning = "";
+    $('#forward').attr('disabled', 'disabled');
+    $('#backward').attr('disabled', 'disabled');
 }
 
 function resetForNewAlgo() {
@@ -40,7 +42,7 @@ function resetForNewAlgo() {
     $("#queueUI").find("div.nodeUI").each(function () {
         $(this).remove();
     });
-    for (let i = 0; i < nodes; i++) {
+    for (let i = 0; i < edges; i++) {
         $("#edge" + i).css({"stroke": "rgb(0, 0, 0)", "stroke-width": "4"});
     }
     for (let i = 0; i < nodes; i++) {
