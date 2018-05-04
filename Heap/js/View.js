@@ -113,11 +113,11 @@ var View = /** @class */ (function () {
         }
     };
     View.prototype.setSlow = function () {
-        manager.delayTime = 1500;
+        manager.delayTime = 2000;
         this.restartManager();
     };
     View.prototype.setMedium = function () {
-        manager.delayTime = 1000;
+        manager.delayTime = 1200;
         this.restartManager();
     };
     View.prototype.setFast = function () {
@@ -125,8 +125,10 @@ var View = /** @class */ (function () {
         this.restartManager();
     };
     View.prototype.restartManager = function () {
-        manager.pause();
-        manager.start();
+        if (this.playing) {
+            manager.pause();
+            manager.start();
+        }
     };
     View.prototype.switchAlgorithm = function (algo) {
         $("#sortArray").hide();

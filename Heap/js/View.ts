@@ -131,12 +131,12 @@ class View {
     }
 
     setSlow() {
-        manager.delayTime = 1500;
+        manager.delayTime = 2000;
         this.restartManager();
     }
 
     setMedium() {
-        manager.delayTime = 1000;
+        manager.delayTime = 1200;
         this.restartManager();
     }
 
@@ -146,8 +146,10 @@ class View {
     }
 
     restartManager() {
-        manager.pause();
-        manager.start();
+        if (this.playing) {
+            manager.pause();
+            manager.start();
+        }
     }
 
     switchAlgorithm(algo: string) {
