@@ -245,3 +245,19 @@ function expandAdjacencyList(index: number) {
 
     $("#adjList" + index).animate({left: 65}, 350);
 }
+
+function stepForward() {
+    $('#forward').attr('disabled', 'disabled');
+    manager.next();
+    setTimeout(function () {
+        $('#forward').removeAttr('disabled');
+    }, 350);
+}
+
+function stepBackwards() {
+    $('#backward').attr('disabled', 'disabled');
+    manager.previous();
+    setTimeout(function () {
+        $('#backward').removeAttr('disabled');
+    }, 350);
+}

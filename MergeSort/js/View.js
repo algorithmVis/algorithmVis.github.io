@@ -147,7 +147,11 @@ var view = /** @class */ (function () {
         manager.next();
     };
     view.prototype.backward = function () {
+        $('#backward').attr('disabled', 'disabled');
         manager.previous();
+        setTimeout(function () {
+            $('#backward').removeAttr('disabled');
+        }, 300);
     };
     view.prototype.slow = function () {
         manager.slow();

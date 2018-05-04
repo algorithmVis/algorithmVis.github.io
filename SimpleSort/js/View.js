@@ -189,10 +189,18 @@ var view = /** @class */ (function () {
         $('#forward').removeAttr('disabled');
     };
     view.prototype.forward = function () {
+        $('#forward').attr('disabled', 'disabled');
         manager.next();
+        setTimeout(function () {
+            $('#forward').removeAttr('disabled');
+        }, 350);
     };
     view.prototype.backward = function () {
+        $('#backward').attr('disabled', 'disabled');
         manager.previous();
+        setTimeout(function () {
+            $('#backward').removeAttr('disabled');
+        }, 350);
     };
     view.prototype.slow = function () {
         manager.slow();

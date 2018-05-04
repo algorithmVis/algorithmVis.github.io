@@ -124,12 +124,10 @@ function dfs(v) {
         if (visited[adjacent[i]])
             continue;
         setHighlightEdge(getEdgeId(v, adjacent[i]), true, color[i]);
-        console.log(color);
         color[i] = true;
         dfs(adjacent[i]);
         setHighlightEdge(getEdgeId(v, adjacent[i]), false, color[i]);
         color[i] = false;
-        console.log(color);
         visit(v);
     }
 }
@@ -217,4 +215,18 @@ function expandAdjacencyList(index) {
         collapseAdjacencyList(i);
     }
     $("#adjList" + index).animate({ left: 65 }, 350);
+}
+function stepForward() {
+    $('#forward').attr('disabled', 'disabled');
+    manager.next();
+    setTimeout(function () {
+        $('#forward').removeAttr('disabled');
+    }, 350);
+}
+function stepBackwards() {
+    $('#backward').attr('disabled', 'disabled');
+    manager.previous();
+    setTimeout(function () {
+        $('#backward').removeAttr('disabled');
+    }, 350);
 }

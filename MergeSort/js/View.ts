@@ -177,11 +177,19 @@ class view {
     }
 
     forward() {
+        $('#forward').attr('disabled', 'disabled');
         manager.next();
+        setTimeout(function () {
+            $('#forward').removeAttr('disabled');
+        }, 350);
     }
 
     backward() {
+        $('#backward').attr('disabled', 'disabled');
         manager.previous();
+        setTimeout(function () {
+            $('#backward').removeAttr('disabled');
+        }, 350);
     }
 
     slow() {

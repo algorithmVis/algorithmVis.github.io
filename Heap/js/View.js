@@ -64,6 +64,10 @@ var View = /** @class */ (function () {
             return;
         if (control.getAlgoName() === "MaxHeapFree" || control.getAlgoName() === "MaxHeap")
             this.setPause(true);
+        $('#forward').attr('disabled', 'disabled');
+        setTimeout(function () {
+            $('#forward').removeAttr('disabled');
+        }, 350);
         this.clickedPlay = false;
         manager.next();
     };
@@ -77,8 +81,12 @@ var View = /** @class */ (function () {
             firstSelected = -1;
         }
         else {
+            $('#backward').attr('disabled', 'disabled');
             lockPlay(false);
             manager.previous();
+            setTimeout(function () {
+                $('#backward').removeAttr('disabled');
+            }, 350);
         }
     };
     View.prototype.resetAll = function () {
