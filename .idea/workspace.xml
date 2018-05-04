@@ -2,40 +2,44 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a880816f-0142-4864-bbdf-48e2820a7914" name="Default" comment="Fikset knappene i MergeSort">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Graphs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Graphs/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Graphs/js/dfsBfsController.js" beforeDir="false" afterPath="$PROJECT_DIR$/Graphs/js/dfsBfsController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Graphs/js/dfsBfsController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Graphs/js/dfsBfsController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Heap/js/View.js" beforeDir="false" afterPath="$PROJECT_DIR$/Heap/js/View.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Heap/js/View.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Heap/js/View.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MergeSort/assets/pause.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MergeSort/assets/up_arrow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MergeSort/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/MergeSort/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MergeSort/js/View.js" beforeDir="false" afterPath="$PROJECT_DIR$/MergeSort/js/View.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MergeSort/js/View.ts" beforeDir="false" afterPath="$PROJECT_DIR$/MergeSort/js/View.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MergeSort/js/bootstrap.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MergeSort/js/jquery-ui-1.12.0/AUTHORS.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MergeSort/js/jquery-ui-1.12.0/LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MergeSort/js/jquery-ui-1.12.0/external/jquery/jquery.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MergeSort/js/jquery-ui-1.12.0/images/ui-icons_444444_256x240.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MergeSort/js/jquery-ui-1.12.0/images/ui-icons_555555_256x240.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MergeSort/js/jquery-ui-1.12.0/images/ui-icons_777620_256x240.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MergeSort/js/jquery-ui-1.12.0/images/ui-icons_777777_256x240.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MergeSort/js/jquery-ui-1.12.0/images/ui-icons_cc0000_256x240.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MergeSort/js/jquery-ui-1.12.0/images/ui-icons_ffffff_256x240.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MergeSort/js/jquery-ui-1.12.0/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MergeSort/js/jquery-ui-1.12.0/jquery-ui.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MergeSort/js/jquery-ui-1.12.0/jquery-ui.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MergeSort/js/jquery-ui-1.12.0/jquery-ui.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MergeSort/js/jquery-ui-1.12.0/jquery-ui.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MergeSort/js/jquery-ui-1.12.0/jquery-ui.structure.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MergeSort/js/jquery-ui-1.12.0/jquery-ui.structure.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MergeSort/js/jquery-ui-1.12.0/jquery-ui.theme.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MergeSort/js/jquery-ui-1.12.0/jquery-ui.theme.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MergeSort/js/jquery-ui-1.12.0/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SimpleSort/js/View.js" beforeDir="false" afterPath="$PROJECT_DIR$/SimpleSort/js/View.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SimpleSort/js/View.ts" beforeDir="false" afterPath="$PROJECT_DIR$/SimpleSort/js/View.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plan.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graphs/.idea/Graphs.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graphs/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graphs/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graphs/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graphs/js/bootstrap.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Heap/.idea/Heap.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Heap/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Heap/.idea/typescript-compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Heap/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Heap/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Heap/assets/correct.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Heap/assets/wrong.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Heap/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Heap/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Kruskal/.idea/Kruskal.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Kruskal/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Kruskal/.idea/typescript-compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Kruskal/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Kruskal/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Kruskal/assets/correct.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Kruskal/assets/square_left.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Kruskal/assets/square_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Kruskal/assets/up_arrow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Kruskal/assets/wrong.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MergeSort/.idea/MergeSort.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MergeSort/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MergeSort/.idea/typescript-compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MergeSort/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MergeSort/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MergeSort/js/.idea/js.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MergeSort/js/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MergeSort/js/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimpleSort/.idea/SimpleSort.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimpleSort/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimpleSort/.idea/typescript-compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimpleSort/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimpleSort/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimpleSort/assets/pause.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SimpleSort/js/InsertionSort.ts" beforeDir="false" afterPath="$PROJECT_DIR$/SimpleSort/js/InsertionSort.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -69,8 +73,17 @@
           <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/SimpleSort/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="760">
-                  <caret line="44" column="71" lean-forward="true" selection-start-line="44" selection-start-column="71" selection-end-line="44" selection-end-column="71" />
+                <state relative-caret-position="340">
+                  <caret line="17" column="26" lean-forward="true" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="InsertionSort.ts" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/SimpleSort/js/InsertionSort.ts">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="467">
+                  <caret line="39" column="23" lean-forward="true" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="23" />
                 </state>
               </provider>
             </entry>
@@ -93,11 +106,29 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="EventManager.ts" pinned="false" current-in-tab="true">
+          <file leaf-file-name="EventManager.ts" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/MergeSort/js/EventManager.ts">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="300">
                   <caret line="15" column="62" lean-forward="true" selection-start-line="15" selection-start-column="62" selection-end-line="15" selection-end-column="62" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Heap/index.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="740">
+                  <caret line="40" column="10" lean-forward="true" selection-start-line="40" selection-start-column="10" selection-end-line="40" selection-end-column="10" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Kruskal/index.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="80">
+                  <caret line="4" column="38" lean-forward="true" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
                 </state>
               </provider>
             </entry>
@@ -137,7 +168,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>init</find>
       <find>swap</find>
       <find>setRan</find>
       <find>setRandom</find>
@@ -167,6 +197,7 @@
       <find>posLe</find>
       <find>clear</find>
       <find>console</find>
+      <find>pause</find>
     </findStrings>
     <replaceStrings>
       <replace>let</replace>
@@ -221,6 +252,8 @@
         <option value="$PROJECT_DIR$/Graphs/js/dfsBfsController.ts" />
         <option value="$PROJECT_DIR$/Graphs/index.html" />
         <option value="$PROJECT_DIR$/SimpleSort/js/View.ts" />
+        <option value="$PROJECT_DIR$/Heap/index.html" />
+        <option value="$PROJECT_DIR$/SimpleSort/js/InsertionSort.ts" />
       </list>
     </option>
   </component>
@@ -247,6 +280,28 @@
             <path>
               <item name="INF219" type="b2602c69:ProjectViewProjectNode" />
               <item name="INF219" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="INF219" type="b2602c69:ProjectViewProjectNode" />
+              <item name="INF219" type="462c0819:PsiDirectoryNode" />
+              <item name="Heap" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="INF219" type="b2602c69:ProjectViewProjectNode" />
+              <item name="INF219" type="462c0819:PsiDirectoryNode" />
+              <item name="Heap" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="INF219" type="b2602c69:ProjectViewProjectNode" />
+              <item name="INF219" type="462c0819:PsiDirectoryNode" />
+              <item name="SimpleSort" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="INF219" type="b2602c69:ProjectViewProjectNode" />
+              <item name="INF219" type="462c0819:PsiDirectoryNode" />
+              <item name="SimpleSort" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="INF219" type="b2602c69:ProjectViewProjectNode" />
@@ -301,12 +356,12 @@
       <workItem from="1523482299799" duration="1040000" />
       <workItem from="1525280318968" duration="859000" />
       <workItem from="1525350719861" duration="6091000" />
-      <workItem from="1525437927614" duration="2429000" />
+      <workItem from="1525437927614" duration="2883000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63753000" />
+    <option name="totallyTimeSpent" value="64207000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -363,8 +418,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/PortJob/MergeSort/js/arrowMethods.ts" />
-    <entry file="file://$PROJECT_DIR$/PortJob/SimpleSort/js/insertionSort.ts" />
     <entry file="file://$PROJECT_DIR$/PortJob/MergeSort/js/initArray.js" />
     <entry file="file://$PROJECT_DIR$/PortJob/MergeSort/js/eventManager.ts" />
     <entry file="file://$PROJECT_DIR$/PortJob/MergeSort/MergeSort.html" />
@@ -458,13 +511,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="694">
           <caret line="195" column="4" selection-start-line="195" selection-start-column="4" selection-end-line="195" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Kruskal/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="832">
-          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
         </state>
       </provider>
     </entry>
@@ -632,13 +678,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SimpleSort/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="760">
-          <caret line="44" column="71" lean-forward="true" selection-start-line="44" selection-start-column="71" selection-end-line="44" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SimpleSort/js/View.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="456">
@@ -657,6 +696,34 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="15" column="62" lean-forward="true" selection-start-line="15" selection-start-column="62" selection-end-line="15" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Heap/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="740">
+          <caret line="40" column="10" lean-forward="true" selection-start-line="40" selection-start-column="10" selection-end-line="40" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kruskal/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="38" lean-forward="true" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SimpleSort/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="17" column="26" lean-forward="true" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SimpleSort/js/InsertionSort.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="467">
+          <caret line="39" column="23" lean-forward="true" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="23" />
         </state>
       </provider>
     </entry>

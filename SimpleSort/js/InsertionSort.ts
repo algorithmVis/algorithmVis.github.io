@@ -34,7 +34,6 @@ function startInsertionSort() {
     let j: number; // Elements sorted, starting on second position
     let key: number; // Current element
     let i: number; // Index moving backwards with key
-    console.log(array.toString());
     for (j = 1; j < array.length; j++) {
         control.setJElement(j, true);
         control.setElementBeingComparedTo(j - 1, true);
