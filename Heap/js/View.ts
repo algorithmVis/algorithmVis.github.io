@@ -131,7 +131,7 @@ class View {
     }
 
     setSlow() {
-        manager.delayTime = 1500;
+        manager.delayTime = 1800;
         this.restartManager();
     }
 

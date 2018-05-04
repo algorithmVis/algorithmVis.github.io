@@ -113,7 +113,7 @@ var View = /** @class */ (function () {
         }
     };
     View.prototype.setSlow = function () {
-        manager.delayTime = 1500;
+        manager.delayTime = 1800;
         this.restartManager();
     };
     View.prototype.setMedium = function () {
