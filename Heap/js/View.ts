@@ -131,12 +131,12 @@ class View {
     }
 
     setSlow() {
-        manager.delayTime = 1800;
+        manager.delayTime = 2000;
         this.restartManager();
     }
 
     setMedium() {
-        manager.delayTime = 1000;
+        manager.delayTime = 1200;
         this.restartManager();
     }
 
@@ -146,8 +146,10 @@ class View {
     }
 
     restartManager() {
-        manager.pause();
-        manager.start();
+        if (this.playing) {
+            manager.pause();
+            manager.start();
+        }
     }
 
     switchAlgorithm(algo: string) {
@@ -174,7 +176,7 @@ class View {
                 control.initController(new MaxHeapCombined(10));
                 this.play();
                 lockBackForward(true);
-                lockPlay(false);                
+                lockPlay(false);
                 break;
             }
             case "BuildHeap": {
@@ -183,8 +185,8 @@ class View {
                 screenLock(true);
                 control.getAlgorithm().build();
                 this.setPause(true);
-                lockPlay(false);     
-                lockBackForward(true);           
+                lockPlay(false);
+                lockBackForward(true);
                 $("#play").text("Play");
                 break;
             }
@@ -195,8 +197,8 @@ class View {
                 screenLock(true);
                 (<HeapSort>control.getAlgorithm()).sort();
                 this.setPause(true);
-                lockPlay(false);    
-                lockBackForward(true);                                       
+                lockPlay(false);
+                lockBackForward(true);
                 $("#play").text("Play");
                 break;
             }
@@ -221,7 +223,7 @@ class View {
     }
 
     sortHeap() {
-        control.buildHeap();        
+        control.buildHeap();
         control.sortHeap();
     }
 
@@ -412,7 +414,7 @@ class View {
             this.playing = false;
             manager.pause();
             $("#play").text("Resume");
-            lockPlay(false);            
+            lockPlay(false);
             lockBackForward(false);
         } else {
             this.playing = true;
