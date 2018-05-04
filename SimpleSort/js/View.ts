@@ -201,8 +201,8 @@ class view {
         } else {
             this.paused = false;
             manager.unpause();
-            $('#backward').attr('disabled','disabled');
-            $('#forward').attr('disabled','disabled');
+            $('#backward').attr('disabled', 'disabled');
+            $('#forward').attr('disabled', 'disabled');
             $("#togglePause").html("Pause");
         }
     }
@@ -236,9 +236,11 @@ class view {
     slow() {
         manager.slow();
     }
+
     medium() {
         manager.medium();
     }
+
     fast() {
         manager.fast();
     }

@@ -110,7 +110,7 @@ class View {
         this.started = false;
         this.playing = false;
         $("#play").text("Play");
-        $("#arrow").addClass("hidden").animate({ left: ($("#arrayElem0").position().left + 9) + "px" }, 0);
+        $("#arrow").addClass("hidden").animate({left: ($("#arrayElem0").position().left + 9) + "px"}, 0);
         manager.pause();
         manager.nextEvents = new Array;
         manager.previousEvents = new Array;
@@ -174,7 +174,7 @@ class View {
                 control.initController(new MaxHeapCombined(10));
                 this.play();
                 lockBackForward(true);
-                lockPlay(false);                
+                lockPlay(false);
                 break;
             }
             case "BuildHeap": {
@@ -183,8 +183,8 @@ class View {
                 screenLock(true);
                 control.getAlgorithm().build();
                 this.setPause(true);
-                lockPlay(false);     
-                lockBackForward(true);           
+                lockPlay(false);
+                lockBackForward(true);
                 $("#play").text("Play");
                 break;
             }
@@ -195,8 +195,8 @@ class View {
                 screenLock(true);
                 (<HeapSort>control.getAlgorithm()).sort();
                 this.setPause(true);
-                lockPlay(false);    
-                lockBackForward(true);                                       
+                lockPlay(false);
+                lockBackForward(true);
                 $("#play").text("Play");
                 break;
             }
@@ -221,7 +221,7 @@ class View {
     }
 
     sortHeap() {
-        control.buildHeap();        
+        control.buildHeap();
         control.sortHeap();
     }
 
@@ -388,6 +388,7 @@ class View {
     }
 
     clickedPlay = true;
+
     play() {
         this.clickedPlay = true;
         let algo = control.getAlgorithm().getName();
@@ -412,7 +413,7 @@ class View {
             this.playing = false;
             manager.pause();
             $("#play").text("Resume");
-            lockPlay(false);            
+            lockPlay(false);
             lockBackForward(false);
         } else {
             this.playing = true;

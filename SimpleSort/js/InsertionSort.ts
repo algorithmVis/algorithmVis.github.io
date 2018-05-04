@@ -112,7 +112,12 @@ function setInvSortedArray() {
 }
 
 function isSorted(arr: number[]) {
-    return arr.forEach((n1, n2) => n1 <= n2);
+    for (let i = 0; i < arr.length - 1; i++) {
+        if (arr[i] > arr[i + 1]) {
+            return false;
+        }
+    }
+    return true;
 }
 
 function setAlmostSortedArray(): number[] {

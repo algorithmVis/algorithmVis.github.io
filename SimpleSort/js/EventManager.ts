@@ -68,23 +68,22 @@ class eventManager {
     }
 
     slow() {
-
-        this.delayTime = 1500;
+        this.delayTime = 1200;
         this.helpSetInterval();
     }
 
     medium() {
-        this.delayTime = 1000;
+        this.delayTime = 800;
         this.helpSetInterval();
     }
 
-    fast(){
-        this.delayTime = 500;
+    fast() {
+        this.delayTime = 400;
         this.helpSetInterval();
     }
 
     helpSetInterval() {
-        if(!this.paused) {
+        if (!this.paused) {
             this.pause();
             this.start();
         }

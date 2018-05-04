@@ -58,15 +58,15 @@ var eventManager = /** @class */ (function () {
         this.previousEvents = [];
     };
     eventManager.prototype.slow = function () {
-        this.delayTime = 1500;
+        this.delayTime = 1200;
         this.helpSetInterval();
     };
     eventManager.prototype.medium = function () {
-        this.delayTime = 1000;
+        this.delayTime = 800;
         this.helpSetInterval();
     };
     eventManager.prototype.fast = function () {
-        this.delayTime = 500;
+        this.delayTime = 400;
         this.helpSetInterval();
     };
     eventManager.prototype.helpSetInterval = function () {

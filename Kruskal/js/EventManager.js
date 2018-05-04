@@ -57,7 +57,7 @@ var EventManager = /** @class */ (function () {
         this.previousEvents = [];
     };
     EventManager.prototype.slow = function () {
-        this.delayTime = 1500;
+        this.delayTime = 2000;
         this.helpSetInterval();
     };
     EventManager.prototype.medium = function () {

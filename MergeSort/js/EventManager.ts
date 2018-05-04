@@ -67,7 +67,6 @@ class eventManager {
     }
 
     slow() {
-
         this.delayTime = 1500;
         this.helpSetInterval();
     }
