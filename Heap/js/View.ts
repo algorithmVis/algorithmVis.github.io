@@ -391,6 +391,7 @@ class View {
     }
 
     clickedPlay = true;
+
     play() {
         this.clickedPlay = true;
         let algo = control.getAlgorithm().getName();

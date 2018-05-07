@@ -46,7 +46,7 @@ function resetForNewAlgo() {
         $("#edge" + i).css({"stroke": "rgb(0, 0, 0)", "stroke-width": "4"});
     }
     for (let i = 0; i < nodes; i++) {
-        $("#node" + i).css({"background-color" : "white", "border-color" : "black"});
+        $("#node" + i).css({"background-color": "white", "border-color": "black"});
     }
 
     deselectAllNodes();
@@ -72,6 +72,7 @@ function checkOverlap(x: number, y: number) {
 
 
 /*************************************************************** */
+
 /*******************  Example Graphs  ****************************/
 /*************************************************************** */
 
