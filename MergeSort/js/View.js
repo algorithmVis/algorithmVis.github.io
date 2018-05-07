@@ -120,6 +120,43 @@ var view = /** @class */ (function () {
         }
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     };
+    view.prototype.setColorInMultipleArrays = function (left, color1, right, color2) {
+        var colorList1 = [];
+        for (var i = 0; i < left.length; i++) {
+            colorList1[i] = color1;
+        }
+        var colorList2 = [];
+        for (var i = 0; i < right.length; i++) {
+            colorList2[i] = color2;
+        }
+        var forwardSteps = function (left, colorList1, right, colorList2) {
+            return function () {
+                setColors(left, colorList1);
+                setColors(right, colorList2);
+            };
+        }(left, colorList1, right, colorList2);
+        var oldColor1 = [];
+        for (var i = 0; i < left.length; i++) {
+            oldColor1[i] = colorInArray[myArray.indexOf(left[i])];
+        }
+        var oldColor2 = [];
+        for (var i = 0; i < right.length; i++) {
+            oldColor2[i] = colorInArray[myArray.indexOf(right[i])];
+        }
+        var backwardSteps = function (left, oldColor1, right, oldColor2) {
+            return function () {
+                setColors(left, oldColor1);
+                setColors(right, oldColor2);
+            };
+        }(left, oldColor1, right, oldColor2);
+        for (var i = 0; i < left.length; i++) {
+            colorInArray[myArray.indexOf(left[i])] = color1;
+        }
+        for (var i = 0; i < right.length; i++) {
+            colorInArray[myArray.indexOf(right[i])] = color2;
+        }
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
+    };
     view.prototype.pause = function () {
         if (!this.paused) {
             this.paused = true;
@@ -144,14 +181,18 @@ var view = /** @class */ (function () {
         $('#forward').removeAttr('disabled');
     };
     view.prototype.forward = function () {
+        $('#forward').attr('disabled', 'disabled');
         manager.next();
+        setTimeout(function () {
+            $('#forward').removeAttr('disabled');
+        }, 350);
     };
     view.prototype.backward = function () {
         $('#backward').attr('disabled', 'disabled');
         manager.previous();
         setTimeout(function () {
             $('#backward').removeAttr('disabled');
-        }, 300);
+        }, 350);
     };
     view.prototype.slow = function () {
         manager.slow();

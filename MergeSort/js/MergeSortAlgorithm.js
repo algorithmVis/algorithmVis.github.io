@@ -35,12 +35,10 @@ function mergesort(array) {
         control.setPivotElement(right[0]);
         pivotElements[pivCount] = right[0];
         pivCount++;
-        control.setColorInArrayElements(left, 1);
-        control.setColorInArrayElements(right, 2);
+        control.setColorInMultipleArrays(left, 1, right, 2);
         control.lowerElements(left);
         control.lowerElements(right);
-        control.setColorInArrayElements(left, 4);
-        control.setColorInArrayElements(right, 4);
+        control.setColorInMultipleArrays(left, 4, right, 4);
         //Split until there is only 1 element left
         return merge(mergesort(left), mergesort(right));
     }
@@ -142,7 +140,12 @@ function setInvSortedArray() {
     return setSortedArray().reverse();
 }
 function isSorted(arr) {
-    return arr.forEach(function (n1, n2) { return n1 <= n2; });
+    for (var i = 0; i < arr.length - 1; i++) {
+        if (arr[i] > arr[i + 1]) {
+            return false;
+        }
+    }
+    return true;
 }
 function setAlmostSortedArray() {
     var arr = setSortedArray();

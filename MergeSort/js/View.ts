@@ -152,6 +152,50 @@ class view {
         manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
     }
 
+    setColorInMultipleArrays(left: number[], color1: number, right: number[], color2: number) {
+        let colorList1: number[] = [];
+        for (let i = 0; i < left.length; i++) {
+            colorList1[i] = color1;
+        }
+
+        let colorList2: number[] = [];
+        for (let i = 0; i < right.length; i++) {
+            colorList2[i] = color2;
+        }
+
+        let forwardSteps = function (left, colorList1, right, colorList2) {
+            return function () {
+                setColors(left, colorList1);
+                setColors(right, colorList2);
+            }
+        }(left, colorList1, right, colorList2);
+
+        let oldColor1: number[] = [];
+        for (let i = 0; i < left.length; i++) {
+            oldColor1[i] = colorInArray[myArray.indexOf(left[i])];
+        }
+
+        let oldColor2: number[] = [];
+        for (let i = 0; i < right.length; i++) {
+            oldColor2[i] = colorInArray[myArray.indexOf(right[i])];
+        }
+
+        let backwardSteps = function (left, oldColor1, right, oldColor2) {
+            return function () {
+                setColors(left, oldColor1);
+                setColors(right, oldColor2);
+            }
+        }(left, oldColor1, right, oldColor2);
+
+        for (let i = 0; i < left.length; i++) {
+            colorInArray[myArray.indexOf(left[i])] = color1;
+        }
+        for (let i = 0; i < right.length; i++) {
+            colorInArray[myArray.indexOf(right[i])] = color2;
+        }
+        manager.addEvent(new FrontendEvent(forwardSteps, backwardSteps, this.animSpeed));
+    }
+
     pause() {
         if (!this.paused) {
             this.paused = true;
