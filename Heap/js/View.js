@@ -94,6 +94,7 @@ var View = /** @class */ (function () {
         this.playing = false;
         $("#play").text("Play");
         $("#arrow").addClass("hidden").animate({ left: ($("#arrayElem0").position().left + 9) + "px" }, 0);
+        $("#arrayUL").children("li").removeClass("orange green");
         manager.pause();
         manager.nextEvents = new Array;
         manager.previousEvents = new Array;
