@@ -342,8 +342,8 @@ function setHeaderText(text: string) {
 
 function setUpAddButton() {
     $("#addElem").click(function () {
-        let val = prompt("Which value do you want to add? Integer >= 0. Maximum number of elements is 10");
-        if (isNaN(parseInt(val)) || control.getArrayLength() >= 10) {
+        let val = prompt("Which value do you want to add? Integer in the range 0-99. Maximum number of elements is 10");
+        if (isNaN(parseInt(val)) || control.getArrayLength() >= 10 || parseInt(val) < 0 || parseInt(val) > 99) {
             return;
         }
         viewer.addNode(parseInt(val));
