@@ -244,7 +244,6 @@ class view {
     fast() {
         manager.fast();
     }
-
 }
 
 var viewer: view = new view();

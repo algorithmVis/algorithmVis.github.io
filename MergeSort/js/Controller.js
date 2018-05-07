@@ -29,6 +29,9 @@ var controller = /** @class */ (function () {
     controller.prototype.setPause = function () {
         viewer.setPause();
     };
+    controller.prototype.setColorInMultipleArrays = function (left, color1, right, color2) {
+        viewer.setColorInMultipleArrays(left, color1, right, color2);
+    };
     return controller;
 }());
 var control = new controller();

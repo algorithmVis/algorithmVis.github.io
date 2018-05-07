@@ -3,17 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="a880816f-0142-4864-bbdf-48e2820a7914" name="Default" comment="Fikset knappene i MergeSort">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Graphs/js/graphStructureController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Graphs/js/graphStructureController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Heap/js/View.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Heap/js/View.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Kruskal/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Kruskal/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Kruskal/js/EventManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/Kruskal/js/EventManager.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Kruskal/js/EventManager.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Kruskal/js/EventManager.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MergeSort/js/EventManager.ts" beforeDir="false" afterPath="$PROJECT_DIR$/MergeSort/js/EventManager.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MergeSort/js/Controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/MergeSort/js/Controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MergeSort/js/Controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/MergeSort/js/Controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MergeSort/js/MergeSortAlgorithm.js" beforeDir="false" afterPath="$PROJECT_DIR$/MergeSort/js/MergeSortAlgorithm.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MergeSort/js/MergeSortAlgorithm.ts" beforeDir="false" afterPath="$PROJECT_DIR$/MergeSort/js/MergeSortAlgorithm.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SimpleSort/js/EventManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/SimpleSort/js/EventManager.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SimpleSort/js/EventManager.ts" beforeDir="false" afterPath="$PROJECT_DIR$/SimpleSort/js/EventManager.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SimpleSort/js/InsertionSort.js" beforeDir="false" afterPath="$PROJECT_DIR$/SimpleSort/js/InsertionSort.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SimpleSort/js/InsertionSort.ts" beforeDir="false" afterPath="$PROJECT_DIR$/SimpleSort/js/InsertionSort.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MergeSort/js/View.js" beforeDir="false" afterPath="$PROJECT_DIR$/MergeSort/js/View.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MergeSort/js/View.ts" beforeDir="false" afterPath="$PROJECT_DIR$/MergeSort/js/View.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SimpleSort/js/View.ts" beforeDir="false" afterPath="$PROJECT_DIR$/SimpleSort/js/View.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,11 +22,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.5062565">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-          <file leaf-file-name="View.ts" pinned="false" current-in-tab="true">
+          <file leaf-file-name="View.ts" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Heap/js/View.ts">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="436">
-                  <caret line="121" lean-forward="true" selection-start-line="121" selection-end-line="121" />
+                <state relative-caret-position="20">
+                  <caret line="121" selection-start-line="121" selection-end-line="121" />
                 </state>
               </provider>
             </entry>
@@ -39,8 +34,8 @@
           <file leaf-file-name="View.ts" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/SimpleSort/js/View.ts">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="910">
-                  <caret line="236" column="18" selection-start-line="236" selection-start-column="18" selection-end-line="236" selection-end-column="18" />
+                <state relative-caret-position="570">
+                  <caret line="163" column="9" lean-forward="true" selection-start-line="163" selection-start-column="9" selection-end-line="163" selection-end-column="9" />
                 </state>
               </provider>
             </entry>
@@ -48,7 +43,7 @@
           <file leaf-file-name="EventManager.ts" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/SimpleSort/js/EventManager.ts">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="764">
+                <state relative-caret-position="476">
                   <caret line="86" column="25" selection-start-line="86" selection-start-column="25" selection-end-line="86" selection-end-column="25" />
                 </state>
               </provider>
@@ -63,11 +58,29 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="MergeSortAlgorithm.ts" pinned="false" current-in-tab="false">
+          <file leaf-file-name="MergeSortAlgorithm.ts" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/MergeSort/js/MergeSortAlgorithm.ts">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="616">
-                  <caret line="178" column="25" selection-start-line="178" selection-start-column="25" selection-end-line="178" selection-end-column="25" />
+                <state relative-caret-position="820">
+                  <caret line="53" column="50" lean-forward="true" selection-start-line="53" selection-start-column="50" selection-end-line="53" selection-end-column="50" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Controller.ts" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/MergeSort/js/Controller.ts">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="800">
+                  <caret line="40" column="21" lean-forward="true" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="21" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="View.ts" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/MergeSort/js/View.ts">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1050">
+                  <caret line="190" column="18" lean-forward="true" selection-start-line="190" selection-start-column="18" selection-end-line="190" selection-end-column="18" />
                 </state>
               </provider>
             </entry>
@@ -75,30 +88,14 @@
           <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Heap/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="860">
-                  <caret line="79" column="77" lean-forward="true" selection-start-line="79" selection-start-column="77" selection-end-line="79" selection-end-column="77" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="View.ts" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/UnionFind/js/View.ts">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="576">
-                  <caret line="148" column="45" lean-forward="true" selection-start-line="148" selection-start-column="45" selection-end-line="148" selection-end-column="45" />
+                <state relative-caret-position="1580">
+                  <caret line="79" column="77" selection-start-line="79" selection-start-column="77" selection-end-line="79" selection-end-column="77" />
                 </state>
               </provider>
             </entry>
           </file>
           <file leaf-file-name="Controller.ts" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Heap/js/Controller.ts">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-1304" />
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="HeapSort.ts" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/Heap/js/HeapSort.ts">
               <provider selected="true" editor-type-id="text-editor" />
             </entry>
           </file>
@@ -133,11 +130,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="EventManager.ts" pinned="false" current-in-tab="false">
+          <file leaf-file-name="EventManager.ts" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/MergeSort/js/EventManager.ts">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="740">
-                  <caret line="70" column="24" selection-start-line="70" selection-start-column="24" selection-end-line="70" selection-end-column="24" />
+                <state relative-caret-position="680">
+                  <caret line="34" column="23" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="23" />
                 </state>
               </provider>
             </entry>
@@ -151,10 +148,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+          <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Kruskal/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="720">
+                <state relative-caret-position="670">
                   <caret line="36" column="73" selection-start-line="36" selection-start-column="73" selection-end-line="36" selection-end-column="73" />
                 </state>
               </provider>
@@ -163,7 +160,7 @@
           <file leaf-file-name="eventManager.ts" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Graphs/js/eventManager.ts">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="696">
+                <state relative-caret-position="1420">
                   <caret line="71" column="26" selection-start-line="71" selection-start-column="26" selection-end-line="71" selection-end-column="26" />
                 </state>
               </provider>
@@ -172,7 +169,7 @@
           <file leaf-file-name="EventManager.ts" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Kruskal/js/EventManager.ts">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="647">
+                <state relative-caret-position="1320">
                   <caret line="69" column="5" lean-forward="true" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
                   <folding>
                     <element signature="n#!!doc" expanded="true" />
@@ -248,7 +245,6 @@
         <option value="$PROJECT_DIR$/SimpleSort/js/KValue.ts" />
         <option value="$PROJECT_DIR$/Graphs/graphs.html" />
         <option value="$PROJECT_DIR$/MergeSort/js/InitArray.ts" />
-        <option value="$PROJECT_DIR$/MergeSort/js/Controller.ts" />
         <option value="$PROJECT_DIR$/MergeSort/js/Methods.ts" />
         <option value="$PROJECT_DIR$/Kruskal/js/KruskalAlgorithm.js" />
         <option value="$PROJECT_DIR$/MergeSort/MergeSort.html" />
@@ -268,7 +264,6 @@
         <option value="$PROJECT_DIR$/Kruskal/js/Methods.ts" />
         <option value="$PROJECT_DIR$/Homepage.html" />
         <option value="$PROJECT_DIR$/MergeSort/index.html" />
-        <option value="$PROJECT_DIR$/MergeSort/js/View.ts" />
         <option value="$PROJECT_DIR$/Graphs/js/dfsBfsController.ts" />
         <option value="$PROJECT_DIR$/Graphs/index.html" />
         <option value="$PROJECT_DIR$/Heap/index.html" />
@@ -276,12 +271,14 @@
         <option value="$PROJECT_DIR$/MergeSort/js/EventManager.ts" />
         <option value="$PROJECT_DIR$/Kruskal/js/EventManager.ts" />
         <option value="$PROJECT_DIR$/Kruskal/index.html" />
-        <option value="$PROJECT_DIR$/MergeSort/js/MergeSortAlgorithm.ts" />
         <option value="$PROJECT_DIR$/SimpleSort/js/InsertionSort.ts" />
         <option value="$PROJECT_DIR$/SimpleSort/js/EventManager.ts" />
-        <option value="$PROJECT_DIR$/SimpleSort/js/View.ts" />
         <option value="$PROJECT_DIR$/Heap/js/View.ts" />
         <option value="$PROJECT_DIR$/Graphs/js/graphStructureController.ts" />
+        <option value="$PROJECT_DIR$/MergeSort/js/Controller.ts" />
+        <option value="$PROJECT_DIR$/SimpleSort/js/View.ts" />
+        <option value="$PROJECT_DIR$/MergeSort/js/View.ts" />
+        <option value="$PROJECT_DIR$/MergeSort/js/MergeSortAlgorithm.ts" />
       </list>
     </option>
   </component>
@@ -294,14 +291,15 @@
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-10" />
     <option name="y" value="-10" />
-    <option name="width" value="1938" />
-    <option name="height" value="1058" />
+    <option name="width" value="1939" />
+    <option name="height" value="1059" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -346,7 +344,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -390,12 +387,13 @@
       <workItem from="1523482299799" duration="1040000" />
       <workItem from="1525280318968" duration="859000" />
       <workItem from="1525350719861" duration="6091000" />
-      <workItem from="1525437927614" duration="6924000" />
+      <workItem from="1525437927614" duration="7685000" />
+      <workItem from="1525703489753" duration="1618000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="68248000" />
+    <option name="totallyTimeSpent" value="70627000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -411,7 +409,7 @@
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TypeScript" order="7" weight="0.10734115" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11449677" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.07987073" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3294263" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -452,6 +450,13 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Kruskal/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="36" column="73" selection-start-line="36" selection-start-column="73" selection-end-line="36" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/SimpleSort/js/View.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1422">
@@ -588,24 +593,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MergeSort/js/Controller.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="700">
-          <caret line="35" column="7" lean-forward="true" selection-start-line="35" selection-start-column="7" selection-end-line="35" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Graphs/js/graphUI.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="936">
           <caret line="151" column="9" selection-start-line="151" selection-start-column="9" selection-end-line="151" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MergeSort/js/View.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="650">
-          <caret line="179" column="8" lean-forward="true" selection-start-line="179" selection-start-column="8" selection-end-line="183" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -660,17 +651,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/UnionFind/js/View.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
+        <state relative-caret-position="2960">
           <caret line="148" column="45" lean-forward="true" selection-start-line="148" selection-start-column="45" selection-end-line="148" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Heap/js/Controller.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1304" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Heap/js/HeapSort.ts">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Heap/js/EventManager.ts">
@@ -682,8 +668,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Heap/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="860">
-          <caret line="79" column="77" lean-forward="true" selection-start-line="79" selection-start-column="77" selection-end-line="79" selection-end-column="77" />
+        <state relative-caret-position="1580">
+          <caret line="79" column="77" selection-start-line="79" selection-start-column="77" selection-end-line="79" selection-end-column="77" />
         </state>
       </provider>
     </entry>
@@ -703,46 +689,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Graphs/js/eventManager.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="696">
+        <state relative-caret-position="1420">
           <caret line="71" column="26" selection-start-line="71" selection-start-column="26" selection-end-line="71" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Kruskal/js/EventManager.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="647">
+        <state relative-caret-position="1320">
           <caret line="69" column="5" lean-forward="true" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/MergeSort/js/MergeSortAlgorithm.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="616">
-          <caret line="178" column="25" selection-start-line="178" selection-start-column="25" selection-end-line="178" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SimpleSort/js/InsertionSort.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="118" column="5" selection-start-line="118" selection-start-column="5" selection-end-line="118" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SimpleSort/js/EventManager.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="764">
-          <caret line="86" column="25" selection-start-line="86" selection-start-column="25" selection-end-line="86" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SimpleSort/js/View.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="910">
-          <caret line="236" column="18" selection-start-line="236" selection-start-column="18" selection-end-line="236" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -760,13 +718,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MergeSort/js/EventManager.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="740">
-          <caret line="70" column="24" selection-start-line="70" selection-start-column="24" selection-end-line="70" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Graphs/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="640">
@@ -774,17 +725,66 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Heap/js/View.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="121" selection-start-line="121" selection-end-line="121" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SimpleSort/js/InsertionSort.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="470">
+          <caret line="118" column="5" selection-start-line="118" selection-start-column="5" selection-end-line="118" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SimpleSort/js/EventManager.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="86" column="25" selection-start-line="86" selection-start-column="25" selection-end-line="86" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SimpleSort/js/View.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="163" column="9" lean-forward="true" selection-start-line="163" selection-start-column="9" selection-end-line="163" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MergeSort/js/Controller.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="800">
+          <caret line="40" column="21" lean-forward="true" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MergeSort/js/View.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1050">
+          <caret line="190" column="18" lean-forward="true" selection-start-line="190" selection-start-column="18" selection-end-line="190" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MergeSort/js/MergeSortAlgorithm.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="820">
+          <caret line="53" column="50" lean-forward="true" selection-start-line="53" selection-start-column="50" selection-end-line="53" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Kruskal/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
+        <state relative-caret-position="670">
           <caret line="36" column="73" selection-start-line="36" selection-start-column="73" selection-end-line="36" selection-end-column="73" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Heap/js/View.ts">
+    <entry file="file://$PROJECT_DIR$/MergeSort/js/EventManager.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="121" lean-forward="true" selection-start-line="121" selection-end-line="121" />
+        <state relative-caret-position="680">
+          <caret line="34" column="23" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="23" />
         </state>
       </provider>
     </entry>

@@ -36,6 +36,10 @@ class controller {
     setPause() {
         viewer.setPause();
     }
+
+    setColorInMultipleArrays(left: number[], color1: number, right: number[], color2: number) {
+        viewer.setColorInMultipleArrays(left, color1, right, color2);
+    }
 }
 
 let control: controller = new controller();
