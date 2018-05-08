@@ -75,12 +75,12 @@ function exampleGraphStar() {
     graphUIClicked(281, 235);
     twoNodesClicked(0, 1);
     twoNodesClicked(2, 0);
+    twoNodesClicked(1, 2);
     twoNodesClicked(1, 3);
     twoNodesClicked(1, 4);
     twoNodesClicked(1, 5);
     twoNodesClicked(1, 6);
     twoNodesClicked(1, 7);
-    twoNodesClicked(1, 2);
     twoNodesClicked(2, 3);
     twoNodesClicked(3, 4);
     twoNodesClicked(4, 5);
