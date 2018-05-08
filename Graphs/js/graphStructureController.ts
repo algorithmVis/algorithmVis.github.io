@@ -126,7 +126,6 @@ function exampleGraphAllConnected() {
     twoNodesClicked(2, 5);
     twoNodesClicked(1, 5);
     twoNodesClicked(1, 4);
-    twoNodesClicked(6, 7);
     twoNodesClicked(3, 6);
     twoNodesClicked(4, 7);
     instantCollapseAll();
