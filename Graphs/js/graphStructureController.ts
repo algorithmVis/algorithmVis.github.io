@@ -52,9 +52,17 @@ function resetForNewAlgo() {
     deselectAllNodes();
     removeVisitedArray();
 
+    color = [];
     for (let i = 0; i < nodes; i++) {
         color.push(false);
     }
+    colorEdge = [];
+    for (let i = 0; i < edges; i++) {
+        colorEdge.push(false);
+    }
+    firstNode = true;
+    BFSfirst = true;
+
 }
 
 function checkOverlap(x: number, y: number) {

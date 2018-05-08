@@ -12,6 +12,9 @@ let visitEventDuration = 2000;
 let paused = true;
 let algoRunning = "";
 let color: boolean[] = [];
+let colorEdge: boolean[] = [];
+let firstNode: boolean;
+let BFSfirst: boolean;
 
 function helpStartBfs() {
     if (algoRunning != "BFS") {
@@ -89,12 +92,13 @@ function popFromBfsQueue(v: number) {
         };
     }(v);
 
-    let backwards = function (id) {
+    let backwards = function (id, BFSfirst) {
         return function () {
-            addQueueElement(id);
+            if (!BFSfirst)
+                addQueueElement(id);
         };
-    }(v);
-
+    }(v, BFSfirst);
+    BFSfirst = false;
     manager.addEvent(new FrontendEvent(forward, backwards, visitEventDuration))
 }
 
@@ -138,16 +142,14 @@ function dfs(v: number) {
     let adjacent = adjacencyList[v];
     for (let i = 0; i < adjacent.length; i++) {
         if (visited[adjacent[i]]) continue;
-        setHighlightEdge(getEdgeId(v, adjacent[i]), true, color[i]);
-        color[i] = true;
+        setHighlightEdge(getEdgeId(v, adjacent[i]), true);
         dfs(adjacent[i]);
-        setHighlightEdge(getEdgeId(v, adjacent[i]), false, color[i]);
-        color[i] = false;
+        setHighlightEdge(getEdgeId(v, adjacent[i]), false);
         visit(v);
     }
 }
 
-function setHighlightEdge(edgeId: number, highlight: boolean, lastColor: boolean) {
+function setHighlightEdge(edgeId: number, highlight: boolean) {
     let forward = function (id, h) {
         return function () {
             if (h) {
@@ -159,16 +161,16 @@ function setHighlightEdge(edgeId: number, highlight: boolean, lastColor: boolean
         };
     }(edgeId, highlight);
 
-    let backwards = function (id, lastColor) {
+    let backwards = function (id, bool) {
         return function () {
-            if (lastColor == true) {
+            if (bool === false) {
                 $("#edge" + id).css({"stroke": "rgb(0, 0, 0)", "stroke-width": "4"});
             } else {
                 $("#edge" + id).css({"stroke": "rgb(16, 130, 219)", "stroke-width": "6"});
             }
         };
-    }(edgeId, lastColor);
-
+    }(edgeId, colorEdge[edgeId]);
+    colorEdge[edgeId] = highlight;
     manager.addEvent(new FrontendEvent(forward, backwards, highlightEventDuration))
 }
 
@@ -184,16 +186,35 @@ function visit(id: number) {
         };
     }(id, currentNode);
 
-    let backwards = function (v, curr) {
+    let backwards = function (v, curr, bool, firstNode) {
         return function () {
-            $("#node" + v).css("background-color", "white");
-            $("#node" + v).css("border", "6px solid black");
-            $("#node" + curr).css("border", "6px solid rgb(16, 130, 219)");
-            $("#insElemNr" + v).html("<p>" + v + "</p><div> F </div>");
-            $("#insElemNr" + v).removeClass("marked");
-        };
-    }(id, currentNode);
+            if (firstNode) {
+                $("#node" + v).css("background-color", "white");
+                $("#node" + v).css("border", "6px solid black");
+                $("#node" + curr).css("border", "6px solid rgb(0, 0, 0)");
+                $("#insElemNr" + v).html("<p>" + v + "</p><div> F </div>");
+                $("#insElemNr" + v).removeClass("marked");
+            } else {
+                if (!bool) {
+                    $("#node" + v).css("background-color", "white");
+                    $("#node" + v).css("border", "6px solid black");
+                    $("#node" + curr).css("border", "6px solid rgb(16, 130, 219)");
+                    $("#insElemNr" + v).html("<p>" + v + "</p><div> F </div>");
+                    $("#insElemNr" + v).removeClass("marked");
+                } else {
+                    $("#node" + curr).css("border", "6px solid black");
+                    $("#node" + v).css("background-color", "rgb(80, 250, 80)");
+                    $("#node" + v).css("border", "6px solid rgb(16, 130, 219)");
+                    $("#insElemNr" + v).html("<p>" + v + "</p><div> T </div>");
+                    $("#insElemNr" + v).addClass("marked");
+                }
+            }
 
+
+        };
+    }(id, currentNode, color[id], firstNode);
+    color[id] = true;
+    firstNode = false;
     manager.addEvent(new FrontendEvent(forward, backwards, visitEventDuration));
     currentNode = id;
 }
@@ -210,7 +231,6 @@ function removeHighlighting(v: number) {
             $("#node" + v).css("border", "6px solid rgb(16, 130, 219)");
         };
     }(v);
-
     manager.addEvent(new FrontendEvent(forward, backwards, visitEventDuration))
 }
 

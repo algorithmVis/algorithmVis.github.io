@@ -42,9 +42,16 @@ function resetForNewAlgo() {
     }
     deselectAllNodes();
     removeVisitedArray();
+    color = [];
     for (var i = 0; i < nodes; i++) {
         color.push(false);
     }
+    colorEdge = [];
+    for (var i = 0; i < edges; i++) {
+        colorEdge.push(false);
+    }
+    firstNode = true;
+    BFSfirst = true;
 }
 function checkOverlap(x, y) {
     var overlap = false;
