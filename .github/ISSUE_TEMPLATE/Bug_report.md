@@ -6,6 +6,9 @@ about: Create a report to help us improve
 
 ***Disclaimer: This is a University Project. We might never fix this bug***
 
+**Which algorithm is this for?**
+Just write the name of the algorithm or copy the link to the webpage
+
 **Describe the bug**
 A clear and concise description of what the bug is.
 

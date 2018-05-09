@@ -6,6 +6,9 @@ about: Suggest an idea for this project
 
 ***Disclaimer: This is a University Project. We might never implement this feature***
 
+**Which algorithm is this for?**
+Just write the name of the algorithm or copy the link to the webpage
+
 **Is your feature request related to a problem? Please describe.**
 A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
 
