@@ -157,6 +157,7 @@ class View {
         $("#sortArray").hide();
         $("#sortArrayUL").children("li").remove();
         $("#buildHeap, #sortHeap").hide();
+        $("#removeElem").removeAttr("disabled");
         lockPlay(true);
 
         switch (algo) {
@@ -173,9 +174,10 @@ class View {
             case "MaxHeapCombined": {
                 this.resetAll();
                 $("#sortArray").show();
-                $("#buildHeap, #sortHeap").show();
+                $("#buildHeap, #sortHeap").show();              
                 control.initController(new MaxHeapCombined(10));
                 this.play();
+                $("#removeElem").attr({ "disabled": "true" });  
                 lockBackForward(true);
                 lockPlay(false);
                 break;
