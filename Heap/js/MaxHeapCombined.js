@@ -19,6 +19,7 @@ var MaxHeapCombined = /** @class */ (function (_super) {
         var _this = _super.call(this, size) || this;
         HeapSort.insertElems(10);
         _this.sortIndex = _this.currIndex - 1;
+        _this.finished = false;
         return _this;
     }
     MaxHeapCombined.prototype.add = function (a) {
@@ -37,6 +38,7 @@ var MaxHeapCombined = /** @class */ (function (_super) {
             this.remove();
         }
         control.setArrow(-1);
+        this.finished = true;
     };
     MaxHeapCombined.prototype.remove = function () {
         // Switch root and last element, remove root and start frontendevents

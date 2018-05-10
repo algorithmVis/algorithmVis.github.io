@@ -17,6 +17,11 @@ class EventManager {
         viewer.playButtonState();
         if (this.nextEvents.length == 0) {
             screenLock(false);
+            if (control.getAlgoName() === "MaxHeapCombined") {
+                $("#removeElem").attr({ "disabled": "true" });
+                if ((<MaxHeapCombined>control.getAlgorithm()).finished)
+                    screenLock(true);
+            }
             return;
         }
         screenLock(true);
@@ -30,10 +35,10 @@ class EventManager {
     // Executing the previous event
     previous() {
         if (this.previousEvents.length == 0) {
-            screenLock(false);            
+            screenLock(false);
             return;
         }
-        screenLock(true);        
+        screenLock(true);
         var event: FrontendEvent = (<FrontendEvent>this.previousEvents.pop());
         event.previous();
         this.nextEvents.unshift(event);

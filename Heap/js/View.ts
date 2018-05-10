@@ -177,9 +177,9 @@ class View {
                 $("#buildHeap, #sortHeap").show();              
                 control.initController(new MaxHeapCombined(10));
                 this.play();
-                $("#removeElem").attr({ "disabled": "true" });  
                 lockBackForward(true);
                 lockPlay(false);
+                $("#removeElem").attr({ "disabled": "true" });                  
                 break;
             }
             case "BuildHeap": {

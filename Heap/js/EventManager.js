@@ -14,6 +14,11 @@ var EventManager = /** @class */ (function () {
         viewer.playButtonState();
         if (this.nextEvents.length == 0) {
             screenLock(false);
+            if (control.getAlgoName() === "MaxHeapCombined") {
+                $("#removeElem").attr({ "disabled": "true" });
+                if (control.getAlgorithm().finished)
+                    screenLock(true);
+            }
             return;
         }
         screenLock(true);

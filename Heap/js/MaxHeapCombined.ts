@@ -7,11 +7,13 @@
 
 class MaxHeapCombined extends MaxHeapFree {
     private sortIndex;
+    public finished;
 
     constructor(size: number) {
         super(size);
         HeapSort.insertElems(10);
         this.sortIndex = this.currIndex - 1;
+        this.finished = false;
     }
 
     add(a: number) {
@@ -30,6 +32,7 @@ class MaxHeapCombined extends MaxHeapFree {
             this.remove();
         }
         control.setArrow(-1);
+        this.finished = true;
     }
 
     remove(): void {
