@@ -33,6 +33,11 @@ ul#arrayUL li div.content {
     width: 50px;
     border: 2px solid black;
     padding: 10px;
+	font-size: 1.1em;
+}
+
+ul#arrayUL li div.index {
+	font-size: 1.2em;
 }
 
 div.unionSort {
