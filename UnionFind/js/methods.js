@@ -112,7 +112,6 @@ function connectNodes(child, parent) {
 }
 function selectIndex(index, select) {
     $("#arrayElem" + index + ", #node" + index).each(function () {
-        console.log("hello : " + select);
         if (select) {
             $(this).addClass("selected");
         }
