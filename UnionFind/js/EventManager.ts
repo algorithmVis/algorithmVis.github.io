@@ -18,7 +18,6 @@ class EventManager {
             return;
         }
         var event = (<FrontendEvent>this.nextEvents.shift());
-        console.log(this.nextEvents);
         event.next();
         this.previousEvents.push(event);
         if (event.duration == 0)

@@ -130,7 +130,6 @@ function connectNodes(child: number, parent: number) {
 
 function selectIndex(index: number, select: boolean) {
     $("#arrayElem" + index + ", #node" + index).each(function () {
-        console.log("hello : " + select);
 
         if (select) {
             $(this).addClass("selected");
